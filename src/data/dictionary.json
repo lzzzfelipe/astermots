@@ -1,0 +1,6509 @@
+﻿[
+  {
+    "word": "le",
+    "definition": "Petit mot qu'on met devant un nom masculin",
+    "category": "determiner",
+    "example": "Le chat dort."
+  },
+  {
+    "word": "la",
+    "definition": "Petit mot qu'on met devant un nom féminin",
+    "category": "determiner",
+    "example": "La maison est grande."
+  },
+  {
+    "word": "les",
+    "definition": "Petit mot qu'on met devant un nom au pluriel",
+    "category": "determiner",
+    "example": "Les enfants jouent."
+  },
+  {
+    "word": "un",
+    "definition": "Un seul, pas deux",
+    "category": "determiner",
+    "example": "Un garçon court."
+  },
+  {
+    "word": "une",
+    "definition": "Une seule, pas deux",
+    "category": "determiner",
+    "example": "Une fille chante."
+  },
+  {
+    "word": "des",
+    "definition": "Plusieurs choses qu'on ne compte pas exactement",
+    "category": "determiner",
+    "example": "Des oiseaux volent."
+  },
+  {
+    "word": "du",
+    "definition": "Un peu de quelque chose",
+    "category": "determiner",
+    "example": "Je bois du lait."
+  },
+  {
+    "word": "de",
+    "definition": "Mot qui relie deux choses ensemble",
+    "category": "preposition",
+    "example": "Le livre de Marie."
+  },
+  {
+    "word": "à",
+    "definition": "Mot qui montre où on va ou à qui c'est",
+    "category": "preposition",
+    "example": "Je vais à l'école."
+  },
+  {
+    "word": "et",
+    "definition": "Mot pour ajouter quelque chose",
+    "category": "conjunction",
+    "example": "Papa et maman."
+  },
+  {
+    "word": "en",
+    "definition": "Mot qui montre où on est ou comment",
+    "category": "preposition",
+    "example": "Je suis en classe."
+  },
+  {
+    "word": "que",
+    "definition": "Mot qui relie deux parties d'une phrase",
+    "category": "conjunction",
+    "example": "Je sais que tu es là."
+  },
+  {
+    "word": "qui",
+    "definition": "Mot pour parler d'une personne ou chose",
+    "category": "pronoun",
+    "example": "L'enfant qui joue."
+  },
+  {
+    "word": "dans",
+    "definition": "À l'intérieur de quelque chose",
+    "category": "preposition",
+    "example": "Le chat est dans la boîte."
+  },
+  {
+    "word": "ce",
+    "definition": "Mot pour montrer quelque chose",
+    "category": "determiner",
+    "example": "Ce livre est joli."
+  },
+  {
+    "word": "il",
+    "definition": "Mot pour parler d'un garçon ou d'un homme",
+    "category": "pronoun",
+    "example": "Il est content."
+  },
+  {
+    "word": "elle",
+    "definition": "Mot pour parler d'une fille ou d'une femme",
+    "category": "pronoun",
+    "example": "Elle est contente."
+  },
+  {
+    "word": "je",
+    "definition": "Mot pour parler de soi-même",
+    "category": "pronoun",
+    "example": "Je suis heureux."
+  },
+  {
+    "word": "tu",
+    "definition": "Mot pour parler à quelqu'un qu'on connaît bien",
+    "category": "pronoun",
+    "example": "Tu es mon ami."
+  },
+  {
+    "word": "nous",
+    "definition": "Mot pour parler de soi et d'autres personnes",
+    "category": "pronoun",
+    "example": "Nous allons au parc."
+  },
+  {
+    "word": "vous",
+    "definition": "Mot poli pour parler à quelqu'un, ou à plusieurs personnes",
+    "category": "pronoun",
+    "example": "Vous êtes gentils."
+  },
+  {
+    "word": "ils",
+    "definition": "Mot pour parler de plusieurs garçons ou hommes",
+    "category": "pronoun",
+    "example": "Ils jouent dehors."
+  },
+  {
+    "word": "elles",
+    "definition": "Mot pour parler de plusieurs filles ou femmes",
+    "category": "pronoun",
+    "example": "Elles chantent bien."
+  },
+  {
+    "word": "on",
+    "definition": "Mot pour dire 'nous' ou 'les gens'",
+    "category": "pronoun",
+    "example": "On va jouer."
+  },
+  {
+    "word": "me",
+    "definition": "Mot pour dire 'moi' dans une phrase",
+    "category": "pronoun",
+    "example": "Il me regarde."
+  },
+  {
+    "word": "te",
+    "definition": "Mot pour dire 'toi' dans une phrase",
+    "category": "pronoun",
+    "example": "Je te vois."
+  },
+  {
+    "word": "se",
+    "definition": "Mot pour dire que quelqu'un fait quelque chose à lui-même",
+    "category": "pronoun",
+    "example": "Il se lave."
+  },
+  {
+    "word": "lui",
+    "definition": "Mot pour parler de quelqu'un (à lui ou à elle)",
+    "category": "pronoun",
+    "example": "Je lui parle."
+  },
+  {
+    "word": "leur",
+    "definition": "Mot pour parler à plusieurs personnes",
+    "category": "pronoun",
+    "example": "Je leur donne un cadeau."
+  },
+  {
+    "word": "mon",
+    "definition": "Qui est à moi (masculin)",
+    "category": "determiner",
+    "example": "Mon chien est petit."
+  },
+  {
+    "word": "ma",
+    "definition": "Qui est à moi (féminin)",
+    "category": "determiner",
+    "example": "Ma sœur est grande."
+  },
+  {
+    "word": "mes",
+    "definition": "Qui sont à moi (pluriel)",
+    "category": "determiner",
+    "example": "Mes amis sont gentils."
+  },
+  {
+    "word": "ton",
+    "definition": "Qui est à toi (masculin)",
+    "category": "determiner",
+    "example": "Ton crayon est bleu."
+  },
+  {
+    "word": "ta",
+    "definition": "Qui est à toi (féminin)",
+    "category": "determiner",
+    "example": "Ta chambre est jolie."
+  },
+  {
+    "word": "tes",
+    "definition": "Qui sont à toi (pluriel)",
+    "category": "determiner",
+    "example": "Tes jouets sont ici."
+  },
+  {
+    "word": "son",
+    "definition": "Qui est à lui ou à elle (masculin)",
+    "category": "determiner",
+    "example": "Son papa est gentil."
+  },
+  {
+    "word": "sa",
+    "definition": "Qui est à lui ou à elle (féminin)",
+    "category": "determiner",
+    "example": "Sa maman est belle."
+  },
+  {
+    "word": "ses",
+    "definition": "Qui sont à lui ou à elle (pluriel)",
+    "category": "determiner",
+    "example": "Ses frères sont grands."
+  },
+  {
+    "word": "notre",
+    "definition": "Qui est à nous",
+    "category": "determiner",
+    "example": "Notre maison est ici."
+  },
+  {
+    "word": "votre",
+    "definition": "Qui est à vous",
+    "category": "determiner",
+    "example": "Votre jardin est beau."
+  },
+  {
+    "word": "être",
+    "definition": "Exister, ou montrer comment on est",
+    "category": "verb",
+    "example": "Je veux être gentil."
+  },
+  {
+    "word": "avoir",
+    "definition": "Posséder quelque chose",
+    "category": "verb",
+    "example": "J'ai un chat."
+  },
+  {
+    "word": "faire",
+    "definition": "Créer ou réaliser quelque chose",
+    "category": "verb",
+    "example": "Je fais un dessin."
+  },
+  {
+    "word": "dire",
+    "definition": "Parler, raconter quelque chose avec des mots",
+    "category": "verb",
+    "example": "Il dit bonjour."
+  },
+  {
+    "word": "aller",
+    "definition": "Se déplacer d'un endroit à un autre",
+    "category": "verb",
+    "example": "Je vais à l'école."
+  },
+  {
+    "word": "voir",
+    "definition": "Regarder avec ses yeux",
+    "category": "verb",
+    "example": "Je vois un oiseau."
+  },
+  {
+    "word": "savoir",
+    "definition": "Connaître quelque chose dans sa tête",
+    "category": "verb",
+    "example": "Je sais lire."
+  },
+  {
+    "word": "pouvoir",
+    "definition": "Être capable de faire quelque chose",
+    "category": "verb",
+    "example": "Je peux courir vite."
+  },
+  {
+    "word": "vouloir",
+    "definition": "Avoir envie de quelque chose",
+    "category": "verb",
+    "example": "Je veux un gâteau."
+  },
+  {
+    "word": "venir",
+    "definition": "Se déplacer vers ici",
+    "category": "verb",
+    "example": "Viens jouer avec moi !"
+  },
+  {
+    "word": "devoir",
+    "definition": "Être obligé de faire quelque chose",
+    "category": "verb",
+    "example": "Je dois ranger ma chambre."
+  },
+  {
+    "word": "prendre",
+    "definition": "Attraper ou saisir quelque chose",
+    "category": "verb",
+    "example": "Je prends mon sac."
+  },
+  {
+    "word": "donner",
+    "definition": "Offrir quelque chose à quelqu'un",
+    "category": "verb",
+    "example": "Je donne un bonbon."
+  },
+  {
+    "word": "parler",
+    "definition": "Dire des mots à quelqu'un",
+    "category": "verb",
+    "example": "Je parle à mon ami."
+  },
+  {
+    "word": "aimer",
+    "definition": "Trouver quelqu'un ou quelque chose très bien",
+    "category": "verb",
+    "example": "J'aime le chocolat."
+  },
+  {
+    "word": "penser",
+    "definition": "Réfléchir dans sa tête",
+    "category": "verb",
+    "example": "Je pense à toi."
+  },
+  {
+    "word": "croire",
+    "definition": "Penser que quelque chose est vrai",
+    "category": "verb",
+    "example": "Je crois que c'est vrai."
+  },
+  {
+    "word": "trouver",
+    "definition": "Découvrir quelque chose qu'on cherchait",
+    "category": "verb",
+    "example": "J'ai trouvé mon jouet."
+  },
+  {
+    "word": "mettre",
+    "definition": "Placer quelque chose quelque part",
+    "category": "verb",
+    "example": "Je mets mon manteau."
+  },
+  {
+    "word": "passer",
+    "definition": "Aller d'un côté à l'autre",
+    "category": "verb",
+    "example": "Je passe devant la boulangerie."
+  },
+  {
+    "word": "regarder",
+    "definition": "Utiliser ses yeux pour observer",
+    "category": "verb",
+    "example": "Je regarde un film."
+  },
+  {
+    "word": "jouer",
+    "definition": "S'amuser avec un jeu ou un jouet",
+    "category": "verb",
+    "example": "Je joue au ballon."
+  },
+  {
+    "word": "manger",
+    "definition": "Mettre de la nourriture dans sa bouche et l'avaler",
+    "category": "verb",
+    "example": "Je mange une pomme."
+  },
+  {
+    "word": "boire",
+    "definition": "Avaler un liquide",
+    "category": "verb",
+    "example": "Je bois de l'eau."
+  },
+  {
+    "word": "dormir",
+    "definition": "Fermer les yeux et se reposer la nuit",
+    "category": "verb",
+    "example": "Je dors dans mon lit."
+  },
+  {
+    "word": "courir",
+    "definition": "Aller très vite avec ses jambes",
+    "category": "verb",
+    "example": "Je cours dans le jardin."
+  },
+  {
+    "word": "marcher",
+    "definition": "Avancer pas à pas",
+    "category": "verb",
+    "example": "Je marche jusqu'à l'école."
+  },
+  {
+    "word": "lire",
+    "definition": "Comprendre des mots écrits",
+    "category": "verb",
+    "example": "Je lis un livre."
+  },
+  {
+    "word": "écrire",
+    "definition": "Tracer des lettres et des mots",
+    "category": "verb",
+    "example": "J'écris une lettre."
+  },
+  {
+    "word": "chanter",
+    "definition": "Faire de la musique avec sa voix",
+    "category": "verb",
+    "example": "Je chante une chanson."
+  },
+  {
+    "word": "danser",
+    "definition": "Bouger son corps en rythme avec la musique",
+    "category": "verb",
+    "example": "Je danse avec mes amis."
+  },
+  {
+    "word": "dessiner",
+    "definition": "Faire des images avec un crayon",
+    "category": "verb",
+    "example": "Je dessine un soleil."
+  },
+  {
+    "word": "écouter",
+    "definition": "Utiliser ses oreilles pour entendre",
+    "category": "verb",
+    "example": "J'écoute la maîtresse."
+  },
+  {
+    "word": "entendre",
+    "definition": "Percevoir un son avec ses oreilles",
+    "category": "verb",
+    "example": "J'entends un bruit."
+  },
+  {
+    "word": "tomber",
+    "definition": "Aller vers le sol sans le vouloir",
+    "category": "verb",
+    "example": "La pomme tombe de l'arbre."
+  },
+  {
+    "word": "ouvrir",
+    "definition": "Faire en sorte qu'on puisse passer ou voir dedans",
+    "category": "verb",
+    "example": "J'ouvre la porte."
+  },
+  {
+    "word": "fermer",
+    "definition": "Faire en sorte qu'on ne puisse plus passer",
+    "category": "verb",
+    "example": "Je ferme la fenêtre."
+  },
+  {
+    "word": "attendre",
+    "definition": "Rester sans bouger jusqu'à ce que quelque chose arrive",
+    "category": "verb",
+    "example": "J'attends le bus."
+  },
+  {
+    "word": "demander",
+    "definition": "Poser une question à quelqu'un",
+    "category": "verb",
+    "example": "Je demande à maman."
+  },
+  {
+    "word": "répondre",
+    "definition": "Dire quelque chose après une question",
+    "category": "verb",
+    "example": "Je réponds à la question."
+  },
+  {
+    "word": "appeler",
+    "definition": "Dire le nom de quelqu'un fort pour qu'il vienne",
+    "category": "verb",
+    "example": "J'appelle mon ami."
+  },
+  {
+    "word": "aider",
+    "definition": "Faire quelque chose pour quelqu'un qui en a besoin",
+    "category": "verb",
+    "example": "J'aide ma sœur."
+  },
+  {
+    "word": "commencer",
+    "definition": "Faire le début de quelque chose",
+    "category": "verb",
+    "example": "Le cours commence."
+  },
+  {
+    "word": "finir",
+    "definition": "Arriver à la fin de quelque chose",
+    "category": "verb",
+    "example": "J'ai fini mes devoirs."
+  },
+  {
+    "word": "comprendre",
+    "definition": "Savoir ce que quelque chose veut dire",
+    "category": "verb",
+    "example": "Je comprends la leçon."
+  },
+  {
+    "word": "apprendre",
+    "definition": "Découvrir des choses nouvelles",
+    "category": "verb",
+    "example": "J'apprends à compter."
+  },
+  {
+    "word": "montrer",
+    "definition": "Faire voir quelque chose à quelqu'un",
+    "category": "verb",
+    "example": "Je montre mon dessin."
+  },
+  {
+    "word": "porter",
+    "definition": "Tenir quelque chose dans ses mains ou sur soi",
+    "category": "verb",
+    "example": "Je porte mon sac."
+  },
+  {
+    "word": "sortir",
+    "definition": "Aller dehors",
+    "category": "verb",
+    "example": "Je sors dans le jardin."
+  },
+  {
+    "word": "entrer",
+    "definition": "Aller à l'intérieur",
+    "category": "verb",
+    "example": "J'entre dans la maison."
+  },
+  {
+    "word": "rester",
+    "definition": "Ne pas bouger, ne pas partir",
+    "category": "verb",
+    "example": "Je reste à la maison."
+  },
+  {
+    "word": "partir",
+    "definition": "S'en aller d'un endroit",
+    "category": "verb",
+    "example": "Je pars à l'école."
+  },
+  {
+    "word": "arriver",
+    "definition": "Atteindre l'endroit où on allait",
+    "category": "verb",
+    "example": "J'arrive à l'école."
+  },
+  {
+    "word": "revenir",
+    "definition": "Retourner là où on était avant",
+    "category": "verb",
+    "example": "Je reviens à la maison."
+  },
+  {
+    "word": "monter",
+    "definition": "Aller vers le haut",
+    "category": "verb",
+    "example": "Je monte les escaliers."
+  },
+  {
+    "word": "descendre",
+    "definition": "Aller vers le bas",
+    "category": "verb",
+    "example": "Je descends les escaliers."
+  },
+  {
+    "word": "vivre",
+    "definition": "Être en vie, exister",
+    "category": "verb",
+    "example": "Les poissons vivent dans l'eau."
+  },
+  {
+    "word": "mourir",
+    "definition": "Ne plus être en vie",
+    "category": "verb",
+    "example": "La fleur meurt en hiver."
+  },
+  {
+    "word": "travailler",
+    "definition": "Faire des choses utiles, comme des devoirs",
+    "category": "verb",
+    "example": "Je travaille en classe."
+  },
+  {
+    "word": "choisir",
+    "definition": "Décider entre plusieurs choses",
+    "category": "verb",
+    "example": "Je choisis un gâteau."
+  },
+  {
+    "word": "sentir",
+    "definition": "Percevoir une odeur avec son nez",
+    "category": "verb",
+    "example": "Je sens la fleur."
+  },
+  {
+    "word": "tenir",
+    "definition": "Garder quelque chose dans sa main",
+    "category": "verb",
+    "example": "Je tiens un crayon."
+  },
+  {
+    "word": "perdre",
+    "definition": "Ne plus savoir où est quelque chose",
+    "category": "verb",
+    "example": "J'ai perdu ma gomme."
+  },
+  {
+    "word": "gagner",
+    "definition": "Remporter une victoire ou un prix",
+    "category": "verb",
+    "example": "J'ai gagné le jeu."
+  },
+  {
+    "word": "rire",
+    "definition": "Faire des sons joyeux quand quelque chose est drôle",
+    "category": "verb",
+    "example": "Je ris très fort."
+  },
+  {
+    "word": "pleurer",
+    "definition": "Des larmes coulent de ses yeux quand on est triste",
+    "category": "verb",
+    "example": "Le bébé pleure."
+  },
+  {
+    "word": "crier",
+    "definition": "Parler très très fort",
+    "category": "verb",
+    "example": "Ne crie pas en classe !"
+  },
+  {
+    "word": "acheter",
+    "definition": "Donner de l'argent pour avoir quelque chose",
+    "category": "verb",
+    "example": "Maman achète du pain."
+  },
+  {
+    "word": "compter",
+    "definition": "Dire les nombres dans l'ordre",
+    "category": "verb",
+    "example": "Je compte jusqu'à dix."
+  },
+  {
+    "word": "essayer",
+    "definition": "Tenter de faire quelque chose",
+    "category": "verb",
+    "example": "J'essaie de grimper."
+  },
+  {
+    "word": "laver",
+    "definition": "Nettoyer avec de l'eau et du savon",
+    "category": "verb",
+    "example": "Je lave mes mains."
+  },
+  {
+    "word": "habiller",
+    "definition": "Mettre des vêtements sur soi",
+    "category": "verb",
+    "example": "Je m'habille le matin."
+  },
+  {
+    "word": "couper",
+    "definition": "Séparer en morceaux avec des ciseaux ou un couteau",
+    "category": "verb",
+    "example": "Je coupe le papier."
+  },
+  {
+    "word": "casser",
+    "definition": "Briser en morceaux",
+    "category": "verb",
+    "example": "Le verre s'est cassé."
+  },
+  {
+    "word": "jeter",
+    "definition": "Lancer quelque chose loin ou à la poubelle",
+    "category": "verb",
+    "example": "Je jette le papier."
+  },
+  {
+    "word": "ranger",
+    "definition": "Mettre les choses à leur place",
+    "category": "verb",
+    "example": "Je range ma chambre."
+  },
+  {
+    "word": "lancer",
+    "definition": "Envoyer quelque chose en l'air avec la main",
+    "category": "verb",
+    "example": "Je lance le ballon."
+  },
+  {
+    "word": "sauter",
+    "definition": "Quitter le sol en poussant avec ses pieds",
+    "category": "verb",
+    "example": "Je saute à la corde."
+  },
+  {
+    "word": "nager",
+    "definition": "Se déplacer dans l'eau",
+    "category": "verb",
+    "example": "Je nage dans la piscine."
+  },
+  {
+    "word": "voler",
+    "definition": "Se déplacer dans l'air comme un oiseau",
+    "category": "verb",
+    "example": "L'oiseau vole dans le ciel."
+  },
+  {
+    "word": "conduire",
+    "definition": "Diriger une voiture ou un véhicule",
+    "category": "verb",
+    "example": "Papa conduit la voiture."
+  },
+  {
+    "word": "construire",
+    "definition": "Fabriquer quelque chose en assemblant des pièces",
+    "category": "verb",
+    "example": "Je construis une tour."
+  },
+  {
+    "word": "cacher",
+    "definition": "Mettre quelque chose là où personne ne peut le voir",
+    "category": "verb",
+    "example": "Je me cache derrière l'arbre."
+  },
+  {
+    "word": "chercher",
+    "definition": "Essayer de trouver quelque chose",
+    "category": "verb",
+    "example": "Je cherche mon chat."
+  },
+  {
+    "word": "toucher",
+    "definition": "Mettre sa main sur quelque chose",
+    "category": "verb",
+    "example": "Ne touche pas le four !"
+  },
+  {
+    "word": "rêver",
+    "definition": "Voir des images dans sa tête quand on dort",
+    "category": "verb",
+    "example": "Je rêve de voyager."
+  },
+  {
+    "word": "pousser",
+    "definition": "Appuyer fort sur quelque chose pour le déplacer",
+    "category": "verb",
+    "example": "Je pousse la porte."
+  },
+  {
+    "word": "tirer",
+    "definition": "Amener quelque chose vers soi",
+    "category": "verb",
+    "example": "Je tire la corde."
+  },
+  {
+    "word": "suivre",
+    "definition": "Aller derrière quelqu'un",
+    "category": "verb",
+    "example": "Le chien suit son maître."
+  },
+  {
+    "word": "rencontrer",
+    "definition": "Voir quelqu'un pour la première fois ou par hasard",
+    "category": "verb",
+    "example": "J'ai rencontré un nouvel ami."
+  },
+  {
+    "word": "raconter",
+    "definition": "Dire une histoire à quelqu'un",
+    "category": "verb",
+    "example": "Maman raconte une histoire."
+  },
+  {
+    "word": "offrir",
+    "definition": "Donner un cadeau à quelqu'un",
+    "category": "verb",
+    "example": "J'offre un cadeau."
+  },
+  {
+    "word": "partager",
+    "definition": "Donner une partie de ce qu'on a",
+    "category": "verb",
+    "example": "Je partage mon goûter."
+  },
+  {
+    "word": "grandir",
+    "definition": "Devenir plus grand",
+    "category": "verb",
+    "example": "Les enfants grandissent vite."
+  },
+  {
+    "word": "homme",
+    "definition": "Une personne adulte de sexe masculin",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'homme marche dans la rue."
+  },
+  {
+    "word": "femme",
+    "definition": "Une personne adulte de sexe féminin",
+    "category": "noun",
+    "gender": "f",
+    "example": "La femme lit un livre."
+  },
+  {
+    "word": "enfant",
+    "definition": "Un garçon ou une fille qui n'est pas encore adulte",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'enfant joue dehors."
+  },
+  {
+    "word": "garçon",
+    "definition": "Un enfant de sexe masculin",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le garçon court vite."
+  },
+  {
+    "word": "fille",
+    "definition": "Un enfant de sexe féminin",
+    "category": "noun",
+    "gender": "f",
+    "example": "La fille dessine."
+  },
+  {
+    "word": "bébé",
+    "definition": "Un tout petit enfant",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le bébé dort."
+  },
+  {
+    "word": "père",
+    "definition": "Le papa",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon père est grand."
+  },
+  {
+    "word": "mère",
+    "definition": "La maman",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma mère est gentille."
+  },
+  {
+    "word": "papa",
+    "definition": "Mon père, celui qui s'occupe de moi",
+    "category": "noun",
+    "gender": "m",
+    "example": "Papa joue avec moi."
+  },
+  {
+    "word": "maman",
+    "definition": "Ma mère, celle qui s'occupe de moi",
+    "category": "noun",
+    "gender": "f",
+    "example": "Maman fait un gâteau."
+  },
+  {
+    "word": "frère",
+    "definition": "Un garçon qui a les mêmes parents que moi",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon frère est plus grand."
+  },
+  {
+    "word": "sœur",
+    "definition": "Une fille qui a les mêmes parents que moi",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma sœur joue du piano."
+  },
+  {
+    "word": "famille",
+    "definition": "Les gens avec qui on vit : papa, maman, frères, sœurs",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma famille est grande."
+  },
+  {
+    "word": "ami",
+    "definition": "Quelqu'un qu'on aime bien et avec qui on joue",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon ami s'appelle Lucas."
+  },
+  {
+    "word": "amie",
+    "definition": "Une fille qu'on aime bien et avec qui on joue",
+    "category": "noun",
+    "gender": "f",
+    "example": "Mon amie s'appelle Léa."
+  },
+  {
+    "word": "maison",
+    "definition": "L'endroit où on habite",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma maison est bleue."
+  },
+  {
+    "word": "école",
+    "definition": "L'endroit où on va apprendre",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je vais à l'école."
+  },
+  {
+    "word": "classe",
+    "definition": "La salle où on apprend à l'école",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma classe est au premier étage."
+  },
+  {
+    "word": "livre",
+    "definition": "Des pages avec des mots et des images reliées ensemble",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je lis un livre."
+  },
+  {
+    "word": "crayon",
+    "definition": "Un bâton pour écrire et dessiner",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon crayon est rouge."
+  },
+  {
+    "word": "stylo",
+    "definition": "Un outil pour écrire avec de l'encre",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'écris avec un stylo bleu."
+  },
+  {
+    "word": "cahier",
+    "definition": "Des feuilles de papier attachées pour écrire",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'écris dans mon cahier."
+  },
+  {
+    "word": "gomme",
+    "definition": "Un petit objet pour effacer ce qu'on a écrit au crayon",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je prends ma gomme."
+  },
+  {
+    "word": "table",
+    "definition": "Un meuble plat sur des pieds où on pose des choses",
+    "category": "noun",
+    "gender": "f",
+    "example": "Le livre est sur la table."
+  },
+  {
+    "word": "chaise",
+    "definition": "Un meuble pour s'asseoir avec un dossier",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je m'assieds sur ma chaise."
+  },
+  {
+    "word": "porte",
+    "definition": "Ce qu'on ouvre pour entrer ou sortir d'une pièce",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ouvre la porte."
+  },
+  {
+    "word": "fenêtre",
+    "definition": "Un trou dans le mur avec du verre pour voir dehors",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je regarde par la fenêtre."
+  },
+  {
+    "word": "chambre",
+    "definition": "La pièce où on dort",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je range ma chambre."
+  },
+  {
+    "word": "cuisine",
+    "definition": "La pièce où on prépare à manger",
+    "category": "noun",
+    "gender": "f",
+    "example": "Maman est dans la cuisine."
+  },
+  {
+    "word": "jardin",
+    "definition": "Un terrain avec de l'herbe et des fleurs dehors",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je joue dans le jardin."
+  },
+  {
+    "word": "rue",
+    "definition": "Un chemin dans la ville où passent les voitures",
+    "category": "noun",
+    "gender": "f",
+    "example": "La rue est longue."
+  },
+  {
+    "word": "ville",
+    "definition": "Un grand endroit où beaucoup de gens habitent",
+    "category": "noun",
+    "gender": "f",
+    "example": "Paris est une grande ville."
+  },
+  {
+    "word": "pays",
+    "definition": "Un grand territoire avec ses habitants, comme la France",
+    "category": "noun",
+    "gender": "m",
+    "example": "La France est un beau pays."
+  },
+  {
+    "word": "monde",
+    "definition": "La Terre et tous les gens qui y vivent",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il y a beaucoup de gens dans le monde."
+  },
+  {
+    "word": "terre",
+    "definition": "Le sol sur lequel on marche, ou notre planète",
+    "category": "noun",
+    "gender": "f",
+    "example": "La Terre tourne autour du Soleil."
+  },
+  {
+    "word": "ciel",
+    "definition": "Ce qu'on voit au-dessus de nous, en bleu",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le ciel est bleu."
+  },
+  {
+    "word": "soleil",
+    "definition": "L'étoile brillante qui éclaire le jour",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le soleil brille."
+  },
+  {
+    "word": "lune",
+    "definition": "Ce qu'on voit briller dans le ciel la nuit",
+    "category": "noun",
+    "gender": "f",
+    "example": "La lune est ronde."
+  },
+  {
+    "word": "étoile",
+    "definition": "Un petit point brillant dans le ciel la nuit",
+    "category": "noun",
+    "gender": "f",
+    "example": "Les étoiles brillent."
+  },
+  {
+    "word": "eau",
+    "definition": "Le liquide transparent qu'on boit",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je bois de l'eau."
+  },
+  {
+    "word": "feu",
+    "definition": "Ce qui brûle et donne de la chaleur et de la lumière",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le feu est chaud."
+  },
+  {
+    "word": "air",
+    "definition": "Ce qu'on respire mais qu'on ne voit pas",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'air est frais."
+  },
+  {
+    "word": "mer",
+    "definition": "Une très grande étendue d'eau salée",
+    "category": "noun",
+    "gender": "f",
+    "example": "La mer est bleue."
+  },
+  {
+    "word": "montagne",
+    "definition": "Un très grand relief de terre qui monte haut dans le ciel",
+    "category": "noun",
+    "gender": "f",
+    "example": "La montagne est couverte de neige."
+  },
+  {
+    "word": "forêt",
+    "definition": "Un grand endroit rempli d'arbres",
+    "category": "noun",
+    "gender": "f",
+    "example": "Nous marchons dans la forêt."
+  },
+  {
+    "word": "arbre",
+    "definition": "Une grande plante avec un tronc et des branches",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'arbre a des feuilles vertes."
+  },
+  {
+    "word": "fleur",
+    "definition": "La jolie partie colorée d'une plante",
+    "category": "noun",
+    "gender": "f",
+    "example": "La fleur est rouge."
+  },
+  {
+    "word": "herbe",
+    "definition": "Les petites plantes vertes qui couvrent le sol",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'herbe est verte."
+  },
+  {
+    "word": "animal",
+    "definition": "Un être vivant qui n'est pas une plante ni un humain",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le chien est un animal."
+  },
+  {
+    "word": "chat",
+    "definition": "Un petit animal à poils qui ronronne",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le chat dort sur le canapé."
+  },
+  {
+    "word": "chien",
+    "definition": "Un animal à poils qui aboie et remue la queue",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le chien joue dans le jardin."
+  },
+  {
+    "word": "oiseau",
+    "definition": "Un animal avec des plumes et des ailes qui vole",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'oiseau chante."
+  },
+  {
+    "word": "poisson",
+    "definition": "Un animal qui vit dans l'eau et nage",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le poisson nage dans l'aquarium."
+  },
+  {
+    "word": "cheval",
+    "definition": "Un grand animal sur lequel on peut monter",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le cheval galope."
+  },
+  {
+    "word": "vache",
+    "definition": "Un gros animal de la ferme qui donne du lait",
+    "category": "noun",
+    "gender": "f",
+    "example": "La vache mange de l'herbe."
+  },
+  {
+    "word": "lapin",
+    "definition": "Un petit animal avec de longues oreilles",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le lapin mange une carotte."
+  },
+  {
+    "word": "souris",
+    "definition": "Un tout petit animal gris avec une longue queue",
+    "category": "noun",
+    "gender": "f",
+    "example": "La souris mange du fromage."
+  },
+  {
+    "word": "papillon",
+    "definition": "Un insecte avec de grandes ailes colorées",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le papillon vole sur les fleurs."
+  },
+  {
+    "word": "jour",
+    "definition": "Le moment où il fait clair, entre le matin et le soir",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il fait beau aujourd'hui."
+  },
+  {
+    "word": "nuit",
+    "definition": "Le moment où il fait noir et on dort",
+    "category": "noun",
+    "gender": "f",
+    "example": "La nuit, on voit les étoiles."
+  },
+  {
+    "word": "matin",
+    "definition": "Le début de la journée, quand on se réveille",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je me lève le matin."
+  },
+  {
+    "word": "soir",
+    "definition": "La fin de la journée, quand le soleil se couche",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le soir, je lis une histoire."
+  },
+  {
+    "word": "temps",
+    "definition": "Les minutes et les heures qui passent",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le temps passe vite."
+  },
+  {
+    "word": "heure",
+    "definition": "Une partie de la journée qui dure 60 minutes",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il est huit heures."
+  },
+  {
+    "word": "minute",
+    "definition": "Un petit moment qui dure 60 secondes",
+    "category": "noun",
+    "gender": "f",
+    "example": "Attends une minute !"
+  },
+  {
+    "word": "semaine",
+    "definition": "Sept jours de suite, du lundi au dimanche",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il y a sept jours dans une semaine."
+  },
+  {
+    "word": "mois",
+    "definition": "Environ 30 jours, comme janvier ou février",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon anniversaire est ce mois."
+  },
+  {
+    "word": "année",
+    "definition": "Douze mois, 365 jours",
+    "category": "noun",
+    "gender": "f",
+    "example": "Une nouvelle année commence."
+  },
+  {
+    "word": "lundi",
+    "definition": "Le premier jour de la semaine d'école",
+    "category": "noun",
+    "gender": "m",
+    "example": "Lundi, je vais à l'école."
+  },
+  {
+    "word": "mardi",
+    "definition": "Le deuxième jour de la semaine",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mardi, j'ai sport."
+  },
+  {
+    "word": "mercredi",
+    "definition": "Le troisième jour de la semaine",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mercredi, je vais au parc."
+  },
+  {
+    "word": "jeudi",
+    "definition": "Le quatrième jour de la semaine",
+    "category": "noun",
+    "gender": "m",
+    "example": "Jeudi, j'ai musique."
+  },
+  {
+    "word": "vendredi",
+    "definition": "Le cinquième jour de la semaine",
+    "category": "noun",
+    "gender": "m",
+    "example": "Vendredi, c'est bientôt le week-end !"
+  },
+  {
+    "word": "samedi",
+    "definition": "Le sixième jour de la semaine, pas d'école",
+    "category": "noun",
+    "gender": "m",
+    "example": "Samedi, je joue avec mes amis."
+  },
+  {
+    "word": "dimanche",
+    "definition": "Le septième jour de la semaine, jour de repos",
+    "category": "noun",
+    "gender": "m",
+    "example": "Dimanche, je reste à la maison."
+  },
+  {
+    "word": "tête",
+    "definition": "La partie du corps tout en haut, avec le visage",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je porte un chapeau sur la tête."
+  },
+  {
+    "word": "œil",
+    "definition": "L'organe avec lequel on voit",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je ferme un œil."
+  },
+  {
+    "word": "yeux",
+    "definition": "Les deux organes avec lesquels on voit (pluriel de œil)",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai les yeux bleus."
+  },
+  {
+    "word": "nez",
+    "definition": "La partie du visage avec laquelle on sent les odeurs",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon nez est froid."
+  },
+  {
+    "word": "bouche",
+    "definition": "L'ouverture du visage avec laquelle on mange et parle",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ouvre la bouche."
+  },
+  {
+    "word": "oreille",
+    "definition": "La partie du corps avec laquelle on entend",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai mal à l'oreille."
+  },
+  {
+    "word": "main",
+    "definition": "La partie du corps au bout du bras avec cinq doigts",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je lève la main."
+  },
+  {
+    "word": "pied",
+    "definition": "La partie du corps tout en bas sur laquelle on marche",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai mal au pied."
+  },
+  {
+    "word": "bras",
+    "definition": "La partie du corps entre l'épaule et la main",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je lève les bras."
+  },
+  {
+    "word": "jambe",
+    "definition": "La partie du corps entre la hanche et le pied",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai mal à la jambe."
+  },
+  {
+    "word": "doigt",
+    "definition": "Les cinq petites parties au bout de la main",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je montre avec mon doigt."
+  },
+  {
+    "word": "cœur",
+    "definition": "L'organe dans la poitrine qui bat, ou le symbole de l'amour",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon cœur bat vite."
+  },
+  {
+    "word": "ventre",
+    "definition": "La partie du corps entre la poitrine et les jambes",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai mal au ventre."
+  },
+  {
+    "word": "dos",
+    "definition": "La partie arrière du corps",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai mal au dos."
+  },
+  {
+    "word": "dent",
+    "definition": "Les petits os blancs dans la bouche pour mâcher",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai perdu une dent."
+  },
+  {
+    "word": "cheveu",
+    "definition": "Les fils qui poussent sur la tête",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai les cheveux bruns."
+  },
+  {
+    "word": "visage",
+    "definition": "Le devant de la tête avec les yeux, le nez et la bouche",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il a un joli visage."
+  },
+  {
+    "word": "pain",
+    "definition": "Un aliment fait avec de la farine qu'on achète à la boulangerie",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mange du pain."
+  },
+  {
+    "word": "lait",
+    "definition": "Un liquide blanc que donnent les vaches",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je bois du lait."
+  },
+  {
+    "word": "fromage",
+    "definition": "Un aliment fait avec du lait, souvent jaune ou blanc",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le fromage sent fort."
+  },
+  {
+    "word": "pomme",
+    "definition": "Un fruit rond, rouge ou vert",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je mange une pomme."
+  },
+  {
+    "word": "gâteau",
+    "definition": "Un dessert sucré qu'on fait au four",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le gâteau au chocolat est bon."
+  },
+  {
+    "word": "chocolat",
+    "definition": "Un aliment sucré et brun fait avec du cacao",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'adore le chocolat."
+  },
+  {
+    "word": "bonbon",
+    "definition": "Un petit aliment sucré et coloré",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mange un bonbon."
+  },
+  {
+    "word": "soupe",
+    "definition": "Un plat chaud fait avec des légumes et de l'eau",
+    "category": "noun",
+    "gender": "f",
+    "example": "La soupe est chaude."
+  },
+  {
+    "word": "viande",
+    "definition": "Un aliment qui vient des animaux",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je mange de la viande."
+  },
+  {
+    "word": "légume",
+    "definition": "Une plante qu'on mange, comme la carotte ou la salade",
+    "category": "noun",
+    "gender": "m",
+    "example": "Les légumes sont bons pour la santé."
+  },
+  {
+    "word": "fruit",
+    "definition": "Ce que donne un arbre, souvent sucré, comme une pomme",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'aime les fruits."
+  },
+  {
+    "word": "carotte",
+    "definition": "Un légume long et orange",
+    "category": "noun",
+    "gender": "f",
+    "example": "Le lapin mange une carotte."
+  },
+  {
+    "word": "salade",
+    "definition": "Des feuilles vertes qu'on mange souvent froides",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je mange de la salade."
+  },
+  {
+    "word": "œuf",
+    "definition": "Ce que pondent les poules, avec une coquille",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mange un œuf."
+  },
+  {
+    "word": "riz",
+    "definition": "De petits grains blancs qu'on fait cuire dans l'eau",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mange du riz."
+  },
+  {
+    "word": "sucre",
+    "definition": "Une poudre blanche qui rend les choses sucrées",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mets du sucre dans mon yaourt."
+  },
+  {
+    "word": "sel",
+    "definition": "Une poudre blanche qui rend les choses salées",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mets un peu de sel."
+  },
+  {
+    "word": "beurre",
+    "definition": "Un aliment jaune et gras fait avec du lait",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mets du beurre sur mon pain."
+  },
+  {
+    "word": "vêtement",
+    "definition": "Ce qu'on porte sur le corps",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mets mes vêtements."
+  },
+  {
+    "word": "pantalon",
+    "definition": "Un vêtement qui couvre les deux jambes",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon pantalon est bleu."
+  },
+  {
+    "word": "robe",
+    "definition": "Un vêtement d'une seule pièce pour les filles",
+    "category": "noun",
+    "gender": "f",
+    "example": "La robe est jolie."
+  },
+  {
+    "word": "chaussure",
+    "definition": "Ce qu'on met aux pieds pour marcher dehors",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je mets mes chaussures."
+  },
+  {
+    "word": "chapeau",
+    "definition": "Ce qu'on met sur la tête pour se protéger du soleil",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je porte un chapeau."
+  },
+  {
+    "word": "manteau",
+    "definition": "Un vêtement chaud qu'on met quand il fait froid",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mets mon manteau."
+  },
+  {
+    "word": "sac",
+    "definition": "Un objet pour transporter ses affaires",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon sac est lourd."
+  },
+  {
+    "word": "jouet",
+    "definition": "Un objet avec lequel on joue",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'aime mes jouets."
+  },
+  {
+    "word": "ballon",
+    "definition": "Une boule ronde avec laquelle on joue",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je lance le ballon."
+  },
+  {
+    "word": "poupée",
+    "definition": "Un jouet qui ressemble à un bébé ou une personne",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma poupée est belle."
+  },
+  {
+    "word": "jeu",
+    "definition": "Une activité amusante avec des règles",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'aime ce jeu."
+  },
+  {
+    "word": "histoire",
+    "definition": "Un récit qu'on raconte ou qu'on lit",
+    "category": "noun",
+    "gender": "f",
+    "example": "Raconte-moi une histoire."
+  },
+  {
+    "word": "chanson",
+    "definition": "Des paroles qu'on chante avec de la musique",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'aime cette chanson."
+  },
+  {
+    "word": "musique",
+    "definition": "Des sons agréables faits avec des instruments ou la voix",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'écoute de la musique."
+  },
+  {
+    "word": "dessin",
+    "definition": "Une image faite avec un crayon",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon dessin est coloré."
+  },
+  {
+    "word": "image",
+    "definition": "Une représentation qu'on peut regarder, comme une photo",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'image est belle."
+  },
+  {
+    "word": "couleur",
+    "definition": "Le rouge, le bleu, le vert... ce qui rend les choses jolies",
+    "category": "noun",
+    "gender": "f",
+    "example": "Quelle est ta couleur préférée ?"
+  },
+  {
+    "word": "rouge",
+    "definition": "La couleur des cerises et des tomates",
+    "category": "adjective",
+    "example": "La pomme est rouge."
+  },
+  {
+    "word": "bleu",
+    "definition": "La couleur du ciel et de la mer",
+    "category": "adjective",
+    "example": "Le ciel est bleu."
+  },
+  {
+    "word": "vert",
+    "definition": "La couleur de l'herbe et des feuilles",
+    "category": "adjective",
+    "example": "L'herbe est verte."
+  },
+  {
+    "word": "jaune",
+    "definition": "La couleur du soleil et des bananes",
+    "category": "adjective",
+    "example": "Le soleil est jaune."
+  },
+  {
+    "word": "blanc",
+    "definition": "La couleur de la neige et du lait",
+    "category": "adjective",
+    "example": "La neige est blanche."
+  },
+  {
+    "word": "noir",
+    "definition": "La couleur de la nuit",
+    "category": "adjective",
+    "example": "Le chat est noir."
+  },
+  {
+    "word": "rose",
+    "definition": "Un mélange de rouge et de blanc",
+    "category": "adjective",
+    "example": "La fleur est rose."
+  },
+  {
+    "word": "orange",
+    "definition": "La couleur entre le rouge et le jaune",
+    "category": "adjective",
+    "example": "L'orange est orange."
+  },
+  {
+    "word": "violet",
+    "definition": "Un mélange de rouge et de bleu",
+    "category": "adjective",
+    "example": "Les fleurs sont violettes."
+  },
+  {
+    "word": "marron",
+    "definition": "La couleur du chocolat et du bois",
+    "category": "adjective",
+    "example": "Le chien est marron."
+  },
+  {
+    "word": "gris",
+    "definition": "Un mélange de noir et de blanc",
+    "category": "adjective",
+    "example": "Le ciel est gris."
+  },
+  {
+    "word": "grand",
+    "definition": "Qui a une grande taille, le contraire de petit",
+    "category": "adjective",
+    "example": "L'arbre est grand."
+  },
+  {
+    "word": "petit",
+    "definition": "Qui a une petite taille, le contraire de grand",
+    "category": "adjective",
+    "example": "La souris est petite."
+  },
+  {
+    "word": "gros",
+    "definition": "Qui prend beaucoup de place",
+    "category": "adjective",
+    "example": "L'éléphant est gros."
+  },
+  {
+    "word": "long",
+    "definition": "Qui s'étend sur une grande distance",
+    "category": "adjective",
+    "example": "Le serpent est long."
+  },
+  {
+    "word": "court",
+    "definition": "Qui n'est pas long, le contraire de long",
+    "category": "adjective",
+    "example": "La jupe est courte."
+  },
+  {
+    "word": "haut",
+    "definition": "Qui est en hauteur, loin du sol",
+    "category": "adjective",
+    "example": "La tour est haute."
+  },
+  {
+    "word": "bas",
+    "definition": "Qui est près du sol, le contraire de haut",
+    "category": "adjective",
+    "example": "La table est basse."
+  },
+  {
+    "word": "beau",
+    "definition": "Agréable à regarder, joli",
+    "category": "adjective",
+    "example": "Le paysage est beau."
+  },
+  {
+    "word": "joli",
+    "definition": "Agréable à regarder, mignon",
+    "category": "adjective",
+    "example": "La robe est jolie."
+  },
+  {
+    "word": "bon",
+    "definition": "Qui a bon goût ou qui est bien",
+    "category": "adjective",
+    "example": "Le gâteau est bon."
+  },
+  {
+    "word": "mauvais",
+    "definition": "Qui n'est pas bien, le contraire de bon",
+    "category": "adjective",
+    "example": "Le temps est mauvais."
+  },
+  {
+    "word": "gentil",
+    "definition": "Qui est aimable et fait plaisir aux autres",
+    "category": "adjective",
+    "example": "Mon ami est gentil."
+  },
+  {
+    "word": "méchant",
+    "definition": "Qui fait du mal aux autres, le contraire de gentil",
+    "category": "adjective",
+    "example": "Le loup est méchant."
+  },
+  {
+    "word": "content",
+    "definition": "Qui est heureux, satisfait",
+    "category": "adjective",
+    "example": "Je suis content."
+  },
+  {
+    "word": "triste",
+    "definition": "Qui a de la peine, le contraire de content",
+    "category": "adjective",
+    "example": "Il est triste."
+  },
+  {
+    "word": "heureux",
+    "definition": "Qui ressent beaucoup de joie",
+    "category": "adjective",
+    "example": "Je suis heureux."
+  },
+  {
+    "word": "nouveau",
+    "definition": "Qui existe depuis peu de temps, pas ancien",
+    "category": "adjective",
+    "example": "J'ai un nouveau jouet."
+  },
+  {
+    "word": "vieux",
+    "definition": "Qui existe depuis longtemps, le contraire de nouveau",
+    "category": "adjective",
+    "example": "Le château est vieux."
+  },
+  {
+    "word": "jeune",
+    "definition": "Qui n'est pas âgé, le contraire de vieux",
+    "category": "adjective",
+    "example": "Le chaton est jeune."
+  },
+  {
+    "word": "chaud",
+    "definition": "Qui a une température élevée",
+    "category": "adjective",
+    "example": "La soupe est chaude."
+  },
+  {
+    "word": "froid",
+    "definition": "Qui a une basse température, le contraire de chaud",
+    "category": "adjective",
+    "example": "L'eau est froide."
+  },
+  {
+    "word": "facile",
+    "definition": "Qui est simple à faire",
+    "category": "adjective",
+    "example": "Cet exercice est facile."
+  },
+  {
+    "word": "difficile",
+    "definition": "Qui est dur à faire, le contraire de facile",
+    "category": "adjective",
+    "example": "Ce problème est difficile."
+  },
+  {
+    "word": "rapide",
+    "definition": "Qui va vite",
+    "category": "adjective",
+    "example": "Le train est rapide."
+  },
+  {
+    "word": "lent",
+    "definition": "Qui ne va pas vite, le contraire de rapide",
+    "category": "adjective",
+    "example": "La tortue est lente."
+  },
+  {
+    "word": "fort",
+    "definition": "Qui a beaucoup de force",
+    "category": "adjective",
+    "example": "Le lion est fort."
+  },
+  {
+    "word": "faible",
+    "definition": "Qui n'a pas beaucoup de force",
+    "category": "adjective",
+    "example": "Le chaton est faible."
+  },
+  {
+    "word": "lourd",
+    "definition": "Qui pèse beaucoup",
+    "category": "adjective",
+    "example": "La valise est lourde."
+  },
+  {
+    "word": "léger",
+    "definition": "Qui ne pèse pas beaucoup",
+    "category": "adjective",
+    "example": "La plume est légère."
+  },
+  {
+    "word": "propre",
+    "definition": "Qui est bien lavé, sans saleté",
+    "category": "adjective",
+    "example": "Mes mains sont propres."
+  },
+  {
+    "word": "sale",
+    "definition": "Qui est couvert de saleté, le contraire de propre",
+    "category": "adjective",
+    "example": "Mes chaussures sont sales."
+  },
+  {
+    "word": "plein",
+    "definition": "Qui est rempli, sans espace vide",
+    "category": "adjective",
+    "example": "Le verre est plein."
+  },
+  {
+    "word": "vide",
+    "definition": "Qui ne contient rien, le contraire de plein",
+    "category": "adjective",
+    "example": "La boîte est vide."
+  },
+  {
+    "word": "ouvert",
+    "definition": "Qui n'est pas fermé",
+    "category": "adjective",
+    "example": "La porte est ouverte."
+  },
+  {
+    "word": "fermé",
+    "definition": "Qui n'est pas ouvert",
+    "category": "adjective",
+    "example": "Le magasin est fermé."
+  },
+  {
+    "word": "seul",
+    "definition": "Qui est sans personne d'autre",
+    "category": "adjective",
+    "example": "Je suis tout seul."
+  },
+  {
+    "word": "premier",
+    "definition": "Qui est avant tous les autres",
+    "category": "adjective",
+    "example": "Je suis le premier."
+  },
+  {
+    "word": "dernier",
+    "definition": "Qui est après tous les autres",
+    "category": "adjective",
+    "example": "C'est le dernier jour."
+  },
+  {
+    "word": "même",
+    "definition": "Qui est pareil, identique",
+    "category": "adjective",
+    "example": "On a le même sac."
+  },
+  {
+    "word": "autre",
+    "definition": "Qui est différent",
+    "category": "adjective",
+    "example": "Je veux un autre livre."
+  },
+  {
+    "word": "tout",
+    "definition": "La totalité, chaque chose",
+    "category": "adjective",
+    "example": "J'ai mangé tout le gâteau."
+  },
+  {
+    "word": "chaque",
+    "definition": "Un par un, sans exception",
+    "category": "determiner",
+    "example": "Chaque enfant a un crayon."
+  },
+  {
+    "word": "plusieurs",
+    "definition": "Plus de deux, un certain nombre",
+    "category": "adjective",
+    "example": "J'ai plusieurs amis."
+  },
+  {
+    "word": "quelque",
+    "definition": "Un petit nombre de",
+    "category": "determiner",
+    "example": "J'ai quelques billes."
+  },
+  {
+    "word": "aucun",
+    "definition": "Pas un seul, zéro",
+    "category": "determiner",
+    "example": "Il n'y a aucun problème."
+  },
+  {
+    "word": "mot",
+    "definition": "Un groupe de lettres qui veut dire quelque chose",
+    "category": "noun",
+    "gender": "m",
+    "example": "Ce mot est long."
+  },
+  {
+    "word": "lettre",
+    "definition": "Un signe de l'alphabet, comme A, B, C",
+    "category": "noun",
+    "gender": "f",
+    "example": "La lettre A."
+  },
+  {
+    "word": "nombre",
+    "definition": "Ce qui sert à compter : 1, 2, 3...",
+    "category": "noun",
+    "gender": "m",
+    "example": "Quel est ton nombre préféré ?"
+  },
+  {
+    "word": "question",
+    "definition": "Une phrase qu'on dit pour savoir quelque chose",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai une question."
+  },
+  {
+    "word": "réponse",
+    "definition": "Ce qu'on dit après une question",
+    "category": "noun",
+    "gender": "f",
+    "example": "La réponse est oui."
+  },
+  {
+    "word": "nom",
+    "definition": "Le mot qui désigne une personne ou une chose",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon nom est Pierre."
+  },
+  {
+    "word": "chose",
+    "definition": "Un objet ou une idée qu'on ne nomme pas précisément",
+    "category": "noun",
+    "gender": "f",
+    "example": "C'est une belle chose."
+  },
+  {
+    "word": "idée",
+    "definition": "Une pensée qui vient dans la tête",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai une bonne idée."
+  },
+  {
+    "word": "vie",
+    "definition": "Le fait d'exister, d'être vivant",
+    "category": "noun",
+    "gender": "f",
+    "example": "La vie est belle."
+  },
+  {
+    "word": "fois",
+    "definition": "Un moment où quelque chose se passe",
+    "category": "noun",
+    "gender": "f",
+    "example": "C'est la première fois."
+  },
+  {
+    "word": "place",
+    "definition": "Un endroit où on peut s'asseoir ou se mettre",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il y a une place libre."
+  },
+  {
+    "word": "partie",
+    "definition": "Un morceau de quelque chose de plus grand",
+    "category": "noun",
+    "gender": "f",
+    "example": "Une partie du gâteau."
+  },
+  {
+    "word": "côté",
+    "definition": "Un bord, une direction",
+    "category": "noun",
+    "gender": "m",
+    "example": "De l'autre côté de la rue."
+  },
+  {
+    "word": "voiture",
+    "definition": "Un véhicule avec quatre roues et un moteur",
+    "category": "noun",
+    "gender": "f",
+    "example": "La voiture est rouge."
+  },
+  {
+    "word": "vélo",
+    "definition": "Un véhicule à deux roues qu'on fait avancer en pédalant",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je fais du vélo."
+  },
+  {
+    "word": "train",
+    "definition": "Un long véhicule qui roule sur des rails",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le train va vite."
+  },
+  {
+    "word": "avion",
+    "definition": "Un véhicule qui vole dans le ciel",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'avion vole haut."
+  },
+  {
+    "word": "bateau",
+    "definition": "Un véhicule qui flotte sur l'eau",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le bateau est sur la mer."
+  },
+  {
+    "word": "bus",
+    "definition": "Un grand véhicule qui transporte beaucoup de gens",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je prends le bus."
+  },
+  {
+    "word": "route",
+    "definition": "Un chemin large pour les voitures",
+    "category": "noun",
+    "gender": "f",
+    "example": "La route est longue."
+  },
+  {
+    "word": "pont",
+    "definition": "Une construction qui permet de traverser une rivière",
+    "category": "noun",
+    "gender": "m",
+    "example": "On traverse le pont."
+  },
+  {
+    "word": "chemin",
+    "definition": "Un petit passage pour marcher",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le chemin est étroit."
+  },
+  {
+    "word": "parc",
+    "definition": "Un grand espace vert avec des jeux et des arbres",
+    "category": "noun",
+    "gender": "m",
+    "example": "On va au parc."
+  },
+  {
+    "word": "magasin",
+    "definition": "Un endroit où on achète des choses",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le magasin est ouvert."
+  },
+  {
+    "word": "boulangerie",
+    "definition": "Le magasin où on achète du pain et des gâteaux",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je vais à la boulangerie."
+  },
+  {
+    "word": "hôpital",
+    "definition": "L'endroit où on va quand on est très malade",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le docteur travaille à l'hôpital."
+  },
+  {
+    "word": "docteur",
+    "definition": "La personne qui soigne les malades",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le docteur est gentil."
+  },
+  {
+    "word": "maître",
+    "definition": "L'homme qui enseigne à l'école",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le maître explique la leçon."
+  },
+  {
+    "word": "maîtresse",
+    "definition": "La femme qui enseigne à l'école",
+    "category": "noun",
+    "gender": "f",
+    "example": "La maîtresse lit une histoire."
+  },
+  {
+    "word": "leçon",
+    "definition": "Ce qu'on apprend à l'école",
+    "category": "noun",
+    "gender": "f",
+    "example": "La leçon est intéressante."
+  },
+  {
+    "word": "devoir",
+    "definition": "Le travail que l'école donne à faire à la maison",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai fait mes devoirs."
+  },
+  {
+    "word": "récréation",
+    "definition": "La pause où on joue à l'école",
+    "category": "noun",
+    "gender": "f",
+    "example": "C'est l'heure de la récréation !"
+  },
+  {
+    "word": "vacances",
+    "definition": "Les jours où on ne va pas à l'école",
+    "category": "noun",
+    "gender": "f",
+    "example": "Les vacances sont en été."
+  },
+  {
+    "word": "fête",
+    "definition": "Un moment joyeux où on s'amuse ensemble",
+    "category": "noun",
+    "gender": "f",
+    "example": "C'est la fête !"
+  },
+  {
+    "word": "cadeau",
+    "definition": "Quelque chose qu'on offre pour faire plaisir",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai reçu un cadeau."
+  },
+  {
+    "word": "anniversaire",
+    "definition": "Le jour où on célèbre sa naissance chaque année",
+    "category": "noun",
+    "gender": "m",
+    "example": "C'est mon anniversaire !"
+  },
+  {
+    "word": "Noël",
+    "definition": "La fête du 25 décembre avec le sapin et les cadeaux",
+    "category": "noun",
+    "gender": "m",
+    "example": "Joyeux Noël !"
+  },
+  {
+    "word": "pluie",
+    "definition": "De l'eau qui tombe du ciel",
+    "category": "noun",
+    "gender": "f",
+    "example": "La pluie tombe."
+  },
+  {
+    "word": "neige",
+    "definition": "Des flocons blancs et froids qui tombent du ciel en hiver",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il neige dehors."
+  },
+  {
+    "word": "vent",
+    "definition": "De l'air qui bouge et qu'on sent sur la peau",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le vent souffle fort."
+  },
+  {
+    "word": "nuage",
+    "definition": "Un amas blanc ou gris dans le ciel",
+    "category": "noun",
+    "gender": "m",
+    "example": "Les nuages sont blancs."
+  },
+  {
+    "word": "printemps",
+    "definition": "La saison après l'hiver, quand les fleurs poussent",
+    "category": "noun",
+    "gender": "m",
+    "example": "Au printemps, les fleurs poussent."
+  },
+  {
+    "word": "été",
+    "definition": "La saison la plus chaude, avec les grandes vacances",
+    "category": "noun",
+    "gender": "m",
+    "example": "En été, il fait chaud."
+  },
+  {
+    "word": "automne",
+    "definition": "La saison où les feuilles tombent des arbres",
+    "category": "noun",
+    "gender": "m",
+    "example": "En automne, les feuilles sont orange."
+  },
+  {
+    "word": "hiver",
+    "definition": "La saison la plus froide de l'année",
+    "category": "noun",
+    "gender": "m",
+    "example": "En hiver, il fait froid."
+  },
+  {
+    "word": "roi",
+    "definition": "L'homme qui dirige un royaume",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le roi habite dans un château."
+  },
+  {
+    "word": "reine",
+    "definition": "La femme qui dirige un royaume",
+    "category": "noun",
+    "gender": "f",
+    "example": "La reine est belle."
+  },
+  {
+    "word": "château",
+    "definition": "Une très grande maison ancienne, souvent avec des tours",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le château est immense."
+  },
+  {
+    "word": "prince",
+    "definition": "Le fils d'un roi et d'une reine",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le prince est courageux."
+  },
+  {
+    "word": "princesse",
+    "definition": "La fille d'un roi et d'une reine",
+    "category": "noun",
+    "gender": "f",
+    "example": "La princesse habite dans un château."
+  },
+  {
+    "word": "clé",
+    "definition": "Un petit objet en métal pour ouvrir une serrure",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai la clé de la maison."
+  },
+  {
+    "word": "lumière",
+    "definition": "Ce qui éclaire et permet de voir",
+    "category": "noun",
+    "gender": "f",
+    "example": "La lumière du soleil."
+  },
+  {
+    "word": "bruit",
+    "definition": "Un son qu'on entend, souvent fort",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'entends un bruit."
+  },
+  {
+    "word": "silence",
+    "definition": "Quand il n'y a aucun bruit",
+    "category": "noun",
+    "gender": "m",
+    "example": "Silence, s'il vous plaît !"
+  },
+  {
+    "word": "sourire",
+    "definition": "Un mouvement de la bouche quand on est content",
+    "category": "noun",
+    "gender": "m",
+    "example": "Elle a un beau sourire."
+  },
+  {
+    "word": "larme",
+    "definition": "Une goutte d'eau qui sort de l'œil quand on pleure",
+    "category": "noun",
+    "gender": "f",
+    "example": "Une larme coule sur sa joue."
+  },
+  {
+    "word": "peur",
+    "definition": "Le sentiment quand on a peur de quelque chose",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai peur du noir."
+  },
+  {
+    "word": "joie",
+    "definition": "Un grand bonheur",
+    "category": "noun",
+    "gender": "f",
+    "example": "Quelle joie !"
+  },
+  {
+    "word": "amour",
+    "definition": "Le sentiment très fort qu'on a pour quelqu'un",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'amour de ma famille."
+  },
+  {
+    "word": "courage",
+    "definition": "La force de faire quelque chose même si on a peur",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il a beaucoup de courage."
+  },
+  {
+    "word": "rêve",
+    "definition": "Des images qu'on voit quand on dort",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai fait un beau rêve."
+  },
+  {
+    "word": "secret",
+    "definition": "Quelque chose qu'on ne dit à personne",
+    "category": "noun",
+    "gender": "m",
+    "example": "C'est un secret."
+  },
+  {
+    "word": "problème",
+    "definition": "Quelque chose de difficile à résoudre",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai un problème de maths."
+  },
+  {
+    "word": "travail",
+    "definition": "Ce qu'on fait pour être utile ou gagner de l'argent",
+    "category": "noun",
+    "gender": "m",
+    "example": "C'est un bon travail."
+  },
+  {
+    "word": "argent",
+    "definition": "Ce qu'on utilise pour acheter des choses",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai un peu d'argent."
+  },
+  {
+    "word": "exemple",
+    "definition": "Quelque chose qu'on montre pour expliquer",
+    "category": "noun",
+    "gender": "m",
+    "example": "Voici un exemple."
+  },
+  {
+    "word": "forme",
+    "definition": "Le contour d'un objet : rond, carré, triangle",
+    "category": "noun",
+    "gender": "f",
+    "example": "Le ballon a une forme ronde."
+  },
+  {
+    "word": "cercle",
+    "definition": "Une forme ronde comme un anneau",
+    "category": "noun",
+    "gender": "m",
+    "example": "Dessine un cercle."
+  },
+  {
+    "word": "carré",
+    "definition": "Une forme avec quatre côtés égaux",
+    "category": "noun",
+    "gender": "m",
+    "example": "La fenêtre est un carré."
+  },
+  {
+    "word": "triangle",
+    "definition": "Une forme avec trois côtés",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le triangle a trois côtés."
+  },
+  {
+    "word": "ligne",
+    "definition": "Un trait long et fin",
+    "category": "noun",
+    "gender": "f",
+    "example": "Trace une ligne droite."
+  },
+  {
+    "word": "point",
+    "definition": "Un tout petit rond, une marque minuscule",
+    "category": "noun",
+    "gender": "m",
+    "example": "Un point à la fin de la phrase."
+  },
+  {
+    "word": "morceau",
+    "definition": "Un bout de quelque chose de plus grand",
+    "category": "noun",
+    "gender": "m",
+    "example": "Un morceau de gâteau."
+  },
+  {
+    "word": "groupe",
+    "definition": "Plusieurs personnes ou choses ensemble",
+    "category": "noun",
+    "gender": "m",
+    "example": "Un groupe d'amis."
+  },
+  {
+    "word": "photo",
+    "definition": "Une image prise avec un appareil",
+    "category": "noun",
+    "gender": "f",
+    "example": "On prend une photo."
+  },
+  {
+    "word": "film",
+    "definition": "Une histoire en images qui bouge, comme au cinéma",
+    "category": "noun",
+    "gender": "m",
+    "example": "Ce film est drôle."
+  },
+  {
+    "word": "télévision",
+    "definition": "Un écran qui montre des images et des films",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je regarde la télévision."
+  },
+  {
+    "word": "téléphone",
+    "definition": "Un appareil pour parler à quelqu'un qui est loin",
+    "category": "noun",
+    "gender": "m",
+    "example": "Maman parle au téléphone."
+  },
+  {
+    "word": "ordinateur",
+    "definition": "Une machine avec un écran pour travailler et jouer",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je travaille sur l'ordinateur."
+  },
+  {
+    "word": "lit",
+    "definition": "Le meuble où on dort",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je suis dans mon lit."
+  },
+  {
+    "word": "miroir",
+    "definition": "Un objet brillant qui reflète notre image",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je me regarde dans le miroir."
+  },
+  {
+    "word": "escalier",
+    "definition": "Des marches pour monter ou descendre",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je monte l'escalier."
+  },
+  {
+    "word": "mur",
+    "definition": "La partie verticale qui entoure une pièce",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le mur est blanc."
+  },
+  {
+    "word": "toit",
+    "definition": "Le dessus d'une maison qui protège de la pluie",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le chat est sur le toit."
+  },
+  {
+    "word": "sol",
+    "definition": "La surface par terre sur laquelle on marche",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le sol est propre."
+  },
+  {
+    "word": "verre",
+    "definition": "Un récipient transparent dans lequel on boit",
+    "category": "noun",
+    "gender": "m",
+    "example": "Un verre d'eau."
+  },
+  {
+    "word": "assiette",
+    "definition": "Un objet plat et rond dans lequel on met la nourriture",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'assiette est vide."
+  },
+  {
+    "word": "couteau",
+    "definition": "Un ustensile avec une lame pour couper",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je coupe avec un couteau."
+  },
+  {
+    "word": "fourchette",
+    "definition": "Un ustensile avec des dents pour piquer la nourriture",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je mange avec une fourchette."
+  },
+  {
+    "word": "cuillère",
+    "definition": "Un ustensile creux pour manger la soupe",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je mange avec une cuillère."
+  },
+  {
+    "word": "boîte",
+    "definition": "Un récipient avec un couvercle pour ranger des choses",
+    "category": "noun",
+    "gender": "f",
+    "example": "La boîte est fermée."
+  },
+  {
+    "word": "papier",
+    "definition": "Une feuille fine et plate sur laquelle on écrit",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'écris sur le papier."
+  },
+  {
+    "word": "page",
+    "definition": "Un côté d'une feuille dans un livre",
+    "category": "noun",
+    "gender": "f",
+    "example": "Tourne la page."
+  },
+  {
+    "word": "carte",
+    "definition": "Un dessin qui montre les pays ou les rues",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je regarde la carte."
+  },
+  {
+    "word": "drapeau",
+    "definition": "Un tissu coloré qui représente un pays",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le drapeau français est bleu, blanc, rouge."
+  },
+  {
+    "word": "langue",
+    "definition": "La partie de la bouche qui bouge, ou un langage comme le français",
+    "category": "noun",
+    "gender": "f",
+    "example": "Le français est une belle langue."
+  },
+  {
+    "word": "corde",
+    "definition": "Un fil épais et solide pour attacher ou sauter",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je saute à la corde."
+  },
+  {
+    "word": "pierre",
+    "definition": "Un morceau de roche dur qu'on trouve par terre",
+    "category": "noun",
+    "gender": "f",
+    "example": "La pierre est lourde."
+  },
+  {
+    "word": "sable",
+    "definition": "De tout petits grains qu'on trouve à la plage",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je joue dans le sable."
+  },
+  {
+    "word": "plage",
+    "definition": "Le bord de la mer avec du sable",
+    "category": "noun",
+    "gender": "f",
+    "example": "On va à la plage."
+  },
+  {
+    "word": "île",
+    "definition": "Un morceau de terre entouré d'eau de tous les côtés",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'île est petite."
+  },
+  {
+    "word": "rivière",
+    "definition": "Un cours d'eau qui coule dans les terres",
+    "category": "noun",
+    "gender": "f",
+    "example": "La rivière est calme."
+  },
+  {
+    "word": "lac",
+    "definition": "Une grande étendue d'eau douce entourée de terre",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le lac est profond."
+  },
+  {
+    "word": "feuille",
+    "definition": "La partie verte et plate d'un arbre ou d'une plante",
+    "category": "noun",
+    "gender": "f",
+    "example": "La feuille tombe de l'arbre."
+  },
+  {
+    "word": "branche",
+    "definition": "Un bras d'arbre sur lequel poussent les feuilles",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'oiseau est sur la branche."
+  },
+  {
+    "word": "graine",
+    "definition": "La petite chose qu'on plante pour faire pousser une plante",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je plante une graine."
+  },
+  {
+    "word": "champignon",
+    "definition": "Un petit être vivant avec un chapeau qui pousse dans la forêt",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le champignon est sous l'arbre."
+  },
+  {
+    "word": "insecte",
+    "definition": "Un très petit animal à six pattes, comme une fourmi",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'abeille est un insecte."
+  },
+  {
+    "word": "fourmi",
+    "definition": "Un tout petit insecte noir qui vit en groupe",
+    "category": "noun",
+    "gender": "f",
+    "example": "La fourmi porte une miette."
+  },
+  {
+    "word": "abeille",
+    "definition": "Un insecte jaune et noir qui fait du miel",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'abeille butine une fleur."
+  },
+  {
+    "word": "araignée",
+    "definition": "Un petit animal à huit pattes qui tisse une toile",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'araignée fait sa toile."
+  },
+  {
+    "word": "grenouille",
+    "definition": "Un petit animal vert qui saute et qui vit près de l'eau",
+    "category": "noun",
+    "gender": "f",
+    "example": "La grenouille saute dans l'eau."
+  },
+  {
+    "word": "canard",
+    "definition": "Un oiseau qui nage sur l'eau et fait coin-coin",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le canard nage sur le lac."
+  },
+  {
+    "word": "poule",
+    "definition": "Un oiseau de ferme qui pond des œufs",
+    "category": "noun",
+    "gender": "f",
+    "example": "La poule picore."
+  },
+  {
+    "word": "cochon",
+    "definition": "Un animal de ferme rose qui grogne",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le cochon est dans la boue."
+  },
+  {
+    "word": "mouton",
+    "definition": "Un animal avec de la laine sur le corps",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le mouton a de la laine."
+  },
+  {
+    "word": "lion",
+    "definition": "Un grand animal sauvage avec une crinière",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le lion rugit."
+  },
+  {
+    "word": "éléphant",
+    "definition": "Un très grand animal avec une trompe et de grandes oreilles",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'éléphant est énorme."
+  },
+  {
+    "word": "serpent",
+    "definition": "Un animal long et sans pattes qui rampe",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le serpent rampe dans l'herbe."
+  },
+  {
+    "word": "tortue",
+    "definition": "Un animal lent avec une carapace sur le dos",
+    "category": "noun",
+    "gender": "f",
+    "example": "La tortue avance lentement."
+  },
+  {
+    "word": "loup",
+    "definition": "Un animal sauvage qui ressemble à un gros chien",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le loup hurle à la lune."
+  },
+  {
+    "word": "ours",
+    "definition": "Un grand animal avec une fourrure épaisse",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'ours mange du miel."
+  },
+  {
+    "word": "singe",
+    "definition": "Un animal qui grimpe aux arbres et qui est très malin",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le singe mange une banane."
+  },
+  {
+    "word": "girafe",
+    "definition": "Un animal très grand avec un long cou et des taches",
+    "category": "noun",
+    "gender": "f",
+    "example": "La girafe mange les feuilles des arbres."
+  },
+  {
+    "word": "crocodile",
+    "definition": "Un grand reptile avec des dents pointues qui vit dans l'eau",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le crocodile est dans la rivière."
+  },
+  {
+    "word": "dauphin",
+    "definition": "Un animal marin intelligent qui saute hors de l'eau",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le dauphin saute dans la mer."
+  },
+  {
+    "word": "baleine",
+    "definition": "Le plus grand animal du monde qui vit dans la mer",
+    "category": "noun",
+    "gender": "f",
+    "example": "La baleine est immense."
+  },
+  {
+    "word": "zéro",
+    "definition": "Le nombre qui représente rien du tout",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai zéro erreur."
+  },
+  {
+    "word": "un",
+    "definition": "Le premier nombre",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'en ai un."
+  },
+  {
+    "word": "deux",
+    "definition": "Le nombre après un",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai deux billes."
+  },
+  {
+    "word": "trois",
+    "definition": "Le nombre après deux",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai trois crayons."
+  },
+  {
+    "word": "quatre",
+    "definition": "Le nombre après trois",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il y a quatre saisons."
+  },
+  {
+    "word": "cinq",
+    "definition": "Le nombre après quatre",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai cinq doigts."
+  },
+  {
+    "word": "six",
+    "definition": "Le nombre après cinq",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il a six ans."
+  },
+  {
+    "word": "sept",
+    "definition": "Le nombre après six",
+    "category": "noun",
+    "gender": "m",
+    "example": "Sept jours dans une semaine."
+  },
+  {
+    "word": "huit",
+    "definition": "Le nombre après sept",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai huit billes."
+  },
+  {
+    "word": "neuf",
+    "definition": "Le nombre après huit",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai neuf ans."
+  },
+  {
+    "word": "dix",
+    "definition": "Le nombre après neuf",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai dix doigts."
+  },
+  {
+    "word": "vingt",
+    "definition": "Le nombre qui vaut deux fois dix",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il y a vingt élèves."
+  },
+  {
+    "word": "cent",
+    "definition": "Le nombre qui vaut dix fois dix",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai compté jusqu'à cent."
+  },
+  {
+    "word": "mille",
+    "definition": "Le nombre qui vaut dix fois cent",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mille est un grand nombre."
+  },
+  {
+    "word": "oui",
+    "definition": "Le mot pour dire qu'on est d'accord",
+    "category": "interjection",
+    "example": "Oui, je veux bien !"
+  },
+  {
+    "word": "non",
+    "definition": "Le mot pour dire qu'on refuse",
+    "category": "interjection",
+    "example": "Non, merci."
+  },
+  {
+    "word": "merci",
+    "definition": "Le mot poli pour remercier quelqu'un",
+    "category": "interjection",
+    "example": "Merci beaucoup !"
+  },
+  {
+    "word": "s'il vous plaît",
+    "definition": "La formule polie pour demander quelque chose",
+    "category": "interjection",
+    "example": "Un bonbon, s'il vous plaît."
+  },
+  {
+    "word": "bonjour",
+    "definition": "Le mot pour saluer quelqu'un quand on le voit",
+    "category": "interjection",
+    "example": "Bonjour, comment ça va ?"
+  },
+  {
+    "word": "bonsoir",
+    "definition": "Le mot pour saluer quelqu'un le soir",
+    "category": "interjection",
+    "example": "Bonsoir, maman !"
+  },
+  {
+    "word": "au revoir",
+    "definition": "Le mot pour dire adieu à quelqu'un qui part",
+    "category": "interjection",
+    "example": "Au revoir, à demain !"
+  },
+  {
+    "word": "pardon",
+    "definition": "Le mot pour s'excuser quand on a fait une erreur",
+    "category": "interjection",
+    "example": "Pardon, je suis désolé."
+  },
+  {
+    "word": "bravo",
+    "definition": "Le mot pour féliciter quelqu'un",
+    "category": "interjection",
+    "example": "Bravo, c'est très bien !"
+  },
+  {
+    "word": "attention",
+    "definition": "Le mot pour dire de faire attention",
+    "category": "interjection",
+    "example": "Attention, c'est chaud !"
+  },
+  {
+    "word": "bien",
+    "definition": "De manière correcte, comme il faut",
+    "category": "adverb",
+    "example": "Tu as bien travaillé."
+  },
+  {
+    "word": "mal",
+    "definition": "De manière incorrecte, le contraire de bien",
+    "category": "adverb",
+    "example": "J'ai mal écrit."
+  },
+  {
+    "word": "très",
+    "definition": "Beaucoup, énormément",
+    "category": "adverb",
+    "example": "C'est très beau."
+  },
+  {
+    "word": "beaucoup",
+    "definition": "En grande quantité",
+    "category": "adverb",
+    "example": "J'aime beaucoup le chocolat."
+  },
+  {
+    "word": "peu",
+    "definition": "Pas beaucoup, une petite quantité",
+    "category": "adverb",
+    "example": "Il reste un peu de lait."
+  },
+  {
+    "word": "trop",
+    "definition": "Plus qu'il ne faut",
+    "category": "adverb",
+    "example": "C'est trop lourd."
+  },
+  {
+    "word": "assez",
+    "definition": "Suffisamment, ni trop ni pas assez",
+    "category": "adverb",
+    "example": "J'en ai assez."
+  },
+  {
+    "word": "plus",
+    "definition": "Davantage, en plus grande quantité",
+    "category": "adverb",
+    "example": "Je veux plus de gâteau."
+  },
+  {
+    "word": "moins",
+    "definition": "En plus petite quantité",
+    "category": "adverb",
+    "example": "Il fait moins froid."
+  },
+  {
+    "word": "aussi",
+    "definition": "De la même manière, également",
+    "category": "adverb",
+    "example": "Moi aussi, j'aime ça."
+  },
+  {
+    "word": "encore",
+    "definition": "Une fois de plus, à nouveau",
+    "category": "adverb",
+    "example": "Encore une histoire !"
+  },
+  {
+    "word": "toujours",
+    "definition": "Tout le temps, sans arrêt",
+    "category": "adverb",
+    "example": "Il est toujours content."
+  },
+  {
+    "word": "jamais",
+    "definition": "À aucun moment",
+    "category": "adverb",
+    "example": "Je ne mens jamais."
+  },
+  {
+    "word": "souvent",
+    "definition": "Beaucoup de fois",
+    "category": "adverb",
+    "example": "Je vais souvent au parc."
+  },
+  {
+    "word": "parfois",
+    "definition": "De temps en temps, pas toujours",
+    "category": "adverb",
+    "example": "Parfois, il pleut."
+  },
+  {
+    "word": "maintenant",
+    "definition": "En ce moment même",
+    "category": "adverb",
+    "example": "Je veux jouer maintenant."
+  },
+  {
+    "word": "aujourd'hui",
+    "definition": "Ce jour-ci, le jour présent",
+    "category": "adverb",
+    "example": "Aujourd'hui, c'est lundi."
+  },
+  {
+    "word": "hier",
+    "definition": "Le jour avant aujourd'hui",
+    "category": "adverb",
+    "example": "Hier, j'ai joué."
+  },
+  {
+    "word": "demain",
+    "definition": "Le jour après aujourd'hui",
+    "category": "adverb",
+    "example": "Demain, on va au zoo."
+  },
+  {
+    "word": "déjà",
+    "definition": "Avant ce moment, c'est fait",
+    "category": "adverb",
+    "example": "J'ai déjà mangé."
+  },
+  {
+    "word": "bientôt",
+    "definition": "Dans peu de temps",
+    "category": "adverb",
+    "example": "On arrive bientôt."
+  },
+  {
+    "word": "ici",
+    "definition": "À cet endroit-ci, où je suis",
+    "category": "adverb",
+    "example": "Viens ici !"
+  },
+  {
+    "word": "là",
+    "definition": "À cet endroit-là, pas loin",
+    "category": "adverb",
+    "example": "Le chat est là."
+  },
+  {
+    "word": "où",
+    "definition": "Le mot pour demander l'endroit",
+    "category": "adverb",
+    "example": "Où est mon chat ?"
+  },
+  {
+    "word": "quand",
+    "definition": "Le mot pour demander le moment",
+    "category": "adverb",
+    "example": "Quand est-ce qu'on mange ?"
+  },
+  {
+    "word": "comment",
+    "definition": "Le mot pour demander la manière",
+    "category": "adverb",
+    "example": "Comment tu t'appelles ?"
+  },
+  {
+    "word": "pourquoi",
+    "definition": "Le mot pour demander la raison",
+    "category": "adverb",
+    "example": "Pourquoi le ciel est bleu ?"
+  },
+  {
+    "word": "combien",
+    "definition": "Le mot pour demander la quantité",
+    "category": "adverb",
+    "example": "Combien ça coûte ?"
+  },
+  {
+    "word": "vite",
+    "definition": "À grande vitesse, rapidement",
+    "category": "adverb",
+    "example": "Cours vite !"
+  },
+  {
+    "word": "lentement",
+    "definition": "Pas vite, doucement",
+    "category": "adverb",
+    "example": "La tortue marche lentement."
+  },
+  {
+    "word": "ensemble",
+    "definition": "Les uns avec les autres, tous en même temps",
+    "category": "adverb",
+    "example": "On joue ensemble."
+  },
+  {
+    "word": "dehors",
+    "definition": "À l'extérieur, pas dedans",
+    "category": "adverb",
+    "example": "Je joue dehors."
+  },
+  {
+    "word": "dedans",
+    "definition": "À l'intérieur, pas dehors",
+    "category": "adverb",
+    "example": "Reste dedans."
+  },
+  {
+    "word": "devant",
+    "definition": "En face, du côté avant",
+    "category": "preposition",
+    "example": "Je suis devant la porte."
+  },
+  {
+    "word": "derrière",
+    "definition": "Du côté opposé au devant",
+    "category": "preposition",
+    "example": "Le chat est derrière le canapé."
+  },
+  {
+    "word": "dessus",
+    "definition": "Sur, au-dessus",
+    "category": "adverb",
+    "example": "Le livre est dessus."
+  },
+  {
+    "word": "dessous",
+    "definition": "Sous, en bas",
+    "category": "adverb",
+    "example": "Le chat est dessous."
+  },
+  {
+    "word": "sur",
+    "definition": "Au-dessus de, en contact avec",
+    "category": "preposition",
+    "example": "Le livre est sur la table."
+  },
+  {
+    "word": "sous",
+    "definition": "En dessous de",
+    "category": "preposition",
+    "example": "Le chat est sous la table."
+  },
+  {
+    "word": "avec",
+    "definition": "En compagnie de, ensemble",
+    "category": "preposition",
+    "example": "Je joue avec mon ami."
+  },
+  {
+    "word": "sans",
+    "definition": "Quand quelque chose manque, le contraire de avec",
+    "category": "preposition",
+    "example": "Un café sans sucre."
+  },
+  {
+    "word": "pour",
+    "definition": "Dans le but de, destiné à",
+    "category": "preposition",
+    "example": "Un cadeau pour toi."
+  },
+  {
+    "word": "par",
+    "definition": "À travers, au moyen de",
+    "category": "preposition",
+    "example": "Je passe par le parc."
+  },
+  {
+    "word": "entre",
+    "definition": "Au milieu de deux choses",
+    "category": "preposition",
+    "example": "Assieds-toi entre nous."
+  },
+  {
+    "word": "vers",
+    "definition": "Dans la direction de",
+    "category": "preposition",
+    "example": "Je marche vers l'école."
+  },
+  {
+    "word": "chez",
+    "definition": "À la maison de quelqu'un",
+    "category": "preposition",
+    "example": "Je vais chez mon ami."
+  },
+  {
+    "word": "pendant",
+    "definition": "Au cours de, durant",
+    "category": "preposition",
+    "example": "Pendant la récréation."
+  },
+  {
+    "word": "depuis",
+    "definition": "À partir d'un moment du passé",
+    "category": "preposition",
+    "example": "Je suis là depuis ce matin."
+  },
+  {
+    "word": "avant",
+    "definition": "Plus tôt que, devant dans le temps",
+    "category": "preposition",
+    "example": "Avant le dîner."
+  },
+  {
+    "word": "après",
+    "definition": "Plus tard que, qui suit",
+    "category": "preposition",
+    "example": "Après l'école."
+  },
+  {
+    "word": "contre",
+    "definition": "En opposition ou en contact avec",
+    "category": "preposition",
+    "example": "Le vélo est contre le mur."
+  },
+  {
+    "word": "mais",
+    "definition": "Mot pour dire le contraire de ce qui précède",
+    "category": "conjunction",
+    "example": "C'est petit mais joli."
+  },
+  {
+    "word": "ou",
+    "definition": "Mot pour donner un choix entre deux choses",
+    "category": "conjunction",
+    "example": "Tu veux du lait ou du jus ?"
+  },
+  {
+    "word": "donc",
+    "definition": "Alors, pour cette raison",
+    "category": "conjunction",
+    "example": "Il pleut, donc je reste dedans."
+  },
+  {
+    "word": "car",
+    "definition": "Parce que, pour cette raison",
+    "category": "conjunction",
+    "example": "Je reste car il pleut."
+  },
+  {
+    "word": "si",
+    "definition": "Mot pour poser une condition",
+    "category": "conjunction",
+    "example": "Si tu veux, on joue."
+  },
+  {
+    "word": "quoi",
+    "definition": "Mot pour demander quelle chose",
+    "category": "pronoun",
+    "example": "C'est quoi ?"
+  },
+  {
+    "word": "ceci",
+    "definition": "Cette chose-ci, près de moi",
+    "category": "pronoun",
+    "example": "Regarde ceci."
+  },
+  {
+    "word": "cela",
+    "definition": "Cette chose-là, plus loin",
+    "category": "pronoun",
+    "example": "Je veux cela."
+  },
+  {
+    "word": "rien",
+    "definition": "Aucune chose, pas quelque chose",
+    "category": "pronoun",
+    "example": "Il n'y a rien ici."
+  },
+  {
+    "word": "personne",
+    "definition": "Aucun être humain, ou bien un être humain",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il n'y a personne."
+  },
+  {
+    "word": "ne",
+    "definition": "Petit mot pour dire la négation, souvent avec 'pas'",
+    "category": "adverb",
+    "example": "Je ne sais pas."
+  },
+  {
+    "word": "pas",
+    "definition": "Mot de négation avec 'ne', ou un mouvement du pied",
+    "category": "adverb",
+    "example": "Je ne veux pas."
+  },
+  {
+    "word": "peut-être",
+    "definition": "C'est possible, on n'est pas sûr",
+    "category": "adverb",
+    "example": "Peut-être qu'il viendra."
+  },
+  {
+    "word": "seulement",
+    "definition": "Rien de plus, uniquement",
+    "category": "adverb",
+    "example": "J'en ai seulement deux."
+  },
+  {
+    "word": "vraiment",
+    "definition": "Pour de vrai, pas pour rire",
+    "category": "adverb",
+    "example": "C'est vraiment beau."
+  },
+  {
+    "word": "alors",
+    "definition": "À ce moment-là, dans ce cas",
+    "category": "adverb",
+    "example": "Alors, on y va ?"
+  },
+  {
+    "word": "comme",
+    "definition": "De la même façon que, pareil à",
+    "category": "conjunction",
+    "example": "Il est grand comme papa."
+  },
+  {
+    "word": "voici",
+    "definition": "Regarde, je te montre cette chose-ci",
+    "category": "adverb",
+    "example": "Voici mon dessin."
+  },
+  {
+    "word": "voilà",
+    "definition": "Regarde, cette chose est là",
+    "category": "adverb",
+    "example": "Voilà ta pomme."
+  },
+  {
+    "word": "enfin",
+    "definition": "Pour finir, à la fin",
+    "category": "adverb",
+    "example": "Enfin, c'est les vacances !"
+  },
+  {
+    "word": "surtout",
+    "definition": "Par-dessus tout, principalement",
+    "category": "adverb",
+    "example": "J'aime les fruits, surtout les fraises."
+  },
+  {
+    "word": "d'abord",
+    "definition": "En premier, avant les autres choses",
+    "category": "adverb",
+    "example": "D'abord, on mange."
+  },
+  {
+    "word": "ensuite",
+    "definition": "Après cela, puis",
+    "category": "adverb",
+    "example": "Ensuite, on joue."
+  },
+  {
+    "word": "puis",
+    "definition": "Après, ensuite",
+    "category": "adverb",
+    "example": "Je mange, puis je joue."
+  },
+  {
+    "word": "presque",
+    "definition": "Pas tout à fait, mais très proche",
+    "category": "adverb",
+    "example": "J'ai presque fini."
+  },
+  {
+    "word": "tellement",
+    "definition": "À un tel point, si fort",
+    "category": "adverb",
+    "example": "C'est tellement drôle !"
+  },
+  {
+    "word": "ainsi",
+    "definition": "De cette manière, comme cela",
+    "category": "adverb",
+    "example": "C'est ainsi que ça marche."
+  },
+  {
+    "word": "pourtant",
+    "definition": "Malgré cela, quand même",
+    "category": "adverb",
+    "example": "C'est difficile, pourtant j'essaie."
+  },
+  {
+    "word": "cependant",
+    "definition": "Mais, toutefois",
+    "category": "adverb",
+    "example": "Il est petit, cependant il est fort."
+  },
+  {
+    "word": "France",
+    "definition": "Le pays où on parle français, avec Paris comme capitale",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'habite en France."
+  },
+  {
+    "word": "Paris",
+    "definition": "La capitale de la France, avec la tour Eiffel",
+    "category": "noun",
+    "gender": "m",
+    "example": "Paris est une belle ville."
+  },
+  {
+    "word": "français",
+    "definition": "La langue qu'on parle en France",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je parle français."
+  },
+  {
+    "word": "monsieur",
+    "definition": "Le titre poli pour un homme adulte",
+    "category": "noun",
+    "gender": "m",
+    "example": "Bonjour, monsieur."
+  },
+  {
+    "word": "madame",
+    "definition": "Le titre poli pour une femme adulte",
+    "category": "noun",
+    "gender": "f",
+    "example": "Bonjour, madame."
+  },
+  {
+    "word": "santé",
+    "definition": "Quand le corps va bien et n'est pas malade",
+    "category": "noun",
+    "gender": "f",
+    "example": "La santé est importante."
+  },
+  {
+    "word": "maladie",
+    "definition": "Quand le corps ne va pas bien",
+    "category": "noun",
+    "gender": "f",
+    "example": "La grippe est une maladie."
+  },
+  {
+    "word": "douleur",
+    "definition": "La sensation quand quelque chose fait mal",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai une douleur au genou."
+  },
+  {
+    "word": "danger",
+    "definition": "Quelque chose qui peut faire mal ou blesser",
+    "category": "noun",
+    "gender": "m",
+    "example": "Attention, danger !"
+  },
+  {
+    "word": "sécurité",
+    "definition": "Quand on est en sûreté, protégé du danger",
+    "category": "noun",
+    "gender": "f",
+    "example": "La ceinture de sécurité."
+  },
+  {
+    "word": "règle",
+    "definition": "Ce qu'on doit respecter, ou un outil pour tracer des lignes",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il faut suivre les règles."
+  },
+  {
+    "word": "erreur",
+    "definition": "Quand on fait quelque chose de faux, une faute",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai fait une erreur."
+  },
+  {
+    "word": "chance",
+    "definition": "Quand quelque chose de bien arrive par hasard",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai de la chance."
+  },
+  {
+    "word": "surprise",
+    "definition": "Quelque chose qu'on ne s'attendait pas à voir",
+    "category": "noun",
+    "gender": "f",
+    "example": "Quelle surprise !"
+  },
+  {
+    "word": "plaisir",
+    "definition": "Un sentiment agréable, de la joie",
+    "category": "noun",
+    "gender": "m",
+    "example": "Quel plaisir de te voir !"
+  },
+  {
+    "word": "colère",
+    "definition": "Le sentiment fort quand on est très fâché",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il est en colère."
+  },
+  {
+    "word": "moment",
+    "definition": "Un court temps, un instant",
+    "category": "noun",
+    "gender": "m",
+    "example": "Attends un moment."
+  },
+  {
+    "word": "endroit",
+    "definition": "Un lieu, une place",
+    "category": "noun",
+    "gender": "m",
+    "example": "C'est un bel endroit."
+  },
+  {
+    "word": "début",
+    "definition": "Le commencement de quelque chose",
+    "category": "noun",
+    "gender": "m",
+    "example": "C'est le début du film."
+  },
+  {
+    "word": "fin",
+    "definition": "Le moment où quelque chose s'arrête",
+    "category": "noun",
+    "gender": "f",
+    "example": "C'est la fin de l'histoire."
+  },
+  {
+    "word": "milieu",
+    "definition": "Le centre, entre le début et la fin",
+    "category": "noun",
+    "gender": "m",
+    "example": "Au milieu de la page."
+  },
+  {
+    "word": "bord",
+    "definition": "Le côté extrême de quelque chose",
+    "category": "noun",
+    "gender": "m",
+    "example": "Au bord de la mer."
+  },
+  {
+    "word": "fond",
+    "definition": "La partie la plus basse ou la plus éloignée",
+    "category": "noun",
+    "gender": "m",
+    "example": "Au fond de la boîte."
+  },
+  {
+    "word": "haut",
+    "definition": "La partie la plus élevée de quelque chose",
+    "category": "noun",
+    "gender": "m",
+    "example": "En haut de la montagne."
+  },
+  {
+    "word": "droite",
+    "definition": "Le côté opposé à la gauche",
+    "category": "noun",
+    "gender": "f",
+    "example": "Tourne à droite."
+  },
+  {
+    "word": "gauche",
+    "definition": "Le côté opposé à la droite",
+    "category": "noun",
+    "gender": "f",
+    "example": "Tourne à gauche."
+  },
+  {
+    "word": "entrée",
+    "definition": "L'endroit par où on entre",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'entrée de l'école."
+  },
+  {
+    "word": "sortie",
+    "definition": "L'endroit par où on sort",
+    "category": "noun",
+    "gender": "f",
+    "example": "La sortie est par là."
+  },
+  {
+    "word": "pièce",
+    "definition": "Une salle dans une maison, ou un morceau de monnaie",
+    "category": "noun",
+    "gender": "f",
+    "example": "La pièce est grande."
+  },
+  {
+    "word": "coin",
+    "definition": "L'angle où deux murs se rencontrent",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le jouet est dans le coin."
+  },
+  {
+    "word": "trou",
+    "definition": "Un creux, une ouverture dans quelque chose",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il y a un trou dans mon pantalon."
+  },
+  {
+    "word": "épaule",
+    "definition": "La partie du corps entre le cou et le bras",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'ai mal à l'épaule."
+  },
+  {
+    "word": "genou",
+    "definition": "L'articulation au milieu de la jambe",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je me suis fait mal au genou."
+  },
+  {
+    "word": "coude",
+    "definition": "L'articulation au milieu du bras",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai cogné mon coude."
+  },
+  {
+    "word": "cou",
+    "definition": "La partie du corps entre la tête et les épaules",
+    "category": "noun",
+    "gender": "m",
+    "example": "La girafe a un long cou."
+  },
+  {
+    "word": "joue",
+    "definition": "Le côté du visage, sous les yeux",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ses joues sont rouges."
+  },
+  {
+    "word": "front",
+    "definition": "La partie du visage au-dessus des yeux",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai chaud au front."
+  },
+  {
+    "word": "pouce",
+    "definition": "Le gros doigt de la main",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je lève le pouce."
+  },
+  {
+    "word": "ongle",
+    "definition": "La partie dure au bout des doigts",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je me coupe les ongles."
+  },
+  {
+    "word": "peau",
+    "definition": "Ce qui recouvre tout le corps",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma peau est douce."
+  },
+  {
+    "word": "os",
+    "definition": "Les parties dures à l'intérieur du corps",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le chien mange un os."
+  },
+  {
+    "word": "sang",
+    "definition": "Le liquide rouge qui coule dans le corps",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le sang est rouge."
+  },
+  {
+    "word": "respirer",
+    "definition": "Faire entrer et sortir l'air de ses poumons",
+    "category": "verb",
+    "example": "Je respire l'air frais."
+  },
+  {
+    "word": "goûter",
+    "definition": "Manger un petit repas l'après-midi, ou essayer un aliment",
+    "category": "verb",
+    "example": "Je goûte le gâteau."
+  },
+  {
+    "word": "cuisiner",
+    "definition": "Préparer à manger",
+    "category": "verb",
+    "example": "Papa cuisine un bon plat."
+  },
+  {
+    "word": "planter",
+    "definition": "Mettre une graine ou une plante dans la terre",
+    "category": "verb",
+    "example": "Je plante une fleur."
+  },
+  {
+    "word": "briller",
+    "definition": "Produire de la lumière, être lumineux",
+    "category": "verb",
+    "example": "Le soleil brille."
+  },
+  {
+    "word": "souffler",
+    "definition": "Envoyer de l'air avec sa bouche",
+    "category": "verb",
+    "example": "Je souffle les bougies."
+  },
+  {
+    "word": "glisser",
+    "definition": "Se déplacer sur une surface lisse sans s'arrêter",
+    "category": "verb",
+    "example": "Je glisse sur la glace."
+  },
+  {
+    "word": "grimper",
+    "definition": "Monter en s'accrochant",
+    "category": "verb",
+    "example": "Je grimpe à l'arbre."
+  },
+  {
+    "word": "attraper",
+    "definition": "Saisir quelque chose qui bouge",
+    "category": "verb",
+    "example": "J'attrape le ballon."
+  },
+  {
+    "word": "réparer",
+    "definition": "Remettre en état quelque chose de cassé",
+    "category": "verb",
+    "example": "Papa répare le vélo."
+  },
+  {
+    "word": "préparer",
+    "definition": "Rendre prêt, organiser avant de faire",
+    "category": "verb",
+    "example": "Je prépare mon sac."
+  },
+  {
+    "word": "expliquer",
+    "definition": "Dire comment quelque chose marche pour que l'autre comprenne",
+    "category": "verb",
+    "example": "La maîtresse explique la leçon."
+  },
+  {
+    "word": "oublier",
+    "definition": "Ne plus se souvenir de quelque chose",
+    "category": "verb",
+    "example": "J'ai oublié mon cahier."
+  },
+  {
+    "word": "rappeler",
+    "definition": "Faire penser à quelque chose, aider à se souvenir",
+    "category": "verb",
+    "example": "Rappelle-moi demain."
+  },
+  {
+    "word": "inviter",
+    "definition": "Demander à quelqu'un de venir",
+    "category": "verb",
+    "example": "J'invite mes amis."
+  },
+  {
+    "word": "accepter",
+    "definition": "Dire oui à quelque chose",
+    "category": "verb",
+    "example": "J'accepte ton invitation."
+  },
+  {
+    "word": "refuser",
+    "definition": "Dire non à quelque chose",
+    "category": "verb",
+    "example": "Je refuse de tricher."
+  },
+  {
+    "word": "promettre",
+    "definition": "S'engager à faire quelque chose",
+    "category": "verb",
+    "example": "Je promets d'être sage."
+  },
+  {
+    "word": "remercier",
+    "definition": "Dire merci à quelqu'un",
+    "category": "verb",
+    "example": "Je remercie ma maman."
+  },
+  {
+    "word": "féliciter",
+    "definition": "Dire bravo à quelqu'un",
+    "category": "verb",
+    "example": "Je félicite mon ami."
+  },
+  {
+    "word": "protéger",
+    "definition": "Garder en sécurité, empêcher le mal",
+    "category": "verb",
+    "example": "Le manteau protège du froid."
+  },
+  {
+    "word": "envoyer",
+    "definition": "Faire partir quelque chose vers quelqu'un",
+    "category": "verb",
+    "example": "J'envoie une lettre."
+  },
+  {
+    "word": "recevoir",
+    "definition": "Obtenir quelque chose qu'on nous donne",
+    "category": "verb",
+    "example": "Je reçois un cadeau."
+  },
+  {
+    "word": "changer",
+    "definition": "Rendre différent, transformer",
+    "category": "verb",
+    "example": "Je change de vêtements."
+  },
+  {
+    "word": "continuer",
+    "definition": "Ne pas s'arrêter, poursuivre",
+    "category": "verb",
+    "example": "Continue ton dessin."
+  },
+  {
+    "word": "arrêter",
+    "definition": "Ne plus faire quelque chose, stopper",
+    "category": "verb",
+    "example": "Arrête de courir !"
+  },
+  {
+    "word": "possible",
+    "definition": "Qui peut se faire, qui peut arriver",
+    "category": "adjective",
+    "example": "C'est possible."
+  },
+  {
+    "word": "impossible",
+    "definition": "Qui ne peut pas se faire",
+    "category": "adjective",
+    "example": "C'est impossible de voler."
+  },
+  {
+    "word": "important",
+    "definition": "Qui compte beaucoup, qui a de la valeur",
+    "category": "adjective",
+    "example": "C'est très important."
+  },
+  {
+    "word": "différent",
+    "definition": "Qui n'est pas pareil",
+    "category": "adjective",
+    "example": "Chaque enfant est différent."
+  },
+  {
+    "word": "pareil",
+    "definition": "Qui est identique, le même",
+    "category": "adjective",
+    "example": "On a le même sac, c'est pareil."
+  },
+  {
+    "word": "vrai",
+    "definition": "Qui est réel, qui n'est pas faux",
+    "category": "adjective",
+    "example": "C'est une histoire vraie."
+  },
+  {
+    "word": "faux",
+    "definition": "Qui n'est pas vrai, incorrect",
+    "category": "adjective",
+    "example": "C'est faux."
+  },
+  {
+    "word": "simple",
+    "definition": "Qui n'est pas compliqué, facile",
+    "category": "adjective",
+    "example": "C'est très simple."
+  },
+  {
+    "word": "drôle",
+    "definition": "Qui fait rire, amusant",
+    "category": "adjective",
+    "example": "Cette histoire est drôle."
+  },
+  {
+    "word": "bizarre",
+    "definition": "Qui est étrange, pas normal",
+    "category": "adjective",
+    "example": "C'est bizarre."
+  },
+  {
+    "word": "super",
+    "definition": "Très bien, formidable",
+    "category": "adjective",
+    "example": "C'est super !"
+  },
+  {
+    "word": "magnifique",
+    "definition": "Très très beau",
+    "category": "adjective",
+    "example": "Le paysage est magnifique."
+  },
+  {
+    "word": "terrible",
+    "definition": "Très mauvais, ou très impressionnant",
+    "category": "adjective",
+    "example": "L'orage est terrible."
+  },
+  {
+    "word": "doux",
+    "definition": "Agréable au toucher, pas rugueux",
+    "category": "adjective",
+    "example": "Le lapin est doux."
+  },
+  {
+    "word": "dur",
+    "definition": "Difficile à casser ou à presser",
+    "category": "adjective",
+    "example": "La pierre est dure."
+  },
+  {
+    "word": "mouillé",
+    "definition": "Couvert d'eau",
+    "category": "adjective",
+    "example": "Mes vêtements sont mouillés."
+  },
+  {
+    "word": "sec",
+    "definition": "Pas mouillé, sans eau",
+    "category": "adjective",
+    "example": "Le sol est sec."
+  },
+  {
+    "word": "sombre",
+    "definition": "Où il y a peu de lumière",
+    "category": "adjective",
+    "example": "La pièce est sombre."
+  },
+  {
+    "word": "clair",
+    "definition": "Bien éclairé, lumineux",
+    "category": "adjective",
+    "example": "La pièce est claire."
+  },
+  {
+    "word": "rond",
+    "definition": "En forme de cercle",
+    "category": "adjective",
+    "example": "Le ballon est rond."
+  },
+  {
+    "word": "pointu",
+    "definition": "Qui a un bout fin et piquant",
+    "category": "adjective",
+    "example": "Le crayon est pointu."
+  },
+  {
+    "word": "profond",
+    "definition": "Qui va loin vers le bas",
+    "category": "adjective",
+    "example": "La piscine est profonde."
+  },
+  {
+    "word": "étroit",
+    "definition": "Qui n'est pas large",
+    "category": "adjective",
+    "example": "Le chemin est étroit."
+  },
+  {
+    "word": "large",
+    "definition": "Qui est grand d'un côté à l'autre",
+    "category": "adjective",
+    "example": "La rivière est large."
+  },
+  {
+    "word": "épais",
+    "definition": "Qui a une bonne épaisseur, pas fin",
+    "category": "adjective",
+    "example": "Le livre est épais."
+  },
+  {
+    "word": "mince",
+    "definition": "Qui n'est pas épais, fin",
+    "category": "adjective",
+    "example": "La feuille est mince."
+  },
+  {
+    "word": "plat",
+    "definition": "Sans bosses ni creux, tout lisse",
+    "category": "adjective",
+    "example": "Le terrain est plat."
+  },
+  {
+    "word": "frais",
+    "definition": "Un peu froid, agréable",
+    "category": "adjective",
+    "example": "L'air est frais."
+  },
+  {
+    "word": "sucré",
+    "definition": "Qui a le goût du sucre",
+    "category": "adjective",
+    "example": "Le gâteau est sucré."
+  },
+  {
+    "word": "salé",
+    "definition": "Qui a le goût du sel",
+    "category": "adjective",
+    "example": "La mer est salée."
+  },
+  {
+    "word": "amer",
+    "definition": "Un goût fort et pas agréable",
+    "category": "adjective",
+    "example": "Le café est amer."
+  },
+  {
+    "word": "délicieux",
+    "definition": "Très très bon au goût",
+    "category": "adjective",
+    "example": "Le gâteau est délicieux."
+  },
+  {
+    "word": "fatigué",
+    "definition": "Quand le corps a besoin de se reposer",
+    "category": "adjective",
+    "example": "Je suis fatigué."
+  },
+  {
+    "word": "malade",
+    "definition": "Quand le corps ne va pas bien",
+    "category": "adjective",
+    "example": "Je suis malade."
+  },
+  {
+    "word": "prêt",
+    "definition": "Qui est préparé, qui peut y aller",
+    "category": "adjective",
+    "example": "Je suis prêt !"
+  },
+  {
+    "word": "libre",
+    "definition": "Qui peut faire ce qu'il veut, pas occupé",
+    "category": "adjective",
+    "example": "Je suis libre cet après-midi."
+  },
+  {
+    "word": "absent",
+    "definition": "Qui n'est pas là",
+    "category": "adjective",
+    "example": "Paul est absent aujourd'hui."
+  },
+  {
+    "word": "présent",
+    "definition": "Qui est là, qui existe maintenant",
+    "category": "adjective",
+    "example": "Tous les élèves sont présents."
+  },
+  {
+    "word": "vivant",
+    "definition": "Qui est en vie",
+    "category": "adjective",
+    "example": "L'arbre est vivant."
+  },
+  {
+    "word": "mort",
+    "definition": "Qui n'est plus en vie",
+    "category": "adjective",
+    "example": "La feuille est morte."
+  },
+  {
+    "word": "naturel",
+    "definition": "Qui vient de la nature, pas fabriqué",
+    "category": "adjective",
+    "example": "Le jus est naturel."
+  },
+  {
+    "word": "normal",
+    "definition": "Qui est comme d'habitude, ordinaire",
+    "category": "adjective",
+    "example": "C'est normal."
+  },
+  {
+    "word": "spécial",
+    "definition": "Qui est différent des autres, unique",
+    "category": "adjective",
+    "example": "C'est un jour spécial."
+  },
+  {
+    "word": "préféré",
+    "definition": "Celui qu'on aime le plus",
+    "category": "adjective",
+    "example": "Le bleu est ma couleur préférée."
+  },
+  {
+    "word": "prochain",
+    "definition": "Qui vient juste après",
+    "category": "adjective",
+    "example": "La semaine prochaine."
+  },
+  {
+    "word": "né",
+    "definition": "Qui est venu au monde",
+    "category": "adjective",
+    "example": "Je suis né en France."
+  },
+  {
+    "word": "calculer",
+    "definition": "Faire des opérations avec des nombres",
+    "category": "verb",
+    "example": "Je calcule 2 plus 3."
+  },
+  {
+    "word": "colorier",
+    "definition": "Remplir un dessin avec des couleurs",
+    "category": "verb",
+    "example": "Je colorie un papillon."
+  },
+  {
+    "word": "coller",
+    "definition": "Fixer deux choses ensemble avec de la colle",
+    "category": "verb",
+    "example": "Je colle une image."
+  },
+  {
+    "word": "découper",
+    "definition": "Couper en morceaux avec des ciseaux",
+    "category": "verb",
+    "example": "Je découpe du papier."
+  },
+  {
+    "word": "plier",
+    "definition": "Rabattre une partie sur l'autre",
+    "category": "verb",
+    "example": "Je plie la feuille."
+  },
+  {
+    "word": "taper",
+    "definition": "Frapper doucement ou écrire sur un clavier",
+    "category": "verb",
+    "example": "Je tape des mains."
+  },
+  {
+    "word": "secouer",
+    "definition": "Agiter dans tous les sens",
+    "category": "verb",
+    "example": "Je secoue la bouteille."
+  },
+  {
+    "word": "mélanger",
+    "definition": "Remuer des choses ensemble pour les unir",
+    "category": "verb",
+    "example": "Je mélange la pâte."
+  },
+  {
+    "word": "verser",
+    "definition": "Faire couler un liquide d'un récipient",
+    "category": "verb",
+    "example": "Je verse du lait."
+  },
+  {
+    "word": "remplir",
+    "definition": "Mettre quelque chose partout dedans",
+    "category": "verb",
+    "example": "Je remplis mon verre."
+  },
+  {
+    "word": "vider",
+    "definition": "Enlever tout ce qui est dedans",
+    "category": "verb",
+    "example": "Je vide mon sac."
+  },
+  {
+    "word": "allumer",
+    "definition": "Faire fonctionner la lumière ou le feu",
+    "category": "verb",
+    "example": "J'allume la lumière."
+  },
+  {
+    "word": "éteindre",
+    "definition": "Arrêter la lumière ou le feu",
+    "category": "verb",
+    "example": "J'éteins la lumière."
+  },
+  {
+    "word": "sécher",
+    "definition": "Rendre sec, enlever l'eau",
+    "category": "verb",
+    "example": "Le soleil sèche le linge."
+  },
+  {
+    "word": "chauffer",
+    "definition": "Rendre chaud",
+    "category": "verb",
+    "example": "Le soleil chauffe la terre."
+  },
+  {
+    "word": "refroidir",
+    "definition": "Rendre froid",
+    "category": "verb",
+    "example": "La soupe refroidit."
+  },
+  {
+    "word": "geler",
+    "definition": "Devenir très froid, se transformer en glace",
+    "category": "verb",
+    "example": "L'eau gèle en hiver."
+  },
+  {
+    "word": "fondre",
+    "definition": "Passer de solide à liquide avec la chaleur",
+    "category": "verb",
+    "example": "La neige fond au printemps."
+  },
+  {
+    "word": "brûler",
+    "definition": "Être en feu, faire très mal avec le chaud",
+    "category": "verb",
+    "example": "Le bois brûle dans la cheminée."
+  },
+  {
+    "word": "peindre",
+    "definition": "Mettre de la peinture sur quelque chose",
+    "category": "verb",
+    "example": "Je peins un tableau."
+  },
+  {
+    "word": "fabriquer",
+    "definition": "Créer un objet avec ses mains ou des outils",
+    "category": "verb",
+    "example": "Je fabrique un avion en papier."
+  },
+  {
+    "word": "décorer",
+    "definition": "Rendre plus joli en ajoutant des choses",
+    "category": "verb",
+    "example": "Je décore le sapin de Noël."
+  },
+  {
+    "word": "photographier",
+    "definition": "Prendre en photo",
+    "category": "verb",
+    "example": "Je photographie un oiseau."
+  },
+  {
+    "word": "imaginer",
+    "definition": "Créer des images dans sa tête, inventer",
+    "category": "verb",
+    "example": "J'imagine un dragon."
+  },
+  {
+    "word": "deviner",
+    "definition": "Trouver la réponse sans la connaître",
+    "category": "verb",
+    "example": "Devine ce que c'est !"
+  },
+  {
+    "word": "souhaiter",
+    "definition": "Espérer très fort que quelque chose arrive",
+    "category": "verb",
+    "example": "Je te souhaite un bon anniversaire."
+  },
+  {
+    "word": "détester",
+    "definition": "Ne pas aimer du tout",
+    "category": "verb",
+    "example": "Je déteste les épinards."
+  },
+  {
+    "word": "préférer",
+    "definition": "Aimer plus que le reste",
+    "category": "verb",
+    "example": "Je préfère le chocolat."
+  },
+  {
+    "word": "ressembler",
+    "definition": "Avoir l'air pareil, être similaire",
+    "category": "verb",
+    "example": "Tu ressembles à ta maman."
+  },
+  {
+    "word": "séparer",
+    "definition": "Mettre à part, éloigner l'un de l'autre",
+    "category": "verb",
+    "example": "Je sépare les couleurs."
+  },
+  {
+    "word": "réunir",
+    "definition": "Mettre ensemble",
+    "category": "verb",
+    "example": "On réunit toute la famille."
+  },
+  {
+    "word": "traverser",
+    "definition": "Passer d'un côté à l'autre",
+    "category": "verb",
+    "example": "Je traverse la rue."
+  },
+  {
+    "word": "voyager",
+    "definition": "Se déplacer loin, visiter d'autres endroits",
+    "category": "verb",
+    "example": "J'aime voyager."
+  },
+  {
+    "word": "visiter",
+    "definition": "Aller voir un endroit ou une personne",
+    "category": "verb",
+    "example": "On visite un musée."
+  },
+  {
+    "word": "observer",
+    "definition": "Regarder attentivement",
+    "category": "verb",
+    "example": "J'observe les étoiles."
+  },
+  {
+    "word": "découvrir",
+    "definition": "Trouver quelque chose de nouveau",
+    "category": "verb",
+    "example": "Je découvre un nouveau jeu."
+  },
+  {
+    "word": "embrasser",
+    "definition": "Faire un bisou à quelqu'un",
+    "category": "verb",
+    "example": "J'embrasse ma maman."
+  },
+  {
+    "word": "serrer",
+    "definition": "Tenir fort contre soi ou presser",
+    "category": "verb",
+    "example": "Je serre ma peluche."
+  },
+  {
+    "word": "caresser",
+    "definition": "Passer doucement la main sur quelque chose",
+    "category": "verb",
+    "example": "Je caresse le chat."
+  },
+  {
+    "word": "frapper",
+    "definition": "Donner un coup",
+    "category": "verb",
+    "example": "Je frappe à la porte."
+  },
+  {
+    "word": "accrocher",
+    "definition": "Fixer quelque chose en hauteur",
+    "category": "verb",
+    "example": "J'accroche mon manteau."
+  },
+  {
+    "word": "décrocher",
+    "definition": "Enlever ce qui est accroché",
+    "category": "verb",
+    "example": "Je décroche le tableau."
+  },
+  {
+    "word": "emprunter",
+    "definition": "Prendre quelque chose à quelqu'un pour le rendre après",
+    "category": "verb",
+    "example": "J'emprunte un livre."
+  },
+  {
+    "word": "rendre",
+    "definition": "Redonner quelque chose qu'on a emprunté",
+    "category": "verb",
+    "example": "Je rends le livre."
+  },
+  {
+    "word": "installer",
+    "definition": "Mettre en place, préparer",
+    "category": "verb",
+    "example": "On installe la tente."
+  },
+  {
+    "word": "ramasser",
+    "definition": "Prendre quelque chose par terre",
+    "category": "verb",
+    "example": "Je ramasse les feuilles."
+  },
+  {
+    "word": "distribuer",
+    "definition": "Donner à chacun sa part",
+    "category": "verb",
+    "example": "Je distribue les cahiers."
+  },
+  {
+    "word": "trottoir",
+    "definition": "Le bord de la rue surélevé où marchent les piétons",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je marche sur le trottoir."
+  },
+  {
+    "word": "passage",
+    "definition": "Un endroit pour passer, un chemin",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le passage piéton."
+  },
+  {
+    "word": "cour",
+    "definition": "Un espace ouvert entouré de bâtiments",
+    "category": "noun",
+    "gender": "f",
+    "example": "La cour de l'école."
+  },
+  {
+    "word": "salle",
+    "definition": "Une grande pièce dans un bâtiment",
+    "category": "noun",
+    "gender": "f",
+    "example": "La salle de classe."
+  },
+  {
+    "word": "bibliothèque",
+    "definition": "Un endroit où on emprunte des livres",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je vais à la bibliothèque."
+  },
+  {
+    "word": "musée",
+    "definition": "Un bâtiment où on regarde des œuvres d'art",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le musée est grand."
+  },
+  {
+    "word": "cinéma",
+    "definition": "L'endroit où on va voir des films",
+    "category": "noun",
+    "gender": "m",
+    "example": "On va au cinéma."
+  },
+  {
+    "word": "piscine",
+    "definition": "Un grand bassin d'eau pour nager",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je nage à la piscine."
+  },
+  {
+    "word": "stade",
+    "definition": "Un grand terrain pour faire du sport",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le stade est plein."
+  },
+  {
+    "word": "église",
+    "definition": "Un bâtiment où les chrétiens prient",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'église est ancienne."
+  },
+  {
+    "word": "ferme",
+    "definition": "Une maison à la campagne avec des animaux",
+    "category": "noun",
+    "gender": "f",
+    "example": "La ferme a des poules."
+  },
+  {
+    "word": "campagne",
+    "definition": "Les grands espaces verts loin de la ville",
+    "category": "noun",
+    "gender": "f",
+    "example": "La campagne est calme."
+  },
+  {
+    "word": "quartier",
+    "definition": "Un morceau d'une ville",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon quartier est joli."
+  },
+  {
+    "word": "village",
+    "definition": "Un petit groupe de maisons à la campagne",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le village est petit."
+  },
+  {
+    "word": "usine",
+    "definition": "Un grand bâtiment où on fabrique des choses",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'usine fait des voitures."
+  },
+  {
+    "word": "bureau",
+    "definition": "Un meuble pour travailler, ou un lieu de travail",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le bureau est rangé."
+  },
+  {
+    "word": "banque",
+    "definition": "L'endroit où on garde son argent",
+    "category": "noun",
+    "gender": "f",
+    "example": "Papa va à la banque."
+  },
+  {
+    "word": "restaurant",
+    "definition": "Un endroit où on va manger un repas préparé",
+    "category": "noun",
+    "gender": "m",
+    "example": "On mange au restaurant."
+  },
+  {
+    "word": "pharmacie",
+    "definition": "Le magasin où on achète des médicaments",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je vais à la pharmacie."
+  },
+  {
+    "word": "police",
+    "definition": "Les personnes qui protègent et font respecter la loi",
+    "category": "noun",
+    "gender": "f",
+    "example": "La police aide les gens."
+  },
+  {
+    "word": "pompier",
+    "definition": "La personne qui éteint les incendies",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le pompier est courageux."
+  },
+  {
+    "word": "facteur",
+    "definition": "La personne qui apporte le courrier",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le facteur apporte une lettre."
+  },
+  {
+    "word": "boulanger",
+    "definition": "La personne qui fait le pain",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le boulanger fait des croissants."
+  },
+  {
+    "word": "dentiste",
+    "definition": "Le docteur qui soigne les dents",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je vais chez le dentiste."
+  },
+  {
+    "word": "voisin",
+    "definition": "La personne qui habite à côté de chez nous",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon voisin est gentil."
+  },
+  {
+    "word": "invité",
+    "definition": "Une personne qu'on a invitée chez soi",
+    "category": "noun",
+    "gender": "m",
+    "example": "Les invités arrivent."
+  },
+  {
+    "word": "équipe",
+    "definition": "Un groupe de personnes qui travaillent ou jouent ensemble",
+    "category": "noun",
+    "gender": "f",
+    "example": "Mon équipe a gagné."
+  },
+  {
+    "word": "peuple",
+    "definition": "Les habitants d'un pays",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le peuple français."
+  },
+  {
+    "word": "sport",
+    "definition": "Une activité physique avec des règles",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le football est un sport."
+  },
+  {
+    "word": "football",
+    "definition": "Un sport où on tape dans un ballon avec les pieds",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je joue au football."
+  },
+  {
+    "word": "match",
+    "definition": "Une compétition entre deux équipes",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le match commence."
+  },
+  {
+    "word": "course",
+    "definition": "Une compétition de vitesse",
+    "category": "noun",
+    "gender": "f",
+    "example": "La course est amusante."
+  },
+  {
+    "word": "prix",
+    "definition": "Ce que coûte quelque chose, ou une récompense",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le prix est de deux euros."
+  },
+  {
+    "word": "repas",
+    "definition": "Le moment où on mange : petit-déjeuner, déjeuner, dîner",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le repas est prêt."
+  },
+  {
+    "word": "petit-déjeuner",
+    "definition": "Le repas du matin",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je prends mon petit-déjeuner."
+  },
+  {
+    "word": "déjeuner",
+    "definition": "Le repas du midi",
+    "category": "noun",
+    "gender": "m",
+    "example": "C'est l'heure du déjeuner."
+  },
+  {
+    "word": "dîner",
+    "definition": "Le repas du soir",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le dîner est prêt."
+  },
+  {
+    "word": "goûter",
+    "definition": "Le petit repas de l'après-midi pour les enfants",
+    "category": "noun",
+    "gender": "m",
+    "example": "C'est l'heure du goûter."
+  },
+  {
+    "word": "recette",
+    "definition": "Les instructions pour préparer un plat",
+    "category": "noun",
+    "gender": "f",
+    "example": "La recette du gâteau."
+  },
+  {
+    "word": "banane",
+    "definition": "Un fruit long et jaune",
+    "category": "noun",
+    "gender": "f",
+    "example": "Le singe mange une banane."
+  },
+  {
+    "word": "orange",
+    "definition": "Un fruit rond et orange plein de jus",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je presse une orange."
+  },
+  {
+    "word": "fraise",
+    "definition": "Un petit fruit rouge et sucré",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'adore les fraises."
+  },
+  {
+    "word": "cerise",
+    "definition": "Un petit fruit rond et rouge avec un noyau",
+    "category": "noun",
+    "gender": "f",
+    "example": "Les cerises sont mûres."
+  },
+  {
+    "word": "raisin",
+    "definition": "De petits fruits ronds qui poussent en grappes",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mange du raisin."
+  },
+  {
+    "word": "poire",
+    "definition": "Un fruit en forme de goutte, vert ou jaune",
+    "category": "noun",
+    "gender": "f",
+    "example": "La poire est juteuse."
+  },
+  {
+    "word": "citron",
+    "definition": "Un fruit jaune et acide",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le citron est acide."
+  },
+  {
+    "word": "tomate",
+    "definition": "Un fruit rouge qu'on mange comme un légume",
+    "category": "noun",
+    "gender": "f",
+    "example": "La salade de tomates."
+  },
+  {
+    "word": "pomme de terre",
+    "definition": "Un légume rond qui pousse sous la terre",
+    "category": "noun",
+    "gender": "f",
+    "example": "Les frites sont des pommes de terre."
+  },
+  {
+    "word": "haricot",
+    "definition": "Un légume long et vert",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mange des haricots verts."
+  },
+  {
+    "word": "oignon",
+    "definition": "Un légume rond qui fait pleurer quand on le coupe",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'oignon fait pleurer."
+  },
+  {
+    "word": "ail",
+    "definition": "Un petit légume blanc avec une odeur forte",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'ail a une odeur forte."
+  },
+  {
+    "word": "glace",
+    "definition": "De l'eau gelée, ou un dessert froid et sucré",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je mange une glace."
+  },
+  {
+    "word": "crêpe",
+    "definition": "Une galette fine et ronde qu'on mange avec du sucre",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'adore les crêpes."
+  },
+  {
+    "word": "croissant",
+    "definition": "Un pain en forme de lune qu'on mange au petit-déjeuner",
+    "category": "noun",
+    "gender": "m",
+    "example": "Un croissant au beurre."
+  },
+  {
+    "word": "confiture",
+    "definition": "Des fruits cuits avec du sucre qu'on met sur le pain",
+    "category": "noun",
+    "gender": "f",
+    "example": "De la confiture de fraises."
+  },
+  {
+    "word": "miel",
+    "definition": "Un aliment sucré fabriqué par les abeilles",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'ours aime le miel."
+  },
+  {
+    "word": "yaourt",
+    "definition": "Un aliment crémeux fait avec du lait",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mange un yaourt."
+  },
+  {
+    "word": "jus",
+    "definition": "Un liquide qu'on obtient en pressant des fruits",
+    "category": "noun",
+    "gender": "m",
+    "example": "Un jus d'orange."
+  },
+  {
+    "word": "thé",
+    "definition": "Une boisson chaude faite avec des feuilles séchées",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mamie boit du thé."
+  },
+  {
+    "word": "chemise",
+    "definition": "Un vêtement avec des boutons qu'on porte sur le haut du corps",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma chemise est blanche."
+  },
+  {
+    "word": "pull",
+    "definition": "Un vêtement chaud en laine pour le haut du corps",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon pull est rouge."
+  },
+  {
+    "word": "jupe",
+    "definition": "Un vêtement qui couvre le bas du corps, ouvert en bas",
+    "category": "noun",
+    "gender": "f",
+    "example": "La jupe est courte."
+  },
+  {
+    "word": "écharpe",
+    "definition": "Un long tissu qu'on met autour du cou quand il fait froid",
+    "category": "noun",
+    "gender": "f",
+    "example": "Mon écharpe est douce."
+  },
+  {
+    "word": "gant",
+    "definition": "Ce qu'on met aux mains quand il fait froid",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je mets mes gants."
+  },
+  {
+    "word": "botte",
+    "definition": "Une chaussure haute qui monte sur la jambe",
+    "category": "noun",
+    "gender": "f",
+    "example": "Les bottes de pluie."
+  },
+  {
+    "word": "pyjama",
+    "definition": "Le vêtement qu'on porte pour dormir",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon pyjama a des étoiles."
+  },
+  {
+    "word": "ceinture",
+    "definition": "Une bande qu'on met autour de la taille",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma ceinture est noire."
+  },
+  {
+    "word": "lunettes",
+    "definition": "Deux verres sur le nez pour mieux voir",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je porte des lunettes."
+  },
+  {
+    "word": "montre",
+    "definition": "Un petit objet au poignet qui donne l'heure",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma montre dit huit heures."
+  },
+  {
+    "word": "parapluie",
+    "definition": "Un objet qu'on ouvre au-dessus de sa tête quand il pleut",
+    "category": "noun",
+    "gender": "m",
+    "example": "Prends ton parapluie !"
+  },
+  {
+    "word": "brosse",
+    "definition": "Un outil avec des poils pour nettoyer ou coiffer",
+    "category": "noun",
+    "gender": "f",
+    "example": "La brosse à dents."
+  },
+  {
+    "word": "savon",
+    "definition": "Ce qu'on utilise avec de l'eau pour se laver",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je me lave les mains avec du savon."
+  },
+  {
+    "word": "serviette",
+    "definition": "Un tissu pour s'essuyer",
+    "category": "noun",
+    "gender": "f",
+    "example": "La serviette de bain."
+  },
+  {
+    "word": "peluche",
+    "definition": "Un jouet en tissu doux en forme d'animal",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je dors avec ma peluche."
+  },
+  {
+    "word": "véhicule",
+    "definition": "Un moyen de transport comme une voiture ou un bus",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le bus est un véhicule."
+  },
+  {
+    "word": "roue",
+    "definition": "Un cercle qui tourne et fait avancer un véhicule",
+    "category": "noun",
+    "gender": "f",
+    "example": "La voiture a quatre roues."
+  },
+  {
+    "word": "moteur",
+    "definition": "La machine qui fait avancer un véhicule",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le moteur fait du bruit."
+  },
+  {
+    "word": "essence",
+    "definition": "Le liquide qu'on met dans la voiture pour la faire avancer",
+    "category": "noun",
+    "gender": "f",
+    "example": "La voiture a besoin d'essence."
+  },
+  {
+    "word": "accident",
+    "definition": "Quand quelque chose de mauvais arrive sans le vouloir",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il y a eu un accident."
+  },
+  {
+    "word": "voyage",
+    "definition": "Un déplacement loin de chez soi",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le voyage était super."
+  },
+  {
+    "word": "valise",
+    "definition": "Un grand sac rigide pour transporter ses affaires en voyage",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je prépare ma valise."
+  },
+  {
+    "word": "plan",
+    "definition": "Un dessin qui montre comment est organisé un lieu",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le plan de la ville."
+  },
+  {
+    "word": "direction",
+    "definition": "Le côté vers lequel on va",
+    "category": "noun",
+    "gender": "f",
+    "example": "Quelle direction prendre ?"
+  },
+  {
+    "word": "distance",
+    "definition": "L'espace entre deux endroits",
+    "category": "noun",
+    "gender": "f",
+    "example": "La distance est courte."
+  },
+  {
+    "word": "vitesse",
+    "definition": "La rapidité avec laquelle on se déplace",
+    "category": "noun",
+    "gender": "f",
+    "example": "La vitesse du train."
+  },
+  {
+    "word": "carte postale",
+    "definition": "Une carte avec une image qu'on envoie en voyage",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'envoie une carte postale."
+  },
+  {
+    "word": "timbre",
+    "definition": "Un petit papier collé sur une lettre pour l'envoyer",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je colle un timbre."
+  },
+  {
+    "word": "enveloppe",
+    "definition": "Un papier plié pour mettre une lettre dedans",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je mets la lettre dans l'enveloppe."
+  },
+  {
+    "word": "ciseaux",
+    "definition": "Un outil avec deux lames pour couper",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je coupe avec des ciseaux."
+  },
+  {
+    "word": "colle",
+    "definition": "Un produit collant pour fixer des choses ensemble",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'utilise de la colle."
+  },
+  {
+    "word": "peinture",
+    "definition": "Un liquide coloré pour peindre",
+    "category": "noun",
+    "gender": "f",
+    "example": "La peinture est rouge."
+  },
+  {
+    "word": "pinceau",
+    "definition": "Un outil avec des poils pour étaler la peinture",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je prends un pinceau."
+  },
+  {
+    "word": "tableau",
+    "definition": "Une surface sur laquelle on écrit à l'école",
+    "category": "noun",
+    "gender": "m",
+    "example": "La maîtresse écrit au tableau."
+  },
+  {
+    "word": "cartable",
+    "definition": "Le sac qu'on porte sur le dos pour aller à l'école",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon cartable est lourd."
+  },
+  {
+    "word": "trousse",
+    "definition": "Un petit sac pour ranger ses crayons et stylos",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma trousse est pleine."
+  },
+  {
+    "word": "dictionnaire",
+    "definition": "Un livre qui explique les mots",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je cherche un mot dans le dictionnaire."
+  },
+  {
+    "word": "alphabet",
+    "definition": "L'ensemble des lettres A, B, C... Z",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je connais l'alphabet."
+  },
+  {
+    "word": "phrase",
+    "definition": "Un groupe de mots qui a un sens",
+    "category": "noun",
+    "gender": "f",
+    "example": "Écris une phrase."
+  },
+  {
+    "word": "poème",
+    "definition": "Un texte avec des rimes et un rythme",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ai appris un poème."
+  },
+  {
+    "word": "conte",
+    "definition": "Une histoire imaginaire, souvent avec des fées",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le conte du Petit Chaperon rouge."
+  },
+  {
+    "word": "héros",
+    "definition": "Le personnage principal et courageux d'une histoire",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le héros sauve la princesse."
+  },
+  {
+    "word": "personnage",
+    "definition": "Une personne dans une histoire ou un film",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon personnage préféré."
+  },
+  {
+    "word": "aventure",
+    "definition": "Une expérience excitante et un peu dangereuse",
+    "category": "noun",
+    "gender": "f",
+    "example": "Quelle aventure !"
+  },
+  {
+    "word": "trésor",
+    "definition": "Des objets très précieux cachés quelque part",
+    "category": "noun",
+    "gender": "m",
+    "example": "On cherche un trésor."
+  },
+  {
+    "word": "pirate",
+    "definition": "Un marin qui volait les navires",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le pirate a un perroquet."
+  },
+  {
+    "word": "dragon",
+    "definition": "Un animal imaginaire qui crache du feu",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le dragon vole dans le ciel."
+  },
+  {
+    "word": "fée",
+    "definition": "Un personnage magique avec des ailes et une baguette",
+    "category": "noun",
+    "gender": "f",
+    "example": "La fée exauce les vœux."
+  },
+  {
+    "word": "sorcière",
+    "definition": "Une femme qui fait de la magie dans les contes",
+    "category": "noun",
+    "gender": "f",
+    "example": "La sorcière prépare une potion."
+  },
+  {
+    "word": "magie",
+    "definition": "Des pouvoirs extraordinaires qui n'existent pas vraiment",
+    "category": "noun",
+    "gender": "f",
+    "example": "Un tour de magie."
+  },
+  {
+    "word": "géant",
+    "definition": "Un personnage immense dans les contes",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le géant est très grand."
+  },
+  {
+    "word": "nain",
+    "definition": "Un personnage très petit dans les contes",
+    "category": "noun",
+    "gender": "m",
+    "example": "Blanche-Neige et les sept nains."
+  },
+  {
+    "word": "intelligent",
+    "definition": "Qui comprend vite et réfléchit bien",
+    "category": "adjective",
+    "example": "Le dauphin est intelligent."
+  },
+  {
+    "word": "stupide",
+    "definition": "Qui n'est pas malin, bête",
+    "category": "adjective",
+    "example": "C'est une erreur stupide."
+  },
+  {
+    "word": "courageux",
+    "definition": "Qui n'a pas peur du danger",
+    "category": "adjective",
+    "example": "Le pompier est courageux."
+  },
+  {
+    "word": "peureux",
+    "definition": "Qui a facilement peur",
+    "category": "adjective",
+    "example": "Le lapin est peureux."
+  },
+  {
+    "word": "curieux",
+    "definition": "Qui veut tout savoir et tout découvrir",
+    "category": "adjective",
+    "example": "L'enfant est curieux."
+  },
+  {
+    "word": "sage",
+    "definition": "Qui se comporte bien, qui est calme",
+    "category": "adjective",
+    "example": "Sois sage à l'école."
+  },
+  {
+    "word": "calme",
+    "definition": "Tranquille, sans bruit ni agitation",
+    "category": "adjective",
+    "example": "La nuit est calme."
+  },
+  {
+    "word": "bruyant",
+    "definition": "Qui fait beaucoup de bruit",
+    "category": "adjective",
+    "example": "La rue est bruyante."
+  },
+  {
+    "word": "silencieux",
+    "definition": "Qui ne fait aucun bruit",
+    "category": "adjective",
+    "example": "Le chat est silencieux."
+  },
+  {
+    "word": "timide",
+    "definition": "Qui n'ose pas parler ou se montrer",
+    "category": "adjective",
+    "example": "La petite fille est timide."
+  },
+  {
+    "word": "fier",
+    "definition": "Content de ce qu'on a fait, satisfait",
+    "category": "adjective",
+    "example": "Je suis fier de toi."
+  },
+  {
+    "word": "jaloux",
+    "definition": "Qui voudrait avoir ce que l'autre a",
+    "category": "adjective",
+    "example": "Il est jaloux de son frère."
+  },
+  {
+    "word": "inquiet",
+    "definition": "Qui se fait du souci",
+    "category": "adjective",
+    "example": "Maman est inquiète."
+  },
+  {
+    "word": "étonné",
+    "definition": "Surpris par quelque chose",
+    "category": "adjective",
+    "example": "Je suis étonné."
+  },
+  {
+    "word": "énorme",
+    "definition": "Très très grand ou gros",
+    "category": "adjective",
+    "example": "L'éléphant est énorme."
+  },
+  {
+    "word": "minuscule",
+    "definition": "Très très petit, tout petit",
+    "category": "adjective",
+    "example": "La fourmi est minuscule."
+  },
+  {
+    "word": "immense",
+    "definition": "Extrêmement grand, sans fin",
+    "category": "adjective",
+    "example": "La mer est immense."
+  },
+  {
+    "word": "ancien",
+    "definition": "Qui existe depuis très longtemps",
+    "category": "adjective",
+    "example": "Le château est ancien."
+  },
+  {
+    "word": "moderne",
+    "definition": "Qui est récent, d'aujourd'hui",
+    "category": "adjective",
+    "example": "La maison est moderne."
+  },
+  {
+    "word": "exact",
+    "definition": "Tout à fait correct, précis",
+    "category": "adjective",
+    "example": "La réponse est exacte."
+  },
+  {
+    "word": "correct",
+    "definition": "Qui est bien, sans erreur",
+    "category": "adjective",
+    "example": "La réponse est correcte."
+  },
+  {
+    "word": "gratuit",
+    "definition": "Qui ne coûte rien",
+    "category": "adjective",
+    "example": "L'entrée est gratuite."
+  },
+  {
+    "word": "cher",
+    "definition": "Qui coûte beaucoup d'argent",
+    "category": "adjective",
+    "example": "Ce jouet est cher."
+  },
+  {
+    "word": "utile",
+    "definition": "Qui sert à quelque chose, pratique",
+    "category": "adjective",
+    "example": "Ce livre est utile."
+  },
+  {
+    "word": "inutile",
+    "definition": "Qui ne sert à rien",
+    "category": "adjective",
+    "example": "C'est inutile de crier."
+  },
+  {
+    "word": "agréable",
+    "definition": "Qui fait plaisir, qui est plaisant",
+    "category": "adjective",
+    "example": "La promenade est agréable."
+  },
+  {
+    "word": "désagréable",
+    "definition": "Qui n'est pas plaisant",
+    "category": "adjective",
+    "example": "L'odeur est désagréable."
+  },
+  {
+    "word": "confortable",
+    "definition": "Où on se sent bien, à l'aise",
+    "category": "adjective",
+    "example": "Le canapé est confortable."
+  },
+  {
+    "word": "dangereux",
+    "definition": "Qui peut faire du mal",
+    "category": "adjective",
+    "example": "Le feu est dangereux."
+  },
+  {
+    "word": "fragile",
+    "definition": "Qui se casse facilement",
+    "category": "adjective",
+    "example": "Le verre est fragile."
+  },
+  {
+    "word": "solide",
+    "definition": "Qui est dur et résistant",
+    "category": "adjective",
+    "example": "Le mur est solide."
+  },
+  {
+    "word": "sauvage",
+    "definition": "Qui vit dans la nature, pas apprivoisé",
+    "category": "adjective",
+    "example": "Le loup est sauvage."
+  },
+  {
+    "word": "parfait",
+    "definition": "Sans aucun défaut, exactement comme il faut",
+    "category": "adjective",
+    "example": "C'est parfait !"
+  },
+  {
+    "word": "horrible",
+    "definition": "Très laid ou très mauvais",
+    "category": "adjective",
+    "example": "Le monstre est horrible."
+  },
+  {
+    "word": "merveilleux",
+    "definition": "Extraordinairement beau ou bien",
+    "category": "adjective",
+    "example": "C'est merveilleux !"
+  },
+  {
+    "word": "magique",
+    "definition": "Qui semble venir de la magie",
+    "category": "adjective",
+    "example": "La baguette magique."
+  },
+  {
+    "word": "secret",
+    "definition": "Que personne ne doit savoir",
+    "category": "adjective",
+    "example": "Un passage secret."
+  },
+  {
+    "word": "favori",
+    "definition": "Qu'on préfère à tous les autres",
+    "category": "adjective",
+    "example": "Mon jeu favori."
+  },
+  {
+    "word": "ordinaire",
+    "definition": "Normal, habituel, pas spécial",
+    "category": "adjective",
+    "example": "Une journée ordinaire."
+  },
+  {
+    "word": "extraordinaire",
+    "definition": "Très spécial, hors du commun",
+    "category": "adjective",
+    "example": "Une aventure extraordinaire."
+  },
+  {
+    "word": "grand-père",
+    "definition": "Le père de papa ou de maman",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon grand-père raconte des histoires."
+  },
+  {
+    "word": "grand-mère",
+    "definition": "La mère de papa ou de maman",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma grand-mère fait des gâteaux."
+  },
+  {
+    "word": "oncle",
+    "definition": "Le frère de papa ou de maman",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon oncle habite loin."
+  },
+  {
+    "word": "tante",
+    "definition": "La sœur de papa ou de maman",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma tante est drôle."
+  },
+  {
+    "word": "cousin",
+    "definition": "L'enfant de l'oncle ou de la tante",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon cousin a mon âge."
+  },
+  {
+    "word": "cousine",
+    "definition": "La fille de l'oncle ou de la tante",
+    "category": "noun",
+    "gender": "f",
+    "example": "Ma cousine joue avec moi."
+  },
+  {
+    "word": "fils",
+    "definition": "Un enfant garçon par rapport à ses parents",
+    "category": "noun",
+    "gender": "m",
+    "example": "C'est le fils de mon voisin."
+  },
+  {
+    "word": "poussette",
+    "definition": "Un petit chariot pour promener un bébé",
+    "category": "noun",
+    "gender": "f",
+    "example": "Le bébé est dans la poussette."
+  },
+  {
+    "word": "berceau",
+    "definition": "Un petit lit pour les bébés",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le bébé dort dans son berceau."
+  },
+  {
+    "word": "biberon",
+    "definition": "Une bouteille avec une tétine pour nourrir un bébé",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le bébé boit son biberon."
+  },
+  {
+    "word": "couche",
+    "definition": "Ce qu'on met aux bébés avant qu'ils sachent aller aux toilettes",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il faut changer la couche."
+  },
+  {
+    "word": "canapé",
+    "definition": "Un grand siège moelleux pour s'asseoir à plusieurs",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je lis sur le canapé."
+  },
+  {
+    "word": "tapis",
+    "definition": "Un tissu épais posé sur le sol",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le tapis est doux."
+  },
+  {
+    "word": "rideau",
+    "definition": "Un tissu qu'on met devant la fenêtre",
+    "category": "noun",
+    "gender": "m",
+    "example": "Je ferme les rideaux."
+  },
+  {
+    "word": "lampe",
+    "definition": "Un objet qui donne de la lumière",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'allume la lampe."
+  },
+  {
+    "word": "robinet",
+    "definition": "Ce qu'on ouvre pour avoir de l'eau",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ouvre le robinet."
+  },
+  {
+    "word": "douche",
+    "definition": "Un jet d'eau pour se laver debout",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je prends une douche."
+  },
+  {
+    "word": "baignoire",
+    "definition": "Un grand récipient pour prendre un bain",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je me lave dans la baignoire."
+  },
+  {
+    "word": "toilettes",
+    "definition": "L'endroit où on va pour faire ses besoins",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je vais aux toilettes."
+  },
+  {
+    "word": "réfrigérateur",
+    "definition": "La machine qui garde les aliments au froid",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le lait est dans le réfrigérateur."
+  },
+  {
+    "word": "four",
+    "definition": "Une machine qui chauffe très fort pour cuire les aliments",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le gâteau cuit dans le four."
+  },
+  {
+    "word": "casserole",
+    "definition": "Un récipient en métal pour faire cuire sur le feu",
+    "category": "noun",
+    "gender": "f",
+    "example": "La soupe chauffe dans la casserole."
+  },
+  {
+    "word": "poêle",
+    "definition": "Un ustensile plat pour faire cuire des aliments",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je fais cuire un œuf dans la poêle."
+  },
+  {
+    "word": "étagère",
+    "definition": "Une planche fixée au mur pour poser des objets",
+    "category": "noun",
+    "gender": "f",
+    "example": "Les livres sont sur l'étagère."
+  },
+  {
+    "word": "armoire",
+    "definition": "Un grand meuble fermé pour ranger les vêtements",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'armoire est pleine."
+  },
+  {
+    "word": "tiroir",
+    "definition": "Une partie d'un meuble qu'on peut tirer pour ranger",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'ouvre le tiroir."
+  },
+  {
+    "word": "oreiller",
+    "definition": "Un coussin moelleux sur lequel on pose la tête pour dormir",
+    "category": "noun",
+    "gender": "m",
+    "example": "Mon oreiller est doux."
+  },
+  {
+    "word": "couverture",
+    "definition": "Un tissu chaud qu'on met sur soi pour dormir",
+    "category": "noun",
+    "gender": "f",
+    "example": "La couverture est chaude."
+  },
+  {
+    "word": "drap",
+    "definition": "Un grand tissu fin qu'on met sur le lit",
+    "category": "noun",
+    "gender": "m",
+    "example": "Les draps sont propres."
+  },
+  {
+    "word": "matelas",
+    "definition": "La partie moelleuse du lit sur laquelle on dort",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le matelas est confortable."
+  },
+  {
+    "word": "réveil",
+    "definition": "Une petite horloge qui sonne pour nous réveiller",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le réveil sonne à sept heures."
+  },
+  {
+    "word": "horloge",
+    "definition": "Un objet qui montre l'heure avec des aiguilles",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'horloge est sur le mur."
+  },
+  {
+    "word": "bougie",
+    "definition": "Un bâton de cire avec une mèche qui brûle",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je souffle les bougies."
+  },
+  {
+    "word": "allumette",
+    "definition": "Un petit bâton de bois pour faire du feu",
+    "category": "noun",
+    "gender": "f",
+    "example": "On allume le feu avec une allumette."
+  },
+  {
+    "word": "pile",
+    "definition": "Un petit objet qui donne de l'électricité",
+    "category": "noun",
+    "gender": "f",
+    "example": "La pile de la télécommande."
+  },
+  {
+    "word": "fil",
+    "definition": "Un long brin fin de métal ou de tissu",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le fil est rouge."
+  },
+  {
+    "word": "bouton",
+    "definition": "Un petit rond qu'on pousse ou qu'on coud sur un vêtement",
+    "category": "noun",
+    "gender": "m",
+    "example": "J'appuie sur le bouton."
+  },
+  {
+    "word": "aiguille",
+    "definition": "Un petit bâton fin et pointu pour coudre",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'aiguille pique."
+  },
+  {
+    "word": "tissu",
+    "definition": "Un matériau souple fait de fils pour les vêtements",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le tissu est doux."
+  },
+  {
+    "word": "laine",
+    "definition": "Les poils du mouton dont on fait des pulls",
+    "category": "noun",
+    "gender": "f",
+    "example": "Le pull est en laine."
+  },
+  {
+    "word": "coton",
+    "definition": "Une matière douce qui vient d'une plante",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le t-shirt est en coton."
+  },
+  {
+    "word": "métal",
+    "definition": "Une matière dure et brillante comme le fer",
+    "category": "noun",
+    "gender": "m",
+    "example": "La clé est en métal."
+  },
+  {
+    "word": "bois",
+    "definition": "La matière des arbres, utilisée pour construire",
+    "category": "noun",
+    "gender": "m",
+    "example": "La table est en bois."
+  },
+  {
+    "word": "plastique",
+    "definition": "Une matière légère fabriquée par l'homme",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le jouet est en plastique."
+  },
+  {
+    "word": "racine",
+    "definition": "La partie de la plante qui est dans la terre",
+    "category": "noun",
+    "gender": "f",
+    "example": "Les racines de l'arbre."
+  },
+  {
+    "word": "tige",
+    "definition": "La partie longue et fine d'une plante",
+    "category": "noun",
+    "gender": "f",
+    "example": "La tige de la rose."
+  },
+  {
+    "word": "pétale",
+    "definition": "Une des parties colorées d'une fleur",
+    "category": "noun",
+    "gender": "m",
+    "example": "Les pétales sont roses."
+  },
+  {
+    "word": "rosée",
+    "definition": "De petites gouttes d'eau sur l'herbe le matin",
+    "category": "noun",
+    "gender": "f",
+    "example": "La rosée brille au soleil."
+  },
+  {
+    "word": "arc-en-ciel",
+    "definition": "Des bandes de couleurs dans le ciel après la pluie",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'arc-en-ciel a sept couleurs."
+  },
+  {
+    "word": "orage",
+    "definition": "Une tempête avec du tonnerre et des éclairs",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'orage fait du bruit."
+  },
+  {
+    "word": "tonnerre",
+    "definition": "Le grand bruit dans le ciel pendant un orage",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le tonnerre gronde."
+  },
+  {
+    "word": "éclair",
+    "definition": "Une lumière vive dans le ciel pendant un orage",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'éclair brille dans le ciel."
+  },
+  {
+    "word": "brouillard",
+    "definition": "Un nuage très bas qui empêche de voir loin",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il y a du brouillard ce matin."
+  },
+  {
+    "word": "gelée",
+    "definition": "Quand il fait si froid que l'eau gèle dehors",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il y a de la gelée ce matin."
+  },
+  {
+    "word": "tempête",
+    "definition": "Un vent très fort avec de la pluie",
+    "category": "noun",
+    "gender": "f",
+    "example": "La tempête souffle fort."
+  },
+  {
+    "word": "inondation",
+    "definition": "Quand l'eau recouvre la terre après beaucoup de pluie",
+    "category": "noun",
+    "gender": "f",
+    "example": "Il y a une inondation."
+  },
+  {
+    "word": "volcan",
+    "definition": "Une montagne qui crache du feu et de la lave",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le volcan est en éruption."
+  },
+  {
+    "word": "planète",
+    "definition": "Un gros objet rond qui tourne autour du soleil",
+    "category": "noun",
+    "gender": "f",
+    "example": "La Terre est une planète."
+  },
+  {
+    "word": "univers",
+    "definition": "Tout ce qui existe : les étoiles, les planètes, l'espace",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'univers est immense."
+  },
+  {
+    "word": "espace",
+    "definition": "L'endroit au-delà du ciel où sont les étoiles",
+    "category": "noun",
+    "gender": "m",
+    "example": "Les astronautes vont dans l'espace."
+  },
+  {
+    "word": "fusée",
+    "definition": "Un véhicule qui va dans l'espace",
+    "category": "noun",
+    "gender": "f",
+    "example": "La fusée décolle."
+  },
+  {
+    "word": "astronaute",
+    "definition": "Une personne qui voyage dans l'espace",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'astronaute est sur la lune."
+  },
+  {
+    "word": "robot",
+    "definition": "Une machine qui peut faire des actions toute seule",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le robot marche."
+  },
+  {
+    "word": "invention",
+    "definition": "Une chose nouvelle que quelqu'un a créée",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'avion est une grande invention."
+  },
+  {
+    "word": "expérience",
+    "definition": "Un essai qu'on fait pour apprendre quelque chose",
+    "category": "noun",
+    "gender": "f",
+    "example": "On fait une expérience en science."
+  },
+  {
+    "word": "science",
+    "definition": "L'étude de la nature et du monde",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'aime la science."
+  },
+  {
+    "word": "mathématiques",
+    "definition": "L'étude des nombres et des calculs",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'aime les mathématiques."
+  },
+  {
+    "word": "géographie",
+    "definition": "L'étude des pays et des paysages de la Terre",
+    "category": "noun",
+    "gender": "f",
+    "example": "On apprend la géographie."
+  },
+  {
+    "word": "paysage",
+    "definition": "Ce qu'on voit quand on regarde au loin dehors",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le paysage est magnifique."
+  },
+  {
+    "word": "horizon",
+    "definition": "La ligne loin où le ciel semble toucher la terre",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le soleil se couche à l'horizon."
+  },
+  {
+    "word": "saison",
+    "definition": "Une des quatre périodes de l'année",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'été est ma saison préférée."
+  },
+  {
+    "word": "nature",
+    "definition": "Tout ce qui existe sans être fabriqué par l'homme",
+    "category": "noun",
+    "gender": "f",
+    "example": "J'aime la nature."
+  },
+  {
+    "word": "environnement",
+    "definition": "Tout ce qui nous entoure : l'air, l'eau, la nature",
+    "category": "noun",
+    "gender": "m",
+    "example": "Il faut protéger l'environnement."
+  },
+  {
+    "word": "pollution",
+    "definition": "Les saletés qui abîment l'air, l'eau et la terre",
+    "category": "noun",
+    "gender": "f",
+    "example": "La pollution est mauvaise."
+  },
+  {
+    "word": "poubelle",
+    "definition": "Le récipient où on jette les déchets",
+    "category": "noun",
+    "gender": "f",
+    "example": "Je jette le papier à la poubelle."
+  },
+  {
+    "word": "recycler",
+    "definition": "Transformer des déchets pour en faire de nouvelles choses",
+    "category": "verb",
+    "example": "On recycle le papier."
+  },
+  {
+    "word": "économiser",
+    "definition": "Garder de l'argent ou ne pas gaspiller",
+    "category": "verb",
+    "example": "J'économise pour acheter un jouet."
+  },
+  {
+    "word": "respecter",
+    "definition": "Traiter bien, suivre les règles",
+    "category": "verb",
+    "example": "Je respecte les autres."
+  },
+  {
+    "word": "organiser",
+    "definition": "Mettre en ordre, planifier",
+    "category": "verb",
+    "example": "On organise une fête."
+  },
+  {
+    "word": "participer",
+    "definition": "Prendre part à une activité",
+    "category": "verb",
+    "example": "Je participe au jeu."
+  },
+  {
+    "word": "réussir",
+    "definition": "Y arriver, avoir du succès",
+    "category": "verb",
+    "example": "J'ai réussi mon examen."
+  },
+  {
+    "word": "échouer",
+    "definition": "Ne pas réussir, rater",
+    "category": "verb",
+    "example": "J'ai échoué mais je réessaie."
+  },
+  {
+    "word": "hésiter",
+    "definition": "Ne pas savoir quoi choisir",
+    "category": "verb",
+    "example": "J'hésite entre les deux."
+  },
+  {
+    "word": "décider",
+    "definition": "Faire un choix",
+    "category": "verb",
+    "example": "J'ai décidé de rester."
+  },
+  {
+    "word": "obéir",
+    "definition": "Faire ce que quelqu'un demande",
+    "category": "verb",
+    "example": "Le chien obéit à son maître."
+  },
+  {
+    "word": "désobéir",
+    "definition": "Ne pas faire ce qui est demandé",
+    "category": "verb",
+    "example": "Il ne faut pas désobéir."
+  },
+  {
+    "word": "punir",
+    "definition": "Donner une conséquence à quelqu'un qui a mal agi",
+    "category": "verb",
+    "example": "Papa m'a puni."
+  },
+  {
+    "word": "récompenser",
+    "definition": "Donner quelque chose de bien à quelqu'un qui a bien agi",
+    "category": "verb",
+    "example": "La maîtresse récompense les élèves."
+  },
+  {
+    "word": "encourager",
+    "definition": "Donner du courage, dire à quelqu'un qu'il peut y arriver",
+    "category": "verb",
+    "example": "Mon ami m'encourage."
+  },
+  {
+    "word": "consoler",
+    "definition": "Aider quelqu'un qui est triste à aller mieux",
+    "category": "verb",
+    "example": "Je console mon ami."
+  },
+  {
+    "word": "excuser",
+    "definition": "Pardonner à quelqu'un",
+    "category": "verb",
+    "example": "Excuse-moi."
+  },
+  {
+    "word": "saluer",
+    "definition": "Dire bonjour ou au revoir",
+    "category": "verb",
+    "example": "Je salue mes amis."
+  },
+  {
+    "word": "présenter",
+    "definition": "Faire connaître quelqu'un à quelqu'un d'autre",
+    "category": "verb",
+    "example": "Je te présente mon ami."
+  },
+  {
+    "word": "siffler",
+    "definition": "Faire un son aigu avec sa bouche ou un sifflet",
+    "category": "verb",
+    "example": "L'arbitre siffle."
+  },
+  {
+    "word": "murmurer",
+    "definition": "Parler très doucement",
+    "category": "verb",
+    "example": "Il murmure un secret."
+  },
+  {
+    "word": "chuchoter",
+    "definition": "Parler très bas pour que personne d'autre n'entende",
+    "category": "verb",
+    "example": "Je chuchote à l'oreille de mon ami."
+  },
+  {
+    "word": "hurler",
+    "definition": "Crier très fort",
+    "category": "verb",
+    "example": "Le loup hurle."
+  },
+  {
+    "word": "soupirer",
+    "definition": "Souffler fort quand on est fatigué ou triste",
+    "category": "verb",
+    "example": "Il soupire de fatigue."
+  },
+  {
+    "word": "bâiller",
+    "definition": "Ouvrir grand la bouche quand on est fatigué",
+    "category": "verb",
+    "example": "Je bâille car j'ai sommeil."
+  },
+  {
+    "word": "éternuer",
+    "definition": "Souffler fort par le nez sans le vouloir",
+    "category": "verb",
+    "example": "J'éternue à cause du pollen."
+  },
+  {
+    "word": "tousser",
+    "definition": "Faire du bruit avec sa gorge quand on est malade",
+    "category": "verb",
+    "example": "Je tousse beaucoup."
+  },
+  {
+    "word": "guérir",
+    "definition": "Aller mieux après avoir été malade",
+    "category": "verb",
+    "example": "Je suis guéri."
+  },
+  {
+    "word": "soigner",
+    "definition": "S'occuper de quelqu'un qui est malade",
+    "category": "verb",
+    "example": "Le docteur soigne les malades."
+  },
+  {
+    "word": "mesurer",
+    "definition": "Voir la taille ou la longueur de quelque chose",
+    "category": "verb",
+    "example": "Je mesure un mètre vingt."
+  },
+  {
+    "word": "peser",
+    "definition": "Savoir combien quelque chose est lourd",
+    "category": "verb",
+    "example": "Je pèse trente kilos."
+  },
+  {
+    "word": "comparer",
+    "definition": "Regarder deux choses pour voir les différences",
+    "category": "verb",
+    "example": "Je compare les deux dessins."
+  },
+  {
+    "word": "trier",
+    "definition": "Séparer les choses en groupes",
+    "category": "verb",
+    "example": "Je trie les couleurs."
+  },
+  {
+    "word": "empiler",
+    "definition": "Mettre des choses les unes sur les autres",
+    "category": "verb",
+    "example": "J'empile les cubes."
+  },
+  {
+    "word": "creuser",
+    "definition": "Faire un trou dans la terre",
+    "category": "verb",
+    "example": "Le chien creuse un trou."
+  },
+  {
+    "word": "arroser",
+    "definition": "Verser de l'eau sur les plantes",
+    "category": "verb",
+    "example": "J'arrose les fleurs."
+  },
+  {
+    "word": "cueillir",
+    "definition": "Prendre une fleur ou un fruit sur la plante",
+    "category": "verb",
+    "example": "Je cueille des fleurs."
+  },
+  {
+    "word": "semer",
+    "definition": "Mettre des graines dans la terre",
+    "category": "verb",
+    "example": "Je sème des graines."
+  },
+  {
+    "word": "récolter",
+    "definition": "Ramasser ce qui a poussé dans le jardin",
+    "category": "verb",
+    "example": "On récolte les tomates."
+  },
+  {
+    "word": "nourrir",
+    "definition": "Donner à manger",
+    "category": "verb",
+    "example": "Je nourris mon chat."
+  },
+  {
+    "word": "dresser",
+    "definition": "Apprendre à un animal à obéir",
+    "category": "verb",
+    "example": "Je dresse mon chien."
+  },
+  {
+    "word": "galoper",
+    "definition": "Courir très vite comme un cheval",
+    "category": "verb",
+    "example": "Le cheval galope."
+  },
+  {
+    "word": "ramper",
+    "definition": "Se déplacer à plat ventre comme un serpent",
+    "category": "verb",
+    "example": "Le bébé rampe."
+  },
+  {
+    "word": "piquer",
+    "definition": "Enfoncer quelque chose de pointu",
+    "category": "verb",
+    "example": "L'abeille pique."
+  },
+  {
+    "word": "mordre",
+    "definition": "Serrer avec les dents",
+    "category": "verb",
+    "example": "Le chien mord son jouet."
+  },
+  {
+    "word": "lécher",
+    "definition": "Passer sa langue sur quelque chose",
+    "category": "verb",
+    "example": "Le chat lèche sa patte."
+  },
+  {
+    "word": "ronronner",
+    "definition": "Le bruit doux que fait un chat content",
+    "category": "verb",
+    "example": "Le chat ronronne."
+  },
+  {
+    "word": "aboyer",
+    "definition": "Le cri du chien",
+    "category": "verb",
+    "example": "Le chien aboie."
+  },
+  {
+    "word": "miauler",
+    "definition": "Le cri du chat",
+    "category": "verb",
+    "example": "Le chat miaule."
+  },
+  {
+    "word": "rugir",
+    "definition": "Le cri puissant du lion",
+    "category": "verb",
+    "example": "Le lion rugit."
+  },
+  {
+    "word": "croasser",
+    "definition": "Le cri de la grenouille",
+    "category": "verb",
+    "example": "La grenouille croasse."
+  },
+  {
+    "word": "pondre",
+    "definition": "Quand un oiseau fait un œuf",
+    "category": "verb",
+    "example": "La poule pond un œuf."
+  },
+  {
+    "word": "couver",
+    "definition": "Quand un oiseau reste sur ses œufs pour les garder au chaud",
+    "category": "verb",
+    "example": "La poule couve ses œufs."
+  },
+  {
+    "word": "éclore",
+    "definition": "Quand un bébé animal sort de son œuf",
+    "category": "verb",
+    "example": "Le poussin éclot."
+  },
+  {
+    "word": "migrer",
+    "definition": "Quand les oiseaux voyagent vers un pays chaud en hiver",
+    "category": "verb",
+    "example": "Les oiseaux migrent en automne."
+  },
+  {
+    "word": "hiberner",
+    "definition": "Quand un animal dort tout l'hiver",
+    "category": "verb",
+    "example": "L'ours hiberne en hiver."
+  },
+  {
+    "word": "cabane",
+    "definition": "Une petite maison en bois",
+    "category": "noun",
+    "gender": "m",
+    "example": "On construit une cabane."
+  },
+  {
+    "word": "nid",
+    "definition": "La petite maison que les oiseaux fabriquent pour leurs œufs",
+    "category": "noun",
+    "gender": "m",
+    "example": "L'oiseau est dans son nid."
+  },
+  {
+    "word": "grotte",
+    "definition": "Un grand trou naturel dans la roche",
+    "category": "noun",
+    "gender": "f",
+    "example": "L'ours vit dans une grotte."
+  },
+  {
+    "word": "cascade",
+    "definition": "De l'eau qui tombe du haut d'un rocher",
+    "category": "noun",
+    "gender": "f",
+    "example": "La cascade est magnifique."
+  },
+  {
+    "word": "prairie",
+    "definition": "Un grand terrain couvert d'herbe",
+    "category": "noun",
+    "gender": "f",
+    "example": "Les vaches sont dans la prairie."
+  },
+  {
+    "word": "colline",
+    "definition": "Une petite montagne arrondie",
+    "category": "noun",
+    "gender": "f",
+    "example": "La maison est sur la colline."
+  },
+  {
+    "word": "falaise",
+    "definition": "Un mur de roche très haut au bord de la mer",
+    "category": "noun",
+    "gender": "f",
+    "example": "La falaise est impressionnante."
+  },
+  {
+    "word": "marée",
+    "definition": "L'eau de la mer qui monte et qui descend",
+    "category": "noun",
+    "gender": "f",
+    "example": "La marée est haute."
+  },
+  {
+    "word": "vague",
+    "definition": "Un mouvement de l'eau de la mer",
+    "category": "noun",
+    "gender": "f",
+    "example": "Les vagues sont grandes."
+  },
+  {
+    "word": "corail",
+    "definition": "Un animal marin coloré qui ressemble à une plante",
+    "category": "noun",
+    "gender": "m",
+    "example": "Le corail est sous la mer."
+  }
+]
