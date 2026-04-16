@@ -174,12 +174,6 @@
       border-radius: 0.25rem;
     }
 
-    .stats {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.8rem;
-      margin-top: 2rem;
-    }
-
     .phonetic-badge {
       font-size: 0.75rem;
       background: rgba(102, 126, 234, 0.1);
@@ -253,10 +247,9 @@
 
   <div id="result"></div>
 
-  <p class="hint">Essaie : <code>gato</code> → gâteau · <code>xien</code> → chien · <code>garson</code> → garçon · <code>foto</code> → photo</p>
-  <p class="stats" id="stats"></p>
-
   <div class="bottom-row" id="others"></div>
+
+  <p class="hint">Essaie : <code>gato</code> → gâteau · <code>xien</code> → chien · <code>garson</code> → garçon · <code>foto</code> → photo</p>
 
   <script>
     let dictionary = [];
@@ -567,11 +560,9 @@
       .then(r => r.json())
       .then(data => {
         dictionary = data.map(e => ({ ...e, _phonetic: phonetic(e.word) }));
-        document.getElementById('stats').textContent = `${dictionary.length} mots chargés`;
         searchEl.focus();
       })
       .catch(err => {
-        document.getElementById('stats').textContent = 'Erreur de chargement du dictionnaire';
         console.error(err);
       });
   </script>
