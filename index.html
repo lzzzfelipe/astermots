@@ -9,105 +9,37 @@
 
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: linear-gradient(180deg, #0b4f8a 0%, #1a6fb5 30%, #2e86c1 60%, #5dade2 100%);
+      background: #fafafa;
       height: 100vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding: 1rem 1rem 0;
-      color: #333;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      color: white;
-      margin-bottom: 0.25rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      display: none;
-    }
-
-    .subtitle {
-      display: none;
+      padding: 3rem 1.5rem 1rem;
+      color: #111;
     }
 
     .search-container {
-      position: relative;
       width: 100%;
-      max-width: 500px;
-      margin-bottom: 0.5rem;
-      display: flex;
-      justify-content: center;
-      overflow: visible;
-      padding-top: 60px;
-    }
-
-    .cloud {
-      position: relative;
-      width: 180px;
-      padding: 1.2rem 1.5rem;
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1),
-                  padding 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .cloud::after, .cloud::before { display: none; }
-
-    .cloud-blobs {
-      position: absolute;
-      inset: -100px -60px -120px -60px;
-      filter: url(#goo);
-      z-index: 0;
-      pointer-events: none;
-      overflow: visible;
-    }
-
-    .cloud-body {
-      position: absolute;
-      top: 100px;
-      left: 60px;
-      right: 60px;
-      bottom: 120px;
-      min-height: 50px;
-      background: #ECEFF1;
-      border-radius: 100px;
-      box-shadow: 8px 8px rgba(0,0,0,0.12);
-    }
-
-    .cloud .bubble {
-      position: absolute;
-      background: #ECEFF1;
-      border-radius: 50%;
-      transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      /* positions are relative to .cloud-blobs, offset by its inset */
+      max-width: 520px;
+      margin-bottom: 1.5rem;
     }
 
     #search {
       width: 100%;
       padding: 0.75rem 1rem;
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: 600;
-      color: #455a64;
-      letter-spacing: 0.03em;
-      border: none;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
+      border: 2px solid #111;
+      background: #fff;
       outline: none;
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      caret-color: #667eea;
+      color: #111;
+      letter-spacing: 0.02em;
     }
+    #search:focus { border-color: #555; }
+    #search::placeholder { color: #ccc; font-weight: 400; }
 
-    #search:focus {
-      box-shadow: none;
-    }
-
-    #search::placeholder { color: #aaa; }
-
-    /* Montessori grammar color coding */
-    .cat { background: none; padding: 0; border-radius: 0; font-weight: 700; }
+    .cat { font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; }
     .cat-noun { color: #1a1a1a; }
     .cat-verb { color: #cc0000; }
     .cat-adjective { color: #0044aa; }
@@ -119,291 +51,73 @@
     .cat-interjection { color: #ccaa00; }
 
     .card {
-      position: relative;
-      padding: 1.2rem 1.5rem;
-      margin: 0.5rem 0;
-      max-width: 500px;
       width: 100%;
-      animation: cloudFadeIn 0.6s ease-out both;
-      background: transparent;
-    }
-
-    .card .card-blobs {
-      position: absolute;
-      inset: -40px -30px -50px -30px;
-      filter: url(#goo);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .card .card-body-bg {
-      position: absolute;
-      top: 40px; left: 30px; right: 30px; bottom: 50px;
-      background: #ECEFF1;
-      border-radius: 60px;
-      box-shadow: 6px 6px rgba(0,0,0,0.10);
-    }
-
-    .card .card-bubble {
-      position: absolute;
-      background: #ECEFF1;
-      border-radius: 50%;
-      transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .card .card-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes cloudFadeIn {
-      from { opacity: 0; transform: translateY(15px) scale(0.9); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @keyframes cloudFadeOut {
-      from { opacity: 1; transform: translateY(0) scale(1); }
-      to { opacity: 0; transform: translateY(-10px) scale(0.95); }
-    }
-
-    .card-word {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 0.15rem;
-      color: #1a2a3a;
-    }
-
-    .card-meta {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
+      max-width: 520px;
+      border: 2px solid #111;
+      background: #fff;
+      padding: 1.25rem 1.5rem;
       margin-bottom: 1rem;
+      animation: fadeIn 0.2s ease-out;
     }
-
-    .card-meta .cat {
-      font-size: 0.9rem;
-      font-weight: 700;
-      padding: 0;
-      border-radius: 0;
-      color: inherit;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      box-shadow: none;
-      background: none;
-    }
-
-    .card-gender {
-      font-size: 0.85rem;
-      color: #4a5568;
-      font-style: italic;
-    }
-
-    .card-definition {
-      font-size: 1rem;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
-      color: #2d3748;
-    }
-
-    .card-example {
-      background: rgba(236, 239, 241, 0.4);
-      border-left: 4px solid #5dade2;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0 0.5rem 0.5rem 0;
-      font-style: italic;
-      font-size: 0.9rem;
-      color: #2d3748;
-    }
-
-    .hint {
-      color: rgba(255,255,255,0.7);
-      font-size: 0.8rem;
-      margin-top: 0.5rem;
-      text-align: center;
-    }
-
-    .hint code {
-      background: rgba(255,255,255,0.15);
-      padding: 0.15rem 0.4rem;
-      border-radius: 0.25rem;
-    }
-
-    .phonetic-badge {
-      font-size: 0.75rem;
-      background: rgba(102, 126, 234, 0.1);
-      color: #667eea;
-      padding: 0.2rem 0.5rem;
-      border-radius: 0.25rem;
-      font-family: monospace;
-    }
-
-    .diff-same { color: inherit; }
-    .diff-change, .diff-add { color: #e74c3c; font-weight: 700; text-decoration: underline; text-decoration-color: #e74c3c; text-underline-offset: 3px; }
+    .card-word { font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .card-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+    .card-gender { color: #888; font-size: 0.75rem; }
+    .phonetic-badge { color: #888; font-size: 0.75rem; font-style: italic; }
+    .card-definition { font-size: 0.95rem; line-height: 1.5; color: #333; margin-bottom: 0.3rem; }
+    .card-example { font-size: 0.85rem; color: #999; font-style: italic; }
 
     .bottom-row {
-      margin-top: 0;
       width: 100%;
-      padding: 1rem 1rem;
+      max-width: 520px;
       display: flex;
-      justify-content: center;
-      gap: 3.5rem;
-      flex-wrap: wrap;
+      gap: 0;
     }
-
     .mini-card {
-      position: relative;
-      padding: 0.5rem 1rem;
-      margin: 0.75rem 0;
+      flex: 1;
+      padding: 0.5rem 0.5rem;
+      border: 1px solid #ddd;
+      border-left: none;
+      background: #fff;
       cursor: pointer;
-      transition: transform 0.15s;
-      width: 100px;
-      flex-shrink: 0;
-      background: transparent;
-      animation: cloudFadeIn 0.6s ease-out both;
+      text-align: center;
+      transition: background 0.1s;
+      animation: fadeIn 0.15s ease-out both;
     }
+    .mini-card:first-child { border-left: 1px solid #ddd; }
+    .mini-card:nth-child(1) { animation-delay: 0.05s; }
+    .mini-card:nth-child(2) { animation-delay: 0.1s; }
+    .mini-card:nth-child(3) { animation-delay: 0.15s; }
+    .mini-card:nth-child(4) { animation-delay: 0.2s; }
+    .mini-card:hover { background: #f5f5f5; }
+    .mini-card .word { font-weight: 600; font-size: 0.85rem; color: #222; }
 
-    .mini-card:nth-child(1) { animation-delay: 0.1s; }
-    .mini-card:nth-child(2) { animation-delay: 0.2s; }
-    .mini-card:nth-child(3) { animation-delay: 0.3s; }
-    .mini-card:nth-child(4) { animation-delay: 0.4s; }
+    .diff-same { color: inherit; }
+    .diff-change { color: #cc0000; }
+    .diff-add { color: #0066cc; }
 
-    .cloud-fade-out {
-      animation: cloudFadeOut 0.35s ease-in both;
-    }
-
-    .mini-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .mini-card .mini-blobs {
-      position: absolute;
-      inset: -15px -12px -18px -12px;
-      filter: url(#goo);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .mini-card .mini-body-bg {
-      position: absolute;
-      top: 15px; left: 12px; right: 12px; bottom: 18px;
-      background: #ECEFF1;
-      border-radius: 25px;
-      box-shadow: none;
-    }
-
-    .mini-card .mini-bubble {
-      position: absolute;
-      background: #ECEFF1;
-      border-radius: 50%;
-      transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .mini-card .mini-content {
-      position: relative;
-      z-index: 1;
+    .hint {
+      position: fixed;
+      bottom: 1.5rem;
+      color: #bbb;
+      font-size: 0.8rem;
       text-align: center;
     }
-
-    .mini-card .word {
-      font-weight: 700;
-      font-size: 0.8rem;
-      margin-bottom: 0;
-      color: #1a2a3a;
-    }
-
-    .mini-card .cat {
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 0;
-      border-radius: 0;
-      color: inherit;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      box-shadow: none;
-      background: none;
-    }
-
-    .mini-card .def {
-      font-size: 0.78rem;
-      color: #2d3748;
-      margin-top: 0.35rem;
-      line-height: 1.3;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .letter-drop {
-      position: fixed;
-      z-index: 1000;
-      pointer-events: none;
+    .hint code {
+      background: #eee;
+      padding: 0.1rem 0.35rem;
       font-size: 0.75rem;
-      font-weight: 700;
-      color: #0b4f8a;
-      width: 22px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-top: 6px;
-      background: radial-gradient(ellipse at 35% 25%, rgba(255,255,255,0.7) 0%, rgba(90,173,226,0.6) 50%, rgba(30,120,200,0.5) 100%);
-      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-      clip-path: polygon(50% 0%, 85% 40%, 100% 70%, 85% 95%, 50% 100%, 15% 95%, 0% 70%, 15% 40%);
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-      opacity: 1;
-      transition: none;
+      border: 1px solid #ddd;
     }
 
-    .letter-drop.flying {
-      transition: left 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  top 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  opacity 2.5s cubic-bezier(0.7, 0, 1, 0.5),
-                  transform 2.5s cubic-bezier(0.8, 0, 0.9, 0.4);
-      opacity: 0;
-      transform: scale(0.2);
-    }
-
-    /* Brief highlight pulse on the target letter when a drop lands */
-    @keyframes dropLand {
-      0% { background: rgba(90, 173, 226, 0.6); transform: scale(1.4); }
-      100% { background: transparent; transform: scale(1); }
-    }
-    .drop-target-flash {
-      animation: dropLand 0.5s ease-out 2.4s both;
-      border-radius: 3px;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
   <div class="search-container">
-    <svg style="position:absolute;width:0;height:0">
-      <defs>
-        <filter id="goo" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="25" result="blur"/>
-          <feColorMatrix in="blur" mode="matrix"
-            values="1 0 0 0 0
-                    0 1 0 0 0
-                    0 0 1 0 0
-                    0 0 0 35 -15" result="goo"/>
-          <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
-        </filter>
-      </defs>
-    </svg>
-    <div class="cloud" id="cloud">
-      <div class="cloud-blobs" id="cloud-blobs">
-        <div class="cloud-body"></div>
-        <div class="bubble" id="b0"></div>
-        <div class="bubble" id="b1"></div>
-        <div class="bubble" id="b2"></div>
-        <div class="bubble" id="b3"></div>
-        <div class="bubble" id="b4"></div>
-        <div class="bubble" id="b5"></div>
-        <div class="bubble" id="b6"></div>
-        <div class="bubble" id="b7"></div>
-        <div class="bubble" id="b8"></div>
-      </div>
-      <input type="text" id="search" placeholder="" autocomplete="off" autofocus>
-    </div>
+    <input type="text" id="search" placeholder="Écris un mot…" autocomplete="off" autofocus>
   </div>
 
   <div id="result"></div>
@@ -607,58 +321,22 @@
       return html;
     }
 
-    // Generate bubble HTML for cloud-shaped cards
-    function cardBubbles(word, count, prefix, insetT, insetL, insetB) {
-      const seed = word.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0);
-      let html = '';
-      const sides = ['top','bottom','left','right','top'];
-      for (let i = 0; i < count; i++) {
-        const h = hash(seed * 31 + i * 997);
-        const hN = (h % 1000) / 1000;
-        const side = sides[i % sides.length];
-        const s = 20 + hN * 35;
-        let left, top;
-        if (side === 'top') {
-          left = insetL + hN * 60 + i * 25;
-          top = insetT - s * 0.4;
-        } else if (side === 'bottom') {
-          left = insetL + 20 + hN * 50 + i * 20;
-          top = insetT + 60 + hN * 10;
-        } else if (side === 'left') {
-          left = insetL - s * 0.35;
-          top = insetT + hN * 40 + 10;
-        } else {
-          left = insetL + 120 + hN * 30;
-          top = insetT + hN * 40 + 5;
-        }
-        html += `<div class="${prefix}-bubble" style="width:${s}px;height:${s}px;left:${left}px;top:${top}px"></div>`;
-      }
-      return html;
-    }
 
-    function showCard(entry, query, similarity) {
+    function showCard(entry, query) {
       const genderHtml = entry.gender
         ? `<span class="card-gender">${genderLabel(entry.gender)}</span>` : '';
       const phoneticVal = phonetic(entry.word);
       const wordHtml = query ? highlightDiff(entry.word, query) : entry.word;
-      const bubbles = cardBubbles(entry.word, 5, 'card', 40, 30, 50);
-      const scale = 1;
       document.getElementById('result').innerHTML = `
-        <div class="card" style="transform: scale(${scale}); transform-origin: top center;">
-          <div class="card-blobs">
-            <div class="card-body-bg"></div>
-            ${bubbles}
+        <div class="card">
+          <div class="card-word">${wordHtml}</div>
+          <div class="card-meta">
+            <span class="${catClass(entry.category)}">${entry.category}</span>
+            ${genderHtml}
+            <span class="phonetic-badge">/${phoneticVal}/</span>
           </div>
-          <div class="card-content">
-            <div class="card-word">${wordHtml}</div>
-            <div class="card-meta">
-              <span class="${catClass(entry.category)}">${entry.category}</span>
-              ${genderHtml}
-              <span class="phonetic-badge">/${phoneticVal}/</span>
-            </div>
-            <div class="card-definition">${entry.definition}</div>
-            <div class="card-example">${entry.example}</div>
-          </div>
+          <div class="card-definition">${entry.definition}</div>
+          <div class="card-example">${entry.example}</div>
         </div>
       `;
     }
@@ -667,43 +345,24 @@
       const resultEl = document.getElementById('result');
       const othersEl = document.getElementById('others');
 
-      const oldCards = [...resultEl.querySelectorAll('.card'), ...othersEl.querySelectorAll('.mini-card')];
-
       if (!scored.length) {
-        if (oldCards.length) {
-          oldCards.forEach(c => c.classList.add('cloud-fade-out'));
-          setTimeout(() => { resultEl.innerHTML = ''; othersEl.innerHTML = ''; }, 350);
-        }
+        resultEl.innerHTML = '';
+        othersEl.innerHTML = '';
         return;
       }
 
-      // Compute similarity scores (1 = perfect, 0 = distant)
-      const pq = phonetic(query);
-      const maxDist = Math.max(pq.length, 1);
-      function sim(s) { return Math.max(0, 1 - s.phonDist / maxDist); }
-
-      showCard(scored[0].entry, query, sim(scored[0]));
+      showCard(scored[0].entry, query);
 
       const runners = scored.slice(1, 5);
       if (runners.length) {
-        othersEl.innerHTML = runners.map((s, i) => {
-          const miniBubbles = cardBubbles(s.entry.word, 4, 'mini', 15, 12, 20);
-          return `
+        othersEl.innerHTML = runners.map((s, i) => `
           <div class="mini-card" data-idx="${i}">
-            <div class="mini-blobs">
-              <div class="mini-body-bg"></div>
-              ${miniBubbles}
-            </div>
-            <div class="mini-content">
-              <div class="word">${highlightDiff(s.entry.word, query)}</div>
-            </div>
-          </div>`;
-        }).join('');
+            <div class="word">${highlightDiff(s.entry.word, query)}</div>
+          </div>`).join('');
         othersEl.querySelectorAll('.mini-card').forEach(el => {
           el.addEventListener('click', () => {
             const entry = runners[+el.dataset.idx].entry;
             showCard(entry, query);
-            // keep the user's typed input unchanged
           });
         });
       } else {
@@ -711,234 +370,18 @@
       }
     }
 
-    // --- Idle morphing animation for result card clouds ---
-    let morphFrame = 0;
-    let morphTimer = null;
-
-    function morphCardBubbles() {
-      morphFrame++;
-      // Main card bubbles
-      document.querySelectorAll('.card .card-bubble').forEach((b, i) => {
-        const rate = 12000 + i * 5000;
-        const phase = (morphFrame * 16 + i * 800) % rate;
-        const t = phase / rate;
-        const wave = Math.sin(t * Math.PI * 2);
-        const drift = Math.cos(t * Math.PI * 2 + i);
-        const baseW = parseFloat(b.dataset.baseW || b.style.width);
-        const baseL = parseFloat(b.dataset.baseL || b.style.left);
-        const baseT = parseFloat(b.dataset.baseT || b.style.top);
-        if (!b.dataset.baseW) {
-          b.dataset.baseW = parseFloat(b.style.width);
-          b.dataset.baseL = parseFloat(b.style.left);
-          b.dataset.baseT = parseFloat(b.style.top);
-        }
-        const sz = baseW + wave * 35;
-        b.style.width = sz + 'px';
-        b.style.height = sz + 'px';
-        b.style.left = (baseL + drift * 25) + 'px';
-        b.style.top = (baseT + wave * 20) + 'px';
-      });
-
-      // Mini-card bubbles — even slower drift
-      document.querySelectorAll('.mini-card .mini-bubble').forEach((b, i) => {
-        const rate = 16000 + i * 6000;
-        const phase = (morphFrame * 16 + i * 600) % rate;
-        const t = phase / rate;
-        const wave = Math.sin(t * Math.PI * 2);
-        const drift = Math.cos(t * Math.PI * 2 + i * 1.3);
-        if (!b.dataset.baseW) {
-          b.dataset.baseW = parseFloat(b.style.width);
-          b.dataset.baseL = parseFloat(b.style.left);
-          b.dataset.baseT = parseFloat(b.style.top);
-        }
-        const baseW = parseFloat(b.dataset.baseW);
-        const baseL = parseFloat(b.dataset.baseL);
-        const baseT = parseFloat(b.dataset.baseT);
-        const sz = baseW + wave * 25;
-        b.style.width = sz + 'px';
-        b.style.height = sz + 'px';
-        b.style.left = (baseL + drift * 20) + 'px';
-        b.style.top = (baseT + wave * 15) + 'px';
-      });
-
-      morphTimer = requestAnimationFrame(morphCardBubbles);
-    }
-
-    // Start/restart morph loop whenever results change
-    function startMorphLoop() {
-      if (morphTimer) cancelAnimationFrame(morphTimer);
-      morphFrame = 0;
-      // Reset base positions after a short delay for initial render
-      setTimeout(() => {
-        document.querySelectorAll('.card-bubble, .mini-bubble').forEach(b => {
-          delete b.dataset.baseW;
-          delete b.dataset.baseL;
-          delete b.dataset.baseT;
-        });
-        morphCardBubbles();
-      }, 50);
-    }
-
     // --- Event wiring ---
     const searchEl = document.getElementById('search');
-    const cloudEl = document.getElementById('cloud');
-    const blobsEl = document.getElementById('cloud-blobs');
-    const bubbles = Array.from(blobsEl.querySelectorAll('.bubble'));
     let currentScored = [];
-
-    function hash(n) { return ((n * 2654435761) >>> 0); }
-
-    // 9 bubbles distributed evenly: 2 top, 2 bottom, 2 left, 2 right, 1 top-right corner
-    const bubbleCfg = [
-      // Top
-      { side: 'top',    minS: 40, maxS: 100, pos: [0.15, 0.40], poke: 0.50 },
-      { side: 'top',    minS: 50, maxS: 130, pos: [0.50, 0.80], poke: 0.55 },
-      // Bottom — low poke = more overlap with body (overlap = size * (1-poke))
-      { side: 'bottom', minS: 45, maxS: 110, pos: [0.10, 0.40], poke: 0.30 },
-      { side: 'bottom', minS: 50, maxS: 120, pos: [0.45, 0.80], poke: 0.35 },
-      // Left
-      { side: 'left',   minS: 30, maxS: 75,  pos: [0.15, 0.45], poke: 0.35 },
-      { side: 'left',   minS: 25, maxS: 65,  pos: [0.50, 0.80], poke: 0.35 },
-      // Right
-      { side: 'right',  minS: 30, maxS: 80,  pos: [0.15, 0.45], poke: 0.35 },
-      { side: 'right',  minS: 25, maxS: 65,  pos: [0.55, 0.80], poke: 0.35 },
-      // Corner — top-right area
-      { side: 'top',    minS: 30, maxS: 70,  pos: [0.75, 0.95], poke: 0.40 },
-    ];
-
-    const INSET_TOP = 100, INSET_LEFT = 60, INSET_BOTTOM = 120;
-
-    function updateCloudShape(text) {
-      const len = text.length;
-      const t = Math.min(len / 10, 1);
-
-      const w = 180 + t * 320;
-      const pad = 1.2 + t * 0.8;
-      cloudEl.style.width = w + 'px';
-      cloudEl.style.padding = pad + 'rem ' + (pad + 0.3) + 'rem';
-
-      // Use actual rendered height of the cloud element
-      const bodyH = cloudEl.offsetHeight;
-
-      const seed = len > 0
-        ? text.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0)
-        : 0;
-
-      const visibleCount = Math.min(Math.floor(len * 1.2) + 1, bubbles.length);
-
-      bubbles.forEach((bEl, i) => {
-        const cfg = bubbleCfg[i];
-        if (i >= visibleCount || len === 0) {
-          bEl.style.width = '0px';
-          bEl.style.height = '0px';
-          bEl.style.opacity = '0';
-          return;
-        }
-
-        const h = hash(seed * 31 + i * 997);
-        const hN = (h % 1000) / 1000;
-
-        const size = cfg.minS + t * (cfg.maxS - cfg.minS) * (0.5 + 0.5 * hN);
-        const along = cfg.pos[0] + hN * (cfg.pos[1] - cfg.pos[0]);
-
-        let left, top;
-
-        if (cfg.side === 'top') {
-          left = INSET_LEFT + w * along - size * 0.4;
-          top = INSET_TOP - size * cfg.poke;
-        } else if (cfg.side === 'bottom') {
-          left = INSET_LEFT + w * along - size * 0.4;
-          top = INSET_TOP + bodyH - size * (1 - cfg.poke);
-        } else if (cfg.side === 'left') {
-          top = INSET_TOP + bodyH * along - size * 0.4;
-          left = INSET_LEFT - size * cfg.poke;
-        } else {
-          top = INSET_TOP + bodyH * along - size * 0.4;
-          left = INSET_LEFT + w - size * (1 - cfg.poke);
-        }
-
-        bEl.style.width = size + 'px';
-        bEl.style.height = size + 'px';
-        bEl.style.left = left + 'px';
-        bEl.style.top = top + 'px';
-        bEl.style.opacity = '1';
-      });
-    }
-
-    updateCloudShape('');
-
-    // --- Letter drop animation ---
-    let prevInputLen = 0;
-
-    function spawnLetterDrops(letter) {
-      const cloudRect = cloudEl.getBoundingClientRect();
-      const bottomY = cloudRect.bottom - 5;
-
-      // Find all matching letter spans in result cards
-      const targets = [];
-      // Main card word letters
-      document.querySelectorAll('.card-word .diff-same, .card-word .diff-change, .card-word .diff-add').forEach(span => {
-        if (span.textContent.toLowerCase() === letter.toLowerCase()) targets.push(span);
-      });
-      // Mini-card word letters
-      document.querySelectorAll('.mini-card .word .diff-same, .mini-card .word .diff-change, .mini-card .word .diff-add').forEach(span => {
-        if (span.textContent.toLowerCase() === letter.toLowerCase()) targets.push(span);
-      });
-
-      // Limit to 6 drops max to avoid clutter
-      const limited = targets.slice(0, 6);
-
-      limited.forEach((target, i) => {
-        const drop = document.createElement('div');
-        drop.className = 'letter-drop';
-        drop.textContent = letter;
-        // Distribute start positions evenly along cloud bottom edge
-        const frac = limited.length > 1 ? (i / (limited.length - 1)) : 0.5;
-        const startX = cloudRect.left + cloudRect.width * 0.15 + frac * cloudRect.width * 0.7 - 11;
-        drop.style.left = startX + 'px';
-        drop.style.top = bottomY + 'px';
-        document.body.appendChild(drop);
-
-        const targetRect = target.getBoundingClientRect();
-        const endX = targetRect.left + targetRect.width / 2 - 14;
-        const endY = targetRect.top + targetRect.height / 2 - 14;
-
-        // Stagger each drop slightly
-        setTimeout(() => {
-          drop.classList.add('flying');
-          drop.style.left = endX + 'px';
-          drop.style.top = endY + 'px';
-
-          // Flash the target letter on landing
-          target.classList.add('drop-target-flash');
-          setTimeout(() => target.classList.remove('drop-target-flash'), 3200);
-        }, i * 120);
-
-        // Remove drop element after animation
-        setTimeout(() => drop.remove(), 2700 + i * 120);
-      });
-    }
 
     searchEl.addEventListener('input', () => {
       activeIndex = -1;
       const q = searchEl.value.trim();
-      updateCloudShape(searchEl.value);
       currentScored = searchWords(q);
       showResults(currentScored, q);
-      startMorphLoop();
 
-      // Hide/show examples hint
       const hint = document.querySelector('.hint');
       if (hint) hint.style.display = q.length > 0 ? 'none' : '';
-
-      // Spawn drops only when a new character is typed (not on delete)
-      const newLen = searchEl.value.length;
-      if (newLen > prevInputLen && newLen > 0) {
-        const typedLetter = searchEl.value[newLen - 1];
-        // Small delay so the DOM has rendered the new results
-        requestAnimationFrame(() => spawnLetterDrops(typedLetter));
-      }
-      prevInputLen = newLen;
     });
 
     searchEl.addEventListener('keydown', (e) => {
