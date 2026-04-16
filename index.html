@@ -525,7 +525,11 @@
         if (freqDiff !== 0) return freqDiff;
         return a.litDist - b.litDist;
       });
-      return scored.slice(0, 12);
+
+      // Only keep fairly similar results
+      const maxDist = Math.max(2, Math.ceil(pq.length * 0.6));
+      const filtered = scored.filter(s => s.phonDist <= maxDist || s.score >= 80);
+      return filtered.slice(0, 12);
     }
 
     function levenshtein(a, b) {
