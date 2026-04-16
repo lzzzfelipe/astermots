@@ -338,7 +338,8 @@
         }
       }
 
-      scored.sort((a, b) => b.score - a.score);
+      // Use word frequency as tiebreaker (lower freq = more common = ranks higher)
+      scored.sort((a, b) => b.score - a.score || (a.entry.freq || 99999) - (b.entry.freq || 99999));
       return scored.slice(0, 12);
     }
 
