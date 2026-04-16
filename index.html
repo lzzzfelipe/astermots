@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frenchy 🇫🇷</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 0.25rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .subtitle {
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .search-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 1.5rem;
+    }
+
+    #search {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      outline: none;
+      transition: box-shadow 0.2s;
+    }
+
+    #search:focus {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    }
+
+    #search::placeholder { color: #aaa; }
+
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0; right: 0;
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      max-height: 280px;
+      overflow-y: auto;
+      z-index: 10;
+      display: none;
+    }
+
+    .dropdown.visible { display: block; }
+
+    .dropdown-item {
+      padding: 0.7rem 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.1s;
+    }
+
+    .dropdown-item:hover, .dropdown-item.active {
+      background: #f0f0ff;
+    }
+
+    .dropdown-item .word { font-weight: 600; }
+
+    .dropdown-item .cat {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .dropdown-item .preview {
+      color: #888;
+      font-size: 0.85rem;
+      margin-left: auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+
+    .cat-noun { background: #4a90d9; }
+    .cat-verb { background: #e74c3c; }
+    .cat-adjective { background: #27ae60; }
+    .cat-adverb { background: #f39c12; }
+    .cat-determiner { background: #8e44ad; }
+    .cat-preposition { background: #16a085; }
+    .cat-pronoun { background: #2c3e50; }
+    .cat-conjunction { background: #d35400; }
+    .cat-interjection { background: #c0392b; }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      animation: slideUp 0.25s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-word {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .card-meta .cat {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .card-gender {
+      font-size: 0.85rem;
+      color: #888;
+      font-style: italic;
+    }
+
+    .card-definition {
+      font-size: 1.15rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      color: #444;
+    }
+
+    .card-example {
+      background: #f8f8ff;
+      border-left: 4px solid #667eea;
+      padding: 0.75rem 1rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-style: italic;
+      color: #555;
+    }
+
+    .hint {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .hint code {
+      background: rgba(255,255,255,0.15);
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+    }
+
+    .stats {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .phonetic-badge {
+      font-size: 0.75rem;
+      background: rgba(102, 126, 234, 0.1);
+      color: #667eea;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Frenchy 🇫🇷</h1>
+  <p class="subtitle">Tape un mot comme tu l'entends !</p>
+
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Cherche un mot..." autocomplete="off" autofocus>
+    <div class="dropdown" id="dropdown"></div>
+  </div>
+
+  <div id="result"></div>
+
+  <p class="hint">Essaie : <code>farmasie</code> → pharmacie · <code>oto</code> → haut · <code>o</code> → eau</p>
+  <p class="stats" id="stats"></p>
+
+  <script>
+    let dictionary = [];
+    let activeIndex = -1;
+
+    // --- French phonetic normalization engine ---
+    function phonetic(str) {
+      let s = str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+
+      // Multi-char replacements (order matters — longest first)
+      const rules = [
+        [/eaux/g, 'o'],
+        [/eau/g, 'o'],
+        [/aux/g, 'o'],
+        [/au/g, 'o'],
+        [/ou/g, 'u'],
+        [/oi/g, 'wa'],
+        [/ain/g, 'in'],
+        [/ein/g, 'in'],
+        [/aim/g, 'in'],
+        [/eim/g, 'in'],
+        [/en(?=[^aeiou]|$)/g, 'an'],
+        [/em(?=[bp])/g, 'an'],
+        [/an(?=[^aeiou]|$)/g, 'an'],
+        [/am(?=[bp])/g, 'an'],
+        [/on(?=[^aeiou]|$)/g, 'on'],
+        [/om(?=[bp])/g, 'on'],
+        [/un(?=[^aeiou]|$)/g, 'in'],
+        [/ph/g, 'f'],
+        [/qu/g, 'k'],
+        [/gu(?=[ei])/g, 'g'],
+        [/ch/g, 'sh'],
+        [/gn/g, 'ny'],
+        [/tion/g, 'sion'],
+        [/th/g, 't'],
+        [/rh/g, 'r'],
+        [/ll/g, 'l'],
+        [/ss/g, 's'],
+        [/tt/g, 't'],
+        [/mm/g, 'm'],
+        [/nn/g, 'n'],
+        [/pp/g, 'p'],
+        [/ff/g, 'f'],
+        [/cc/g, 'k'],
+        [/rr/g, 'r'],
+        [/ee/g, 'e'],
+        [/oo/g, 'o'],
+        [/aa/g, 'a'],
+        [/ii/g, 'i'],
+        // c before e/i = s
+        [/c(?=[ei])/g, 's'],
+        // c elsewhere = k
+        [/c/g, 'k'],
+        // g before e/i = j
+        [/g(?=[ei])/g, 'j'],
+        // Silent trailing consonants (common in French)
+        [/([aeiou])[stdxzp]$/g, '$1'],
+        [/e$/g, ''],
+        // y as vowel
+        [/y/g, 'i'],
+        // w
+        [/w/g, 'v'],
+        // silent h
+        [/h/g, ''],
+      ];
+
+      for (const [re, rep] of rules) {
+        s = s.replace(re, rep);
+      }
+
+      return s;
+    }
+
+    function searchWords(query) {
+      if (!query) return [];
+      const pq = phonetic(query);
+      const lq = query.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+      const scored = [];
+      for (const entry of dictionary) {
+        let score = 0;
+
+        // Exact prefix on the word
+        const lw = entry.word.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        if (lw.startsWith(lq)) {
+          score = 100 - lw.length; // shorter = better
+        }
+
+        // Phonetic prefix match
+        if (entry._phonetic.startsWith(pq)) {
+          score = Math.max(score, 80 - entry._phonetic.length);
+        }
+
+        // Phonetic contains
+        if (score === 0 && entry._phonetic.includes(pq)) {
+          score = 30 - entry._phonetic.length;
+        }
+
+        // Fuzzy phonetic (Levenshtein on short inputs)
+        if (score === 0 && pq.length >= 3) {
+          const dist = levenshtein(pq, entry._phonetic.slice(0, pq.length + 2));
+          if (dist <= Math.max(1, Math.floor(pq.length / 3))) {
+            score = 20 - dist * 5;
+          }
+        }
+
+        if (score > 0) {
+          scored.push({ entry, score });
+        }
+      }
+
+      scored.sort((a, b) => b.score - a.score);
+      return scored.slice(0, 12).map(s => s.entry);
+    }
+
+    function levenshtein(a, b) {
+      const m = a.length, n = b.length;
+      const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+      for (let i = 0; i <= m; i++) dp[i][0] = i;
+      for (let j = 0; j <= n; j++) dp[0][j] = j;
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          dp[i][j] = Math.min(
+            dp[i - 1][j] + 1,
+            dp[i][j - 1] + 1,
+            dp[i - 1][j - 1] + (a[i - 1] !== b[j - 1] ? 1 : 0)
+          );
+        }
+      }
+      return dp[m][n];
+    }
+
+    function catClass(cat) { return 'cat cat-' + cat; }
+    function genderLabel(g) { return g === 'm' ? 'masculin' : g === 'f' ? 'féminin' : ''; }
+
+    function renderDropdown(results) {
+      const dd = document.getElementById('dropdown');
+      if (!results.length) {
+        dd.classList.remove('visible');
+        return;
+      }
+      dd.innerHTML = results.map((r, i) => `
+        <div class="dropdown-item${i === activeIndex ? ' active' : ''}" data-index="${i}">
+          <span class="word">${r.word}</span>
+          <span class="${catClass(r.category)}">${r.category}</span>
+          <span class="preview">${r.definition}</span>
+        </div>
+      `).join('');
+      dd.classList.add('visible');
+
+      dd.querySelectorAll('.dropdown-item').forEach(el => {
+        el.addEventListener('click', () => selectEntry(results[+el.dataset.index]));
+      });
+    }
+
+    function selectEntry(entry) {
+      document.getElementById('dropdown').classList.remove('visible');
+      document.getElementById('search').value = entry.word;
+      const genderHtml = entry.gender
+        ? `<span class="card-gender">${genderLabel(entry.gender)}</span>` : '';
+      const phoneticVal = phonetic(entry.word);
+      document.getElementById('result').innerHTML = `
+        <div class="card">
+          <div class="card-word">${entry.word}</div>
+          <div class="card-meta">
+            <span class="${catClass(entry.category)}">${entry.category}</span>
+            ${genderHtml}
+            <span class="phonetic-badge">/${phoneticVal}/</span>
+          </div>
+          <div class="card-definition">${entry.definition}</div>
+          <div class="card-example">${entry.example}</div>
+        </div>
+      `;
+    }
+
+    // --- Event wiring ---
+    const searchEl = document.getElementById('search');
+    let currentResults = [];
+
+    searchEl.addEventListener('input', () => {
+      activeIndex = -1;
+      currentResults = searchWords(searchEl.value.trim());
+      renderDropdown(currentResults);
+      if (!searchEl.value.trim()) document.getElementById('result').innerHTML = '';
+    });
+
+    searchEl.addEventListener('keydown', (e) => {
+      if (!currentResults.length) return;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeIndex = Math.min(activeIndex + 1, currentResults.length - 1);
+        renderDropdown(currentResults);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeIndex = Math.max(activeIndex - 1, 0);
+        renderDropdown(currentResults);
+      } else if (e.key === 'Enter' && activeIndex >= 0) {
+        e.preventDefault();
+        selectEntry(currentResults[activeIndex]);
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-container')) {
+        document.getElementById('dropdown').classList.remove('visible');
+      }
+    });
+
+    // --- Load dictionary ---
+    fetch('src/data/dictionary.json')
+      .then(r => r.json())
+      .then(data => {
+        dictionary = data.map(e => ({ ...e, _phonetic: phonetic(e.word) }));
+        document.getElementById('stats').textContent = `${dictionary.length} mots chargés`;
+        searchEl.focus();
+      })
+      .catch(err => {
+        document.getElementById('stats').textContent = 'Erreur de chargement du dictionnaire';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
