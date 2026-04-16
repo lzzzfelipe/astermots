@@ -706,8 +706,8 @@
       morphFrame++;
       // Main card bubbles
       document.querySelectorAll('.card .card-bubble').forEach((b, i) => {
-        const rate = 3000 + i * 1500; // each bubble morphs at a different rate
-        const phase = (morphFrame * 50 + i * 800) % rate;
+        const rate = 12000 + i * 5000;
+        const phase = (morphFrame * 16 + i * 800) % rate;
         const t = phase / rate;
         const wave = Math.sin(t * Math.PI * 2);
         const drift = Math.cos(t * Math.PI * 2 + i);
@@ -728,8 +728,8 @@
 
       // Mini-card bubbles — even slower drift
       document.querySelectorAll('.mini-card .mini-bubble').forEach((b, i) => {
-        const rate = 4000 + i * 2000;
-        const phase = (morphFrame * 50 + i * 600) % rate;
+        const rate = 16000 + i * 6000;
+        const phase = (morphFrame * 16 + i * 600) % rate;
         const t = phase / rate;
         const wave = Math.sin(t * Math.PI * 2);
         const drift = Math.cos(t * Math.PI * 2 + i * 1.3);
