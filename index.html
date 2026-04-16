@@ -702,7 +702,7 @@
           el.addEventListener('click', () => {
             const entry = runners[+el.dataset.idx].entry;
             showCard(entry, query);
-            document.getElementById('search').value = entry.word;
+            // keep the user's typed input unchanged
           });
         });
       } else {
