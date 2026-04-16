@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frenchy 🇫🇷</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -44,36 +44,33 @@
       max-width: 520px;
       margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
       position: relative;
+      height: clamp(4rem, 10vh, 6.5rem);
     }
 
     .writing-lines {
       position: absolute;
-      inset: 0;
+      left: 0; right: 0;
+      top: 0; bottom: 0;
       pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 0.5rem;
     }
     .writing-lines .line {
+      position: absolute;
+      left: 0; right: 0;
       border-bottom: 1.5px solid #d4c4b0;
-      height: 33.33%;
     }
-    .writing-lines .line.middle {
-      border-bottom: 2.5px solid #b5382a;
-      opacity: 0.5;
-    }
-    .writing-lines .line.base {
-      border-bottom: 2.5px solid #3d2e1e;
-      opacity: 0.4;
-    }
+    .writing-lines .line.top    { top: 10%; }
+    .writing-lines .line.middle { top: 50%; border-bottom: 2px dashed #b5382a; opacity: 0.4; }
+    .writing-lines .line.base   { top: 78%; border-bottom: 2.5px solid #3d2e1e; opacity: 0.4; }
 
     #search {
       width: 100%;
-      padding: clamp(0.8rem, 2vh, 1.2rem) 0.5rem;
-      font-family: 'Fredoka', sans-serif;
+      height: 100%;
+      padding: 0 0.5rem;
+      padding-top: 0.4em;
+      font-family: 'Dancing Script', cursive;
       font-size: clamp(1.8rem, 5vw, 3.5rem);
-      font-weight: 500;
+      font-weight: 600;
+      line-height: 1;
       border: none;
       border-radius: 0;
       background: transparent;
@@ -120,9 +117,9 @@
       animation: popIn 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
     }
     .card-word {
-      font-family: 'Fredoka', sans-serif;
+      font-family: 'Dancing Script', cursive;
       font-size: clamp(1.8rem, 5vw, 3rem);
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 0.3rem;
       color: #3d2e1e;
     }
@@ -184,8 +181,8 @@
     .mini-card:nth-child(4) { animation-delay: 0.2s; }
     .mini-card:hover { border-color: #c47b2b; transform: translateY(-2px); }
     .mini-card .word {
-      font-family: 'Fredoka', sans-serif;
-      font-weight: 500;
+      font-family: 'Dancing Script', cursive;
+      font-weight: 600;
       font-size: clamp(0.85rem, 2vw, 1.3rem);
       color: #3d2e1e;
     }
@@ -245,7 +242,7 @@
   <div class="subtitle-text">Mon dictionnaire phonétique</div>
   <div class="search-container">
     <div class="writing-lines">
-      <div class="line"></div>
+      <div class="line top"></div>
       <div class="line middle"></div>
       <div class="line base"></div>
     </div>
