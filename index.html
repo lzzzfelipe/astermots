@@ -105,15 +105,15 @@
 
     #search::placeholder { color: #aaa; }
 
-    .cat-noun { background: #4a90d9; }
-    .cat-verb { background: #e74c3c; }
-    .cat-adjective { background: #27ae60; }
-    .cat-adverb { background: #f39c12; }
-    .cat-determiner { background: #8e44ad; }
-    .cat-preposition { background: #16a085; }
-    .cat-pronoun { background: #2c3e50; }
-    .cat-conjunction { background: #d35400; }
-    .cat-interjection { background: #c0392b; }
+    .cat-noun { background: #2a6cb5; }
+    .cat-verb { background: #c0392b; }
+    .cat-adjective { background: #1e8449; }
+    .cat-adverb { background: #d4840a; }
+    .cat-determiner { background: #6c3483; }
+    .cat-preposition { background: #117a65; }
+    .cat-pronoun { background: #1c2833; }
+    .cat-conjunction { background: #af4b12; }
+    .cat-interjection { background: #922b21; }
 
     .card {
       position: relative;
@@ -172,11 +172,14 @@
     }
 
     .card-meta .cat {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
       border-radius: 0.3rem;
       color: white;
       text-transform: uppercase;
+      letter-spacing: 0.03em;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
     }
 
     .card-gender {
@@ -286,11 +289,13 @@
     }
 
     .mini-card .cat {
-      font-size: 0.6rem;
-      padding: 0.1rem 0.35rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.15rem 0.4rem;
       border-radius: 0.2rem;
       color: white;
       text-transform: uppercase;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
 
     .mini-card .def {
@@ -665,6 +670,74 @@
       } else {
         othersEl.innerHTML = '';
       }
+    }
+
+    // --- Idle morphing animation for result card clouds ---
+    let morphFrame = 0;
+    let morphTimer = null;
+
+    function morphCardBubbles() {
+      morphFrame++;
+      // Main card bubbles
+      document.querySelectorAll('.card .card-bubble').forEach((b, i) => {
+        const rate = 3000 + i * 1500; // each bubble morphs at a different rate
+        const phase = (morphFrame * 50 + i * 800) % rate;
+        const t = phase / rate;
+        const wave = Math.sin(t * Math.PI * 2);
+        const drift = Math.cos(t * Math.PI * 2 + i);
+        const baseW = parseFloat(b.dataset.baseW || b.style.width);
+        const baseL = parseFloat(b.dataset.baseL || b.style.left);
+        const baseT = parseFloat(b.dataset.baseT || b.style.top);
+        if (!b.dataset.baseW) {
+          b.dataset.baseW = parseFloat(b.style.width);
+          b.dataset.baseL = parseFloat(b.style.left);
+          b.dataset.baseT = parseFloat(b.style.top);
+        }
+        const sz = baseW + wave * 6;
+        b.style.width = sz + 'px';
+        b.style.height = sz + 'px';
+        b.style.left = (baseL + drift * 4) + 'px';
+        b.style.top = (baseT + wave * 3) + 'px';
+      });
+
+      // Mini-card bubbles — even slower drift
+      document.querySelectorAll('.mini-card .mini-bubble').forEach((b, i) => {
+        const rate = 4000 + i * 2000;
+        const phase = (morphFrame * 50 + i * 600) % rate;
+        const t = phase / rate;
+        const wave = Math.sin(t * Math.PI * 2);
+        const drift = Math.cos(t * Math.PI * 2 + i * 1.3);
+        if (!b.dataset.baseW) {
+          b.dataset.baseW = parseFloat(b.style.width);
+          b.dataset.baseL = parseFloat(b.style.left);
+          b.dataset.baseT = parseFloat(b.style.top);
+        }
+        const baseW = parseFloat(b.dataset.baseW);
+        const baseL = parseFloat(b.dataset.baseL);
+        const baseT = parseFloat(b.dataset.baseT);
+        const sz = baseW + wave * 4;
+        b.style.width = sz + 'px';
+        b.style.height = sz + 'px';
+        b.style.left = (baseL + drift * 3) + 'px';
+        b.style.top = (baseT + wave * 2) + 'px';
+      });
+
+      morphTimer = requestAnimationFrame(morphCardBubbles);
+    }
+
+    // Start/restart morph loop whenever results change
+    function startMorphLoop() {
+      if (morphTimer) cancelAnimationFrame(morphTimer);
+      morphFrame = 0;
+      // Reset base positions after a short delay for initial render
+      setTimeout(() => {
+        document.querySelectorAll('.card-bubble, .mini-bubble').forEach(b => {
+          delete b.dataset.baseW;
+          delete b.dataset.baseL;
+          delete b.dataset.baseT;
+        });
+        morphCardBubbles();
+      }, 50);
     }
 
     // --- Event wiring ---
