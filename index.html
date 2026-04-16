@@ -270,12 +270,12 @@
     }
 
     .letter-drop.flying {
-      transition: left 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  top 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  opacity 1.5s ease-in,
-                  transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: left 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  top 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  opacity 2.5s cubic-bezier(0.7, 0, 1, 0.5),
+                  transform 2.5s cubic-bezier(0.8, 0, 0.9, 0.4);
       opacity: 0;
-      transform: scale(0.3);
+      transform: scale(0.2);
     }
 
     /* Brief highlight pulse on the target letter when a drop lands */
@@ -284,7 +284,7 @@
       100% { background: transparent; transform: scale(1); }
     }
     .drop-target-flash {
-      animation: dropLand 0.5s ease-out 1.4s both;
+      animation: dropLand 0.5s ease-out 2.4s both;
       border-radius: 3px;
     }
   </style>
@@ -698,11 +698,11 @@
 
           // Flash the target letter on landing
           target.classList.add('drop-target-flash');
-          setTimeout(() => target.classList.remove('drop-target-flash'), 2000);
-        }, i * 100);
+          setTimeout(() => target.classList.remove('drop-target-flash'), 3200);
+        }, i * 120);
 
         // Remove drop element after animation
-        setTimeout(() => drop.remove(), 1600 + i * 100);
+        setTimeout(() => drop.remove(), 2700 + i * 120);
       });
     }
 
