@@ -116,13 +116,40 @@
     .cat-interjection { background: #c0392b; }
 
     .card {
-      background: white;
-      border-radius: 1rem;
+      position: relative;
       padding: 1.5rem 2rem;
       max-width: 500px;
       width: 100%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
       animation: slideUp 0.25s ease-out;
+      background: transparent;
+    }
+
+    .card .card-blobs {
+      position: absolute;
+      inset: -40px -30px -50px -30px;
+      filter: url(#goo);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .card .card-body-bg {
+      position: absolute;
+      top: 40px; left: 30px; right: 30px; bottom: 50px;
+      background: #ECEFF1;
+      border-radius: 60px;
+      box-shadow: 6px 6px rgba(0,0,0,0.10);
+    }
+
+    .card .card-bubble {
+      position: absolute;
+      background: #ECEFF1;
+      border-radius: 50%;
+      transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .card .card-content {
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes slideUp {
@@ -165,8 +192,8 @@
     }
 
     .card-example {
-      background: #f8f8ff;
-      border-left: 4px solid #667eea;
+      background: rgba(236, 239, 241, 0.4);
+      border-left: 4px solid #5dade2;
       padding: 0.75rem 1rem;
       border-radius: 0 0.5rem 0.5rem 0;
       font-style: italic;
@@ -209,19 +236,45 @@
     }
 
     .mini-card {
-      background: rgba(255,255,255,0.92);
-      border-radius: 0.75rem;
+      position: relative;
       padding: 0.75rem 1rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       cursor: pointer;
-      transition: transform 0.15s, box-shadow 0.15s;
+      transition: transform 0.15s;
       width: 180px;
       flex-shrink: 0;
+      background: transparent;
     }
 
     .mini-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    }
+
+    .mini-card .mini-blobs {
+      position: absolute;
+      inset: -25px -20px -30px -20px;
+      filter: url(#goo);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .mini-card .mini-body-bg {
+      position: absolute;
+      top: 25px; left: 20px; right: 20px; bottom: 30px;
+      background: #ECEFF1;
+      border-radius: 40px;
+      box-shadow: 4px 4px rgba(0,0,0,0.08);
+    }
+
+    .mini-card .mini-bubble {
+      position: absolute;
+      background: #ECEFF1;
+      border-radius: 50%;
+      transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .mini-card .mini-content {
+      position: relative;
+      z-index: 1;
     }
 
     .mini-card .word {
@@ -518,21 +571,57 @@
       return html;
     }
 
+    // Generate bubble HTML for cloud-shaped cards
+    function cardBubbles(word, count, prefix, insetT, insetL, insetB) {
+      const seed = word.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0);
+      let html = '';
+      const sides = ['top','bottom','left','right','top'];
+      for (let i = 0; i < count; i++) {
+        const h = hash(seed * 31 + i * 997);
+        const hN = (h % 1000) / 1000;
+        const side = sides[i % sides.length];
+        const s = 20 + hN * 35;
+        let left, top;
+        if (side === 'top') {
+          left = insetL + hN * 60 + i * 25;
+          top = insetT - s * 0.4;
+        } else if (side === 'bottom') {
+          left = insetL + 20 + hN * 50 + i * 20;
+          top = insetT + 60 + hN * 10;
+        } else if (side === 'left') {
+          left = insetL - s * 0.35;
+          top = insetT + hN * 40 + 10;
+        } else {
+          left = insetL + 120 + hN * 30;
+          top = insetT + hN * 40 + 5;
+        }
+        html += `<div class="${prefix}-bubble" style="width:${s}px;height:${s}px;left:${left}px;top:${top}px"></div>`;
+      }
+      return html;
+    }
+
     function showCard(entry, query) {
       const genderHtml = entry.gender
         ? `<span class="card-gender">${genderLabel(entry.gender)}</span>` : '';
       const phoneticVal = phonetic(entry.word);
       const wordHtml = query ? highlightDiff(entry.word, query) : entry.word;
+      const bubbles = cardBubbles(entry.word, 5, 'card', 40, 30, 50);
       document.getElementById('result').innerHTML = `
         <div class="card">
-          <div class="card-word">${wordHtml}</div>
-          <div class="card-meta">
-            <span class="${catClass(entry.category)}">${entry.category}</span>
-            ${genderHtml}
-            <span class="phonetic-badge">/${phoneticVal}/</span>
+          <div class="card-blobs">
+            <div class="card-body-bg"></div>
+            ${bubbles}
           </div>
-          <div class="card-definition">${entry.definition}</div>
-          <div class="card-example">${entry.example}</div>
+          <div class="card-content">
+            <div class="card-word">${wordHtml}</div>
+            <div class="card-meta">
+              <span class="${catClass(entry.category)}">${entry.category}</span>
+              ${genderHtml}
+              <span class="phonetic-badge">/${phoneticVal}/</span>
+            </div>
+            <div class="card-definition">${entry.definition}</div>
+            <div class="card-example">${entry.example}</div>
+          </div>
         </div>
       `;
     }
@@ -549,13 +638,21 @@
 
       const runners = scored.slice(1, 5);
       if (runners.length) {
-        othersEl.innerHTML = runners.map((s, i) => `
+        othersEl.innerHTML = runners.map((s, i) => {
+          const miniBubbles = cardBubbles(s.entry.word, 4, 'mini', 25, 20, 30);
+          return `
           <div class="mini-card" data-idx="${i}">
-            <div class="word">${highlightDiff(s.entry.word, query)}</div>
-            <span class="${catClass(s.entry.category)}">${s.entry.category}</span>
-            <div class="def">${s.entry.definition}</div>
-          </div>
-        `).join('');
+            <div class="mini-blobs">
+              <div class="mini-body-bg"></div>
+              ${miniBubbles}
+            </div>
+            <div class="mini-content">
+              <div class="word">${highlightDiff(s.entry.word, query)}</div>
+              <span class="${catClass(s.entry.category)}">${s.entry.category}</span>
+              <div class="def">${s.entry.definition}</div>
+            </div>
+          </div>`;
+        }).join('');
         othersEl.querySelectorAll('.mini-card').forEach(el => {
           el.addEventListener('click', () => {
             const entry = runners[+el.dataset.idx].entry;
