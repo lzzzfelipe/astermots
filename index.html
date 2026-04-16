@@ -54,7 +54,7 @@
 
     .cloud-blobs {
       position: absolute;
-      inset: -60px -30px -20px -30px;
+      inset: -80px -50px -80px -50px;
       filter: url(#goo);
       z-index: 0;
       pointer-events: none;
@@ -62,10 +62,10 @@
 
     .cloud-body {
       position: absolute;
-      bottom: 20px;
-      left: 30px;
-      right: 30px;
-      height: calc(100% - 60px);
+      bottom: 80px;
+      left: 50px;
+      right: 50px;
+      height: calc(100% - 160px);
       min-height: 50px;
       background: #ECEFF1;
       border-radius: 100px;
@@ -274,6 +274,8 @@
         <div class="bubble" id="b4"></div>
         <div class="bubble" id="b5"></div>
         <div class="bubble" id="b6"></div>
+        <div class="bubble" id="b7"></div>
+        <div class="bubble" id="b8"></div>
       </div>
       <input type="text" id="search" placeholder="Cherche un mot..." autocomplete="off" autofocus>
     </div>
@@ -535,43 +537,43 @@
 
     function hash(n) { return ((n * 2654435761) >>> 0); }
 
-    // Bubble configs: position bubbles so they overlap the body edge for seamless goo merge
-    // Coordinates are relative to .cloud-blobs (which extends beyond .cloud via inset)
-    // Body sits at left:30, top:60, with width=cloud width, height≈cloud height
+    // 9 bubbles distributed evenly: 2 top, 2 bottom, 2 left, 2 right, 1 top-right corner
     const bubbleCfg = [
-      // Top bumps — partially overlap the top edge of the body
-      { side: 'top',    minS: 35, maxS: 95,  xFrac: [0.10, 0.30], yPoke: 0.45 },
-      { side: 'top',    minS: 50, maxS: 140, xFrac: [0.35, 0.60], yPoke: 0.50 },
-      { side: 'top',    minS: 30, maxS: 80,  xFrac: [0.60, 0.85], yPoke: 0.40 },
-      { side: 'top',    minS: 40, maxS: 110, xFrac: [0.18, 0.48], yPoke: 0.55 },
-      // Side bumps — overlap left/right edges
-      { side: 'left',   minS: 25, maxS: 65,  yFrac: [0.25, 0.60], xPoke: 0.40 },
-      { side: 'right',  minS: 25, maxS: 70,  yFrac: [0.20, 0.55], xPoke: 0.35 },
-      // Bottom bump
-      { side: 'bottom', minS: 25, maxS: 60,  xFrac: [0.30, 0.55], yPoke: 0.35 },
+      // Top
+      { side: 'top',    minS: 40, maxS: 100, pos: [0.15, 0.40], poke: 0.50 },
+      { side: 'top',    minS: 50, maxS: 130, pos: [0.50, 0.80], poke: 0.55 },
+      // Bottom
+      { side: 'bottom', minS: 35, maxS: 90,  pos: [0.15, 0.45], poke: 0.50 },
+      { side: 'bottom', minS: 40, maxS: 100, pos: [0.50, 0.80], poke: 0.45 },
+      // Left
+      { side: 'left',   minS: 30, maxS: 75,  pos: [0.15, 0.45], poke: 0.45 },
+      { side: 'left',   minS: 25, maxS: 65,  pos: [0.50, 0.80], poke: 0.40 },
+      // Right
+      { side: 'right',  minS: 30, maxS: 80,  pos: [0.15, 0.45], poke: 0.45 },
+      { side: 'right',  minS: 25, maxS: 65,  pos: [0.55, 0.80], poke: 0.40 },
+      // Corner — top-right area
+      { side: 'top',    minS: 30, maxS: 70,  pos: [0.75, 0.95], poke: 0.40 },
     ];
 
-    // Inset offsets: cloud-blobs extends this much beyond cloud
-    const INSET_TOP = 60, INSET_LEFT = 30, INSET_BOTTOM = 20;
+    const INSET_TOP = 80, INSET_LEFT = 50, INSET_BOTTOM = 80;
 
     function updateCloudShape(text) {
       const len = text.length;
       const t = Math.min(len / 10, 1);
 
-      // Cloud body size
       const w = 180 + t * 320;
       const pad = 1.2 + t * 0.8;
       cloudEl.style.width = w + 'px';
       cloudEl.style.padding = pad + 'rem ' + (pad + 0.3) + 'rem';
 
-      // Body height estimate (padding top + content + padding bottom)
+      // Body height in blobs coordinate space
       const bodyH = 48 + t * 16;
 
       const seed = len > 0
         ? text.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0)
         : 0;
 
-      const visibleCount = Math.min(Math.floor(len * 1.4) + 1, bubbles.length);
+      const visibleCount = Math.min(Math.floor(len * 1.2) + 1, bubbles.length);
 
       bubbles.forEach((bEl, i) => {
         const cfg = bubbleCfg[i];
@@ -585,33 +587,23 @@
         const h = hash(seed * 31 + i * 997);
         const hN = (h % 1000) / 1000;
 
-        const sizeRange = cfg.maxS - cfg.minS;
-        const size = cfg.minS + t * sizeRange * (0.5 + 0.5 * hN);
+        const size = cfg.minS + t * (cfg.maxS - cfg.minS) * (0.5 + 0.5 * hN);
+        const along = cfg.pos[0] + hN * (cfg.pos[1] - cfg.pos[0]);
 
-        // All positions are in cloud-blobs space (body starts at INSET_LEFT, INSET_TOP)
         let left, top;
 
         if (cfg.side === 'top') {
-          const xMin = cfg.xFrac[0], xMax = cfg.xFrac[1];
-          const xPos = xMin + hN * (xMax - xMin);
-          left = INSET_LEFT + w * xPos - size * 0.4;
-          // Center of bubble pokes above body top by yPoke * size
-          top = INSET_TOP - size * cfg.yPoke;
+          left = INSET_LEFT + w * along - size * 0.4;
+          top = INSET_TOP - size * cfg.poke;
         } else if (cfg.side === 'bottom') {
-          const xMin = cfg.xFrac[0], xMax = cfg.xFrac[1];
-          const xPos = xMin + hN * (xMax - xMin);
-          left = INSET_LEFT + w * xPos - size * 0.4;
-          top = INSET_TOP + bodyH - size * (1 - cfg.yPoke);
+          left = INSET_LEFT + w * along - size * 0.4;
+          top = INSET_TOP + bodyH - size * (1 - cfg.poke);
         } else if (cfg.side === 'left') {
-          const yMin = cfg.yFrac[0], yMax = cfg.yFrac[1];
-          const yPos = yMin + hN * (yMax - yMin);
-          top = INSET_TOP + bodyH * yPos - size * 0.4;
-          left = INSET_LEFT - size * cfg.xPoke;
+          top = INSET_TOP + bodyH * along - size * 0.4;
+          left = INSET_LEFT - size * cfg.poke;
         } else {
-          const yMin = cfg.yFrac[0], yMax = cfg.yFrac[1];
-          const yPos = yMin + hN * (yMax - yMin);
-          top = INSET_TOP + bodyH * yPos - size * 0.4;
-          left = INSET_LEFT + w - size * (1 - cfg.xPoke);
+          top = INSET_TOP + bodyH * along - size * 0.4;
+          left = INSET_LEFT + w - size * (1 - cfg.poke);
         }
 
         bEl.style.width = size + 'px';
