@@ -204,6 +204,140 @@
       transition: color 0.2s;
     }
     .guide-link:hover { color: rgba(255,215,0,0.7); }
+
+    /* --- Item Inspection Modal (spaceship computer UI) --- */
+    .inspect-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
+    }
+    .inspect-modal {
+      background: linear-gradient(145deg, rgba(8,14,32,0.98), rgba(16,24,50,0.98));
+      border: 1px solid rgba(126,202,255,0.25);
+      border-radius: 4px;
+      padding: 0;
+      max-width: 420px;
+      width: 90vw;
+      box-shadow: 0 0 60px rgba(126,202,255,0.1), inset 0 0 30px rgba(0,0,0,0.5);
+      overflow: hidden;
+      font-family: 'Nunito', sans-serif;
+    }
+    .inspect-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0.8rem;
+      background: rgba(126,202,255,0.05);
+      border-bottom: 1px solid rgba(126,202,255,0.15);
+    }
+    .inspect-sys {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.4rem, 0.7vw, 0.5rem);
+      color: rgba(126,202,255,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .inspect-close {
+      background: none;
+      border: 1px solid rgba(255,100,100,0.3);
+      color: rgba(255,100,100,0.6);
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      transition: all 0.2s;
+    }
+    .inspect-close:hover { border-color: #ff6b6b; color: #ff6b6b; }
+    .inspect-body {
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .inspect-emoji-ring {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: inspectSpin 8s linear infinite;
+    }
+    .inspect-emoji-ring::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      border: 1px dashed rgba(126,202,255,0.2);
+      animation: inspectSpin 12s linear infinite reverse;
+    }
+    .inspect-emoji-ring::after {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 1px solid rgba(126,202,255,0.08);
+    }
+    @keyframes inspectSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .inspect-emoji-inner {
+      font-size: 3.5rem;
+      filter: drop-shadow(0 0 15px var(--glow));
+      animation: none;
+    }
+    .inspect-item-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.7rem, 1.4vw, 1rem);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+    .inspect-tier-badge {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.45rem, 0.8vw, 0.55rem);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.2rem 0.8rem;
+      border-radius: 2px;
+      border: 1px solid;
+    }
+    .inspect-divider {
+      width: 80%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(126,202,255,0.2), transparent);
+      margin: 0.2rem 0;
+    }
+    .inspect-desc {
+      font-size: clamp(0.65rem, 1.1vw, 0.8rem);
+      color: rgba(200,215,230,0.75);
+      line-height: 1.6;
+      text-align: center;
+      padding: 0 0.5rem;
+    }
+    .inspect-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0.8rem;
+      background: rgba(126,202,255,0.03);
+      border-top: 1px solid rgba(126,202,255,0.1);
+    }
+    .inspect-stat {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.35rem, 0.6vw, 0.4rem);
+      color: rgba(126,202,255,0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
     .panel-header {
       font-family: 'Orbitron', sans-serif;
       font-size: clamp(0.6rem, 1.2vw, 0.8rem);
@@ -1510,6 +1644,72 @@
       { min: 10, name: 'Mythique',  color: '#ff2d78', emojis: ['👁️‍🗨️', '🐲', '⚔️', '🏆', '🪬', '🜂'] },
     ];
 
+    const rewardLore = {
+      // --- Commun ---
+      '⭐': { name: 'Étoile du Voyageur', desc: "Première lueur aperçue par les jeunes explorateurs d'Orion. On dit que chaque étoile du voyageur guide un enfant vers sa prochaine découverte. Elle brille doucement dans la poche de ceux qui osent chercher." },
+      '🌙': { name: 'Croissant d\'Argent', desc: "Fragment de lune tombé lors de la Grande Éclipse de Pluton. Les anciens pilotes le portaient autour du cou pour ne jamais perdre leur chemin dans l'obscurité des nébuleuses lointaines." },
+      '🪨': { name: 'Roche d\'Astéroïde', desc: "Morceau brut arraché à la ceinture d'astéroïdes de Kepler. Rien de spectaculaire en apparence, mais les géologues spatiaux y détectent des traces de mots anciens gravés par une civilisation oubliée." },
+      '🍂': { name: 'Feuille Cosmique', desc: "Seul vestige du Grand Arbre d'Andromède, un organisme végétal qui poussait dans le vide spatial. Ses feuilles changent de couleur selon l'humeur de celui qui la tient." },
+      '🌿': { name: 'Brin de Nébuleuse', desc: "Petite pousse née dans les serres hydroponiques du vaisseau Astermots. Elle se nourrit de bonnes réponses et grandit un peu à chaque mot appris. Fragile mais pleine de promesses." },
+      '🐚': { name: 'Coquillage de Titan', desc: "Ramassé sur les plages de méthane liquide de Titan, ce coquillage émet un son doux quand on le porte à l'oreille — le murmure des marées extraterrestres." },
+      // --- Inhabituel ---
+      '🌟': { name: 'Étoile Scintillante', desc: "Plus brillante que sa cousine commune, cette étoile a été capturée dans le sillage d'une comète. Elle pulse d'une lumière verte qui réchauffe les cœurs des explorateurs solitaires." },
+      '🍀': { name: 'Trèfle de Ganymède', desc: "Plante extrêmement rare qui ne pousse que sur la face cachée de Ganymède, une fois tous les 47 ans. Les botanistes spatiaux parcourent des galaxies entières pour en trouver un seul." },
+      '🦋': { name: 'Papillon Stellaire', desc: "Créature bioluminescente qui migre entre les systèmes solaires. Ses ailes projettent des mots dans des langues inconnues. On raconte qu'attraper son regard porte bonheur pendant sept rotations." },
+      '🐬': { name: 'Dauphin des Anneaux', desc: "Être joueur qui nage dans les anneaux de Saturne comme dans un océan. Il communique par des chants qui ressemblent étrangement à des conjugaisons françaises." },
+      '🎵': { name: 'Note d\'Harmonie', desc: "Fréquence sonore piégée dans un cristal lors du Grand Concert de la Voie Lactée. Quand on la libère, elle joue la mélodie préférée de celui qui l'écoute." },
+      '🌊': { name: 'Vague d\'Europe', desc: "Échantillon d'eau gelée provenant de l'océan sous la croûte de glace d'Europe. En la faisant fondre, on peut entendre les échos de créatures marines qui n'ont jamais vu la lumière." },
+      // --- Rare ---
+      '💫': { name: 'Étoile Filante Piégée', desc: "Capturée en plein vol par le filet quantique du Capitaine Orion lui-même. Elle continue de filer à l'intérieur de sa capsule de verre, traçant des mots lumineux dans sa course éternelle." },
+      '🌠': { name: 'Pluie de Météores', desc: "Concentré d'une pluie de Perséides enfermé dans une fiole. En l'ouvrant, des dizaines de petites étoiles jaillissent et écrivent des poèmes dans le ciel avant de s'évanouir." },
+      '🦊': { name: 'Renard Astral', desc: "Esprit animal qui apparaît aux navigateurs perdus dans la constellation de Vulpecula. Malin et rusé, il ne montre le chemin qu'à ceux qui savent bien orthographier son nom." },
+      '🎸': { name: 'Guitare Supersonique', desc: "Instrument légendaire forgé dans le noyau d'une étoile à neutrons. Chaque accord produit une onde de choc qui fait vibrer les mots et révèle leur orthographe secrète." },
+      '🔭': { name: 'Longue-Vue d\'Orion', desc: "Télescope personnel du fondateur de la station Astermots. Il permet de voir non seulement les étoiles lointaines, mais aussi les mots que les gens pensent sans les dire." },
+      '🛰️': { name: 'Satellite Éclaireur', desc: "Petit drone orbital qui cartographie les zones inexplorées du dictionnaire. Il envoie des rapports sur les mots rares et les expressions oubliées depuis des siècles." },
+      // --- Épique ---
+      '☄️': { name: 'Comète de Halley Jr.', desc: "Fragment de la célèbre comète, passé si près du soleil qu'il en garde une traînée de feu permanent. Les légendes disent qu'elle n'apparaît qu'aux esprits les plus brillants de leur génération." },
+      '🪐': { name: 'Mini-Planète Personnelle', desc: "Un monde entier qui tient dans la paume de la main. Elle possède ses propres océans, montagnes et une minuscule bibliothèque contenant tous les mots jamais inventés." },
+      '🌌': { name: 'Fragment de Voie Lactée', desc: "Morceau de notre propre galaxie, scintillant de milliards de micro-étoiles. Quiconque le contemple trop longtemps commence à comprendre toutes les langues de l'univers." },
+      '🛸': { name: 'Soucoupe d\'Exploration', desc: "Vaisseau miniature laissé par des visiteurs d'une galaxie voisine. Son tableau de bord affiche des mots dans une langue qui ressemble au français, mais avec des lettres qui dansent." },
+      '🎻': { name: 'Violon des Sphères', desc: "Instrument qui joue tout seul la musique des planètes en rotation. Chaque note correspond à une syllabe, et ensemble elles forment les plus beaux mots de la langue française." },
+      '🌈': { name: 'Arc Prismatique', desc: "Arc-en-ciel permanent capturé dans la couronne d'une géante gazeuse. Chacune de ses sept couleurs correspond à une règle d'orthographe, et ensemble elles forment le spectre parfait du français." },
+      // --- Légendaire ---
+      '💎': { name: 'Diamant du Noyau Terrestre', desc: "Cristallisé pendant 4 milliards d'années au centre de la Terre, ce diamant contient dans ses facettes le reflet de chaque mot jamais prononcé sur notre planète. Un trésor au-delà de tout prix." },
+      '👑': { name: 'Couronne du Roi des Mots', desc: "Portée jadis par le souverain légendaire de Lexiconia, un royaume flottant où les mots avaient le pouvoir de construire des châteaux. Celui qui la porte maîtrise l'accord du participe passé." },
+      '🐉': { name: 'Dragon Linguiste', desc: "Dernier de son espèce, ce dragon crache non pas du feu mais des lettres enflammées qui forment des phrases parfaites. Il ne se lie qu'aux maîtres orthographes, et son amitié est éternelle." },
+      '🦄': { name: 'Licorne Phonétique', desc: "Créature mythique dont la corne vibre à la fréquence exacte de la prononciation parfaite. Elle galope entre les mots et corrige les fautes d'un simple contact de son museau." },
+      '🔮': { name: 'Orbe de Prédiction', desc: "Sphère de cristal qui montre l'orthographe correcte de n'importe quel mot avant même qu'on le prononce. Les diseurs de mots se la transmettent de génération en génération." },
+      '🎪': { name: 'Chapiteau des Merveilles', desc: "Cirque miniature où des acrobates-lettres exécutent des numéros spectaculaires, formant des mots impossibles en plein vol. Le spectacle ne se joue que pour les champions." },
+      // --- Ancestral ---
+      '🏛️': { name: 'Temple des Premiers Mots', desc: "Maquette du temple légendaire où fut gravé le premier dictionnaire de l'humanité. Ses colonnes sont faites de phrases empilées, et son dôme résonne de définitions anciennes." },
+      '⚜️': { name: 'Fleur de Lys Éternelle', desc: "Symbole de l'Académie Française avant même qu'elle n'existe, cette fleur dorée a traversé les âges. Elle ne fleurit que dans les mains de ceux qui respectent profondément la langue." },
+      '🗡️': { name: 'Lame du Grammairien', desc: "Épée forgée dans l'encre des premiers manuscrits. Sa lame tranche les fautes d'orthographe d'un seul geste. On dit que Charlemagne lui-même l'utilisait pour signer ses décrets." },
+      '🦅': { name: 'Aigle Messager', desc: "Rapace dressé pour porter les messages entre les étoiles avant l'invention de la radio spatiale. Il ne transmet que les mots correctement écrits — les autres, il les laisse tomber." },
+      '📜': { name: 'Parchemin d\'Alexandrie', desc: "Dernier fragment de la Grande Bibliothèque, sauvé in extremis par un voyageur temporel. Il contient des mots qui n'existent pas encore et d'autres qui ont été oubliés depuis longtemps." },
+      '🏺': { name: 'Amphore de Savoir', desc: "Vase ancien rempli de l'encre originelle — celle avec laquelle furent écrits les tout premiers mots. Une seule goutte suffit pour écrire un livre entier sans une seule faute." },
+      // --- Céleste ---
+      '✨': { name: 'Poussière de Supernova', desc: "Résidu scintillant d'une étoile qui a explosé en prononçant son dernier mot. Cette poussière dorée se colle aux doigts et fait briller tout ce qu'on écrit d'une lumière surnaturelle." },
+      '🌀': { name: 'Spirale du Temps', desc: "Fragment d'un trou de ver stabilisé qui permet de voyager entre les époques du français — du vieux françois au français du futur. Attention : les conjugaisons changent à chaque époque." },
+      '💠': { name: 'Cristal de Syntaxe', desc: "Gemme extraite du cœur d'un quasar, taillée en forme de losange parfait. Elle organise les mots autour d'elle en phrases grammaticalement impeccables, comme un aimant à bon français." },
+      '🔱': { name: 'Trident de Neptune Verbal', desc: "Arme du dieu des océans de mots. Ses trois pointes représentent l'orthographe, la grammaire et le vocabulaire. Ensemble, elles commandent les marées du langage." },
+      '⚡': { name: 'Éclair de Génie', desc: "Décharge pure d'inspiration capturée en bouteille lors d'un orage magnétique sur Jupiter. En l'ouvrant, les mots les plus complexes deviennent soudain limpides." },
+      '🌕': { name: 'Pleine Lune de Sagesse', desc: "Réplique miniature de la lune au moment exact de sa plénitude maximale. Elle éclaire les recoins les plus sombres de l'orthographe et dissipe toutes les ombres du doute." },
+      // --- Cosmique ---
+      '🌑': { name: 'Nouvelle Lune Secrète', desc: "Face cachée de la lune que personne n'a jamais vue — jusqu'à maintenant. Sa surface est couverte de mots écrits dans une encre invisible qui ne se révèle qu'aux plus méritants." },
+      '🕳️': { name: 'Micro Trou Noir', desc: "Singularité apprivoisée qui absorbe les fautes d'orthographe et ne laisse passer que les mots parfaits. Les physiciens de la station Astermots l'utilisent comme correcteur ultime." },
+      '💥': { name: 'Écho du Big Bang', desc: "Vibration originelle de l'univers, capturée et compressée dans une sphère. C'est le tout premier son, celui qui a donné naissance à toutes les syllabes de toutes les langues." },
+      '🧬': { name: 'ADN du Langage', desc: "Double hélice contenant le code génétique de la langue française. Chaque base correspond à un phonème, et ensemble elles encodent les règles secrètes que seuls les maîtres comprennent." },
+      '♾️': { name: 'Boucle Infinie', desc: "Symbole de l'éternel recommencement de l'apprentissage. Ceux qui le possèdent comprennent que chaque mot appris ouvre la porte à dix nouveaux mots, dans une spirale sans fin." },
+      '🫧': { name: 'Bulle de Dimension', desc: "Sphère de savon interdimensionnelle qui contient un univers parallèle où le français est la langue universelle. En la regardant de près, on voit des villes entières faites de mots." },
+      // --- Mythique ---
+      '👁️‍🗨️': { name: 'Œil de l\'Omniscient', desc: "Relique suprême des Gardiens du Langage. Cet œil voit tous les mots — passés, présents et futurs — dans toutes les langues. Son possesseur accède à la connaissance absolue de l'orthographe." },
+      '🐲': { name: 'Dragon Ancestral', desc: "Créature primordiale née avant les mots eux-mêmes. C'est lui qui a soufflé les premières lettres dans le vent, créant ainsi toutes les langues. Il ne se révèle qu'aux véritables légendes." },
+      '⚔️': { name: 'Lames Jumelles du Savoir', desc: "Paire d'épées forgées dans la connaissance pure. L'une tranche l'ignorance, l'autre tisse la compréhension. Ensemble, elles font de leur porteur un champion invincible des mots." },
+      '🏆': { name: 'Trophée d\'Orion', desc: "Le prix ultime de la station Astermots, décerné personnellement par le Capitaine Orion. Forgé dans l'or des étoiles, il ne récompense que ceux qui ont prouvé une maîtrise mythique du français." },
+      '🪬': { name: 'Amulette des Anciens', desc: "Talisman découvert dans les ruines d'une civilisation qui communiquait par des mots parfaits. Son pouvoir protège contre toute erreur et guide la plume vers l'orthographe juste." },
+      '🜂': { name: 'Symbole Alchimique', desc: "Glyphe mystérieux utilisé par les alchimistes du langage pour transmuter les mots ordinaires en poésie pure. Sa signification exacte reste un mystère, même pour les plus grands savants." },
+    };
+
     function getTierForCards(cardCount) {
       let tier = rewardTiers[0];
       for (const t of rewardTiers) {
@@ -1546,7 +1746,10 @@
       card.className = 'reward-card';
       card.dataset.emoji = emoji;
       card.dataset.count = '1';
+      card.dataset.tier = tierName;
+      card.dataset.tierColor = tierColor;
       card.style.borderColor = tierColor + '40';
+      card.style.cursor = 'pointer';
       card.innerHTML = `
         <div style="display:flex; flex-direction:column; align-items:center;">
           <div class="reward-emoji">${emoji}</div>
@@ -1555,8 +1758,39 @@
           <div class="reward-label">${label}</div>
         </div>
       `;
+      card.addEventListener('click', () => showRewardInspect(emoji, tierName, tierColor, parseInt(card.dataset.count)));
       panel.prepend(card);
       updateRewardCount();
+    }
+
+    function showRewardInspect(emoji, tierName, tierColor, count) {
+      const lore = rewardLore[emoji] || { name: 'Objet Inconnu', desc: 'Origine mystérieuse. Aucune donnée dans les archives de la station Astermots.' };
+      const overlay = document.createElement('div');
+      overlay.className = 'inspect-overlay';
+      overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+      overlay.innerHTML = `
+        <div class="inspect-modal">
+          <div class="inspect-header">
+            <span class="inspect-sys">◈ Station Astermots — Analyse d'objet</span>
+            <button class="inspect-close" onclick="this.closest('.inspect-overlay').remove()">ESC</button>
+          </div>
+          <div class="inspect-body">
+            <div class="inspect-emoji-ring" style="background: radial-gradient(circle, ${tierColor}15, transparent 70%); --glow: ${tierColor};">
+              <div class="inspect-emoji-inner">${emoji}</div>
+            </div>
+            <div class="inspect-item-name" style="color:${tierColor}">${lore.name}</div>
+            <span class="inspect-tier-badge" style="color:${tierColor}; border-color:${tierColor}40; background:${tierColor}10">${tierName}</span>
+            <div class="inspect-divider"></div>
+            <div class="inspect-desc">${lore.desc}</div>
+          </div>
+          <div class="inspect-footer">
+            <span class="inspect-stat">Quantité: ${count}</span>
+            <span class="inspect-stat">Classe: ${tierName}</span>
+            <span class="inspect-stat">ID: ${emoji.codePointAt(0).toString(16).toUpperCase()}</span>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(overlay);
     }
 
     function updateRewardCount() {
