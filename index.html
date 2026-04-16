@@ -14,7 +14,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 0;
       color: #333;
     }
 
@@ -54,55 +54,6 @@
     }
 
     #search::placeholder { color: #aaa; }
-
-    .dropdown {
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 0; right: 0;
-      background: white;
-      border-radius: 0.75rem;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-      max-height: 280px;
-      overflow-y: auto;
-      z-index: 10;
-      display: none;
-    }
-
-    .dropdown.visible { display: block; }
-
-    .dropdown-item {
-      padding: 0.7rem 1.25rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: background 0.1s;
-    }
-
-    .dropdown-item:hover, .dropdown-item.active {
-      background: #f0f0ff;
-    }
-
-    .dropdown-item .word { font-weight: 600; }
-
-    .dropdown-item .cat {
-      font-size: 0.7rem;
-      padding: 0.15rem 0.4rem;
-      border-radius: 0.25rem;
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-
-    .dropdown-item .preview {
-      color: #888;
-      font-size: 0.85rem;
-      margin-left: auto;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 200px;
-    }
 
     .cat-noun { background: #4a90d9; }
     .cat-verb { background: #e74c3c; }
@@ -199,6 +150,57 @@
       border-radius: 0.25rem;
       font-family: monospace;
     }
+
+    .bottom-row {
+      margin-top: auto;
+      width: 100%;
+      padding: 1.5rem 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.92);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+      width: 180px;
+      flex-shrink: 0;
+    }
+
+    .mini-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    }
+
+    .mini-card .word {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .mini-card .cat {
+      font-size: 0.6rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 0.2rem;
+      color: white;
+      text-transform: uppercase;
+    }
+
+    .mini-card .def {
+      font-size: 0.78rem;
+      color: #555;
+      margin-top: 0.35rem;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
@@ -207,13 +209,14 @@
 
   <div class="search-container">
     <input type="text" id="search" placeholder="Cherche un mot..." autocomplete="off" autofocus>
-    <div class="dropdown" id="dropdown"></div>
   </div>
 
   <div id="result"></div>
 
-  <p class="hint">Essaie : <code>farmasie</code> → pharmacie · <code>oto</code> → haut · <code>o</code> → eau</p>
+  <p class="hint">Essaie : <code>gato</code> → gâteau · <code>xien</code> → chien · <code>garson</code> → garçon · <code>foto</code> → photo</p>
   <p class="stats" id="stats"></p>
+
+  <div class="bottom-row" id="others"></div>
 
   <script>
     let dictionary = [];
@@ -278,6 +281,8 @@
         [/w/g, 'v'],
         // silent h
         [/h/g, ''],
+        // x as sh (kids often write x for the ch sound)
+        [/x/g, 'sh'],
       ];
 
       for (const [re, rep] of rules) {
@@ -320,13 +325,21 @@
           }
         }
 
+        // Literal word similarity as tiebreaker — words closer in
+        // spelling to the input get a boost (e.g. "balene" → "baleine"
+        // ranks above "ballon" even though phonetic distance is equal)
+        if (score > 0) {
+          const wordDist = levenshtein(lq, lw);
+          score += Math.max(0, 10 - wordDist * 2);
+        }
+
         if (score > 0) {
           scored.push({ entry, score });
         }
       }
 
       scored.sort((a, b) => b.score - a.score);
-      return scored.slice(0, 12).map(s => s.entry);
+      return scored.slice(0, 12);
     }
 
     function levenshtein(a, b) {
@@ -349,29 +362,7 @@
     function catClass(cat) { return 'cat cat-' + cat; }
     function genderLabel(g) { return g === 'm' ? 'masculin' : g === 'f' ? 'féminin' : ''; }
 
-    function renderDropdown(results) {
-      const dd = document.getElementById('dropdown');
-      if (!results.length) {
-        dd.classList.remove('visible');
-        return;
-      }
-      dd.innerHTML = results.map((r, i) => `
-        <div class="dropdown-item${i === activeIndex ? ' active' : ''}" data-index="${i}">
-          <span class="word">${r.word}</span>
-          <span class="${catClass(r.category)}">${r.category}</span>
-          <span class="preview">${r.definition}</span>
-        </div>
-      `).join('');
-      dd.classList.add('visible');
-
-      dd.querySelectorAll('.dropdown-item').forEach(el => {
-        el.addEventListener('click', () => selectEntry(results[+el.dataset.index]));
-      });
-    }
-
-    function selectEntry(entry) {
-      document.getElementById('dropdown').classList.remove('visible');
-      document.getElementById('search').value = entry.word;
+    function showCard(entry) {
       const genderHtml = entry.gender
         ? `<span class="card-gender">${genderLabel(entry.gender)}</span>` : '';
       const phoneticVal = phonetic(entry.word);
@@ -389,36 +380,58 @@
       `;
     }
 
+    function showResults(scored) {
+      const othersEl = document.getElementById('others');
+      if (!scored.length) {
+        document.getElementById('result').innerHTML = '';
+        othersEl.innerHTML = '';
+        return;
+      }
+
+      showCard(scored[0].entry);
+
+      const runners = scored.slice(1, 5);
+      if (runners.length) {
+        othersEl.innerHTML = runners.map((s, i) => `
+          <div class="mini-card" data-idx="${i}">
+            <div class="word">${s.entry.word}</div>
+            <span class="${catClass(s.entry.category)}">${s.entry.category}</span>
+            <div class="def">${s.entry.definition}</div>
+          </div>
+        `).join('');
+        othersEl.querySelectorAll('.mini-card').forEach(el => {
+          el.addEventListener('click', () => {
+            const entry = runners[+el.dataset.idx].entry;
+            showCard(entry);
+            document.getElementById('search').value = entry.word;
+          });
+        });
+      } else {
+        othersEl.innerHTML = '';
+      }
+    }
+
     // --- Event wiring ---
     const searchEl = document.getElementById('search');
-    let currentResults = [];
+    let currentScored = [];
 
     searchEl.addEventListener('input', () => {
       activeIndex = -1;
-      currentResults = searchWords(searchEl.value.trim());
-      renderDropdown(currentResults);
-      if (!searchEl.value.trim()) document.getElementById('result').innerHTML = '';
+      currentScored = searchWords(searchEl.value.trim());
+      showResults(currentScored);
     });
 
     searchEl.addEventListener('keydown', (e) => {
-      if (!currentResults.length) return;
+      if (!currentScored.length) return;
+      const top5 = currentScored.slice(0, 5);
       if (e.key === 'ArrowDown') {
         e.preventDefault();
-        activeIndex = Math.min(activeIndex + 1, currentResults.length - 1);
-        renderDropdown(currentResults);
+        activeIndex = Math.min(activeIndex + 1, top5.length - 1);
+        showCard(top5[activeIndex].entry);
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         activeIndex = Math.max(activeIndex - 1, 0);
-        renderDropdown(currentResults);
-      } else if (e.key === 'Enter' && activeIndex >= 0) {
-        e.preventDefault();
-        selectEntry(currentResults[activeIndex]);
-      }
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!e.target.closest('.search-container')) {
-        document.getElementById('dropdown').classList.remove('visible');
+        showCard(top5[activeIndex].entry);
       }
     });
 
