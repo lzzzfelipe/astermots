@@ -38,50 +38,29 @@
       font-weight: 600;
     }
 
-    /* --- Search (calligraphy guide lines) --- */
+    /* --- Search --- */
     .search-container {
       width: 100%;
       max-width: 520px;
       margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
-      position: relative;
-      height: clamp(4rem, 10vh, 6.5rem);
     }
-
-    .writing-lines {
-      position: absolute;
-      left: 0; right: 0;
-      top: 0; bottom: 0;
-      pointer-events: none;
-    }
-    .writing-lines .line {
-      position: absolute;
-      left: 0; right: 0;
-      border-bottom: 1.5px solid #d4c4b0;
-    }
-    .writing-lines .line.top    { top: 10%; }
-    .writing-lines .line.middle { top: 50%; border-bottom: 2px dashed #b5382a; opacity: 0.4; }
-    .writing-lines .line.base   { top: 78%; border-bottom: 2.5px solid #3d2e1e; opacity: 0.4; }
 
     #search {
       width: 100%;
-      height: 100%;
-      padding: 0 0.5rem;
-      padding-top: 0.4em;
+      padding: clamp(0.6rem, 1.5vh, 1rem) 1.2rem;
       font-family: 'Fredoka', sans-serif;
       font-size: clamp(1.8rem, 5vw, 3.5rem);
-      font-weight: 600;
-      line-height: 1;
-      border: none;
-      border-radius: 0;
-      background: transparent;
+      font-weight: 500;
+      border: 3px solid #e8ddd0;
+      border-radius: 16px;
+      background: #fff;
       outline: none;
       color: #3d2e1e;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.01em;
       text-align: center;
-      position: relative;
-      z-index: 1;
+      transition: border-color 0.2s;
     }
-    }
+    #search:focus { border-color: #c47b2b; }
     #search::placeholder { color: #d4c4b0; font-weight: 400; }
 
     /* --- Montessori grammar badges --- */
@@ -241,11 +220,6 @@
   <div class="title"><span>🇫🇷</span> Frenchy</div>
   <div class="subtitle-text">Mon dictionnaire phonétique</div>
   <div class="search-container">
-    <div class="writing-lines">
-      <div class="line top"></div>
-      <div class="line middle"></div>
-      <div class="line base"></div>
-    </div>
     <input type="text" id="search" placeholder="Écris comme tu entends…" autocomplete="off" autofocus>
   </div>
 
