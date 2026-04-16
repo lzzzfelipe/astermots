@@ -1026,7 +1026,7 @@
       main.innerHTML = `
         <div class="game-container">
           <div class="game-score">Question ${gs.current + 1} / ${gs.total} · Score: ${gs.score}</div>
-          <div class="game-prompt">Quel est le vrai mot français ?</div>
+          <div class="game-prompt">Quel mot avais-tu choisi ?</div>
           <div class="game-choices">
             ${choices.map(c => `<button class="game-choice" onclick="checkAnswer(this, '${c.replace(/'/g, "\\'")}', '${pair.word.replace(/'/g, "\\'")}')">${c}</button>`).join('')}
           </div>
