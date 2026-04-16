@@ -542,15 +542,15 @@
       // Top
       { side: 'top',    minS: 40, maxS: 100, pos: [0.15, 0.40], poke: 0.50 },
       { side: 'top',    minS: 50, maxS: 130, pos: [0.50, 0.80], poke: 0.55 },
-      // Bottom — larger sizes and higher poke for deep overlap with body
-      { side: 'bottom', minS: 45, maxS: 110, pos: [0.10, 0.40], poke: 0.65 },
-      { side: 'bottom', minS: 50, maxS: 120, pos: [0.45, 0.80], poke: 0.60 },
+      // Bottom — low poke = more overlap with body (overlap = size * (1-poke))
+      { side: 'bottom', minS: 45, maxS: 110, pos: [0.10, 0.40], poke: 0.30 },
+      { side: 'bottom', minS: 50, maxS: 120, pos: [0.45, 0.80], poke: 0.35 },
       // Left
-      { side: 'left',   minS: 30, maxS: 75,  pos: [0.15, 0.45], poke: 0.55 },
-      { side: 'left',   minS: 25, maxS: 65,  pos: [0.50, 0.80], poke: 0.50 },
+      { side: 'left',   minS: 30, maxS: 75,  pos: [0.15, 0.45], poke: 0.35 },
+      { side: 'left',   minS: 25, maxS: 65,  pos: [0.50, 0.80], poke: 0.35 },
       // Right
-      { side: 'right',  minS: 30, maxS: 80,  pos: [0.15, 0.45], poke: 0.55 },
-      { side: 'right',  minS: 25, maxS: 65,  pos: [0.55, 0.80], poke: 0.50 },
+      { side: 'right',  minS: 30, maxS: 80,  pos: [0.15, 0.45], poke: 0.35 },
+      { side: 'right',  minS: 25, maxS: 65,  pos: [0.55, 0.80], poke: 0.35 },
       // Corner — top-right area
       { side: 'top',    minS: 30, maxS: 70,  pos: [0.75, 0.95], poke: 0.40 },
     ];
