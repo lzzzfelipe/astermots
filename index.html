@@ -97,6 +97,12 @@
       text-transform: uppercase;
     }
 
+    .panel-items.game-active .pair-card {
+      filter: blur(8px);
+      pointer-events: none;
+      transition: filter 0.4s ease;
+    }
+
     .pair-card {
       position: relative;
       background: rgba(15,22,40,0.7);
@@ -925,6 +931,7 @@
 
     function startChallenge() {
       if (acceptedPairs.length < 2) return;
+      document.getElementById('pairs-panel').classList.add('game-active');
       gameState = {
         pairs: shuffle([...acceptedPairs]),
         current: 0,
@@ -1081,6 +1088,7 @@
 
     function exitChallenge() {
       gameState = null;
+      document.getElementById('pairs-panel').classList.remove('game-active');
       const main = document.querySelector('.main-content');
       main.innerHTML = `
         <div class="title">Astermots</div>
