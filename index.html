@@ -630,14 +630,15 @@
       return html;
     }
 
-    function showCard(entry, query) {
+    function showCard(entry, query, similarity) {
       const genderHtml = entry.gender
         ? `<span class="card-gender">${genderLabel(entry.gender)}</span>` : '';
       const phoneticVal = phonetic(entry.word);
       const wordHtml = query ? highlightDiff(entry.word, query) : entry.word;
       const bubbles = cardBubbles(entry.word, 5, 'card', 40, 30, 50);
+      const scale = similarity !== undefined ? (0.7 + similarity * 0.3) : 1;
       document.getElementById('result').innerHTML = `
-        <div class="card">
+        <div class="card" style="transform: scale(${scale}); transform-origin: top center;">
           <div class="card-blobs">
             <div class="card-body-bg"></div>
             ${bubbles}
@@ -660,7 +661,6 @@
       const resultEl = document.getElementById('result');
       const othersEl = document.getElementById('others');
 
-      // Fade out existing cards
       const oldCards = [...resultEl.querySelectorAll('.card'), ...othersEl.querySelectorAll('.mini-card')];
 
       if (!scored.length) {
@@ -671,14 +671,20 @@
         return;
       }
 
-      showCard(scored[0].entry, query);
+      // Compute similarity scores (1 = perfect, 0 = distant)
+      const pq = phonetic(query);
+      const maxDist = Math.max(pq.length, 1);
+      function sim(s) { return Math.max(0, 1 - s.phonDist / maxDist); }
+
+      showCard(scored[0].entry, query, sim(scored[0]));
 
       const runners = scored.slice(1, 5);
       if (runners.length) {
         othersEl.innerHTML = runners.map((s, i) => {
           const miniBubbles = cardBubbles(s.entry.word, 4, 'mini', 25, 20, 30);
+          const scale = 0.6 + sim(s) * 0.4;
           return `
-          <div class="mini-card" data-idx="${i}">
+          <div class="mini-card" data-idx="${i}" style="transform: scale(${scale.toFixed(2)}); transform-origin: top center;">
             <div class="mini-blobs">
               <div class="mini-body-bg"></div>
               ${miniBubbles}
