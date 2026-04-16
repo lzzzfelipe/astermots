@@ -117,6 +117,13 @@
       font-size: clamp(0.8rem, 1.4vw, 1.1rem);
       filter: drop-shadow(0 0 4px rgba(255,215,0,0.5));
     }
+    .pair-exact {
+      justify-content: center;
+      padding: 0.7rem 0.6rem;
+    }
+    .pair-word-exact {
+      font-size: clamp(1rem, 1.8vw, 1.3rem) !important;
+    }
     .pair-input {
       font-family: 'Orbitron', sans-serif;
       font-size: clamp(0.65rem, 1.2vw, 0.85rem);
@@ -724,15 +731,21 @@
       const empty = panel.querySelector('.panel-empty');
       if (empty) empty.remove();
       const card = document.createElement('div');
-      card.className = 'pair-card';
-      const trophy = isExact ? '<span class="pair-trophy">🏆</span>' : '';
-      card.innerHTML = `
-        ${trophy}
-        <div class="pair-input">${input}</div>
-        <div class="pair-arrow">↓</div>
-        <div class="pair-word">${wordHtml}</div>
-        <button class="pair-remove" onclick="this.parentElement.remove(); updatePairCount();" title="Retirer">✕</button>
-      `;
+      card.className = 'pair-card' + (isExact ? ' pair-exact' : '');
+      if (isExact) {
+        card.innerHTML = `
+          <span class="pair-trophy">🏆</span>
+          <div class="pair-word pair-word-exact">${input}</div>
+          <button class="pair-remove" onclick="this.parentElement.remove(); updatePairCount();" title="Retirer">✕</button>
+        `;
+      } else {
+        card.innerHTML = `
+          <div class="pair-input">${input}</div>
+          <div class="pair-arrow">↓</div>
+          <div class="pair-word">${wordHtml}</div>
+          <button class="pair-remove" onclick="this.parentElement.remove(); updatePairCount();" title="Retirer">✕</button>
+        `;
+      }
       panel.prepend(card);
       updatePairCount();
       fitToScreen();
