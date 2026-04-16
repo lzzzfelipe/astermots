@@ -886,6 +886,7 @@
       updateCloudShape(searchEl.value);
       currentScored = searchWords(q);
       showResults(currentScored, q);
+      startMorphLoop();
 
       // Spawn drops only when a new character is typed (not on delete)
       const newLen = searchEl.value.length;
