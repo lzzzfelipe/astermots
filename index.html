@@ -924,6 +924,10 @@
       showResults(currentScored, q);
       startMorphLoop();
 
+      // Hide/show examples hint
+      const hint = document.querySelector('.hint');
+      if (hint) hint.style.display = q.length > 0 ? 'none' : '';
+
       // Spawn drops only when a new character is typed (not on delete)
       const newLen = searchEl.value.length;
       if (newLen > prevInputLen && newLen > 0) {
