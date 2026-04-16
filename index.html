@@ -102,6 +102,9 @@
       pointer-events: none;
       transition: filter 0.4s ease;
     }
+    .panel-items.game-active .pair-card.revealed {
+      filter: none;
+    }
 
     .pair-card {
       position: relative;
@@ -929,6 +932,7 @@
       if (empty) empty.remove();
       const card = document.createElement('div');
       card.className = 'pair-card' + (isExact ? ' pair-exact' : '');
+      card.dataset.word = word.toLowerCase();
       if (isExact) {
         card.innerHTML = `
           <span class="pair-trophy">🏆</span>
@@ -967,7 +971,9 @@
 
     function startChallenge() {
       if (acceptedPairs.length < 2) return;
-      document.getElementById('pairs-panel').classList.add('game-active');
+      const panel = document.getElementById('pairs-panel');
+      panel.classList.add('game-active');
+      panel.querySelectorAll('.pair-card.revealed').forEach(c => c.classList.remove('revealed'));
       gameState = {
         pairs: shuffle([...acceptedPairs]),
         current: 0,
@@ -1087,6 +1093,11 @@
         if (b.textContent === correct) b.classList.add('correct');
         else if (b === btn && chosen !== correct) b.classList.add('wrong');
       });
+
+      // Reveal the corresponding pair card
+      const panel = document.getElementById('pairs-panel');
+      const match = panel.querySelector(`.pair-card[data-word="${correct.toLowerCase()}"]`);
+      if (match) match.classList.add('revealed');
 
       const feedback = document.getElementById('game-feedback');
       if (chosen === correct) {
