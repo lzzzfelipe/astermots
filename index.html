@@ -32,18 +32,70 @@
 
     /* --- Accepted pairs panel --- */
     .pairs-panel {
-      width: clamp(140px, 18vw, 220px);
+      width: clamp(160px, 20vw, 240px);
       height: 100vh;
-      padding: 1rem 0.6rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      background: rgba(8,12,28,0.9);
+      border-right: 2px solid rgba(126,202,255,0.2);
+      backdrop-filter: blur(8px);
+    }
+    .panel-header {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+      font-weight: 600;
+      color: #7ecaff;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 1rem 0.8rem 0.6rem;
+      border-bottom: 1px solid rgba(126,202,255,0.15);
+      text-align: center;
+      text-shadow: 0 0 10px rgba(126,202,255,0.3);
+    }
+    .panel-header::before {
+      content: '◆';
+      margin-right: 0.4em;
+      font-size: 0.6em;
+      vertical-align: middle;
+    }
+    .panel-header::after {
+      content: '◆';
+      margin-left: 0.4em;
+      font-size: 0.6em;
+      vertical-align: middle;
+    }
+    .panel-items {
+      flex: 1;
       overflow-y: auto;
+      padding: 0.6rem;
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      flex-shrink: 0;
     }
-    .pairs-panel:empty { display: none; }
-    .pairs-panel::-webkit-scrollbar { width: 4px; }
-    .pairs-panel::-webkit-scrollbar-thumb { background: rgba(126,202,255,0.2); border-radius: 2px; }
+    .panel-items::-webkit-scrollbar { width: 4px; }
+    .panel-items::-webkit-scrollbar-thumb { background: rgba(126,202,255,0.2); border-radius: 2px; }
+    .panel-empty {
+      color: rgba(126,202,255,0.25);
+      font-size: clamp(0.55rem, 1vw, 0.7rem);
+      text-align: center;
+      margin-top: 2rem;
+      font-style: italic;
+    }
+    .panel-footer {
+      border-top: 1px solid rgba(126,202,255,0.1);
+      padding: 0.5rem;
+      display: flex;
+      justify-content: center;
+    }
+    .panel-status {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.45rem, 0.8vw, 0.55rem);
+      color: rgba(126,202,255,0.3);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
 
     .pair-card {
       background: rgba(15,22,40,0.7);
@@ -339,7 +391,15 @@
   </style>
 </head>
 <body>
-  <div class="pairs-panel" id="pairs-panel"></div>
+  <div class="pairs-panel">
+    <div class="panel-header">My Items</div>
+    <div class="panel-items" id="pairs-panel">
+      <div class="panel-empty">Aucun mot accepté</div>
+    </div>
+    <div class="panel-footer">
+      <span class="panel-status">sys ready</span>
+    </div>
+  </div>
   <div class="main-content">
   <div class="title">Astermots</div>
   <div class="subtitle-text">Dictionnaire phonétique interstellaire d'Orion</div>
@@ -639,7 +699,8 @@
     function acceptWord(word) {
       const inputText = document.getElementById('search').value.trim();
       if (inputText) {
-        addPairCard(inputText, word);
+        const wordHtml = highlightDiff(word, inputText);
+        addPairCard(inputText, wordHtml);
       }
       document.getElementById('search').value = '';
       document.getElementById('result').innerHTML = '';
@@ -650,17 +711,31 @@
       fitToScreen();
     }
 
-    function addPairCard(input, word) {
+    function addPairCard(input, wordHtml) {
       const panel = document.getElementById('pairs-panel');
+      const empty = panel.querySelector('.panel-empty');
+      if (empty) empty.remove();
       const card = document.createElement('div');
       card.className = 'pair-card';
       card.innerHTML = `
         <div class="pair-input">${input}</div>
         <div class="pair-arrow">↓</div>
-        <div class="pair-word">${word}</div>
-        <button class="pair-remove" onclick="this.parentElement.remove(); fitToScreen();" title="Retirer">✕</button>
+        <div class="pair-word">${wordHtml}</div>
+        <button class="pair-remove" onclick="this.parentElement.remove(); updatePairCount();" title="Retirer">✕</button>
       `;
       panel.prepend(card);
+      updatePairCount();
+      fitToScreen();
+    }
+
+    function updatePairCount() {
+      const panel = document.getElementById('pairs-panel');
+      const count = panel.querySelectorAll('.pair-card').length;
+      const status = document.querySelector('.panel-status');
+      if (status) status.textContent = count > 0 ? count + ' mot' + (count > 1 ? 's' : '') : 'sys ready';
+      if (count === 0) {
+        panel.innerHTML = '<div class="panel-empty">Aucun mot accepté</div>';
+      }
       fitToScreen();
     }
 
