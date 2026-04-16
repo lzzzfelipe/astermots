@@ -120,7 +120,7 @@
       padding: 1.5rem 2rem;
       max-width: 500px;
       width: 100%;
-      animation: slideUp 0.25s ease-out;
+      animation: cloudFadeIn 0.6s ease-out both;
       background: transparent;
     }
 
@@ -152,9 +152,14 @@
       z-index: 1;
     }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes cloudFadeIn {
+      from { opacity: 0; transform: translateY(15px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes cloudFadeOut {
+      from { opacity: 1; transform: translateY(0) scale(1); }
+      to { opacity: 0; transform: translateY(-10px) scale(0.95); }
     }
 
     .card-word {
@@ -247,6 +252,16 @@
       width: 180px;
       flex-shrink: 0;
       background: transparent;
+      animation: cloudFadeIn 0.6s ease-out both;
+    }
+
+    .mini-card:nth-child(1) { animation-delay: 0.1s; }
+    .mini-card:nth-child(2) { animation-delay: 0.2s; }
+    .mini-card:nth-child(3) { animation-delay: 0.3s; }
+    .mini-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .cloud-fade-out {
+      animation: cloudFadeOut 0.35s ease-in both;
     }
 
     .mini-card:hover {
@@ -634,10 +649,17 @@
     }
 
     function showResults(scored, query) {
+      const resultEl = document.getElementById('result');
       const othersEl = document.getElementById('others');
+
+      // Fade out existing cards
+      const oldCards = [...resultEl.querySelectorAll('.card'), ...othersEl.querySelectorAll('.mini-card')];
+
       if (!scored.length) {
-        document.getElementById('result').innerHTML = '';
-        othersEl.innerHTML = '';
+        if (oldCards.length) {
+          oldCards.forEach(c => c.classList.add('cloud-fade-out'));
+          setTimeout(() => { resultEl.innerHTML = ''; othersEl.innerHTML = ''; }, 350);
+        }
         return;
       }
 
