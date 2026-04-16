@@ -246,14 +246,14 @@
       padding: 1rem 1rem;
       display: flex;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 3.5rem;
       flex-wrap: wrap;
     }
 
     .mini-card {
       position: relative;
-      padding: 0.5rem 0.75rem;
-      margin: 0.5rem 0;
+      padding: 0.5rem 1rem;
+      margin: 0.75rem 0;
       cursor: pointer;
       transition: transform 0.15s;
       width: 160px;
@@ -695,7 +695,6 @@
             </div>
             <div class="mini-content">
               <div class="word">${highlightDiff(s.entry.word, query)}</div>
-              <span class="${catClass(s.entry.category)}">${s.entry.category}</span>
             </div>
           </div>`;
         }).join('');
