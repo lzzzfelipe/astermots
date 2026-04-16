@@ -24,32 +24,32 @@
     /* --- Title --- */
     .title {
       font-family: 'Fredoka', sans-serif;
-      font-size: 1.6rem;
+      font-size: clamp(1.8rem, 5vw, 3rem);
       font-weight: 600;
       color: #b5382a;
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.2rem;
       letter-spacing: 0.02em;
     }
-    .title span { font-size: 1.8rem; }
+    .title span { font-size: 110%; }
     .subtitle-text {
-      font-size: 0.8rem;
+      font-size: clamp(0.8rem, 2vw, 1.1rem);
       color: #b8a080;
-      margin-bottom: 1.5rem;
+      margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
       font-weight: 600;
     }
 
     /* --- Search --- */
     .search-container {
       width: 100%;
-      max-width: 460px;
-      margin-bottom: 1.5rem;
+      max-width: 520px;
+      margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
     }
 
     #search {
       width: 100%;
-      padding: 0.9rem 1.2rem;
+      padding: clamp(0.6rem, 1.5vh, 1rem) 1.2rem;
       font-family: 'Fredoka', sans-serif;
-      font-size: 2rem;
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
       font-weight: 500;
       border: 3px solid #e8ddd0;
       border-radius: 16px;
@@ -68,7 +68,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      font-size: 0.6rem;
+      font-size: clamp(0.55rem, 1.2vw, 0.75rem);
       padding: 0.25rem 0.6rem;
       border-radius: 20px;
       display: inline-block;
@@ -86,51 +86,51 @@
     /* --- Main result card --- */
     .card {
       width: 100%;
-      max-width: 460px;
+      max-width: 520px;
       background: #fff;
-      padding: 1.4rem 1.5rem;
-      margin-bottom: 0.75rem;
+      padding: clamp(1rem, 2vh, 1.5rem) 1.5rem;
+      margin-bottom: clamp(0.4rem, 1vh, 0.75rem);
       border-radius: 16px;
       border: 3px solid #e8ddd0;
       animation: popIn 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
     }
     .card-word {
       font-family: 'Fredoka', sans-serif;
-      font-size: 2rem;
+      font-size: clamp(1.8rem, 5vw, 3rem);
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
       color: #3d2e1e;
     }
     .card-meta {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.6rem;
+      margin-bottom: clamp(0.3rem, 1vh, 0.6rem);
       flex-wrap: wrap;
     }
     .card-gender {
       color: #b8a080;
-      font-size: 0.7rem;
+      font-size: clamp(0.65rem, 1.3vw, 0.85rem);
       font-weight: 700;
     }
     .phonetic-badge {
       color: #b8a080;
-      font-size: 0.7rem;
+      font-size: clamp(0.65rem, 1.3vw, 0.85rem);
       font-style: italic;
     }
     .card-definition {
-      font-size: 1rem;
-      line-height: 1.65;
+      font-size: clamp(0.9rem, 2.2vw, 1.3rem);
+      line-height: 1.5;
       color: #5a4a38;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       font-weight: 600;
     }
     .card-example {
-      font-size: 0.85rem;
+      font-size: clamp(0.75rem, 1.8vw, 1rem);
       color: #b8a080;
       font-style: italic;
       font-weight: 600;
-      padding: 0.5rem 0.75rem;
+      padding: 0.4rem 0.75rem;
       background: #fef5e8;
       border-radius: 10px;
     }
@@ -138,13 +138,13 @@
     /* --- Secondary results --- */
     .bottom-row {
       width: 100%;
-      max-width: 460px;
+      max-width: 520px;
       display: flex;
       gap: 0.5rem;
     }
     .mini-card {
       flex: 1;
-      padding: 0.6rem 0.5rem;
+      padding: clamp(0.4rem, 1vh, 0.7rem) 0.5rem;
       background: #fff;
       border: 2px solid #e8ddd0;
       border-radius: 12px;
@@ -161,7 +161,7 @@
     .mini-card .word {
       font-family: 'Fredoka', sans-serif;
       font-weight: 500;
-      font-size: 0.95rem;
+      font-size: clamp(0.85rem, 2vw, 1.3rem);
       color: #3d2e1e;
     }
 
@@ -451,6 +451,18 @@
       }
     }
 
+    // --- Auto-fit: progressively shrink if content overflows viewport ---
+    function fitToScreen() {
+      const body = document.body;
+      let scale = 100;
+      body.style.fontSize = '';
+      while (body.scrollHeight > window.innerHeight && scale > 50) {
+        scale -= 2;
+        body.style.fontSize = scale + '%';
+      }
+    }
+    window.addEventListener('resize', fitToScreen);
+
     // --- Event wiring ---
     const searchEl = document.getElementById('search');
     let currentScored = [];
@@ -460,6 +472,7 @@
       const q = searchEl.value.trim();
       currentScored = searchWords(q);
       showResults(currentScored, q);
+      fitToScreen();
 
       const hint = document.querySelector('.hint');
       if (hint) hint.style.display = q.length > 0 ? 'none' : '';
