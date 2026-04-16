@@ -248,6 +248,43 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+    .letter-drop {
+      position: fixed;
+      z-index: 1000;
+      pointer-events: none;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0b4f8a;
+      background: rgba(236, 239, 241, 0.9);
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      opacity: 1;
+      transition: none;
+    }
+
+    .letter-drop.flying {
+      transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  opacity 0.8s ease-in,
+                  transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 0;
+      transform: scale(0.3);
+    }
+
+    /* Brief highlight pulse on the target letter when a drop lands */
+    @keyframes dropLand {
+      0% { background: rgba(90, 173, 226, 0.6); transform: scale(1.4); }
+      100% { background: transparent; transform: scale(1); }
+    }
+    .drop-target-flash {
+      animation: dropLand 0.5s ease-out 0.75s both;
+      border-radius: 3px;
+    }
   </style>
 </head>
 <body>
@@ -617,12 +654,71 @@
 
     updateCloudShape('');
 
+    // --- Letter drop animation ---
+    let prevInputLen = 0;
+
+    function spawnLetterDrops(letter) {
+      const cloudRect = cloudEl.getBoundingClientRect();
+      const startX = cloudRect.left + cloudRect.width / 2 - 14;
+      const startY = cloudRect.top + cloudRect.height / 2 - 14;
+
+      // Find all matching letter spans in result cards
+      const targets = [];
+      // Main card word letters
+      document.querySelectorAll('.card-word .diff-same, .card-word .diff-change, .card-word .diff-add').forEach(span => {
+        if (span.textContent.toLowerCase() === letter.toLowerCase()) targets.push(span);
+      });
+      // Mini-card word letters
+      document.querySelectorAll('.mini-card .word .diff-same, .mini-card .word .diff-change, .mini-card .word .diff-add').forEach(span => {
+        if (span.textContent.toLowerCase() === letter.toLowerCase()) targets.push(span);
+      });
+
+      // Limit to 6 drops max to avoid clutter
+      const limited = targets.slice(0, 6);
+
+      limited.forEach((target, i) => {
+        const drop = document.createElement('div');
+        drop.className = 'letter-drop';
+        drop.textContent = letter;
+        drop.style.left = startX + 'px';
+        drop.style.top = startY + 'px';
+        document.body.appendChild(drop);
+
+        const targetRect = target.getBoundingClientRect();
+        const endX = targetRect.left + targetRect.width / 2 - 14;
+        const endY = targetRect.top + targetRect.height / 2 - 14;
+
+        // Stagger each drop slightly
+        setTimeout(() => {
+          drop.classList.add('flying');
+          drop.style.left = endX + 'px';
+          drop.style.top = endY + 'px';
+
+          // Flash the target letter on landing
+          target.classList.add('drop-target-flash');
+          setTimeout(() => target.classList.remove('drop-target-flash'), 1300);
+        }, i * 60);
+
+        // Remove drop element after animation
+        setTimeout(() => drop.remove(), 900 + i * 60);
+      });
+    }
+
     searchEl.addEventListener('input', () => {
       activeIndex = -1;
       const q = searchEl.value.trim();
       updateCloudShape(searchEl.value);
       currentScored = searchWords(q);
       showResults(currentScored, q);
+
+      // Spawn drops only when a new character is typed (not on delete)
+      const newLen = searchEl.value.length;
+      if (newLen > prevInputLen && newLen > 0) {
+        const typedLetter = searchEl.value[newLen - 1];
+        // Small delay so the DOM has rendered the new results
+        requestAnimationFrame(() => spawnLetterDrops(typedLetter));
+      }
+      prevInputLen = newLen;
     });
 
     searchEl.addEventListener('keydown', (e) => {
