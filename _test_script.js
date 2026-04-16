@@ -1,592 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Astermots</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap');
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Nunito', system-ui, sans-serif;
-      background: #0a0e1a;
-      background-image:
-        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
-        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
-        radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
-        radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
-        radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 15% 85%, rgba(200,220,255,0.6) 0%, transparent 100%),
-        radial-gradient(1.5px 1.5px at 85% 15%, rgba(200,220,255,0.5) 0%, transparent 100%),
-        radial-gradient(1px 1px at 45% 45%, rgba(255,255,255,0.3) 0%, transparent 100%),
-        radial-gradient(1px 1px at 65% 30%, rgba(255,255,255,0.35) 0%, transparent 100%),
-        radial-gradient(1px 1px at 25% 70%, rgba(255,255,255,0.25) 0%, transparent 100%);
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: row;
-      color: #e0e8f0;
-    }
-
-    /* --- Accepted pairs panel --- */
-    .pairs-panel {
-      width: clamp(160px, 20vw, 240px);
-      height: 100vh;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-      background: rgba(8,12,28,0.9);
-      border-right: 2px solid rgba(126,202,255,0.2);
-      backdrop-filter: blur(8px);
-    }
-    .panel-header {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
-      font-weight: 600;
-      color: #7ecaff;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      padding: 1rem 0.8rem 0.6rem;
-      border-bottom: 1px solid rgba(126,202,255,0.15);
-      text-align: center;
-      text-shadow: 0 0 10px rgba(126,202,255,0.3);
-    }
-    .panel-header::before {
-      content: '◆';
-      margin-right: 0.4em;
-      font-size: 0.6em;
-      vertical-align: middle;
-    }
-    .panel-header::after {
-      content: '◆';
-      margin-left: 0.4em;
-      font-size: 0.6em;
-      vertical-align: middle;
-    }
-    .panel-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 0.6rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .panel-items::-webkit-scrollbar { width: 4px; }
-    .panel-items::-webkit-scrollbar-thumb { background: rgba(126,202,255,0.2); border-radius: 2px; }
-    .panel-empty {
-      color: rgba(126,202,255,0.25);
-      font-size: clamp(0.55rem, 1vw, 0.7rem);
-      text-align: center;
-      margin-top: 2rem;
-      font-style: italic;
-    }
-    .panel-footer {
-      border-top: 1px solid rgba(126,202,255,0.1);
-      padding: 0.5rem;
-      display: flex;
-      justify-content: center;
-    }
-    .panel-status {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.45rem, 0.8vw, 0.55rem);
-      color: rgba(126,202,255,0.3);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .pair-card {
-      position: relative;
-      background: rgba(15,22,40,0.7);
-      border: 1px solid rgba(126,202,255,0.2);
-      border-radius: 10px;
-      padding: 0.5rem 0.6rem;
-      animation: pairSlideIn 0.35s cubic-bezier(0.34, 1.4, 0.64, 1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.15rem;
-      cursor: pointer;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .pair-card:hover {
-      border-color: rgba(126,202,255,0.5);
-      box-shadow: 0 0 8px rgba(126,202,255,0.2);
-    }
-    .pair-trophy {
-      position: absolute;
-      top: 0.3rem;
-      right: 0.3rem;
-      font-size: clamp(0.8rem, 1.4vw, 1.1rem);
-      filter: drop-shadow(0 0 4px rgba(255,215,0,0.5));
-    }
-    .pair-exact {
-      justify-content: center;
-      padding: 0.7rem 0.6rem;
-    }
-    .pair-word-exact {
-      font-size: clamp(1rem, 1.8vw, 1.3rem) !important;
-    }
-    .pair-input {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.65rem, 1.2vw, 0.85rem);
-      color: rgba(255,255,255,0.5);
-      word-break: break-all;
-      text-align: center;
-    }
-    .pair-arrow {
-      font-size: clamp(0.7rem, 1.2vw, 0.9rem);
-      color: rgba(126,202,255,0.5);
-    }
-    .pair-word {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.8rem, 1.5vw, 1.05rem);
-      font-weight: 600;
-      color: #7ecaff;
-      text-align: center;
-    }
-    .pair-remove {
-      position: absolute;
-      top: 0.25rem;
-      left: 0.25rem;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.2);
-      cursor: pointer;
-      font-size: 0.6rem;
-      transition: color 0.2s;
-      line-height: 1;
-    }
-    .pair-remove:hover { color: #ff6b6b; }
-
-    @keyframes pairSlideIn {
-      from { opacity: 0; transform: translateX(-20px) scale(0.9); }
-      to { opacity: 1; transform: translateX(0) scale(1); }
-    }
-
-    /* --- Main content area --- */
-    .main-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1.5rem 1rem;
-      overflow: hidden;
-      min-width: 0;
-    }
-
-    /* --- Title --- */
-    .title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.6rem, 4.5vw, 2.5rem);
-      font-weight: 700;
-      color: #7ecaff;
-      margin-bottom: 0.2rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-shadow: 0 0 20px rgba(126,202,255,0.4), 0 0 40px rgba(126,202,255,0.15);
-    }
-    .subtitle-text {
-      font-size: clamp(0.7rem, 1.8vw, 0.95rem);
-      color: rgba(126,202,255,0.5);
-      margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    /* --- Search --- */
-    .search-container {
-      width: 100%;
-      max-width: 520px;
-      margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
-    }
-
-    #search {
-      width: 100%;
-      padding: clamp(0.6rem, 1.5vh, 1rem) 1.2rem;
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.8rem, 5vw, 3.5rem);
-      font-weight: 500;
-      border: 2px solid rgba(126,202,255,0.3);
-      border-radius: 12px;
-      background: rgba(15,22,40,0.8);
-      outline: none;
-      color: #e0e8f0;
-      letter-spacing: 0.01em;
-      text-align: center;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    #search:focus {
-      border-color: #7ecaff;
-      box-shadow: 0 0 15px rgba(126,202,255,0.2), inset 0 0 10px rgba(126,202,255,0.05);
-    }
-    #search::placeholder { color: rgba(126,202,255,0.3); font-weight: 400; font-size: clamp(0.9rem, 2.5vw, 1.4rem); vertical-align: middle; }
-
-    /* --- Grammar badges (space colors) --- */
-    .cat {
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: clamp(0.55rem, 1.2vw, 0.75rem);
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
-      display: inline-block;
-    }
-    .cat-noun { color: #0a0e1a; background: #e0e8f0; }
-    .cat-verb { color: #fff; background: #e84545; }
-    .cat-adjective { color: #fff; background: #4a8ed4; }
-    .cat-adverb { color: #0a0e1a; background: #f0a830; }
-    .cat-determiner { color: #0a0e1a; background: #88c8e8; }
-    .cat-preposition { color: #fff; background: #45b875; }
-    .cat-pronoun { color: #fff; background: #a065c8; }
-    .cat-conjunction { color: #fff; background: #e078a0; }
-    .cat-interjection { color: #0a0e1a; background: #f0d050; }
-
-    /* --- Main result card --- */
-    .card {
-      width: 100%;
-      max-width: 520px;
-      background: rgba(15,22,40,0.85);
-      padding: clamp(1rem, 2vh, 1.5rem) 1.5rem;
-      margin-bottom: clamp(0.4rem, 1vh, 0.75rem);
-      border-radius: 12px;
-      border: 2px solid rgba(126,202,255,0.2);
-      animation: popIn 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
-      backdrop-filter: blur(10px);
-    }
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.3rem;
-    }
-    .card-word {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      font-weight: 700;
-      color: #fff;
-    }
-    .accept-btn {
-      background: rgba(126,202,255,0.15);
-      border: 2px solid rgba(126,202,255,0.4);
-      border-radius: 50%;
-      width: clamp(2rem, 5vw, 2.8rem);
-      height: clamp(2rem, 5vw, 2.8rem);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-      font-size: clamp(1rem, 3vw, 1.4rem);
-      color: #7ecaff;
-    }
-    .accept-btn:hover {
-      background: rgba(126,202,255,0.3);
-      border-color: #7ecaff;
-      box-shadow: 0 0 12px rgba(126,202,255,0.4);
-      transform: scale(1.1);
-    }
-    .card-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: clamp(0.3rem, 1vh, 0.6rem);
-      flex-wrap: wrap;
-    }
-    .card-gender {
-      color: rgba(126,202,255,0.6);
-      font-size: clamp(0.65rem, 1.3vw, 0.85rem);
-      font-weight: 700;
-    }
-    .phonetic-badge {
-      color: rgba(126,202,255,0.6);
-      font-size: clamp(0.65rem, 1.3vw, 0.85rem);
-      font-style: italic;
-    }
-    .card-definition {
-      font-size: clamp(0.9rem, 2.2vw, 1.3rem);
-      line-height: 1.5;
-      color: #c8d4e0;
-      margin-bottom: 0.4rem;
-      font-weight: 600;
-    }
-    .card-example {
-      font-size: clamp(0.75rem, 1.8vw, 1rem);
-      color: rgba(126,202,255,0.5);
-      font-style: italic;
-      font-weight: 600;
-      padding: 0.4rem 0.75rem;
-      background: rgba(126,202,255,0.08);
-      border-radius: 8px;
-      border: 1px solid rgba(126,202,255,0.1);
-    }
-
-    /* --- Secondary results --- */
-    .bottom-row {
-      width: 100%;
-      max-width: 520px;
-      display: flex;
-      gap: 0.5rem;
-    }
-    .mini-card {
-      flex: 1;
-      padding: clamp(0.4rem, 1vh, 0.7rem) 0.5rem;
-      background: rgba(15,22,40,0.7);
-      border: 1px solid rgba(126,202,255,0.15);
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: center;
-      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
-      animation: popIn 0.3s cubic-bezier(0.34, 1.4, 0.64, 1) both;
-      backdrop-filter: blur(5px);
-    }
-    .mini-card:nth-child(1) { animation-delay: 0.05s; }
-    .mini-card:nth-child(2) { animation-delay: 0.1s; }
-    .mini-card:nth-child(3) { animation-delay: 0.15s; }
-    .mini-card:nth-child(4) { animation-delay: 0.2s; }
-    .mini-card:hover {
-      border-color: #7ecaff;
-      transform: translateY(-2px);
-      box-shadow: 0 0 12px rgba(126,202,255,0.15);
-    }
-    .mini-card .word {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 600;
-      font-size: clamp(0.85rem, 2vw, 1.3rem);
-      color: #c8d4e0;
-    }
-
-    /* Diff highlights */
-    .diff-same { color: inherit; }
-    .diff-change { color: #ff6b6b; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-    .diff-add { color: #ff6b6b; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-
-    /* --- Challenge button --- */
-    .challenge-btn {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.5rem, 1vw, 0.65rem);
-      font-weight: 600;
-      color: #ffd700;
-      background: rgba(255,215,0,0.1);
-      border: 1px solid rgba(255,215,0,0.3);
-      border-radius: 8px;
-      padding: 0.5rem 0.6rem;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: all 0.3s;
-      width: 100%;
-      text-shadow: 0 0 8px rgba(255,215,0,0.3);
-    }
-    .challenge-btn:hover {
-      background: rgba(255,215,0,0.2);
-      border-color: #ffd700;
-      box-shadow: 0 0 12px rgba(255,215,0,0.3);
-    }
-    .challenge-btn:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-
-    /* --- Challenge game mode --- */
-    .game-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-      gap: clamp(1rem, 2.5vh, 2rem);
-      animation: popIn 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
-    }
-    .game-prompt {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-      color: rgba(126,202,255,0.5);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-    .game-word {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2rem, 6vw, 4rem);
-      font-weight: 700;
-      color: #7ecaff;
-      text-shadow: 0 0 20px rgba(126,202,255,0.4);
-    }
-    .game-choices {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: clamp(0.5rem, 1.5vw, 1rem);
-      max-width: 600px;
-    }
-    .game-choice {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1rem, 3vw, 1.8rem);
-      font-weight: 600;
-      color: #e0e8f0;
-      background: rgba(15,22,40,0.85);
-      border: 2px solid rgba(126,202,255,0.25);
-      border-radius: 12px;
-      padding: clamp(0.6rem, 1.5vh, 1rem) clamp(1.2rem, 3vw, 2rem);
-      cursor: pointer;
-      transition: all 0.25s;
-      backdrop-filter: blur(8px);
-    }
-    .game-choice:hover {
-      border-color: #7ecaff;
-      box-shadow: 0 0 15px rgba(126,202,255,0.25);
-      transform: scale(1.05);
-    }
-    .game-choice.correct {
-      border-color: #4ade80;
-      background: rgba(74,222,128,0.15);
-      color: #4ade80;
-      box-shadow: 0 0 20px rgba(74,222,128,0.3);
-      transform: scale(1.1);
-    }
-    .game-choice.wrong {
-      border-color: #ff6b6b;
-      background: rgba(255,107,107,0.1);
-      color: #ff6b6b;
-      opacity: 0.6;
-    }
-    .game-choice:disabled { cursor: default; }
-    .game-score {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
-      color: rgba(126,202,255,0.4);
-      letter-spacing: 0.1em;
-    }
-    .game-feedback {
-      font-family: 'Nunito', sans-serif;
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      font-weight: 700;
-      min-height: 2em;
-      text-align: center;
-    }
-    .game-next {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
-      font-weight: 600;
-      color: #7ecaff;
-      background: rgba(126,202,255,0.1);
-      border: 1px solid rgba(126,202,255,0.3);
-      border-radius: 8px;
-      padding: 0.5rem 1.5rem;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: all 0.3s;
-    }
-    .game-next:hover {
-      background: rgba(126,202,255,0.2);
-      box-shadow: 0 0 12px rgba(126,202,255,0.3);
-    }
-    .game-exit {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.5rem, 0.9vw, 0.6rem);
-      color: rgba(255,255,255,0.3);
-      background: none;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 6px;
-      padding: 0.3rem 0.8rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .game-exit:hover { color: #ff6b6b; border-color: #ff6b6b; }
-    .game-end {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      animation: popIn 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
-    }
-    .game-end-emoji { font-size: clamp(3rem, 8vw, 5rem); }
-    .game-end-score {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      font-weight: 700;
-      color: #ffd700;
-      text-shadow: 0 0 15px rgba(255,215,0,0.4);
-    }
-    .hint {
-      position: fixed;
-      bottom: 1.2rem;
-      color: rgba(126,202,255,0.35);
-      font-size: 0.75rem;
-      text-align: center;
-      font-weight: 600;
-    }
-    .hint code {
-      background: rgba(126,202,255,0.1);
-      padding: 0.15rem 0.45rem;
-      font-size: 0.7rem;
-      border-radius: 4px;
-      color: rgba(126,202,255,0.5);
-      font-weight: 700;
-      border: 1px solid rgba(126,202,255,0.15);
-    }
-
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.95) translateY(8px); }
-      to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-
-    @keyframes swapUp {
-      0% { opacity: 0.7; transform: scale(0.6) translateY(60px); }
-      50% { opacity: 1; transform: scale(1.06) translateY(-8px); }
-      75% { transform: scale(0.98) translateY(3px); }
-      100% { transform: scale(1) translateY(0); }
-    }
-
-    @keyframes swapDown {
-      0% { opacity: 0.7; transform: scale(1.3) translateY(-50px); }
-      50% { opacity: 1; transform: scale(0.92) translateY(6px); }
-      75% { transform: scale(1.03) translateY(-2px); }
-      100% { transform: scale(1) translateY(0); }
-    }
-
-    .card.swap-in {
-      animation: swapUp 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    }
-    .mini-card.swap-in {
-      animation: swapDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    }
-  </style>
-</head>
-<body>
-  <div class="pairs-panel">
-    <div class="panel-header">Inventaire</div>
-    <div class="panel-items" id="pairs-panel">
-      <div class="panel-empty">Aucun mot accepté</div>
-    </div>
-    <div class="panel-footer">
-      <div style="width:100%; display:flex; flex-direction:column; align-items:center; gap:0.4rem;">
-        <button class="challenge-btn" id="challenge-btn" onclick="startChallenge()" disabled>🚀 Défi Interstellaire</button>
-        <span class="panel-status">sys ready</span>
-      </div>
-    </div>
-  </div>
-  <div class="main-content">
-  <div class="title">Astermots</div>
-  <div class="subtitle-text">Dictionnaire phonétique interstellaire d'Orion</div>
-  <div class="search-container">
-    <input type="text" id="search" placeholder="Écris comme tu entends…" autocomplete="off" autofocus>
-  </div>
-
-  <div id="result"></div>
-
-  <div class="bottom-row" id="others"></div>
-
-  <p class="hint">Essaie : <code>gato</code> → gâteau · <code>xien</code> → chien · <code>garson</code> → garçon · <code>foto</code> → photo</p>
-  </div>
-
-  <script>
     let dictionary = [];
     let activeIndex = -1;
     let acceptedPairs = []; // {input, word}
@@ -870,40 +282,35 @@
     window.addEventListener('resize', fitToScreen);
 
     // --- Sound effects (Web Audio API, no files needed) ---
-    let audioCtx = null;
-    function getAudioCtx() {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      return audioCtx;
-    }
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
     function playAcceptSound() {
-      const now = getAudioCtx().currentTime;
+      const now = audioCtx.currentTime;
       // Ascending sci-fi chime
       [440, 660, 880].forEach((freq, i) => {
-        const osc = getAudioCtx().createOscillator();
-        const gain = getAudioCtx().createGain();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
         osc.type = 'sine';
         osc.frequency.setValueAtTime(freq, now + i * 0.08);
         gain.gain.setValueAtTime(0.15, now + i * 0.08);
         gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 0.3);
-        osc.connect(gain).connect(getAudioCtx().destination);
+        osc.connect(gain).connect(audioCtx.destination);
         osc.start(now + i * 0.08);
         osc.stop(now + i * 0.08 + 0.3);
       });
     }
 
     function playTrophySound() {
-      const now = getAudioCtx().currentTime;
+      const now = audioCtx.currentTime;
       // Sparkly fanfare for exact match
       [523, 659, 784, 1047].forEach((freq, i) => {
-        const osc = getAudioCtx().createOscillator();
-        const gain = getAudioCtx().createGain();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
         osc.type = 'triangle';
         osc.frequency.setValueAtTime(freq, now + i * 0.1);
         gain.gain.setValueAtTime(0.18, now + i * 0.1);
         gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.4);
-        osc.connect(gain).connect(getAudioCtx().destination);
+        osc.connect(gain).connect(audioCtx.destination);
         osc.start(now + i * 0.1);
         osc.stop(now + i * 0.1 + 0.4);
       });
@@ -911,53 +318,53 @@
 
     // --- Game answer sound effects ---
     function playCorrectSound() {
-      const now = getAudioCtx().currentTime;
+      const now = audioCtx.currentTime;
       // Triumphant ascending major arpeggio
       [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
-        const osc = getAudioCtx().createOscillator();
-        const g = getAudioCtx().createGain();
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
         osc.type = 'sine';
         osc.frequency.value = freq;
         g.gain.setValueAtTime(0.2, now + i * 0.07);
         g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.07 + 0.35);
-        osc.connect(g).connect(getAudioCtx().destination);
+        osc.connect(g).connect(audioCtx.destination);
         osc.start(now + i * 0.07);
         osc.stop(now + i * 0.07 + 0.4);
       });
       // Bright shimmer on top
-      const shimmer = getAudioCtx().createOscillator();
-      const sg = getAudioCtx().createGain();
+      const shimmer = audioCtx.createOscillator();
+      const sg = audioCtx.createGain();
       shimmer.type = 'triangle';
       shimmer.frequency.value = 2093;
       sg.gain.setValueAtTime(0.1, now + 0.25);
       sg.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
-      shimmer.connect(sg).connect(getAudioCtx().destination);
+      shimmer.connect(sg).connect(audioCtx.destination);
       shimmer.start(now + 0.25);
       shimmer.stop(now + 0.85);
     }
 
     function playWrongSound() {
-      const now = getAudioCtx().currentTime;
+      const now = audioCtx.currentTime;
       // Descending minor second — dissonant buzzy feel
       [310, 280].forEach((freq, i) => {
-        const osc = getAudioCtx().createOscillator();
-        const g = getAudioCtx().createGain();
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
         osc.type = 'sawtooth';
-        const filter = getAudioCtx().createBiquadFilter();
+        const filter = audioCtx.createBiquadFilter();
         filter.type = 'lowpass';
         filter.frequency.value = 800;
         osc.frequency.value = freq;
         g.gain.setValueAtTime(0.15, now + i * 0.15);
         g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.15 + 0.4);
-        osc.connect(filter).connect(g).connect(getAudioCtx().destination);
+        osc.connect(filter).connect(g).connect(audioCtx.destination);
         osc.start(now + i * 0.15);
         osc.stop(now + i * 0.15 + 0.45);
       });
     }
 
     function playGameEndSound(pct) {
-      const now = getAudioCtx().currentTime;
-      const dest = getAudioCtx().destination;
+      const now = audioCtx.currentTime;
+      const dest = audioCtx.destination;
 
       if (pct >= 70) {
         // Grand victory celebration — multi-layered joyful fanfare
@@ -965,9 +372,9 @@
         // 1) Brass-like ascending fanfare (C major → high C)
         const fanfare = [261.63, 329.63, 392, 523.25, 659.25, 783.99, 1046.5];
         fanfare.forEach((freq, i) => {
-          const osc = getAudioCtx().createOscillator();
-          const g = getAudioCtx().createGain();
-          const f = getAudioCtx().createBiquadFilter();
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          const f = audioCtx.createBiquadFilter();
           osc.type = 'sawtooth';
           f.type = 'lowpass';
           f.frequency.value = 2500 + i * 200;
@@ -983,8 +390,8 @@
         // 2) Sustained bright major chord (rings out after arpeggio)
         const chordStart = now + fanfare.length * 0.08;
         [523.25, 659.25, 783.99, 1046.5].forEach(freq => {
-          const osc = getAudioCtx().createOscillator();
-          const g = getAudioCtx().createGain();
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
           osc.type = 'triangle';
           osc.frequency.value = freq;
           g.gain.setValueAtTime(0, chordStart);
@@ -999,8 +406,8 @@
         for (let i = 0; i < 12; i++) {
           const t = now + 0.3 + i * 0.12;
           const freq = 1800 + Math.random() * 2500;
-          const osc = getAudioCtx().createOscillator();
-          const g = getAudioCtx().createGain();
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
           osc.type = 'sine';
           osc.frequency.value = freq;
           g.gain.setValueAtTime(0.06 + Math.random() * 0.06, t);
@@ -1011,8 +418,8 @@
         }
 
         // 4) Celebration boom
-        const boom = getAudioCtx().createOscillator();
-        const bg = getAudioCtx().createGain();
+        const boom = audioCtx.createOscillator();
+        const bg = audioCtx.createGain();
         boom.type = 'sine';
         boom.frequency.setValueAtTime(80, now);
         boom.frequency.exponentialRampToValueAtTime(30, now + 0.4);
@@ -1026,8 +433,8 @@
         // Warm encouraging melody — still uplifting, ascending end
         const melody = [261.63, 293.66, 329.63, 392, 523.25];
         melody.forEach((freq, i) => {
-          const osc = getAudioCtx().createOscillator();
-          const g = getAudioCtx().createGain();
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
           osc.type = 'triangle';
           osc.frequency.value = freq;
           g.gain.setValueAtTime(0.14, now + i * 0.18);
@@ -1039,8 +446,8 @@
         // Gentle resolved chord at the end
         const cEnd = now + melody.length * 0.18;
         [392, 523.25].forEach(freq => {
-          const osc = getAudioCtx().createOscillator();
-          const g = getAudioCtx().createGain();
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
           osc.type = 'sine';
           osc.frequency.value = freq;
           g.gain.setValueAtTime(0.08, cEnd);
@@ -1057,18 +464,18 @@
 
     function startBgMusic() {
       if (bgMusicNodes) return;
-      const master = getAudioCtx().createGain();
-      master.gain.setValueAtTime(0, getAudioCtx().currentTime);
-      master.gain.linearRampToValueAtTime(0.18, getAudioCtx().currentTime + 1.5);
-      master.connect(getAudioCtx().destination);
+      const master = audioCtx.createGain();
+      master.gain.setValueAtTime(0, audioCtx.currentTime);
+      master.gain.linearRampToValueAtTime(0.18, audioCtx.currentTime + 1.5);
+      master.connect(audioCtx.destination);
 
       const nodes = [];
       const intervals = [];
 
       // Power bass — rich sub with slight overdrive feel
       [55, 55.2, 110].forEach((freq, i) => {
-        const osc = getAudioCtx().createOscillator();
-        const g = getAudioCtx().createGain();
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
         osc.type = i < 2 ? 'sawtooth' : 'sine';
         osc.frequency.value = freq;
         g.gain.value = i < 2 ? 0.15 : 0.3;
@@ -1079,11 +486,11 @@
 
       // Uplifting chord pad — major chord (C-E-G-B) with bright sawtooth + filter
       [261.63, 329.63, 392, 493.88].forEach((freq, i) => {
-        const osc = getAudioCtx().createOscillator();
-        const g = getAudioCtx().createGain();
-        const filter = getAudioCtx().createBiquadFilter();
-        const lfo = getAudioCtx().createOscillator();
-        const lfoGain = getAudioCtx().createGain();
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        const filter = audioCtx.createBiquadFilter();
+        const lfo = audioCtx.createOscillator();
+        const lfoGain = audioCtx.createGain();
         osc.type = 'sawtooth';
         osc.frequency.value = freq;
         filter.type = 'lowpass';
@@ -1107,16 +514,16 @@
       const beatMs = (60 / bpm / 2) * 1000; // eighth notes
 
       function synthDrum(type, freq, freqEnd, dur, vol, filterFreq) {
-        const now = getAudioCtx().currentTime;
-        const osc = getAudioCtx().createOscillator();
-        const g = getAudioCtx().createGain();
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
         osc.type = type;
         osc.frequency.setValueAtTime(freq, now);
         if (freqEnd) osc.frequency.exponentialRampToValueAtTime(freqEnd, now + dur * 0.6);
         g.gain.setValueAtTime(vol, now);
         g.gain.exponentialRampToValueAtTime(0.001, now + dur);
         if (filterFreq) {
-          const f = getAudioCtx().createBiquadFilter();
+          const f = audioCtx.createBiquadFilter();
           f.type = type === 'square' ? 'highpass' : 'lowpass';
           f.frequency.value = filterFreq;
           f.Q.value = 1;
@@ -1130,15 +537,15 @@
 
       // Noise burst helper for snare / clap
       function noiseHit(dur, vol) {
-        const now = getAudioCtx().currentTime;
-        const bufSize = getAudioCtx().sampleRate * dur;
-        const buf = getAudioCtx().createBuffer(1, bufSize, getAudioCtx().sampleRate);
+        const now = audioCtx.currentTime;
+        const bufSize = audioCtx.sampleRate * dur;
+        const buf = audioCtx.createBuffer(1, bufSize, audioCtx.sampleRate);
         const data = buf.getChannelData(0);
         for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
-        const src = getAudioCtx().createBufferSource();
+        const src = audioCtx.createBufferSource();
         src.buffer = buf;
-        const g = getAudioCtx().createGain();
-        const f = getAudioCtx().createBiquadFilter();
+        const g = audioCtx.createGain();
+        const f = audioCtx.createBiquadFilter();
         f.type = 'bandpass';
         f.frequency.value = 3000;
         f.Q.value = 0.8;
@@ -1202,11 +609,11 @@
       const arpNotes = [523.25, 659.25, 783.99, 1046.5, 783.99, 659.25];
       const arpInterval = setInterval(() => {
         if (!bgMusicNodes) { clearInterval(arpInterval); return; }
-        const now = getAudioCtx().currentTime;
+        const now = audioCtx.currentTime;
         const freq = arpNotes[arpStep % arpNotes.length];
-        const osc = getAudioCtx().createOscillator();
-        const g = getAudioCtx().createGain();
-        const f = getAudioCtx().createBiquadFilter();
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        const f = audioCtx.createBiquadFilter();
         osc.type = 'square';
         osc.frequency.value = freq;
         f.type = 'lowpass';
@@ -1224,9 +631,9 @@
       const twinkleInterval = setInterval(() => {
         if (!bgMusicNodes) { clearInterval(twinkleInterval); return; }
         const freq = 1200 + Math.random() * 3000;
-        const osc = getAudioCtx().createOscillator();
-        const g = getAudioCtx().createGain();
-        const now = getAudioCtx().currentTime;
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        const now = audioCtx.currentTime;
         osc.type = 'sine';
         osc.frequency.value = freq;
         g.gain.setValueAtTime(0.06 + Math.random() * 0.05, now);
@@ -1244,7 +651,7 @@
       if (!bgMusicNodes) return;
       const { master, nodes, intervals } = bgMusicNodes;
       intervals.forEach(id => clearInterval(id));
-      master.gain.linearRampToValueAtTime(0, getAudioCtx().currentTime + 1.5);
+      master.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
       setTimeout(() => {
         nodes.forEach(n => { try { n.stop(); } catch(e){} });
         master.disconnect();
@@ -1540,37 +947,13 @@
     wireSearchEvents();
 
     // --- Load dictionary ---
-    function loadDictionary(data) {
-      dictionary = data.map(e => ({ ...e, _phonetic: phonetic(e.word) }));
-      document.getElementById('search').focus();
-    }
-
-    if (typeof DICT_DATA !== 'undefined') {
-      loadDictionary(DICT_DATA);
-    } else {
-      fetch('src/data/dictionary.json')
-        .then(r => r.json())
-        .then(data => loadDictionary(data))
-        .catch(err => {
-          console.error('Failed to load dictionary:', err);
-          // Try loading via script tag as fallback for file:// protocol
-          const s = document.createElement('script');
-          s.textContent = 'var DICT_DATA = ' + '[]';
-          document.head.appendChild(s);
-        });
-    }
-  </script>
-  <script>
-    // Load dictionary data via script tag (works with file:// protocol)
-    var _dictScript = document.createElement('script');
-    _dictScript.onload = function() {
-      if (typeof DICT_DATA !== 'undefined' && !dictionary.length) {
-        dictionary = DICT_DATA.map(function(e) { return Object.assign({}, e, { _phonetic: phonetic(e.word) }); });
+    fetch('src/data/dictionary.json')
+      .then(r => r.json())
+      .then(data => {
+        dictionary = data.map(e => ({ ...e, _phonetic: phonetic(e.word) }));
         document.getElementById('search').focus();
-      }
-    };
-    _dictScript.src = 'src/data/dictionary.js';
-    document.head.appendChild(_dictScript);
-  </script>
-</body>
-</html>
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  
