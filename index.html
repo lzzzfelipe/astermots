@@ -432,9 +432,18 @@
         return;
       }
 
-      showCard(scored[0].entry, query);
+      // Keep a mutable display order so we can swap
+      const display = scored.slice(0, 5);
+      renderResults(display, query);
+    }
 
-      const runners = scored.slice(1, 5);
+    function renderResults(display, query) {
+      const resultEl = document.getElementById('result');
+      const othersEl = document.getElementById('others');
+
+      showCard(display[0].entry, query);
+
+      const runners = display.slice(1);
       if (runners.length) {
         othersEl.innerHTML = runners.map((s, i) => `
           <div class="mini-card" data-idx="${i}">
@@ -442,8 +451,13 @@
           </div>`).join('');
         othersEl.querySelectorAll('.mini-card').forEach(el => {
           el.addEventListener('click', () => {
-            const entry = runners[+el.dataset.idx].entry;
-            showCard(entry, query);
+            const idx = +el.dataset.idx + 1;
+            // Swap clicked item to primary position
+            const clicked = display[idx];
+            display[idx] = display[0];
+            display[0] = clicked;
+            renderResults(display, query);
+            fitToScreen();
           });
         });
       } else {
