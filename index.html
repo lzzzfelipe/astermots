@@ -151,6 +151,13 @@
       font-family: monospace;
     }
 
+    .diff-same { color: inherit; }
+    .diff-change { color: #e74c3c; font-weight: 700; text-decoration: underline; text-decoration-color: #e74c3c40; text-underline-offset: 3px; }
+    .diff-add { color: #8e44ad; font-weight: 600; opacity: 0.7; }
+
+    .mini-card .diff-change { color: #e74c3c; font-weight: 700; }
+    .mini-card .diff-add { color: #8e44ad; font-weight: 600; opacity: 0.7; }
+
     .bottom-row {
       margin-top: auto;
       width: 100%;
@@ -363,13 +370,59 @@
     function catClass(cat) { return 'cat cat-' + cat; }
     function genderLabel(g) { return g === 'm' ? 'masculin' : g === 'f' ? 'féminin' : ''; }
 
-    function showCard(entry) {
+    // Highlight differences between user input and matched word
+    function highlightDiff(word, query) {
+      if (!query) return word;
+      const w = word.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const q = query.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+      // Use Levenshtein backtrack to get char-level alignment
+      const m = q.length, n = w.length;
+      const dp = Array.from({ length: m + 1 }, () => Array(n + 1).fill(0));
+      for (let i = 0; i <= m; i++) dp[i][0] = i;
+      for (let j = 0; j <= n; j++) dp[0][j] = j;
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          dp[i][j] = Math.min(
+            dp[i - 1][j] + 1,
+            dp[i][j - 1] + 1,
+            dp[i - 1][j - 1] + (q[i - 1] !== w[j - 1] ? 1 : 0)
+          );
+        }
+      }
+
+      // Backtrack to classify each character in word
+      const status = new Array(n).fill('same'); // 'same', 'change', 'add'
+      let i = m, j = n;
+      while (i > 0 || j > 0) {
+        if (i > 0 && j > 0 && dp[i][j] === dp[i-1][j-1] + (q[i-1] !== w[j-1] ? 1 : 0)) {
+          if (q[i-1] !== w[j-1]) status[j-1] = 'change';
+          i--; j--;
+        } else if (j > 0 && dp[i][j] === dp[i][j-1] + 1) {
+          status[j-1] = 'add';
+          j--;
+        } else {
+          i--;
+        }
+      }
+
+      // Build highlighted HTML using original (accented) word chars
+      let html = '';
+      for (let k = 0; k < word.length; k++) {
+        const cls = status[k] || 'same';
+        html += `<span class="diff-${cls}">${word[k]}</span>`;
+      }
+      return html;
+    }
+
+    function showCard(entry, query) {
       const genderHtml = entry.gender
         ? `<span class="card-gender">${genderLabel(entry.gender)}</span>` : '';
       const phoneticVal = phonetic(entry.word);
+      const wordHtml = query ? highlightDiff(entry.word, query) : entry.word;
       document.getElementById('result').innerHTML = `
         <div class="card">
-          <div class="card-word">${entry.word}</div>
+          <div class="card-word">${wordHtml}</div>
           <div class="card-meta">
             <span class="${catClass(entry.category)}">${entry.category}</span>
             ${genderHtml}
@@ -381,7 +434,7 @@
       `;
     }
 
-    function showResults(scored) {
+    function showResults(scored, query) {
       const othersEl = document.getElementById('others');
       if (!scored.length) {
         document.getElementById('result').innerHTML = '';
@@ -389,13 +442,13 @@
         return;
       }
 
-      showCard(scored[0].entry);
+      showCard(scored[0].entry, query);
 
       const runners = scored.slice(1, 5);
       if (runners.length) {
         othersEl.innerHTML = runners.map((s, i) => `
           <div class="mini-card" data-idx="${i}">
-            <div class="word">${s.entry.word}</div>
+            <div class="word">${highlightDiff(s.entry.word, query)}</div>
             <span class="${catClass(s.entry.category)}">${s.entry.category}</span>
             <div class="def">${s.entry.definition}</div>
           </div>
@@ -403,7 +456,7 @@
         othersEl.querySelectorAll('.mini-card').forEach(el => {
           el.addEventListener('click', () => {
             const entry = runners[+el.dataset.idx].entry;
-            showCard(entry);
+            showCard(entry, query);
             document.getElementById('search').value = entry.word;
           });
         });
@@ -418,8 +471,9 @@
 
     searchEl.addEventListener('input', () => {
       activeIndex = -1;
-      currentScored = searchWords(searchEl.value.trim());
-      showResults(currentScored);
+      const q = searchEl.value.trim();
+      currentScored = searchWords(q);
+      showResults(currentScored, q);
     });
 
     searchEl.addEventListener('keydown', (e) => {
@@ -428,11 +482,11 @@
       if (e.key === 'ArrowDown') {
         e.preventDefault();
         activeIndex = Math.min(activeIndex + 1, top5.length - 1);
-        showCard(top5[activeIndex].entry);
+        showCard(top5[activeIndex].entry, searchEl.value.trim());
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         activeIndex = Math.max(activeIndex - 1, 0);
-        showCard(top5[activeIndex].entry);
+        showCard(top5[activeIndex].entry, searchEl.value.trim());
       }
     });
 
