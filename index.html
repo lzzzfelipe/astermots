@@ -54,18 +54,19 @@
 
     .cloud-blobs {
       position: absolute;
-      inset: -80px -50px -100px -50px;
+      inset: -100px -60px -120px -60px;
       filter: url(#goo);
       z-index: 0;
       pointer-events: none;
+      overflow: visible;
     }
 
     .cloud-body {
       position: absolute;
-      top: 80px;
-      left: 50px;
-      right: 50px;
-      bottom: 100px;
+      top: 100px;
+      left: 60px;
+      right: 60px;
+      bottom: 120px;
       min-height: 50px;
       background: #ECEFF1;
       border-radius: 100px;
@@ -253,7 +254,7 @@
   <div class="search-container">
     <svg style="position:absolute;width:0;height:0">
       <defs>
-        <filter id="goo">
+        <filter id="goo" x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="25" result="blur"/>
           <feColorMatrix in="blur" mode="matrix"
             values="1 0 0 0 0
@@ -555,7 +556,7 @@
       { side: 'top',    minS: 30, maxS: 70,  pos: [0.75, 0.95], poke: 0.40 },
     ];
 
-    const INSET_TOP = 80, INSET_LEFT = 50, INSET_BOTTOM = 100;
+    const INSET_TOP = 100, INSET_LEFT = 60, INSET_BOTTOM = 120;
 
     function updateCloudShape(text) {
       const len = text.length;
