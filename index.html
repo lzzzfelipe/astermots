@@ -719,11 +719,11 @@
           b.dataset.baseL = parseFloat(b.style.left);
           b.dataset.baseT = parseFloat(b.style.top);
         }
-        const sz = baseW + wave * 6;
+        const sz = baseW + wave * 15;
         b.style.width = sz + 'px';
         b.style.height = sz + 'px';
-        b.style.left = (baseL + drift * 4) + 'px';
-        b.style.top = (baseT + wave * 3) + 'px';
+        b.style.left = (baseL + drift * 10) + 'px';
+        b.style.top = (baseT + wave * 8) + 'px';
       });
 
       // Mini-card bubbles — even slower drift
@@ -741,11 +741,11 @@
         const baseW = parseFloat(b.dataset.baseW);
         const baseL = parseFloat(b.dataset.baseL);
         const baseT = parseFloat(b.dataset.baseT);
-        const sz = baseW + wave * 4;
+        const sz = baseW + wave * 10;
         b.style.width = sz + 'px';
         b.style.height = sz + 'px';
-        b.style.left = (baseL + drift * 3) + 'px';
-        b.style.top = (baseT + wave * 2) + 'px';
+        b.style.left = (baseL + drift * 8) + 'px';
+        b.style.top = (baseT + wave * 6) + 'px';
       });
 
       morphTimer = requestAnimationFrame(morphCardBubbles);
