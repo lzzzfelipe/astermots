@@ -252,7 +252,7 @@
 
     .mini-card {
       position: relative;
-      padding: 0.3rem 0.6rem;
+      padding: 0.5rem 1rem;
       margin: 0.75rem 0;
       cursor: pointer;
       transition: transform 0.15s;
@@ -687,7 +687,7 @@
       const runners = scored.slice(1, 5);
       if (runners.length) {
         othersEl.innerHTML = runners.map((s, i) => {
-          const miniBubbles = cardBubbles(s.entry.word, 3, 'mini', 15, 12, 20);
+          const miniBubbles = cardBubbles(s.entry.word, 4, 'mini', 15, 12, 20);
           return `
           <div class="mini-card" data-idx="${i}">
             <div class="mini-blobs">
