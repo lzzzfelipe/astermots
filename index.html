@@ -1015,8 +1015,13 @@
       }
 
       const pair = gs.pairs[gs.current];
-      const distractors = getDistractors(pair.word, 3);
-      const choices = shuffle([pair.word, ...distractors]);
+      const inputIsCorrect = pair.input.toLowerCase() === pair.word.toLowerCase();
+      const numGenerated = inputIsCorrect ? 3 : 2;
+      const distractors = getDistractors(pair.word, numGenerated);
+      if (!inputIsCorrect) {
+        distractors.unshift(pair.input);
+      }
+      const choices = shuffle([pair.word, ...distractors.slice(0, 3)]);
 
       main.innerHTML = `
         <div class="game-container">
