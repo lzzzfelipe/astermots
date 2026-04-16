@@ -898,6 +898,81 @@
       });
     }
 
+    // --- Game background music (procedural ambient space loop) ---
+    let bgMusicNodes = null;
+
+    function startBgMusic() {
+      if (bgMusicNodes) return;
+      const master = audioCtx.createGain();
+      master.gain.setValueAtTime(0, audioCtx.currentTime);
+      master.gain.linearRampToValueAtTime(0.07, audioCtx.currentTime + 2);
+      master.connect(audioCtx.destination);
+
+      const nodes = [];
+
+      // Deep space drone — two detuned sine waves
+      [55, 55.3].forEach(freq => {
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        g.gain.value = 0.6;
+        osc.connect(g).connect(master);
+        osc.start();
+        nodes.push(osc);
+      });
+
+      // Slowly evolving pad — triangle waves with LFO on frequency
+      [130.81, 164.81, 196].forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        const lfo = audioCtx.createOscillator();
+        const lfoGain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.value = freq;
+        g.gain.value = 0.25;
+        lfo.type = 'sine';
+        lfo.frequency.value = 0.15 + i * 0.07;
+        lfoGain.gain.value = 3;
+        lfo.connect(lfoGain).connect(osc.frequency);
+        osc.connect(g).connect(master);
+        lfo.start();
+        osc.start();
+        nodes.push(osc, lfo);
+      });
+
+      // Twinkling stars — quiet high pings on a timer
+      const twinkleInterval = setInterval(() => {
+        if (!bgMusicNodes) { clearInterval(twinkleInterval); return; }
+        const freq = 800 + Math.random() * 2400;
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        const now = audioCtx.currentTime;
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        g.gain.setValueAtTime(0.04 + Math.random() * 0.04, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + 0.8 + Math.random() * 0.6);
+        osc.connect(g).connect(master);
+        osc.start(now);
+        osc.stop(now + 1.5);
+      }, 600 + Math.random() * 400);
+
+      bgMusicNodes = { master, nodes, twinkleInterval };
+    }
+
+    function stopBgMusic() {
+      if (!bgMusicNodes) return;
+      const { master, nodes, twinkleInterval } = bgMusicNodes;
+      clearInterval(twinkleInterval);
+      // Fade out over 1.5s
+      master.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
+      setTimeout(() => {
+        nodes.forEach(n => { try { n.stop(); } catch(e){} });
+        master.disconnect();
+      }, 1600);
+      bgMusicNodes = null;
+    }
+
     function acceptWord(word) {
       const inputText = document.getElementById('search').value.trim();
       if (inputText) {
@@ -966,6 +1041,7 @@
         score: 0,
         total: acceptedPairs.length
       };
+      startBgMusic();
       showGameQuestion();
     }
 
@@ -1095,6 +1171,7 @@
     }
 
     function showGameEnd() {
+      stopBgMusic();
       const main = document.querySelector('.main-content');
       const gs = gameState;
       const pct = Math.round((gs.score / gs.total) * 100);
@@ -1116,6 +1193,7 @@
 
     function exitChallenge() {
       gameState = null;
+      stopBgMusic();
       const main = document.querySelector('.main-content');
       main.innerHTML = `
         <div class="title">Astermots</div>
