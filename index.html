@@ -286,10 +286,10 @@
         [/y/g, 'i'],
         // w
         [/w/g, 'v'],
+        // x as sh (kids often write x for the ch sound) — must be before h removal
+        [/x/g, 'sh'],
         // silent h
         [/h/g, ''],
-        // x as sh (kids often write x for the ch sound)
-        [/x/g, 'sh'],
       ];
 
       for (const [re, rep] of rules) {
