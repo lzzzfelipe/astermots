@@ -1502,33 +1502,37 @@
     }
 
     // --- Event wiring ---
-    const searchEl = document.getElementById('search');
     let currentScored = [];
 
-    searchEl.addEventListener('input', () => {
-      activeIndex = -1;
-      const q = searchEl.value.trim();
-      currentScored = searchWords(q);
-      showResults(currentScored, q);
-      fitToScreen();
+    function wireSearchEvents() {
+      const searchEl = document.getElementById('search');
+      searchEl.addEventListener('input', () => {
+        activeIndex = -1;
+        const q = searchEl.value.trim();
+        currentScored = searchWords(q);
+        showResults(currentScored, q);
+        fitToScreen();
 
-      const hint = document.querySelector('.hint');
-      if (hint) hint.style.display = q.length > 0 ? 'none' : '';
-    });
+        const hint = document.querySelector('.hint');
+        if (hint) hint.style.display = q.length > 0 ? 'none' : '';
+      });
 
-    searchEl.addEventListener('keydown', (e) => {
-      if (!currentScored.length) return;
-      const top5 = currentScored.slice(0, 5);
-      if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        activeIndex = Math.min(activeIndex + 1, top5.length - 1);
-        showCard(top5[activeIndex].entry, searchEl.value.trim());
-      } else if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        activeIndex = Math.max(activeIndex - 1, 0);
-        showCard(top5[activeIndex].entry, searchEl.value.trim());
-      }
-    });
+      searchEl.addEventListener('keydown', (e) => {
+        if (!currentScored.length) return;
+        const top5 = currentScored.slice(0, 5);
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          activeIndex = Math.min(activeIndex + 1, top5.length - 1);
+          showCard(top5[activeIndex].entry, searchEl.value.trim());
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          activeIndex = Math.max(activeIndex - 1, 0);
+          showCard(top5[activeIndex].entry, searchEl.value.trim());
+        }
+      });
+    }
+
+    wireSearchEvents();
 
     // --- Load dictionary ---
     // Inline dictionary data
@@ -74469,7 +74473,7 @@
   }
 ];
       dictionary = data.map(e => ({ ...e, _phonetic: phonetic(e.word) }));
-      searchEl.focus();
+      document.getElementById('search').focus();
     }
   </script>
 </body>
