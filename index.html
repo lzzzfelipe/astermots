@@ -952,34 +952,97 @@
 
     function playGameEndSound(pct) {
       const now = audioCtx.currentTime;
+      const dest = audioCtx.destination;
+
       if (pct >= 70) {
-        // Victory fanfare — bright brass-like chord
-        [261.63, 329.63, 392, 523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+        // Grand victory celebration — multi-layered joyful fanfare
+
+        // 1) Brass-like ascending fanfare (C major → high C)
+        const fanfare = [261.63, 329.63, 392, 523.25, 659.25, 783.99, 1046.5];
+        fanfare.forEach((freq, i) => {
           const osc = audioCtx.createOscillator();
           const g = audioCtx.createGain();
-          osc.type = i < 3 ? 'sawtooth' : 'triangle';
           const f = audioCtx.createBiquadFilter();
+          osc.type = 'sawtooth';
           f.type = 'lowpass';
-          f.frequency.value = 2000;
+          f.frequency.value = 2500 + i * 200;
           osc.frequency.value = freq;
-          g.gain.setValueAtTime(0.1, now + i * 0.06);
-          g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.06 + 0.8);
-          osc.connect(f).connect(g).connect(audioCtx.destination);
-          osc.start(now + i * 0.06);
-          osc.stop(now + i * 0.06 + 0.85);
+          g.gain.setValueAtTime(0.12, now + i * 0.08);
+          g.gain.linearRampToValueAtTime(0.14, now + i * 0.08 + 0.1);
+          g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.08 + 1.2);
+          osc.connect(f).connect(g).connect(dest);
+          osc.start(now + i * 0.08);
+          osc.stop(now + i * 0.08 + 1.3);
         });
-      } else {
-        // Encouraging soft chime
-        [392, 329.63, 261.63].forEach((freq, i) => {
+
+        // 2) Sustained bright major chord (rings out after arpeggio)
+        const chordStart = now + fanfare.length * 0.08;
+        [523.25, 659.25, 783.99, 1046.5].forEach(freq => {
           const osc = audioCtx.createOscillator();
           const g = audioCtx.createGain();
           osc.type = 'triangle';
           osc.frequency.value = freq;
-          g.gain.setValueAtTime(0.12, now + i * 0.2);
-          g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.2 + 0.5);
-          osc.connect(g).connect(audioCtx.destination);
-          osc.start(now + i * 0.2);
-          osc.stop(now + i * 0.2 + 0.55);
+          g.gain.setValueAtTime(0, chordStart);
+          g.gain.linearRampToValueAtTime(0.1, chordStart + 0.15);
+          g.gain.exponentialRampToValueAtTime(0.001, chordStart + 2.0);
+          osc.connect(g).connect(dest);
+          osc.start(chordStart);
+          osc.stop(chordStart + 2.1);
+        });
+
+        // 3) Sparkle shower — rapid high twinkles
+        for (let i = 0; i < 12; i++) {
+          const t = now + 0.3 + i * 0.12;
+          const freq = 1800 + Math.random() * 2500;
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          g.gain.setValueAtTime(0.06 + Math.random() * 0.06, t);
+          g.gain.exponentialRampToValueAtTime(0.001, t + 0.3);
+          osc.connect(g).connect(dest);
+          osc.start(t);
+          osc.stop(t + 0.35);
+        }
+
+        // 4) Celebration boom
+        const boom = audioCtx.createOscillator();
+        const bg = audioCtx.createGain();
+        boom.type = 'sine';
+        boom.frequency.setValueAtTime(80, now);
+        boom.frequency.exponentialRampToValueAtTime(30, now + 0.4);
+        bg.gain.setValueAtTime(0.25, now);
+        bg.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+        boom.connect(bg).connect(dest);
+        boom.start(now);
+        boom.stop(now + 0.55);
+
+      } else {
+        // Warm encouraging melody — still uplifting, ascending end
+        const melody = [261.63, 293.66, 329.63, 392, 523.25];
+        melody.forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.value = freq;
+          g.gain.setValueAtTime(0.14, now + i * 0.18);
+          g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.18 + 0.6);
+          osc.connect(g).connect(dest);
+          osc.start(now + i * 0.18);
+          osc.stop(now + i * 0.18 + 0.65);
+        });
+        // Gentle resolved chord at the end
+        const cEnd = now + melody.length * 0.18;
+        [392, 523.25].forEach(freq => {
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.value = freq;
+          g.gain.setValueAtTime(0.08, cEnd);
+          g.gain.exponentialRampToValueAtTime(0.001, cEnd + 1.0);
+          osc.connect(g).connect(dest);
+          osc.start(cEnd);
+          osc.stop(cEnd + 1.1);
         });
       }
     }
