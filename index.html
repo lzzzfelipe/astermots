@@ -47,7 +47,7 @@
       box-shadow: 10px 10px rgba(0,0,0,0.15);
       border-radius: 100px;
       padding: 1.2rem 1.5rem;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .cloud::after, .cloud::before {
@@ -55,42 +55,22 @@
       position: absolute;
       background: inherit;
       border-radius: 50%;
-      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .cloud::after {
-      width: 40px;
-      height: 40px;
-      top: -15px;
-      left: 25px;
+      width: var(--b1-size, 40px);
+      height: var(--b1-size, 40px);
+      top: var(--b1-top, -15px);
+      left: var(--b1-left, 25px);
     }
 
     .cloud::before {
-      width: 60px;
-      height: 60px;
-      top: -28px;
-      left: 70px;
+      width: var(--b2-size, 60px);
+      height: var(--b2-size, 60px);
+      top: var(--b2-top, -28px);
+      left: var(--b2-left, 70px);
     }
-
-    .cloud.grow-1 { width: 220px; padding: 1.3rem 1.6rem; }
-    .cloud.grow-1::after { width: 50px; height: 50px; top: -20px; left: 30px; }
-    .cloud.grow-1::before { width: 75px; height: 75px; top: -35px; left: 85px; }
-
-    .cloud.grow-2 { width: 280px; padding: 1.4rem 1.7rem; }
-    .cloud.grow-2::after { width: 55px; height: 55px; top: -22px; left: 32px; }
-    .cloud.grow-2::before { width: 90px; height: 90px; top: -42px; left: 100px; }
-
-    .cloud.grow-3 { width: 350px; padding: 1.4rem 1.8rem; }
-    .cloud.grow-3::after { width: 60px; height: 60px; top: -25px; left: 35px; }
-    .cloud.grow-3::before { width: 100px; height: 100px; top: -48px; left: 110px; }
-
-    .cloud.grow-4 { width: 420px; padding: 1.5rem 1.9rem; }
-    .cloud.grow-4::after { width: 65px; height: 65px; top: -28px; left: 38px; }
-    .cloud.grow-4::before { width: 110px; height: 110px; top: -53px; left: 120px; }
-
-    .cloud.grow-5 { width: 500px; padding: 1.5rem 2rem; }
-    .cloud.grow-5::after { width: 70px; height: 70px; top: -30px; left: 40px; }
-    .cloud.grow-5::before { width: 120px; height: 120px; top: -58px; left: 130px; }
 
     #search {
       width: 100%;
@@ -104,6 +84,7 @@
       transition: box-shadow 0.2s;
       position: relative;
       z-index: 1;
+      text-align: center;
     }
 
     #search:focus {
@@ -523,19 +504,46 @@
     const cloudEl = document.querySelector('.cloud');
     let currentScored = [];
 
-    function updateCloudSize(len) {
-      cloudEl.classList.remove('grow-1','grow-2','grow-3','grow-4','grow-5');
-      if (len >= 8) cloudEl.classList.add('grow-5');
-      else if (len >= 6) cloudEl.classList.add('grow-4');
-      else if (len >= 4) cloudEl.classList.add('grow-3');
-      else if (len >= 2) cloudEl.classList.add('grow-2');
-      else if (len >= 1) cloudEl.classList.add('grow-1');
+    // Seed a simple hash from char code to get varied but deterministic shapes
+    function charHash(c) { return ((c * 2654435761) >>> 0) % 100; }
+
+    function updateCloudShape(text) {
+      const len = text.length;
+      // Cloud body grows with length
+      const t = Math.min(len / 10, 1); // 0→1 over 10 chars
+      const w = 180 + t * 320; // 180→500
+      const pad = 1.2 + t * 0.8;
+
+      cloudEl.style.width = w + 'px';
+      cloudEl.style.padding = pad + 'rem ' + (pad + 0.3) + 'rem';
+
+      // Bumps morph based on the actual characters typed
+      const seed = len > 0 ? text.split('').reduce((a, c) => a + c.charCodeAt(0), 0) : 0;
+      const h1 = charHash(seed + 1);
+      const h2 = charHash(seed + 7);
+
+      // Small bump (::after)
+      const s1 = 35 + t * 35 + (h1 % 15);        // size 35-85
+      const l1 = 15 + (h1 % 30) + t * 20;          // left position
+      const t1 = -(s1 * 0.45 + (h2 % 8));          // top
+
+      // Big bump (::before)
+      const s2 = 50 + t * 70 + (h2 % 20);          // size 50-140
+      const l2 = w * 0.3 + (h2 % 40) + t * 15;     // left position
+      const t2 = -(s2 * 0.48 + (h1 % 10));          // top
+
+      cloudEl.style.setProperty('--b1-size', s1 + 'px');
+      cloudEl.style.setProperty('--b1-left', l1 + 'px');
+      cloudEl.style.setProperty('--b1-top', t1 + 'px');
+      cloudEl.style.setProperty('--b2-size', s2 + 'px');
+      cloudEl.style.setProperty('--b2-left', l2 + 'px');
+      cloudEl.style.setProperty('--b2-top', t2 + 'px');
     }
 
     searchEl.addEventListener('input', () => {
       activeIndex = -1;
       const q = searchEl.value.trim();
-      updateCloudSize(q.length);
+      updateCloudShape(searchEl.value);
       currentScored = searchWords(q);
       showResults(currentScored, q);
     });
