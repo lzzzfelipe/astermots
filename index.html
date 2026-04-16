@@ -904,6 +904,86 @@
       });
     }
 
+    // --- Game answer sound effects ---
+    function playCorrectSound() {
+      const now = audioCtx.currentTime;
+      // Triumphant ascending major arpeggio
+      [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        g.gain.setValueAtTime(0.2, now + i * 0.07);
+        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.07 + 0.35);
+        osc.connect(g).connect(audioCtx.destination);
+        osc.start(now + i * 0.07);
+        osc.stop(now + i * 0.07 + 0.4);
+      });
+      // Bright shimmer on top
+      const shimmer = audioCtx.createOscillator();
+      const sg = audioCtx.createGain();
+      shimmer.type = 'triangle';
+      shimmer.frequency.value = 2093;
+      sg.gain.setValueAtTime(0.1, now + 0.25);
+      sg.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+      shimmer.connect(sg).connect(audioCtx.destination);
+      shimmer.start(now + 0.25);
+      shimmer.stop(now + 0.85);
+    }
+
+    function playWrongSound() {
+      const now = audioCtx.currentTime;
+      // Descending minor second — dissonant buzzy feel
+      [310, 280].forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        const filter = audioCtx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 800;
+        osc.frequency.value = freq;
+        g.gain.setValueAtTime(0.15, now + i * 0.15);
+        g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.15 + 0.4);
+        osc.connect(filter).connect(g).connect(audioCtx.destination);
+        osc.start(now + i * 0.15);
+        osc.stop(now + i * 0.15 + 0.45);
+      });
+    }
+
+    function playGameEndSound(pct) {
+      const now = audioCtx.currentTime;
+      if (pct >= 70) {
+        // Victory fanfare — bright brass-like chord
+        [261.63, 329.63, 392, 523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          osc.type = i < 3 ? 'sawtooth' : 'triangle';
+          const f = audioCtx.createBiquadFilter();
+          f.type = 'lowpass';
+          f.frequency.value = 2000;
+          osc.frequency.value = freq;
+          g.gain.setValueAtTime(0.1, now + i * 0.06);
+          g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.06 + 0.8);
+          osc.connect(f).connect(g).connect(audioCtx.destination);
+          osc.start(now + i * 0.06);
+          osc.stop(now + i * 0.06 + 0.85);
+        });
+      } else {
+        // Encouraging soft chime
+        [392, 329.63, 261.63].forEach((freq, i) => {
+          const osc = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.value = freq;
+          g.gain.setValueAtTime(0.12, now + i * 0.2);
+          g.gain.exponentialRampToValueAtTime(0.001, now + i * 0.2 + 0.5);
+          osc.connect(g).connect(audioCtx.destination);
+          osc.start(now + i * 0.2);
+          osc.stop(now + i * 0.2 + 0.55);
+        });
+      }
+    }
+
     // --- Game background music (procedural ambient space loop) ---
     let bgMusicNodes = null;
 
@@ -1245,8 +1325,10 @@
       const feedback = document.getElementById('game-feedback');
       if (chosen === correct) {
         gameState.score++;
+        playCorrectSound();
         feedback.innerHTML = '<span style="color:#4ade80">✨ Bravo !</span>';
       } else {
+        playWrongSound();
         feedback.innerHTML = `<span style="color:#ff6b6b">C'est <strong>${correct}</strong></span>`;
       }
 
@@ -1261,6 +1343,7 @@
       const main = document.querySelector('.main-content');
       const gs = gameState;
       const pct = Math.round((gs.score / gs.total) * 100);
+      playGameEndSound(pct);
       const emoji = pct === 100 ? '🏆' : pct >= 70 ? '⭐' : pct >= 40 ? '🚀' : '💪';
 
       main.innerHTML = `
