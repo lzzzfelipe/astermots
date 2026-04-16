@@ -299,7 +299,7 @@
             values="1 0 0 0 0
                     0 1 0 0 0
                     0 0 1 0 0
-                    0 0 0 35 -15" result="goo"/>
+                    0 0 0 35 -35" result="goo"/>
           <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
         </filter>
       </defs>
@@ -661,8 +661,7 @@
 
     function spawnLetterDrops(letter) {
       const cloudRect = cloudEl.getBoundingClientRect();
-      const startX = cloudRect.left + cloudRect.width / 2 - 14;
-      const startY = cloudRect.top + cloudRect.height / 2 - 14;
+      const bottomY = cloudRect.bottom - 5;
 
       // Find all matching letter spans in result cards
       const targets = [];
@@ -682,8 +681,11 @@
         const drop = document.createElement('div');
         drop.className = 'letter-drop';
         drop.textContent = letter;
+        // Distribute start positions evenly along cloud bottom edge
+        const frac = limited.length > 1 ? (i / (limited.length - 1)) : 0.5;
+        const startX = cloudRect.left + cloudRect.width * 0.15 + frac * cloudRect.width * 0.7 - 11;
         drop.style.left = startX + 'px';
-        drop.style.top = startY + 'px';
+        drop.style.top = bottomY + 'px';
         document.body.appendChild(drop);
 
         const targetRect = target.getBoundingClientRect();
