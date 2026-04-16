@@ -311,42 +311,43 @@
         // Exact prefix on the word
         const lw = entry.word.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
         if (lw.startsWith(lq)) {
-          score = 100 - lw.length; // shorter = better
+          score = 100;
         }
 
         // Phonetic prefix match
         if (entry._phonetic.startsWith(pq)) {
-          score = Math.max(score, 80 - entry._phonetic.length);
+          score = Math.max(score, 80);
         }
 
         // Phonetic contains
         if (score === 0 && entry._phonetic.includes(pq)) {
-          score = 30 - entry._phonetic.length;
+          score = 30;
         }
 
         // Fuzzy phonetic (Levenshtein on short inputs)
         if (score === 0 && pq.length >= 3) {
           const dist = levenshtein(pq, entry._phonetic.slice(0, pq.length + 2));
           if (dist <= Math.max(1, Math.floor(pq.length / 3))) {
-            score = 20 - dist * 5;
+            score = 20;
           }
         }
 
-        // Literal word similarity as tiebreaker — words closer in
-        // spelling to the input get a boost (e.g. "balene" → "baleine"
-        // ranks above "ballon" even though phonetic distance is equal)
         if (score > 0) {
-          const wordDist = levenshtein(lq, lw);
-          score += Math.max(0, 10 - wordDist * 2);
-        }
-
-        if (score > 0) {
-          scored.push({ entry, score });
+          // Compute phonetic distance (absolute highest priority tiebreaker)
+          const phonDist = levenshtein(pq, entry._phonetic);
+          const litDist = levenshtein(lq, lw);
+          scored.push({ entry, score, phonDist, litDist });
         }
       }
 
-      // Use word frequency as tiebreaker (lower freq = more common = ranks higher)
-      scored.sort((a, b) => b.score - a.score || (a.entry.freq || 99999) - (b.entry.freq || 99999));
+      // Sort: match tier → phonetic distance → frequency → literal similarity
+      scored.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (a.phonDist !== b.phonDist) return a.phonDist - b.phonDist;
+        const freqDiff = (a.entry.freq || 99999) - (b.entry.freq || 99999);
+        if (freqDiff !== 0) return freqDiff;
+        return a.litDist - b.litDist;
+      });
       return scored.slice(0, 12);
     }
 
