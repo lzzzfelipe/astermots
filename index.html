@@ -682,16 +682,19 @@
       if (runners.length) {
         othersEl.innerHTML = runners.map((s, i) => {
           const miniBubbles = cardBubbles(s.entry.word, 4, 'mini', 25, 20, 30);
-          const scale = 0.6 + sim(s) * 0.4;
+          const similarity = sim(s);
+          const scale = 0.3 + similarity * 0.7; // 0.3 to 1.0
+          const fontSize = 0.6 + similarity * 0.6; // 0.6rem to 1.2rem
+          const catSize = 0.4 + similarity * 0.35; // 0.4rem to 0.75rem
           return `
-          <div class="mini-card" data-idx="${i}" style="transform: scale(${scale.toFixed(2)}); transform-origin: top center;">
+          <div class="mini-card" data-idx="${i}" style="transform: scale(${scale.toFixed(2)}); transform-origin: center center;">
             <div class="mini-blobs">
               <div class="mini-body-bg"></div>
               ${miniBubbles}
             </div>
             <div class="mini-content">
-              <div class="word">${highlightDiff(s.entry.word, query)}</div>
-              <span class="${catClass(s.entry.category)}">${s.entry.category}</span>
+              <div class="word" style="font-size:${fontSize.toFixed(2)}rem">${highlightDiff(s.entry.word, query)}</div>
+              <span class="${catClass(s.entry.category)}" style="font-size:${catSize.toFixed(2)}rem">${s.entry.category}</span>
             </div>
           </div>`;
         }).join('');
