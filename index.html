@@ -361,7 +361,154 @@
     .diff-change { color: #ff6b6b; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
     .diff-add { color: #ff6b6b; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 
-    /* --- Hint --- */
+    /* --- Challenge button --- */
+    .challenge-btn {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.5rem, 1vw, 0.65rem);
+      font-weight: 600;
+      color: #ffd700;
+      background: rgba(255,215,0,0.1);
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 8px;
+      padding: 0.5rem 0.6rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
+      width: 100%;
+      text-shadow: 0 0 8px rgba(255,215,0,0.3);
+    }
+    .challenge-btn:hover {
+      background: rgba(255,215,0,0.2);
+      border-color: #ffd700;
+      box-shadow: 0 0 12px rgba(255,215,0,0.3);
+    }
+    .challenge-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    /* --- Challenge game mode --- */
+    .game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      gap: clamp(1rem, 2.5vh, 2rem);
+      animation: popIn 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+    .game-prompt {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+      color: rgba(126,202,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    .game-word {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      font-weight: 700;
+      color: #7ecaff;
+      text-shadow: 0 0 20px rgba(126,202,255,0.4);
+    }
+    .game-choices {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(0.5rem, 1.5vw, 1rem);
+      max-width: 600px;
+    }
+    .game-choice {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.8rem);
+      font-weight: 600;
+      color: #e0e8f0;
+      background: rgba(15,22,40,0.85);
+      border: 2px solid rgba(126,202,255,0.25);
+      border-radius: 12px;
+      padding: clamp(0.6rem, 1.5vh, 1rem) clamp(1.2rem, 3vw, 2rem);
+      cursor: pointer;
+      transition: all 0.25s;
+      backdrop-filter: blur(8px);
+    }
+    .game-choice:hover {
+      border-color: #7ecaff;
+      box-shadow: 0 0 15px rgba(126,202,255,0.25);
+      transform: scale(1.05);
+    }
+    .game-choice.correct {
+      border-color: #4ade80;
+      background: rgba(74,222,128,0.15);
+      color: #4ade80;
+      box-shadow: 0 0 20px rgba(74,222,128,0.3);
+      transform: scale(1.1);
+    }
+    .game-choice.wrong {
+      border-color: #ff6b6b;
+      background: rgba(255,107,107,0.1);
+      color: #ff6b6b;
+      opacity: 0.6;
+    }
+    .game-choice:disabled { cursor: default; }
+    .game-score {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+      color: rgba(126,202,255,0.4);
+      letter-spacing: 0.1em;
+    }
+    .game-feedback {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 700;
+      min-height: 2em;
+      text-align: center;
+    }
+    .game-next {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+      font-weight: 600;
+      color: #7ecaff;
+      background: rgba(126,202,255,0.1);
+      border: 1px solid rgba(126,202,255,0.3);
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all 0.3s;
+    }
+    .game-next:hover {
+      background: rgba(126,202,255,0.2);
+      box-shadow: 0 0 12px rgba(126,202,255,0.3);
+    }
+    .game-exit {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.5rem, 0.9vw, 0.6rem);
+      color: rgba(255,255,255,0.3);
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .game-exit:hover { color: #ff6b6b; border-color: #ff6b6b; }
+    .game-end {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      animation: popIn 0.4s cubic-bezier(0.34, 1.4, 0.64, 1);
+    }
+    .game-end-emoji { font-size: clamp(3rem, 8vw, 5rem); }
+    .game-end-score {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 700;
+      color: #ffd700;
+      text-shadow: 0 0 15px rgba(255,215,0,0.4);
+    }
     .hint {
       position: fixed;
       bottom: 1.2rem;
@@ -414,7 +561,10 @@
       <div class="panel-empty">Aucun mot accepté</div>
     </div>
     <div class="panel-footer">
-      <span class="panel-status">sys ready</span>
+      <div style="width:100%; display:flex; flex-direction:column; align-items:center; gap:0.4rem;">
+        <button class="challenge-btn" id="challenge-btn" onclick="startChallenge()" disabled>🚀 Défi Interstellaire</button>
+        <span class="panel-status">sys ready</span>
+      </div>
     </div>
   </div>
   <div class="main-content">
@@ -434,6 +584,7 @@
   <script>
     let dictionary = [];
     let activeIndex = -1;
+    let acceptedPairs = []; // {input, word}
 
     // --- French phonetic normalization engine ---
     function phonetic(str) {
@@ -718,6 +869,7 @@
       if (inputText) {
         const isExact = inputText.toLowerCase() === word.toLowerCase();
         const wordHtml = highlightDiff(word, inputText);
+        acceptedPairs.push({ input: inputText, word: word });
         addPairCard(inputText, wordHtml, isExact);
       }
       document.getElementById('search').value = '';
@@ -759,9 +911,185 @@
       const count = panel.querySelectorAll('.pair-card').length;
       const status = document.querySelector('.panel-status');
       if (status) status.textContent = count > 0 ? count + ' mot' + (count > 1 ? 's' : '') : 'sys ready';
+      const btn = document.getElementById('challenge-btn');
+      if (btn) btn.disabled = count < 2;
       if (count === 0) {
         panel.innerHTML = '<div class="panel-empty">Aucun mot accepté</div>';
+        acceptedPairs = [];
       }
+      fitToScreen();
+    }
+
+    // --- Challenge Game ---
+    let gameState = null;
+
+    function startChallenge() {
+      if (acceptedPairs.length < 2) return;
+      gameState = {
+        pairs: shuffle([...acceptedPairs]),
+        current: 0,
+        score: 0,
+        total: acceptedPairs.length
+      };
+      showGameQuestion();
+    }
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function getDistractors(correctWord, count) {
+      // Generate plausible-looking but INVALID French spellings
+      // by swapping common orthographic patterns
+      const swaps = [
+        [/eau/g, 'o'], [/eau/g, 'au'], [/eau/g, 'ot'],
+        [/au/g, 'o'], [/au/g, 'eau'], [/au/g, 'ot'],
+        [/ph/g, 'f'], [/f/g, 'ph'],
+        [/qu/g, 'k'], [/qu/g, 'c'], [/c(?=[aou])/g, 'k'], [/k/g, 'qu'],
+        [/ch/g, 'sh'], [/sh/g, 'ch'],
+        [/tion/g, 'sion'], [/sion/g, 'tion'],
+        [/ai/g, 'è'], [/è/g, 'ai'], [/ei/g, 'ai'],
+        [/é/g, 'er'], [/é/g, 'ez'], [/er$/g, 'é'], [/ez$/g, 'é'],
+        [/an/g, 'en'], [/en/g, 'an'],
+        [/in/g, 'ain'], [/ain/g, 'in'], [/ein/g, 'in'],
+        [/on/g, 'om'], [/om/g, 'on'],
+        [/ou/g, 'oo'], [/ou/g, 'u'],
+        [/oi/g, 'oua'], [/oua/g, 'oi'],
+        [/gn/g, 'ni'], [/ni(?=[aeou])/g, 'gn'],
+        [/ss/g, 's'], [/s(?=[aeiou])/g, 'ss'],
+        [/ll/g, 'l'], [/l(?=[aeioué])/g, 'll'],
+        [/tt/g, 't'], [/t(?=[aeioué])/g, 'tt'],
+        [/mm/g, 'm'], [/m(?=[aeioué])/g, 'mm'],
+        [/nn/g, 'n'], [/n(?=[aeioué])/g, 'nn'],
+        [/gu(?=[ei])/g, 'g'], [/g(?=[ei])/g, 'gu'],
+        [/ge(?=[ao])/g, 'j'], [/j/g, 'ge'],
+        [/x$/g, 's'], [/s$/g, 'x'],
+        [/t$/g, ''], [/$/, 't'],  // silent trailing t
+        [/s$/g, ''], [/$/, 's'],  // silent trailing s
+      ];
+
+      const dictSet = new Set(dictionary.map(e => e.word.toLowerCase()));
+      const results = new Set();
+      const word = correctWord.toLowerCase();
+
+      // Try each swap pattern
+      for (const [pattern, replacement] of swaps) {
+        if (results.size >= count * 3) break;
+        if (pattern.test(word)) {
+          const variant = word.replace(pattern, replacement);
+          if (variant !== word && !dictSet.has(variant) && variant.length >= 2) {
+            results.add(variant);
+          }
+        }
+      }
+
+      // If not enough, also try the user's original input as a distractor (if invalid)
+      // and simple letter swaps
+      if (results.size < count) {
+        for (let i = 0; i < word.length - 1 && results.size < count * 3; i++) {
+          const arr = word.split('');
+          [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
+          const variant = arr.join('');
+          if (variant !== word && !dictSet.has(variant)) results.add(variant);
+        }
+      }
+
+      // Pick random subset, capitalize to match
+      const capitalize = s => correctWord[0] === correctWord[0].toUpperCase()
+        ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+      const arr = shuffle([...results]).slice(0, count);
+      return arr.map(capitalize);
+    }
+
+    function showGameQuestion() {
+      const main = document.querySelector('.main-content');
+      const gs = gameState;
+
+      if (gs.current >= gs.total) {
+        showGameEnd();
+        return;
+      }
+
+      const pair = gs.pairs[gs.current];
+      const distractors = getDistractors(pair.word, 3);
+      const choices = shuffle([pair.word, ...distractors]);
+
+      main.innerHTML = `
+        <div class="game-container">
+          <div class="game-score">Question ${gs.current + 1} / ${gs.total} · Score: ${gs.score}</div>
+          <div class="game-prompt">Quelle est la bonne orthographe ?</div>
+          <div class="game-word">${pair.input}</div>
+          <div class="game-choices">
+            ${choices.map(c => `<button class="game-choice" onclick="checkAnswer(this, '${c.replace(/'/g, "\\'")}', '${pair.word.replace(/'/g, "\\'")}')">${c}</button>`).join('')}
+          </div>
+          <div class="game-feedback" id="game-feedback"></div>
+          <button class="game-exit" onclick="exitChallenge()">✕ Quitter</button>
+        </div>
+      `;
+      fitToScreen();
+    }
+
+    function checkAnswer(btn, chosen, correct) {
+      const buttons = btn.parentElement.querySelectorAll('.game-choice');
+      buttons.forEach(b => {
+        b.disabled = true;
+        if (b.textContent === correct) b.classList.add('correct');
+        else if (b === btn && chosen !== correct) b.classList.add('wrong');
+      });
+
+      const feedback = document.getElementById('game-feedback');
+      if (chosen === correct) {
+        gameState.score++;
+        feedback.innerHTML = '<span style="color:#4ade80">✨ Bravo !</span>';
+      } else {
+        feedback.innerHTML = `<span style="color:#ff6b6b">C'est <strong>${correct}</strong></span>`;
+      }
+
+      setTimeout(() => {
+        gameState.current++;
+        showGameQuestion();
+      }, 1500);
+    }
+
+    function showGameEnd() {
+      const main = document.querySelector('.main-content');
+      const gs = gameState;
+      const pct = Math.round((gs.score / gs.total) * 100);
+      const emoji = pct === 100 ? '🏆' : pct >= 70 ? '⭐' : pct >= 40 ? '🚀' : '💪';
+
+      main.innerHTML = `
+        <div class="game-end">
+          <div class="game-end-emoji">${emoji}</div>
+          <div class="game-end-score">${gs.score} / ${gs.total}</div>
+          <div class="game-prompt">${pct === 100 ? 'Parfait !' : pct >= 70 ? 'Très bien !' : pct >= 40 ? 'Bon effort !' : 'Continue !'}</div>
+          <div style="display:flex; gap:0.8rem; margin-top:1rem;">
+            <button class="game-next" onclick="startChallenge()">🔄 Rejouer</button>
+            <button class="game-next" onclick="exitChallenge()">← Retour</button>
+          </div>
+        </div>
+      `;
+      fitToScreen();
+    }
+
+    function exitChallenge() {
+      gameState = null;
+      const main = document.querySelector('.main-content');
+      main.innerHTML = `
+        <div class="title">Astermots</div>
+        <div class="subtitle-text">Dictionnaire phonétique interstellaire d'Orion</div>
+        <div class="search-container">
+          <input type="text" id="search" placeholder="Écris comme tu entends…" autocomplete="off" autofocus>
+        </div>
+        <div id="result"></div>
+        <div class="bottom-row" id="others"></div>
+        <p class="hint">Essaie : <code>gato</code> → gâteau · <code>xien</code> → chien · <code>garson</code> → garçon · <code>foto</code> → photo</p>
+      `;
+      // Re-wire search events
+      wireSearchEvents();
       fitToScreen();
     }
 
