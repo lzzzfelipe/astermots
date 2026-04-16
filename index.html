@@ -1033,39 +1033,98 @@
         nodes.push(osc, lfo);
       });
 
-      // Rhythmic pulse — driving eighth-note energy
+      // Full drum kit — punchy four-on-the-floor with snare, open hats, and fills
       let beatPhase = 0;
-      const bpm = 128;
-      const beatMs = (60 / bpm / 2) * 1000;
+      const bpm = 132;
+      const beatMs = (60 / bpm / 2) * 1000; // eighth notes
+
+      function synthDrum(type, freq, freqEnd, dur, vol, filterFreq) {
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, now);
+        if (freqEnd) osc.frequency.exponentialRampToValueAtTime(freqEnd, now + dur * 0.6);
+        g.gain.setValueAtTime(vol, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + dur);
+        if (filterFreq) {
+          const f = audioCtx.createBiquadFilter();
+          f.type = type === 'square' ? 'highpass' : 'lowpass';
+          f.frequency.value = filterFreq;
+          f.Q.value = 1;
+          osc.connect(f).connect(g).connect(master);
+        } else {
+          osc.connect(g).connect(master);
+        }
+        osc.start(now);
+        osc.stop(now + dur + 0.01);
+      }
+
+      // Noise burst helper for snare / clap
+      function noiseHit(dur, vol) {
+        const now = audioCtx.currentTime;
+        const bufSize = audioCtx.sampleRate * dur;
+        const buf = audioCtx.createBuffer(1, bufSize, audioCtx.sampleRate);
+        const data = buf.getChannelData(0);
+        for (let i = 0; i < bufSize; i++) data[i] = Math.random() * 2 - 1;
+        const src = audioCtx.createBufferSource();
+        src.buffer = buf;
+        const g = audioCtx.createGain();
+        const f = audioCtx.createBiquadFilter();
+        f.type = 'bandpass';
+        f.frequency.value = 3000;
+        f.Q.value = 0.8;
+        g.gain.setValueAtTime(vol, now);
+        g.gain.exponentialRampToValueAtTime(0.001, now + dur);
+        src.connect(f).connect(g).connect(master);
+        src.start(now);
+      }
+
       const pulseInterval = setInterval(() => {
         if (!bgMusicNodes) { clearInterval(pulseInterval); return; }
-        const now = audioCtx.currentTime;
-        // Kick-like thump on downbeats
-        if (beatPhase % 4 === 0) {
-          const kick = audioCtx.createOscillator();
-          const kg = audioCtx.createGain();
-          kick.type = 'sine';
-          kick.frequency.setValueAtTime(150, now);
-          kick.frequency.exponentialRampToValueAtTime(40, now + 0.15);
-          kg.gain.setValueAtTime(0.25, now);
-          kg.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-          kick.connect(kg).connect(master);
-          kick.start(now);
-          kick.stop(now + 0.25);
+        const beat = beatPhase % 8; // 8 eighth-notes = 1 bar
+
+        // Kick on 1, 3, 5, 7 (four-on-the-floor quarter notes)
+        if (beat % 2 === 0) {
+          synthDrum('sine', 160, 35, 0.2, 0.35);
+          // Layer a click transient for punch
+          synthDrum('triangle', 800, 100, 0.03, 0.2);
         }
-        // Hi-hat tick on every beat
-        const hat = audioCtx.createOscillator();
-        const hg = audioCtx.createGain();
-        const hf = audioCtx.createBiquadFilter();
-        hat.type = 'square';
-        hat.frequency.value = 6000 + Math.random() * 2000;
-        hf.type = 'highpass';
-        hf.frequency.value = 7000;
-        hg.gain.setValueAtTime(beatPhase % 2 === 0 ? 0.06 : 0.03, now);
-        hg.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
-        hat.connect(hf).connect(hg).connect(master);
-        hat.start(now);
-        hat.stop(now + 0.06);
+
+        // Snare on beats 2 and 6 (backbeat)
+        if (beat === 2 || beat === 6) {
+          synthDrum('triangle', 200, 120, 0.12, 0.2);
+          noiseHit(0.15, 0.18);
+        }
+
+        // Clap layered with snare on beat 6 for emphasis
+        if (beat === 6) {
+          setTimeout(() => noiseHit(0.1, 0.12), 15);
+        }
+
+        // Open hi-hat on off-beats (1, 3, 5, 7)
+        if (beat % 2 === 1) {
+          synthDrum('square', 7000 + Math.random() * 2000, null, 0.08, 0.07, 6000);
+        }
+
+        // Closed hi-hat on on-beats
+        if (beat % 2 === 0) {
+          synthDrum('square', 8000 + Math.random() * 1500, null, 0.03, 0.05, 7500);
+        }
+
+        // Tom fill every 4 bars on the last 2 eighth notes
+        if (beatPhase > 0 && beatPhase % 32 >= 30) {
+          const tomFreq = beat >= 7 ? 100 : 140;
+          synthDrum('sine', tomFreq * 1.5, tomFreq, 0.18, 0.2);
+          noiseHit(0.06, 0.08);
+        }
+
+        // Crash cymbal every 4 bars on beat 0
+        if (beatPhase > 0 && beatPhase % 32 === 0) {
+          synthDrum('square', 5000, 2000, 0.6, 0.1, 3000);
+          noiseHit(0.5, 0.1);
+        }
+
         beatPhase++;
       }, beatMs);
       intervals.push(pulseInterval);
