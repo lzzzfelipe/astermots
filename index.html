@@ -5,112 +5,159 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frenchy 🇫🇷</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap');
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: #fafafa;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #f4f0eb;
       height: 100vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3rem 1.5rem 1rem;
-      color: #111;
+      padding: 4rem 1.5rem 1rem;
+      color: #2c2420;
     }
 
+    /* --- Search --- */
     .search-container {
       width: 100%;
-      max-width: 520px;
-      margin-bottom: 1.5rem;
+      max-width: 480px;
+      margin-bottom: 2rem;
     }
 
     #search {
       width: 100%;
-      padding: 0.75rem 1rem;
-      font-size: 2rem;
-      font-weight: 600;
-      border: 2px solid #111;
-      background: #fff;
+      padding: 0.8rem 0;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      border: none;
+      border-bottom: 2px solid #2c2420;
+      background: transparent;
       outline: none;
-      color: #111;
-      letter-spacing: 0.02em;
+      color: #2c2420;
+      letter-spacing: 0.01em;
     }
-    #search:focus { border-color: #555; }
-    #search::placeholder { color: #ccc; font-weight: 400; }
+    #search:focus { border-bottom-color: #8b5e3c; }
+    #search::placeholder { color: #c4b5a5; font-weight: 400; }
 
-    .cat { font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.7rem; }
-    .cat-noun { color: #1a1a1a; }
-    .cat-verb { color: #cc0000; }
-    .cat-adjective { color: #0044aa; }
-    .cat-adverb { color: #dd6600; }
-    .cat-determiner { color: #5599dd; }
-    .cat-preposition { color: #228833; }
-    .cat-pronoun { color: #7722aa; }
-    .cat-conjunction { color: #dd44aa; }
-    .cat-interjection { color: #ccaa00; }
+    /* --- Montessori grammar colors (earthy tones) --- */
+    .cat {
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.6rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+    }
+    .cat-noun { color: #f4f0eb; background: #2c2420; }
+    .cat-verb { color: #fff; background: #b5382a; }
+    .cat-adjective { color: #fff; background: #2a5a8b; }
+    .cat-adverb { color: #fff; background: #c47b2b; }
+    .cat-determiner { color: #2c2420; background: #a8c4d8; }
+    .cat-preposition { color: #fff; background: #4a7c59; }
+    .cat-pronoun { color: #fff; background: #7b4a8b; }
+    .cat-conjunction { color: #fff; background: #c47882; }
+    .cat-interjection { color: #2c2420; background: #d4b85a; }
 
+    /* --- Main result card --- */
     .card {
       width: 100%;
-      max-width: 520px;
-      border: 2px solid #111;
+      max-width: 480px;
       background: #fff;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1rem;
-      animation: fadeIn 0.2s ease-out;
+      padding: 1.5rem 1.75rem;
+      margin-bottom: 0.75rem;
+      border-left: 4px solid #8b5e3c;
+      box-shadow: 0 1px 3px rgba(44,36,32,0.06);
+      animation: fadeIn 0.25s ease-out;
     }
-    .card-word { font-size: 2rem; font-weight: 700; margin-bottom: 0.4rem; }
-    .card-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.6rem; }
-    .card-gender { color: #888; font-size: 0.75rem; }
-    .phonetic-badge { color: #888; font-size: 0.75rem; font-style: italic; }
-    .card-definition { font-size: 0.95rem; line-height: 1.5; color: #333; margin-bottom: 0.3rem; }
-    .card-example { font-size: 0.85rem; color: #999; font-style: italic; }
+    .card-word {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: #2c2420;
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+    }
+    .card-gender { color: #9a8b7a; font-size: 0.7rem; font-weight: 500; }
+    .phonetic-badge { color: #9a8b7a; font-size: 0.7rem; font-style: italic; }
+    .card-definition {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #4a3f38;
+      margin-bottom: 0.4rem;
+    }
+    .card-example {
+      font-size: 0.8rem;
+      color: #9a8b7a;
+      font-style: italic;
+      padding-left: 0.75rem;
+      border-left: 2px solid #e0d6cb;
+    }
 
+    /* --- Secondary results --- */
     .bottom-row {
       width: 100%;
-      max-width: 520px;
+      max-width: 480px;
       display: flex;
-      gap: 0;
+      gap: 0.5rem;
     }
     .mini-card {
       flex: 1;
-      padding: 0.5rem 0.5rem;
-      border: 1px solid #ddd;
-      border-left: none;
+      padding: 0.6rem 0.5rem;
       background: #fff;
+      border-left: 3px solid #d4c9bc;
       cursor: pointer;
       text-align: center;
-      transition: background 0.1s;
-      animation: fadeIn 0.15s ease-out both;
+      transition: border-color 0.15s, background 0.15s;
+      animation: fadeIn 0.2s ease-out both;
+      box-shadow: 0 1px 2px rgba(44,36,32,0.04);
     }
-    .mini-card:first-child { border-left: 1px solid #ddd; }
     .mini-card:nth-child(1) { animation-delay: 0.05s; }
     .mini-card:nth-child(2) { animation-delay: 0.1s; }
     .mini-card:nth-child(3) { animation-delay: 0.15s; }
     .mini-card:nth-child(4) { animation-delay: 0.2s; }
-    .mini-card:hover { background: #f5f5f5; }
-    .mini-card .word { font-weight: 600; font-size: 0.85rem; color: #222; }
+    .mini-card:hover { background: #faf7f4; border-left-color: #8b5e3c; }
+    .mini-card .word {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: #2c2420;
+    }
 
+    /* Diff highlights */
     .diff-same { color: inherit; }
-    .diff-change { color: #cc0000; }
-    .diff-add { color: #0066cc; }
+    .diff-change { color: #b5382a; }
+    .diff-add { color: #2a5a8b; }
 
+    /* --- Hint --- */
     .hint {
       position: fixed;
       bottom: 1.5rem;
-      color: #bbb;
-      font-size: 0.8rem;
+      color: #b8a898;
+      font-size: 0.75rem;
       text-align: center;
+      letter-spacing: 0.02em;
     }
     .hint code {
-      background: #eee;
-      padding: 0.1rem 0.35rem;
-      font-size: 0.75rem;
-      border: 1px solid #ddd;
+      background: #ebe4db;
+      padding: 0.15rem 0.4rem;
+      font-size: 0.7rem;
+      border-radius: 2px;
+      color: #6b5d52;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
