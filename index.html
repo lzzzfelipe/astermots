@@ -38,28 +38,53 @@
       font-weight: 600;
     }
 
-    /* --- Search --- */
+    /* --- Search (calligraphy guide lines) --- */
     .search-container {
       width: 100%;
       max-width: 520px;
       margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
+      position: relative;
+    }
+
+    .writing-lines {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 0.5rem;
+    }
+    .writing-lines .line {
+      border-bottom: 1.5px solid #d4c4b0;
+      height: 33.33%;
+    }
+    .writing-lines .line.middle {
+      border-bottom: 2.5px solid #b5382a;
+      opacity: 0.5;
+    }
+    .writing-lines .line.base {
+      border-bottom: 2.5px solid #3d2e1e;
+      opacity: 0.4;
     }
 
     #search {
       width: 100%;
-      padding: clamp(0.6rem, 1.5vh, 1rem) 1.2rem;
+      padding: clamp(0.8rem, 2vh, 1.2rem) 0.5rem;
       font-family: 'Fredoka', sans-serif;
       font-size: clamp(1.8rem, 5vw, 3.5rem);
       font-weight: 500;
-      border: 3px solid #e8ddd0;
-      border-radius: 16px;
-      background: #fff;
+      border: none;
+      border-radius: 0;
+      background: transparent;
       outline: none;
       color: #3d2e1e;
-      letter-spacing: 0.01em;
-      transition: border-color 0.2s;
+      letter-spacing: 0.05em;
+      text-align: center;
+      position: relative;
+      z-index: 1;
     }
-    #search:focus { border-color: #c47b2b; }
+    }
     #search::placeholder { color: #d4c4b0; font-weight: 400; }
 
     /* --- Montessori grammar badges --- */
@@ -219,6 +244,11 @@
   <div class="title"><span>🇫🇷</span> Frenchy</div>
   <div class="subtitle-text">Mon dictionnaire phonétique</div>
   <div class="search-container">
+    <div class="writing-lines">
+      <div class="line"></div>
+      <div class="line middle"></div>
+      <div class="line base"></div>
+    </div>
     <input type="text" id="search" placeholder="Écris comme tu entends…" autocomplete="off" autofocus>
   </div>
 
