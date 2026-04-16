@@ -54,7 +54,7 @@
 
     .cloud-blobs {
       position: absolute;
-      inset: -80px -50px -80px -50px;
+      inset: -80px -50px -100px -50px;
       filter: url(#goo);
       z-index: 0;
       pointer-events: none;
@@ -65,7 +65,7 @@
       top: 80px;
       left: 50px;
       right: 50px;
-      bottom: 80px;
+      bottom: 100px;
       min-height: 50px;
       background: #ECEFF1;
       border-radius: 100px;
@@ -542,20 +542,20 @@
       // Top
       { side: 'top',    minS: 40, maxS: 100, pos: [0.15, 0.40], poke: 0.50 },
       { side: 'top',    minS: 50, maxS: 130, pos: [0.50, 0.80], poke: 0.55 },
-      // Bottom
-      { side: 'bottom', minS: 35, maxS: 90,  pos: [0.15, 0.45], poke: 0.50 },
-      { side: 'bottom', minS: 40, maxS: 100, pos: [0.50, 0.80], poke: 0.45 },
+      // Bottom — larger sizes and higher poke for deep overlap with body
+      { side: 'bottom', minS: 45, maxS: 110, pos: [0.10, 0.40], poke: 0.65 },
+      { side: 'bottom', minS: 50, maxS: 120, pos: [0.45, 0.80], poke: 0.60 },
       // Left
-      { side: 'left',   minS: 30, maxS: 75,  pos: [0.15, 0.45], poke: 0.45 },
-      { side: 'left',   minS: 25, maxS: 65,  pos: [0.50, 0.80], poke: 0.40 },
+      { side: 'left',   minS: 30, maxS: 75,  pos: [0.15, 0.45], poke: 0.55 },
+      { side: 'left',   minS: 25, maxS: 65,  pos: [0.50, 0.80], poke: 0.50 },
       // Right
-      { side: 'right',  minS: 30, maxS: 80,  pos: [0.15, 0.45], poke: 0.45 },
-      { side: 'right',  minS: 25, maxS: 65,  pos: [0.55, 0.80], poke: 0.40 },
+      { side: 'right',  minS: 30, maxS: 80,  pos: [0.15, 0.45], poke: 0.55 },
+      { side: 'right',  minS: 25, maxS: 65,  pos: [0.55, 0.80], poke: 0.50 },
       // Corner — top-right area
       { side: 'top',    minS: 30, maxS: 70,  pos: [0.75, 0.95], poke: 0.40 },
     ];
 
-    const INSET_TOP = 80, INSET_LEFT = 50, INSET_BOTTOM = 80;
+    const INSET_TOP = 80, INSET_LEFT = 50, INSET_BOTTOM = 100;
 
     function updateCloudShape(text) {
       const len = text.length;
