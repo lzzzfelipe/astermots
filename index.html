@@ -38,34 +38,46 @@
       margin-bottom: 2.5rem;
       display: flex;
       justify-content: center;
+      overflow: visible;
+      padding-top: 80px;
     }
 
     .cloud {
       position: relative;
       width: 180px;
-      background: #ECEFF1;
-      box-shadow: 10px 10px rgba(0,0,0,0.15);
-      border-radius: 100px;
       padding: 1.2rem 1.5rem;
       transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                  padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-                  border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                  padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .cloud::after, .cloud::before { display: none; }
+
+    .cloud-blobs {
+      position: absolute;
+      inset: -60px -30px -20px -30px;
+      filter: url(#goo);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .cloud-body {
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      right: 30px;
+      height: calc(100% - 60px);
+      min-height: 50px;
+      background: #ECEFF1;
+      border-radius: 100px;
+      box-shadow: 8px 8px rgba(0,0,0,0.12);
+    }
 
     .cloud .bubble {
       position: absolute;
       background: #ECEFF1;
       border-radius: 50%;
       transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-      z-index: 0;
-      box-shadow: 2px 3px 6px rgba(0,0,0,0.08);
-    }
-
-    .cloud .bubble.glow {
-      background: linear-gradient(135deg, #f0f2f5, #e8ebf0);
-      box-shadow: 2px 3px 8px rgba(0,0,0,0.1);
+      /* positions are relative to .cloud-blobs, offset by its inset */
     }
 
     #search {
@@ -236,14 +248,30 @@
 </head>
 <body>
   <div class="search-container">
+    <svg style="position:absolute;width:0;height:0">
+      <defs>
+        <filter id="goo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
+          <feColorMatrix in="blur" mode="matrix"
+            values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    0 0 0 20 -8" result="goo"/>
+          <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+        </filter>
+      </defs>
+    </svg>
     <div class="cloud" id="cloud">
-      <div class="bubble" id="b0"></div>
-      <div class="bubble" id="b1"></div>
-      <div class="bubble glow" id="b2"></div>
-      <div class="bubble" id="b3"></div>
-      <div class="bubble glow" id="b4"></div>
-      <div class="bubble" id="b5"></div>
-      <div class="bubble" id="b6"></div>
+      <div class="cloud-blobs" id="cloud-blobs">
+        <div class="cloud-body"></div>
+        <div class="bubble" id="b0"></div>
+        <div class="bubble" id="b1"></div>
+        <div class="bubble" id="b2"></div>
+        <div class="bubble" id="b3"></div>
+        <div class="bubble" id="b4"></div>
+        <div class="bubble" id="b5"></div>
+        <div class="bubble" id="b6"></div>
+      </div>
       <input type="text" id="search" placeholder="Cherche un mot..." autocomplete="off" autofocus>
     </div>
   </div>
@@ -498,42 +526,49 @@
     // --- Event wiring ---
     const searchEl = document.getElementById('search');
     const cloudEl = document.getElementById('cloud');
-    const bubbles = Array.from(cloudEl.querySelectorAll('.bubble'));
+    const blobsEl = document.getElementById('cloud-blobs');
+    const bubbles = Array.from(blobsEl.querySelectorAll('.bubble'));
     let currentScored = [];
 
-    // Deterministic hash per character position
     function hash(n) { return ((n * 2654435761) >>> 0); }
 
-    // Each bubble has a base config: anchor side (top/left/right/bottom), range of motion
+    // Bubble configs: position bubbles so they overlap the body edge for seamless goo merge
+    // Coordinates are relative to .cloud-blobs (which extends beyond .cloud via inset)
+    // Body sits at left:30, top:60, with width=cloud width, height≈cloud height
     const bubbleCfg = [
-      { side: 'top',    minS: 30, maxS: 90,  xRange: [0.05, 0.35], yOff: -0.6 },
-      { side: 'top',    minS: 45, maxS: 130, xRange: [0.30, 0.65], yOff: -0.55 },
-      { side: 'top',    minS: 25, maxS: 70,  xRange: [0.55, 0.85], yOff: -0.5 },
-      { side: 'left',   minS: 20, maxS: 60,  yRange: [0.15, 0.55], xOff: -0.4 },
-      { side: 'right',  minS: 25, maxS: 75,  yRange: [0.10, 0.50], xOff: -0.3 },
-      { side: 'bottom', minS: 20, maxS: 55,  xRange: [0.20, 0.50], yOff: -0.2 },
-      { side: 'top',    minS: 35, maxS: 100, xRange: [0.15, 0.50], yOff: -0.7 },
+      // Top bumps — partially overlap the top edge of the body
+      { side: 'top',    minS: 35, maxS: 95,  xFrac: [0.10, 0.30], yPoke: 0.45 },
+      { side: 'top',    minS: 50, maxS: 140, xFrac: [0.35, 0.60], yPoke: 0.50 },
+      { side: 'top',    minS: 30, maxS: 80,  xFrac: [0.60, 0.85], yPoke: 0.40 },
+      { side: 'top',    minS: 40, maxS: 110, xFrac: [0.18, 0.48], yPoke: 0.55 },
+      // Side bumps — overlap left/right edges
+      { side: 'left',   minS: 25, maxS: 65,  yFrac: [0.25, 0.60], xPoke: 0.40 },
+      { side: 'right',  minS: 25, maxS: 70,  yFrac: [0.20, 0.55], xPoke: 0.35 },
+      // Bottom bump
+      { side: 'bottom', minS: 25, maxS: 60,  xFrac: [0.30, 0.55], yPoke: 0.35 },
     ];
+
+    // Inset offsets: cloud-blobs extends this much beyond cloud
+    const INSET_TOP = 60, INSET_LEFT = 30, INSET_BOTTOM = 20;
 
     function updateCloudShape(text) {
       const len = text.length;
-      const t = Math.min(len / 10, 1); // growth factor 0→1
+      const t = Math.min(len / 10, 1);
 
-      // Cloud body
+      // Cloud body size
       const w = 180 + t * 320;
       const pad = 1.2 + t * 0.8;
-      const br = 100 - t * 20; // border-radius softens as it grows
       cloudEl.style.width = w + 'px';
       cloudEl.style.padding = pad + 'rem ' + (pad + 0.3) + 'rem';
-      cloudEl.style.borderRadius = br + 'px';
 
-      // Compute seed from text content
+      // Body height estimate (padding top + content + padding bottom)
+      const bodyH = 48 + t * 16;
+
       const seed = len > 0
         ? text.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0)
         : 0;
 
-      // How many bubbles to show (ramp up with text length)
-      const visibleCount = Math.min(Math.floor(len * 1.2) + 1, bubbles.length);
+      const visibleCount = Math.min(Math.floor(len * 1.4) + 1, bubbles.length);
 
       bubbles.forEach((bEl, i) => {
         const cfg = bubbleCfg[i];
@@ -545,46 +580,45 @@
         }
 
         const h = hash(seed * 31 + i * 997);
-        const hNorm = (h % 1000) / 1000; // 0→1
+        const hN = (h % 1000) / 1000;
 
-        // Size scales with growth + hash variation
         const sizeRange = cfg.maxS - cfg.minS;
-        const size = cfg.minS + t * sizeRange * (0.6 + 0.4 * hNorm);
+        const size = cfg.minS + t * sizeRange * (0.5 + 0.5 * hN);
 
-        // Position depends on which side the bubble anchors to
+        // All positions are in cloud-blobs space (body starts at INSET_LEFT, INSET_TOP)
         let left, top;
-        if (cfg.side === 'top' || cfg.side === 'bottom') {
-          const xMin = cfg.xRange[0], xMax = cfg.xRange[1];
-          const xFrac = xMin + hNorm * (xMax - xMin);
-          left = w * xFrac - size * 0.3;
-          if (cfg.side === 'top') {
-            top = size * cfg.yOff - (hNorm * 10);
-          } else {
-            // bottom bubbles sit below cloud body
-            const bodyH = 50 + t * 20;
-            top = bodyH + size * cfg.yOff;
-          }
+
+        if (cfg.side === 'top') {
+          const xMin = cfg.xFrac[0], xMax = cfg.xFrac[1];
+          const xPos = xMin + hN * (xMax - xMin);
+          left = INSET_LEFT + w * xPos - size * 0.4;
+          // Center of bubble pokes above body top by yPoke * size
+          top = INSET_TOP - size * cfg.yPoke;
+        } else if (cfg.side === 'bottom') {
+          const xMin = cfg.xFrac[0], xMax = cfg.xFrac[1];
+          const xPos = xMin + hN * (xMax - xMin);
+          left = INSET_LEFT + w * xPos - size * 0.4;
+          top = INSET_TOP + bodyH - size * (1 - cfg.yPoke);
+        } else if (cfg.side === 'left') {
+          const yMin = cfg.yFrac[0], yMax = cfg.yFrac[1];
+          const yPos = yMin + hN * (yMax - yMin);
+          top = INSET_TOP + bodyH * yPos - size * 0.4;
+          left = INSET_LEFT - size * cfg.xPoke;
         } else {
-          const yMin = cfg.yRange[0], yMax = cfg.yRange[1];
-          const yFrac = yMin + hNorm * (yMax - yMin);
-          const bodyH = 50 + t * 20;
-          top = bodyH * yFrac - size * 0.3;
-          if (cfg.side === 'left') {
-            left = size * cfg.xOff - (hNorm * 8);
-          } else {
-            left = w + size * cfg.xOff + (hNorm * 5);
-          }
+          const yMin = cfg.yFrac[0], yMax = cfg.yFrac[1];
+          const yPos = yMin + hN * (yMax - yMin);
+          top = INSET_TOP + bodyH * yPos - size * 0.4;
+          left = INSET_LEFT + w - size * (1 - cfg.xPoke);
         }
 
         bEl.style.width = size + 'px';
         bEl.style.height = size + 'px';
         bEl.style.left = left + 'px';
         bEl.style.top = top + 'px';
-        bEl.style.opacity = 0.7 + t * 0.3;
+        bEl.style.opacity = '1';
       });
     }
 
-    // Initialize cloud at empty state
     updateCloudShape('');
 
     searchEl.addEventListener('input', () => {
