@@ -62,10 +62,10 @@
 
     .cloud-body {
       position: absolute;
-      bottom: 80px;
+      top: 80px;
       left: 50px;
       right: 50px;
-      height: calc(100% - 160px);
+      bottom: 80px;
       min-height: 50px;
       background: #ECEFF1;
       border-radius: 100px;
@@ -566,8 +566,8 @@
       cloudEl.style.width = w + 'px';
       cloudEl.style.padding = pad + 'rem ' + (pad + 0.3) + 'rem';
 
-      // Body height in blobs coordinate space
-      const bodyH = 48 + t * 16;
+      // Use actual rendered height of the cloud element
+      const bodyH = cloudEl.offsetHeight;
 
       const seed = len > 0
         ? text.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0)
