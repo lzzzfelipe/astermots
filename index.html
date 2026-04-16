@@ -14,6 +14,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       padding: 2rem 1rem 0;
       color: #333;
     }
@@ -23,12 +24,11 @@
       color: white;
       margin-bottom: 0.25rem;
       text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      display: none;
     }
 
     .subtitle {
-      color: rgba(255,255,255,0.85);
-      margin-bottom: 5rem;
-      font-size: 1.1rem;
+      display: none;
     }
 
     .search-container {
@@ -42,14 +42,12 @@
 
     .cloud {
       position: relative;
-      min-width: 300px;
-      max-width: 500px;
-      width: 100%;
+      width: 180px;
       background: #ECEFF1;
       box-shadow: 10px 10px rgba(0,0,0,0.15);
       border-radius: 100px;
-      padding: 1.5rem 2rem;
-      transition: all 0.3s ease;
+      padding: 1.2rem 1.5rem;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .cloud::after, .cloud::before {
@@ -57,21 +55,42 @@
       position: absolute;
       background: inherit;
       border-radius: 50%;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .cloud::after {
-      width: 70px;
-      height: 70px;
-      top: -30px;
-      left: 35px;
+      width: 40px;
+      height: 40px;
+      top: -15px;
+      left: 25px;
     }
 
     .cloud::before {
-      width: 110px;
-      height: 110px;
-      top: -55px;
-      left: 120px;
+      width: 60px;
+      height: 60px;
+      top: -28px;
+      left: 70px;
     }
+
+    .cloud.grow-1 { width: 220px; padding: 1.3rem 1.6rem; }
+    .cloud.grow-1::after { width: 50px; height: 50px; top: -20px; left: 30px; }
+    .cloud.grow-1::before { width: 75px; height: 75px; top: -35px; left: 85px; }
+
+    .cloud.grow-2 { width: 280px; padding: 1.4rem 1.7rem; }
+    .cloud.grow-2::after { width: 55px; height: 55px; top: -22px; left: 32px; }
+    .cloud.grow-2::before { width: 90px; height: 90px; top: -42px; left: 100px; }
+
+    .cloud.grow-3 { width: 350px; padding: 1.4rem 1.8rem; }
+    .cloud.grow-3::after { width: 60px; height: 60px; top: -25px; left: 35px; }
+    .cloud.grow-3::before { width: 100px; height: 100px; top: -48px; left: 110px; }
+
+    .cloud.grow-4 { width: 420px; padding: 1.5rem 1.9rem; }
+    .cloud.grow-4::after { width: 65px; height: 65px; top: -28px; left: 38px; }
+    .cloud.grow-4::before { width: 110px; height: 110px; top: -53px; left: 120px; }
+
+    .cloud.grow-5 { width: 500px; padding: 1.5rem 2rem; }
+    .cloud.grow-5::after { width: 70px; height: 70px; top: -30px; left: 40px; }
+    .cloud.grow-5::before { width: 120px; height: 120px; top: -58px; left: 130px; }
 
     #search {
       width: 100%;
@@ -245,9 +264,6 @@
   </style>
 </head>
 <body>
-  <h1>Frenchy 🇫🇷</h1>
-  <p class="subtitle">Tape un mot comme tu l'entends !</p>
-
   <div class="search-container">
     <div class="cloud">
       <input type="text" id="search" placeholder="Cherche un mot..." autocomplete="off" autofocus>
@@ -504,11 +520,22 @@
 
     // --- Event wiring ---
     const searchEl = document.getElementById('search');
+    const cloudEl = document.querySelector('.cloud');
     let currentScored = [];
+
+    function updateCloudSize(len) {
+      cloudEl.classList.remove('grow-1','grow-2','grow-3','grow-4','grow-5');
+      if (len >= 8) cloudEl.classList.add('grow-5');
+      else if (len >= 6) cloudEl.classList.add('grow-4');
+      else if (len >= 4) cloudEl.classList.add('grow-3');
+      else if (len >= 2) cloudEl.classList.add('grow-2');
+      else if (len >= 1) cloudEl.classList.add('grow-1');
+    }
 
     searchEl.addEventListener('input', () => {
       activeIndex = -1;
       const q = searchEl.value.trim();
+      updateCloudSize(q.length);
       currentScored = searchWords(q);
       showResults(currentScored, q);
     });
