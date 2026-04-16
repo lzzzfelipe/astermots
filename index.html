@@ -5,37 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Astermots</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap');
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Nunito', system-ui, sans-serif;
-      background: #fef9f0;
+      background: #0a0e1a;
+      background-image:
+        radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 15% 85%, rgba(200,220,255,0.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 85% 15%, rgba(200,220,255,0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 45% 45%, rgba(255,255,255,0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 65% 30%, rgba(255,255,255,0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 25% 70%, rgba(255,255,255,0.25) 0%, transparent 100%);
       height: 100vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2rem 1.5rem 1rem;
-      color: #3d2e1e;
+      color: #e0e8f0;
     }
 
     /* --- Title --- */
     .title {
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(1.8rem, 5vw, 3rem);
-      font-weight: 600;
-      color: #b5382a;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.6rem, 4.5vw, 2.5rem);
+      font-weight: 700;
+      color: #7ecaff;
       margin-bottom: 0.2rem;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(126,202,255,0.4), 0 0 40px rgba(126,202,255,0.15);
     }
-    .title span { font-size: 110%; }
     .subtitle-text {
-      font-size: clamp(0.8rem, 2vw, 1.1rem);
-      color: #b8a080;
+      font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+      color: rgba(126,202,255,0.5);
       margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
       font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
     }
 
     /* --- Search --- */
@@ -51,56 +65,60 @@
       font-family: 'Fredoka', sans-serif;
       font-size: clamp(1.8rem, 5vw, 3.5rem);
       font-weight: 500;
-      border: 3px solid #e8ddd0;
-      border-radius: 16px;
-      background: #fff;
+      border: 2px solid rgba(126,202,255,0.3);
+      border-radius: 12px;
+      background: rgba(15,22,40,0.8);
       outline: none;
-      color: #3d2e1e;
+      color: #e0e8f0;
       letter-spacing: 0.01em;
       text-align: center;
-      transition: border-color 0.2s;
+      transition: border-color 0.3s, box-shadow 0.3s;
     }
-    #search:focus { border-color: #c47b2b; }
-    #search::placeholder { color: #d4c4b0; font-weight: 400; font-size: clamp(0.9rem, 2.5vw, 1.4rem); }
+    #search:focus {
+      border-color: #7ecaff;
+      box-shadow: 0 0 15px rgba(126,202,255,0.2), inset 0 0 10px rgba(126,202,255,0.05);
+    }
+    #search::placeholder { color: rgba(126,202,255,0.3); font-weight: 400; font-size: clamp(0.9rem, 2.5vw, 1.4rem); }
 
-    /* --- Montessori grammar badges --- */
+    /* --- Grammar badges (space colors) --- */
     .cat {
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-size: clamp(0.55rem, 1.2vw, 0.75rem);
-      padding: 0.25rem 0.6rem;
-      border-radius: 20px;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
       display: inline-block;
     }
-    .cat-noun { color: #fff; background: #3d2e1e; }
-    .cat-verb { color: #fff; background: #cc3d2e; }
-    .cat-adjective { color: #fff; background: #3a6ea5; }
-    .cat-adverb { color: #fff; background: #d4882b; }
-    .cat-determiner { color: #3d2e1e; background: #b8d4e8; }
-    .cat-preposition { color: #fff; background: #5a9a6a; }
-    .cat-pronoun { color: #fff; background: #8a5a9a; }
-    .cat-conjunction { color: #fff; background: #d48a95; }
-    .cat-interjection { color: #3d2e1e; background: #e8c84a; }
+    .cat-noun { color: #0a0e1a; background: #e0e8f0; }
+    .cat-verb { color: #fff; background: #e84545; }
+    .cat-adjective { color: #fff; background: #4a8ed4; }
+    .cat-adverb { color: #0a0e1a; background: #f0a830; }
+    .cat-determiner { color: #0a0e1a; background: #88c8e8; }
+    .cat-preposition { color: #fff; background: #45b875; }
+    .cat-pronoun { color: #fff; background: #a065c8; }
+    .cat-conjunction { color: #fff; background: #e078a0; }
+    .cat-interjection { color: #0a0e1a; background: #f0d050; }
 
     /* --- Main result card --- */
     .card {
       width: 100%;
       max-width: 520px;
-      background: #fff;
+      background: rgba(15,22,40,0.85);
       padding: clamp(1rem, 2vh, 1.5rem) 1.5rem;
       margin-bottom: clamp(0.4rem, 1vh, 0.75rem);
-      border-radius: 16px;
-      border: 3px solid #e8ddd0;
+      border-radius: 12px;
+      border: 2px solid rgba(126,202,255,0.2);
       animation: popIn 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
+      backdrop-filter: blur(10px);
     }
     .card-word {
       font-family: 'Fredoka', sans-serif;
       font-size: clamp(1.8rem, 5vw, 3rem);
       font-weight: 700;
       margin-bottom: 0.3rem;
-      color: #3d2e1e;
+      color: #fff;
     }
     .card-meta {
       display: flex;
@@ -110,30 +128,31 @@
       flex-wrap: wrap;
     }
     .card-gender {
-      color: #b8a080;
+      color: rgba(126,202,255,0.6);
       font-size: clamp(0.65rem, 1.3vw, 0.85rem);
       font-weight: 700;
     }
     .phonetic-badge {
-      color: #b8a080;
+      color: rgba(126,202,255,0.6);
       font-size: clamp(0.65rem, 1.3vw, 0.85rem);
       font-style: italic;
     }
     .card-definition {
       font-size: clamp(0.9rem, 2.2vw, 1.3rem);
       line-height: 1.5;
-      color: #5a4a38;
+      color: #c8d4e0;
       margin-bottom: 0.4rem;
       font-weight: 600;
     }
     .card-example {
       font-size: clamp(0.75rem, 1.8vw, 1rem);
-      color: #b8a080;
+      color: rgba(126,202,255,0.5);
       font-style: italic;
       font-weight: 600;
       padding: 0.4rem 0.75rem;
-      background: #fef5e8;
-      border-radius: 10px;
+      background: rgba(126,202,255,0.08);
+      border-radius: 8px;
+      border: 1px solid rgba(126,202,255,0.1);
     }
 
     /* --- Secondary results --- */
@@ -146,47 +165,53 @@
     .mini-card {
       flex: 1;
       padding: clamp(0.4rem, 1vh, 0.7rem) 0.5rem;
-      background: #fff;
-      border: 2px solid #e8ddd0;
-      border-radius: 12px;
+      background: rgba(15,22,40,0.7);
+      border: 1px solid rgba(126,202,255,0.15);
+      border-radius: 8px;
       cursor: pointer;
       text-align: center;
-      transition: border-color 0.15s, transform 0.15s;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
       animation: popIn 0.3s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+      backdrop-filter: blur(5px);
     }
     .mini-card:nth-child(1) { animation-delay: 0.05s; }
     .mini-card:nth-child(2) { animation-delay: 0.1s; }
     .mini-card:nth-child(3) { animation-delay: 0.15s; }
     .mini-card:nth-child(4) { animation-delay: 0.2s; }
-    .mini-card:hover { border-color: #c47b2b; transform: translateY(-2px); }
+    .mini-card:hover {
+      border-color: #7ecaff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px rgba(126,202,255,0.15);
+    }
     .mini-card .word {
       font-family: 'Fredoka', sans-serif;
       font-weight: 600;
       font-size: clamp(0.85rem, 2vw, 1.3rem);
-      color: #3d2e1e;
+      color: #c8d4e0;
     }
 
     /* Diff highlights */
     .diff-same { color: inherit; }
-    .diff-change { color: #cc3d2e; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-    .diff-add { color: #cc3d2e; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .diff-change { color: #7ecaff; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    .diff-add { color: #7ecaff; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 
     /* --- Hint --- */
     .hint {
       position: fixed;
       bottom: 1.2rem;
-      color: #c4b098;
+      color: rgba(126,202,255,0.35);
       font-size: 0.75rem;
       text-align: center;
       font-weight: 600;
     }
     .hint code {
-      background: #f0e8dc;
+      background: rgba(126,202,255,0.1);
       padding: 0.15rem 0.45rem;
       font-size: 0.7rem;
-      border-radius: 6px;
-      color: #8a7562;
+      border-radius: 4px;
+      color: rgba(126,202,255,0.5);
       font-weight: 700;
+      border: 1px solid rgba(126,202,255,0.15);
     }
 
     @keyframes popIn {
@@ -218,7 +243,7 @@
 </head>
 <body>
   <div class="title">Astermots</div>
-  <div class="subtitle-text">Mon dictionnaire phonétique</div>
+  <div class="subtitle-text">Dictionnaire phonétique interstellaire</div>
   <div class="search-container">
     <input type="text" id="search" placeholder="Écris comme tu entends…" autocomplete="off" autofocus>
   </div>
