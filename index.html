@@ -100,6 +100,110 @@
       60% { transform: scale(1.3); }
       100% { transform: scale(1); opacity: 1; }
     }
+    .reward-tier {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.4rem, 0.7vw, 0.5rem);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+
+    /* --- Reward Guide Modal --- */
+    .guide-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+    .guide-modal {
+      background: linear-gradient(135deg, rgba(12,18,40,0.98), rgba(20,28,55,0.98));
+      border: 2px solid rgba(255,215,0,0.3);
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      max-width: 500px;
+      width: 90vw;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: 0 0 40px rgba(255,215,0,0.15);
+    }
+    .guide-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.9rem, 2vw, 1.3rem);
+      color: #ffd700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.3rem;
+      text-shadow: 0 0 12px rgba(255,215,0,0.3);
+    }
+    .guide-subtitle {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .guide-tiers { display: flex; flex-direction: column; gap: 0.5rem; }
+    .guide-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0.7rem;
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .guide-tier {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.55rem, 1vw, 0.7rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      min-width: 80px;
+    }
+    .guide-cards {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(0.5rem, 0.9vw, 0.65rem);
+      color: rgba(255,255,255,0.35);
+      min-width: 55px;
+    }
+    .guide-emojis {
+      font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+      letter-spacing: 0.15em;
+    }
+    .guide-close {
+      display: block;
+      margin: 1rem auto 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.55rem, 1vw, 0.7rem);
+      color: #ffd700;
+      background: transparent;
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 8px;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .guide-close:hover {
+      background: rgba(255,215,0,0.1);
+      border-color: rgba(255,215,0,0.5);
+    }
+    .guide-link {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(0.4rem, 0.75vw, 0.5rem);
+      color: rgba(255,215,0,0.4);
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .guide-link:hover { color: rgba(255,215,0,0.7); }
     .panel-header {
       font-family: 'Orbitron', sans-serif;
       font-size: clamp(0.6rem, 1.2vw, 0.8rem);
@@ -651,6 +755,7 @@
     <div class="panel-footer">
       <div style="width:100%; display:flex; flex-direction:column; align-items:center; gap:0.4rem;">
         <span class="panel-status" id="rewards-status">0 récompense</span>
+        <span class="guide-link" onclick="showRewardGuide()">📖 Guide des récompenses</span>
       </div>
     </div>
   </div>
@@ -1392,28 +1497,42 @@
       fitToScreen();
     }
 
-    // --- Rewards system ---
-    const rewardEmojis = [
-      '🌟', '🪐', '☄️', '🛸', '👾', '🌌', '🔭', '🚀',
-      '⭐', '💫', '🌠', '🛰️', '🌍', '🌙', '☀️', '🪨',
-      '💎', '🔮', '👑', '🎖️', '🏅', '🎯', '🎪', '🎨',
-      '🦄', '🐉', '🦅', '🦊', '🐬', '🦋', '🌈', '🍀',
-      '🎸', '🎹', '🥁', '🎺', '🎻', '🎤', '🎧', '🎵'
+    // --- Tiered Rewards system ---
+    const rewardTiers = [
+      { min: 2, name: 'Commun',     color: '#b0b0b0', emojis: ['⭐', '🌙', '🪨', '🍂', '🌿', '🐚'] },
+      { min: 3, name: 'Inhabituel', color: '#4ade80', emojis: ['🌟', '🍀', '🦋', '🐬', '🎵', '🌊'] },
+      { min: 4, name: 'Rare',       color: '#60a5fa', emojis: ['💫', '🌠', '🦊', '🎸', '🔭', '🛰️'] },
+      { min: 5, name: 'Épique',     color: '#c084fc', emojis: ['☄️', '🪐', '🌌', '🛸', '🎻', '🌈'] },
+      { min: 6, name: 'Légendaire', color: '#fbbf24', emojis: ['💎', '👑', '🐉', '🦄', '🔮', '🎪'] },
+      { min: 7, name: 'Ancestral',  color: '#f97316', emojis: ['🏛️', '⚜️', '🗡️', '🦅', '📜', '🏺'] },
+      { min: 8, name: 'Céleste',    color: '#f43f5e', emojis: ['✨', '🌀', '💠', '🔱', '⚡', '🌕'] },
+      { min: 9, name: 'Cosmique',   color: '#ec4899', emojis: ['🌑', '🕳️', '💥', '🧬', '♾️', '🫧'] },
+      { min: 10, name: 'Mythique',  color: '#ff2d78', emojis: ['👁️‍🗨️', '🐲', '⚔️', '🏆', '🪬', '🜂'] },
     ];
 
-    function getRandomRewardEmoji() {
-      return rewardEmojis[Math.floor(Math.random() * rewardEmojis.length)];
+    function getTierForCards(cardCount) {
+      let tier = rewardTiers[0];
+      for (const t of rewardTiers) {
+        if (cardCount >= t.min) tier = t;
+      }
+      return tier;
     }
 
-    function addReward(emoji, label) {
+    function getRandomRewardEmoji(tier) {
+      return tier.emojis[Math.floor(Math.random() * tier.emojis.length)];
+    }
+
+    function addReward(emoji, tierName, tierColor, label) {
       const panel = document.getElementById('rewards-panel');
       const empty = panel.querySelector('.panel-empty');
       if (empty) empty.remove();
       const card = document.createElement('div');
       card.className = 'reward-card';
+      card.style.borderColor = tierColor + '40';
       card.innerHTML = `
         <div style="display:flex; flex-direction:column; align-items:center;">
           <div class="reward-emoji">${emoji}</div>
+          <div class="reward-tier" style="color:${tierColor}">${tierName}</div>
           <div class="reward-label">${label}</div>
         </div>
       `;
@@ -1426,6 +1545,28 @@
       const count = panel.querySelectorAll('.reward-card').length;
       const status = document.getElementById('rewards-status');
       if (status) status.textContent = count + ' récompense' + (count > 1 ? 's' : '');
+    }
+
+    function showRewardGuide() {
+      const overlay = document.createElement('div');
+      overlay.className = 'guide-overlay';
+      overlay.onclick = (e) => { if (e.target === overlay) overlay.remove(); };
+      let rows = '';
+      for (let i = rewardTiers.length - 1; i >= 0; i--) {
+        const t = rewardTiers[i];
+        rows += '<div class="guide-row">' +
+          '<span class="guide-tier" style="color:' + t.color + '">' + t.name + '</span>' +
+          '<span class="guide-cards">' + t.min + '+ mots</span>' +
+          '<span class="guide-emojis">' + t.emojis.join(' ') + '</span>' +
+        '</div>';
+      }
+      overlay.innerHTML = '<div class="guide-modal">' +
+        '<div class="guide-title">Guide des Récompenses</div>' +
+        '<div class="guide-subtitle">Plus tu as de mots dans ton inventaire, plus la récompense est rare !</div>' +
+        '<div class="guide-tiers">' + rows + '</div>' +
+        '<button class="guide-close" onclick="this.closest(\'.guide-overlay\').remove()">Fermer</button>' +
+      '</div>';
+      document.body.appendChild(overlay);
     }
 
     // --- Challenge Game ---
@@ -1578,14 +1719,16 @@
       playGameEndSound(pct);
       const emoji = pct === 100 ? '🏆' : pct >= 70 ? '⭐' : pct >= 40 ? '🚀' : '💪';
 
-      // Award a random reward emoji
-      const reward = getRandomRewardEmoji();
+      // Award a tiered reward emoji based on number of cards played
+      const tier = getTierForCards(gs.total);
+      const reward = getRandomRewardEmoji(tier);
       const label = pct === 100 ? 'Parfait' : pct >= 70 ? 'Super' : pct >= 40 ? 'Bravo' : 'Courageux';
-      addReward(reward, label + ' ' + gs.score + '/' + gs.total);
+      addReward(reward, tier.name, tier.color, label + ' ' + gs.score + '/' + gs.total);
 
       main.innerHTML = `
         <div class="game-end">
           <div style="font-size:clamp(2rem,5vw,3.5rem); margin:0.3rem 0; animation: rewardPop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;">${reward}</div>
+          <div style="font-family:'Orbitron',sans-serif; font-size:clamp(0.6rem,1.2vw,0.85rem); color:${tier.color}; letter-spacing:0.1em; text-transform:uppercase; margin:0.2rem 0;">${tier.name}</div>
           <div class="game-end-score">${gs.score} / ${gs.total}</div>
           <div class="game-prompt">${pct === 100 ? 'Parfait !' : pct >= 70 ? 'Très bien !' : pct >= 40 ? 'Bon effort !' : 'Continue !'}</div>
           <div style="display:flex; gap:0.8rem; margin-top:1rem;">
