@@ -47,29 +47,25 @@
       box-shadow: 10px 10px rgba(0,0,0,0.15);
       border-radius: 100px;
       padding: 1.2rem 1.5rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                  padding 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                  border-radius 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .cloud::after, .cloud::before {
-      content: "";
+    .cloud::after, .cloud::before { display: none; }
+
+    .cloud .bubble {
       position: absolute;
-      background: inherit;
+      background: #ECEFF1;
       border-radius: 50%;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+      z-index: 0;
+      box-shadow: 2px 3px 6px rgba(0,0,0,0.08);
     }
 
-    .cloud::after {
-      width: var(--b1-size, 40px);
-      height: var(--b1-size, 40px);
-      top: var(--b1-top, -15px);
-      left: var(--b1-left, 25px);
-    }
-
-    .cloud::before {
-      width: var(--b2-size, 60px);
-      height: var(--b2-size, 60px);
-      top: var(--b2-top, -28px);
-      left: var(--b2-left, 70px);
+    .cloud .bubble.glow {
+      background: linear-gradient(135deg, #f0f2f5, #e8ebf0);
+      box-shadow: 2px 3px 8px rgba(0,0,0,0.1);
     }
 
     #search {
@@ -240,7 +236,14 @@
 </head>
 <body>
   <div class="search-container">
-    <div class="cloud">
+    <div class="cloud" id="cloud">
+      <div class="bubble" id="b0"></div>
+      <div class="bubble" id="b1"></div>
+      <div class="bubble glow" id="b2"></div>
+      <div class="bubble" id="b3"></div>
+      <div class="bubble glow" id="b4"></div>
+      <div class="bubble" id="b5"></div>
+      <div class="bubble" id="b6"></div>
       <input type="text" id="search" placeholder="Cherche un mot..." autocomplete="off" autofocus>
     </div>
   </div>
@@ -494,44 +497,95 @@
 
     // --- Event wiring ---
     const searchEl = document.getElementById('search');
-    const cloudEl = document.querySelector('.cloud');
+    const cloudEl = document.getElementById('cloud');
+    const bubbles = Array.from(cloudEl.querySelectorAll('.bubble'));
     let currentScored = [];
 
-    // Seed a simple hash from char code to get varied but deterministic shapes
-    function charHash(c) { return ((c * 2654435761) >>> 0) % 100; }
+    // Deterministic hash per character position
+    function hash(n) { return ((n * 2654435761) >>> 0); }
+
+    // Each bubble has a base config: anchor side (top/left/right/bottom), range of motion
+    const bubbleCfg = [
+      { side: 'top',    minS: 30, maxS: 90,  xRange: [0.05, 0.35], yOff: -0.6 },
+      { side: 'top',    minS: 45, maxS: 130, xRange: [0.30, 0.65], yOff: -0.55 },
+      { side: 'top',    minS: 25, maxS: 70,  xRange: [0.55, 0.85], yOff: -0.5 },
+      { side: 'left',   minS: 20, maxS: 60,  yRange: [0.15, 0.55], xOff: -0.4 },
+      { side: 'right',  minS: 25, maxS: 75,  yRange: [0.10, 0.50], xOff: -0.3 },
+      { side: 'bottom', minS: 20, maxS: 55,  xRange: [0.20, 0.50], yOff: -0.2 },
+      { side: 'top',    minS: 35, maxS: 100, xRange: [0.15, 0.50], yOff: -0.7 },
+    ];
 
     function updateCloudShape(text) {
       const len = text.length;
-      // Cloud body grows with length
-      const t = Math.min(len / 10, 1); // 0→1 over 10 chars
-      const w = 180 + t * 320; // 180→500
-      const pad = 1.2 + t * 0.8;
+      const t = Math.min(len / 10, 1); // growth factor 0→1
 
+      // Cloud body
+      const w = 180 + t * 320;
+      const pad = 1.2 + t * 0.8;
+      const br = 100 - t * 20; // border-radius softens as it grows
       cloudEl.style.width = w + 'px';
       cloudEl.style.padding = pad + 'rem ' + (pad + 0.3) + 'rem';
+      cloudEl.style.borderRadius = br + 'px';
 
-      // Bumps morph based on the actual characters typed
-      const seed = len > 0 ? text.split('').reduce((a, c) => a + c.charCodeAt(0), 0) : 0;
-      const h1 = charHash(seed + 1);
-      const h2 = charHash(seed + 7);
+      // Compute seed from text content
+      const seed = len > 0
+        ? text.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0)
+        : 0;
 
-      // Small bump (::after)
-      const s1 = 35 + t * 35 + (h1 % 15);        // size 35-85
-      const l1 = 15 + (h1 % 30) + t * 20;          // left position
-      const t1 = -(s1 * 0.45 + (h2 % 8));          // top
+      // How many bubbles to show (ramp up with text length)
+      const visibleCount = Math.min(Math.floor(len * 1.2) + 1, bubbles.length);
 
-      // Big bump (::before)
-      const s2 = 50 + t * 70 + (h2 % 20);          // size 50-140
-      const l2 = w * 0.3 + (h2 % 40) + t * 15;     // left position
-      const t2 = -(s2 * 0.48 + (h1 % 10));          // top
+      bubbles.forEach((bEl, i) => {
+        const cfg = bubbleCfg[i];
+        if (i >= visibleCount || len === 0) {
+          bEl.style.width = '0px';
+          bEl.style.height = '0px';
+          bEl.style.opacity = '0';
+          return;
+        }
 
-      cloudEl.style.setProperty('--b1-size', s1 + 'px');
-      cloudEl.style.setProperty('--b1-left', l1 + 'px');
-      cloudEl.style.setProperty('--b1-top', t1 + 'px');
-      cloudEl.style.setProperty('--b2-size', s2 + 'px');
-      cloudEl.style.setProperty('--b2-left', l2 + 'px');
-      cloudEl.style.setProperty('--b2-top', t2 + 'px');
+        const h = hash(seed * 31 + i * 997);
+        const hNorm = (h % 1000) / 1000; // 0→1
+
+        // Size scales with growth + hash variation
+        const sizeRange = cfg.maxS - cfg.minS;
+        const size = cfg.minS + t * sizeRange * (0.6 + 0.4 * hNorm);
+
+        // Position depends on which side the bubble anchors to
+        let left, top;
+        if (cfg.side === 'top' || cfg.side === 'bottom') {
+          const xMin = cfg.xRange[0], xMax = cfg.xRange[1];
+          const xFrac = xMin + hNorm * (xMax - xMin);
+          left = w * xFrac - size * 0.3;
+          if (cfg.side === 'top') {
+            top = size * cfg.yOff - (hNorm * 10);
+          } else {
+            // bottom bubbles sit below cloud body
+            const bodyH = 50 + t * 20;
+            top = bodyH + size * cfg.yOff;
+          }
+        } else {
+          const yMin = cfg.yRange[0], yMax = cfg.yRange[1];
+          const yFrac = yMin + hNorm * (yMax - yMin);
+          const bodyH = 50 + t * 20;
+          top = bodyH * yFrac - size * 0.3;
+          if (cfg.side === 'left') {
+            left = size * cfg.xOff - (hNorm * 8);
+          } else {
+            left = w + size * cfg.xOff + (hNorm * 5);
+          }
+        }
+
+        bEl.style.width = size + 'px';
+        bEl.style.height = size + 'px';
+        bEl.style.left = left + 'px';
+        bEl.style.top = top + 'px';
+        bEl.style.opacity = 0.7 + t * 0.3;
+      });
     }
+
+    // Initialize cloud at empty state
+    updateCloudShape('');
 
     searchEl.addEventListener('input', () => {
       activeIndex = -1;
