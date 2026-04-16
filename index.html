@@ -922,7 +922,6 @@
       if (empty) empty.remove();
       const card = document.createElement('div');
       card.className = 'pair-card' + (isExact ? ' pair-exact' : '');
-      card.dataset.word = word.toLowerCase();
       if (isExact) {
         card.innerHTML = `
           <span class="pair-trophy">🏆</span>
@@ -961,11 +960,6 @@
 
     function startChallenge() {
       if (acceptedPairs.length < 2) return;
-      // Blur all pair cards
-      document.querySelectorAll('#pairs-panel .pair-card').forEach(c => {
-        c.style.filter = 'blur(8px)';
-        c.style.transition = 'filter 0.4s ease';
-      });
       gameState = {
         pairs: shuffle([...acceptedPairs]),
         current: 0,
@@ -1094,11 +1088,6 @@
         feedback.innerHTML = `<span style="color:#ff6b6b">C'est <strong>${correct}</strong></span>`;
       }
 
-      // Reveal the matching pair card
-      const panel = document.getElementById('pairs-panel');
-      const match = panel.querySelector(`.pair-card[data-word="${correct.toLowerCase()}"]`);
-      if (match) match.style.filter = 'none';
-
       setTimeout(() => {
         gameState.current++;
         showGameQuestion();
@@ -1127,10 +1116,6 @@
 
     function exitChallenge() {
       gameState = null;
-      // Unblur all pair cards
-      document.querySelectorAll('#pairs-panel .pair-card').forEach(c => {
-        c.style.filter = '';
-      });
       const main = document.querySelector('.main-content');
       main.innerHTML = `
         <div class="title">Astermots</div>
