@@ -26,10 +26,81 @@
       height: 100vh;
       overflow: hidden;
       display: flex;
+      flex-direction: row;
+      color: #e0e8f0;
+    }
+
+    /* --- Accepted pairs panel --- */
+    .pairs-panel {
+      width: clamp(140px, 18vw, 220px);
+      height: 100vh;
+      padding: 1rem 0.6rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+    .pairs-panel:empty { display: none; }
+    .pairs-panel::-webkit-scrollbar { width: 4px; }
+    .pairs-panel::-webkit-scrollbar-thumb { background: rgba(126,202,255,0.2); border-radius: 2px; }
+
+    .pair-card {
+      background: rgba(15,22,40,0.7);
+      border: 1px solid rgba(126,202,255,0.2);
+      border-radius: 10px;
+      padding: 0.5rem 0.6rem;
+      backdrop-filter: blur(6px);
+      animation: pairSlideIn 0.35s cubic-bezier(0.34, 1.4, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+    }
+    .pair-input {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      word-break: break-all;
+      text-align: center;
+    }
+    .pair-arrow {
+      font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+      color: rgba(126,202,255,0.5);
+    }
+    .pair-word {
+      font-family: 'Fredoka', sans-serif;
+      font-size: clamp(0.8rem, 1.5vw, 1.05rem);
+      font-weight: 600;
+      color: #7ecaff;
+      text-align: center;
+    }
+    .pair-remove {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.2);
+      cursor: pointer;
+      font-size: 0.6rem;
+      margin-top: 0.1rem;
+      transition: color 0.2s;
+    }
+    .pair-remove:hover { color: #ff6b6b; }
+
+    @keyframes pairSlideIn {
+      from { opacity: 0; transform: translateX(-20px) scale(0.9); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    /* --- Main content area --- */
+    .main-content {
+      flex: 1;
+      display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2rem 1.5rem 1rem;
-      color: #e0e8f0;
+      overflow: hidden;
+      min-width: 0;
     }
 
     /* --- Title --- */
@@ -113,12 +184,38 @@
       animation: popIn 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
       backdrop-filter: blur(10px);
     }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
     .card-word {
       font-family: 'Fredoka', sans-serif;
       font-size: clamp(1.8rem, 5vw, 3rem);
       font-weight: 700;
-      margin-bottom: 0.3rem;
       color: #fff;
+    }
+    .accept-btn {
+      background: rgba(126,202,255,0.15);
+      border: 2px solid rgba(126,202,255,0.4);
+      border-radius: 50%;
+      width: clamp(2rem, 5vw, 2.8rem);
+      height: clamp(2rem, 5vw, 2.8rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      color: #7ecaff;
+    }
+    .accept-btn:hover {
+      background: rgba(126,202,255,0.3);
+      border-color: #7ecaff;
+      box-shadow: 0 0 12px rgba(126,202,255,0.4);
+      transform: scale(1.1);
     }
     .card-meta {
       display: flex;
@@ -242,6 +339,8 @@
   </style>
 </head>
 <body>
+  <div class="pairs-panel" id="pairs-panel"></div>
+  <div class="main-content">
   <div class="title">Astermots</div>
   <div class="subtitle-text">Dictionnaire phonétique interstellaire d'Orion</div>
   <div class="search-container">
@@ -253,6 +352,7 @@
   <div class="bottom-row" id="others"></div>
 
   <p class="hint">Essaie : <code>gato</code> → gâteau · <code>xien</code> → chien · <code>garson</code> → garçon · <code>foto</code> → photo</p>
+  </div>
 
   <script>
     let dictionary = [];
@@ -457,7 +557,10 @@
       const wordHtml = query ? highlightDiff(entry.word, query) : entry.word;
       document.getElementById('result').innerHTML = `
         <div class="card">
-          <div class="card-word">${wordHtml}</div>
+          <div class="card-header">
+            <div class="card-word">${wordHtml}</div>
+            <button class="accept-btn" onclick="acceptWord('${entry.word.replace(/'/g, "\\'")}')" title="Accepter">✓</button>
+          </div>
           <div class="card-meta">
             <span class="${catClass(entry.category)}">${entry.category}</span>
             ${genderHtml}
@@ -523,15 +626,43 @@
 
     // --- Auto-fit: progressively shrink if content overflows viewport ---
     function fitToScreen() {
-      const body = document.body;
+      const main = document.querySelector('.main-content');
       let scale = 100;
-      body.style.fontSize = '';
-      while (body.scrollHeight > window.innerHeight && scale > 50) {
+      main.style.fontSize = '';
+      while (main.scrollHeight > window.innerHeight && scale > 50) {
         scale -= 2;
-        body.style.fontSize = scale + '%';
+        main.style.fontSize = scale + '%';
       }
     }
     window.addEventListener('resize', fitToScreen);
+
+    function acceptWord(word) {
+      const inputText = document.getElementById('search').value.trim();
+      if (inputText) {
+        addPairCard(inputText, word);
+      }
+      document.getElementById('search').value = '';
+      document.getElementById('result').innerHTML = '';
+      document.getElementById('others').innerHTML = '';
+      document.getElementById('search').focus();
+      const hint = document.querySelector('.hint');
+      if (hint) hint.style.display = '';
+      fitToScreen();
+    }
+
+    function addPairCard(input, word) {
+      const panel = document.getElementById('pairs-panel');
+      const card = document.createElement('div');
+      card.className = 'pair-card';
+      card.innerHTML = `
+        <div class="pair-input">${input}</div>
+        <div class="pair-arrow">↓</div>
+        <div class="pair-word">${word}</div>
+        <button class="pair-remove" onclick="this.parentElement.remove(); fitToScreen();" title="Retirer">✕</button>
+      `;
+      panel.prepend(card);
+      fitToScreen();
+    }
 
     // --- Event wiring ---
     const searchEl = document.getElementById('search');
