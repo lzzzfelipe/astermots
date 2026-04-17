@@ -1404,6 +1404,22 @@
       if (audioCtx.state === 'suspended') audioCtx.resume();
       return audioCtx;
     }
+    // Unlock audio on first user interaction (required for mobile browsers)
+    function unlockAudio() {
+      getAudioCtx();
+      // Play a silent buffer to fully unlock on iOS
+      const buf = audioCtx.createBuffer(1, 1, 22050);
+      const src = audioCtx.createBufferSource();
+      src.buffer = buf;
+      src.connect(audioCtx.destination);
+      src.start(0);
+      document.removeEventListener('touchstart', unlockAudio, true);
+      document.removeEventListener('touchend', unlockAudio, true);
+      document.removeEventListener('click', unlockAudio, true);
+    }
+    document.addEventListener('touchstart', unlockAudio, true);
+    document.addEventListener('touchend', unlockAudio, true);
+    document.addEventListener('click', unlockAudio, true);
 
     function playAcceptSound() {
       const now = getAudioCtx().currentTime;
@@ -2396,6 +2412,6 @@
     }
   </script>
 
-  <div id="app-version" style="position:fixed; bottom:0.3rem; right:0.5rem; font-family:'Orbitron',sans-serif; font-size:0.55rem; color:rgba(126,202,255,0.2); pointer-events:none; z-index:1;">v4</div>
+  <div id="app-version" style="position:fixed; bottom:0.3rem; right:0.5rem; font-family:'Orbitron',sans-serif; font-size:0.55rem; color:rgba(126,202,255,0.2); pointer-events:none; z-index:1;">v5</div>
 </body>
 </html>
