@@ -1,5 +1,17 @@
 """Bundle index.html into a self-contained astermots.html with inline dictionary."""
-import json, re
+import json, re, os
+
+# --- Version management ---
+VERSION_FILE = 'version.txt'
+if os.path.exists(VERSION_FILE):
+    with open(VERSION_FILE, 'r') as f:
+        version = int(f.read().strip())
+else:
+    version = 0
+version += 1
+with open(VERSION_FILE, 'w') as f:
+    f.write(str(version))
+print(f'Version: v{version}')
 
 with open('src/data/dictionary.json', 'r', encoding='utf-8') as f:
     dict_data = json.dumps(json.load(f), ensure_ascii=False, separators=(',', ':'))
@@ -18,6 +30,9 @@ ext_script = re.search(
 )
 if ext_script:
     html = html[:ext_script.start()] + html[ext_script.end():]
+
+# Stamp version
+html = re.sub(r'>v\d+<', f'>v{version}<', html)
 
 with open('astermots.html', 'w', encoding='utf-8') as f:
     f.write(html)

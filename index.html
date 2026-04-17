@@ -901,9 +901,178 @@
     .mini-card.swap-in {
       animation: swapDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
+
+    /* --- Mobile tab bar --- */
+    .mobile-tabs {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(8,12,28,0.95);
+      border-top: 2px solid rgba(126,202,255,0.2);
+      backdrop-filter: blur(10px);
+    }
+    .mobile-tabs-inner {
+      display: flex;
+      justify-content: space-around;
+      padding: 0.4rem 0 max(0.4rem, env(safe-area-inset-bottom));
+    }
+    .mobile-tab {
+      flex: 1;
+      background: none;
+      border: none;
+      color: rgba(126,202,255,0.4);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.2rem;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.15rem;
+      transition: color 0.2s;
+    }
+    .mobile-tab-icon { font-size: 1.2rem; }
+    .mobile-tab.active { color: #7ecaff; }
+    .mobile-tab.active-rewards { color: #ffd700; }
+
+    /* --- Mobile responsive --- */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .mobile-tabs { display: block; }
+      .pairs-panel,
+      .rewards-panel {
+        display: none;
+        width: 100%;
+        height: calc(100vh - 52px);
+        border: none;
+      }
+      .pairs-panel.mobile-active,
+      .rewards-panel.mobile-active {
+        display: flex;
+      }
+      .main-content {
+        display: none;
+        width: 100%;
+        height: calc(100vh - 52px);
+        padding: 1rem 1rem 0.5rem;
+        overflow-y: auto;
+      }
+      .main-content.mobile-active {
+        display: flex;
+      }
+      .title {
+        font-size: clamp(1.4rem, 7vw, 2rem);
+        margin-bottom: 0.1rem;
+      }
+      .subtitle-text {
+        font-size: clamp(0.55rem, 2.5vw, 0.75rem);
+        margin-bottom: clamp(0.5rem, 2vh, 1rem);
+      }
+      #search {
+        font-size: clamp(1.4rem, 6vw, 2rem);
+        padding: 0.6rem 0.8rem;
+      }
+      .search-container {
+        max-width: 100%;
+      }
+      .card {
+        padding: 0.8rem 1rem;
+      }
+      .card-word {
+        font-size: clamp(1.4rem, 6vw, 2rem);
+      }
+      .bottom-row {
+        flex-wrap: wrap;
+      }
+      .mini-card {
+        min-width: calc(50% - 0.4rem);
+        flex: 1 1 calc(50% - 0.4rem);
+      }
+      .hint {
+        font-size: clamp(0.55rem, 2.5vw, 0.75rem);
+        padding: 0 0.5rem;
+      }
+      .panel-header {
+        font-size: clamp(0.65rem, 3vw, 0.85rem);
+        padding: 0.7rem 0.6rem 0.5rem;
+      }
+      .reward-emoji {
+        font-size: clamp(1.6rem, 8vw, 2.4rem);
+      }
+      .reward-name {
+        font-size: clamp(0.5rem, 2.5vw, 0.65rem);
+      }
+      .reward-tier, .reward-label {
+        font-size: clamp(0.4rem, 2vw, 0.5rem);
+      }
+      .panel-status {
+        font-size: clamp(0.5rem, 2.5vw, 0.65rem);
+      }
+      .challenge-btn {
+        font-size: clamp(0.55rem, 2.5vw, 0.7rem);
+        padding: 0.5rem 1rem;
+      }
+      .guide-link {
+        font-size: clamp(0.5rem, 2.5vw, 0.65rem);
+      }
+      /* Game mode on mobile */
+      .game-container, .game-end {
+        padding: 1rem;
+      }
+      .game-prompt {
+        font-size: clamp(0.8rem, 4vw, 1.1rem);
+      }
+      .game-choice {
+        font-size: clamp(0.8rem, 3.5vw, 1rem);
+        padding: 0.6rem 0.8rem;
+      }
+      /* Inspect modal on mobile */
+      .inspect-modal {
+        width: 92vw;
+        max-width: 92vw;
+      }
+      .inspect-emoji-inner {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+      }
+      .inspect-desc {
+        font-size: clamp(0.7rem, 3vw, 0.85rem);
+      }
+      /* Guide modal on mobile */
+      .guide-overlay > div {
+        width: 95vw !important;
+        max-width: 95vw !important;
+        max-height: 85vh !important;
+      }
+      #app-version {
+        bottom: 3.5rem;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- Mobile tab bar -->
+  <div class="mobile-tabs">
+    <div class="mobile-tabs-inner">
+      <button class="mobile-tab" onclick="switchMobileTab('pairs')">
+        <span class="mobile-tab-icon">📦</span>Inventaire
+      </button>
+      <button class="mobile-tab active" onclick="switchMobileTab('main')">
+        <span class="mobile-tab-icon">🔍</span>Dictionnaire
+      </button>
+      <button class="mobile-tab" onclick="switchMobileTab('rewards')">
+        <span class="mobile-tab-icon">🏆</span>Récompenses
+      </button>
+    </div>
+  </div>
   <div class="pairs-panel">
     <div class="panel-header">Inventaire</div>
     <div class="panel-items" id="pairs-panel">
@@ -1668,68 +1837,68 @@
 
     const rewardLore = {
       // --- Commun ---
-      '⭐': { name: 'Étoile du Voyageur', desc: "Première lueur aperçue par les jeunes explorateurs d'Orion. On dit qu'elle fredonne une mélodie différente pour chaque enfant, un petit air qui guide leurs pas vers la prochaine découverte. Elle vibre doucement dans la poche de ceux qui osent chercher, comme une note tenue en sourdine." },
-      '🌙': { name: 'Croissant d\'Argent', desc: "Fragment de lune tombé lors de la Grande Éclipse de Pluton. Les anciens pilotes le portaient autour du cou car il émet un bourdon grave, un rythme lent et rassurant comme un métronome cosmique qui ne perd jamais le tempo, même dans l'obscurité des nébuleuses." },
-      '🪨': { name: 'Roche d\'Astéroïde', desc: "Morceau brut arraché à la ceinture d'astéroïdes de Kepler. En apparence silencieuse, mais les géologues spatiaux y détectent une vibration sourde — un beat primitif, le rythme même de la roche, qui pulse comme une basse lointaine depuis des millions d'années." },
-      '🍂': { name: 'Feuille Cosmique', desc: "Seul vestige du Grand Arbre d'Andromède. Ses nervures vibrent comme les cordes d'une harpe au vent solaire, produisant de minuscules harmoniques qui changent de tonalité selon l'humeur de celui qui la tient." },
-      '🌿': { name: 'Brin de Nébuleuse', desc: "Petite pousse née dans les serres du vaisseau Astermots. Elle se nourrit de bonnes réponses et grandit en fredonnant un air doux, un crescendo végétal — chaque mot appris ajoute une note à sa mélodie secrète." },
-      '🐚': { name: 'Coquillage de Titan', desc: "Ramassé sur les plages de méthane liquide de Titan. Porté à l'oreille, il ne murmure pas la mer mais un groove extraterrestre — une boucle rythmique hypnotique venue des marées d'un autre monde, un beat qu'on n'oublie jamais." },
+      '⭐': { name: 'Étoile du Voyageur', desc: "La toute première étoile qu'on reçoit dans l'espace. Elle est un peu cabossée parce qu'elle est tombée d'une constellation, mais elle brille quand même super fort. On dit qu'elle sent la barbe à papa quand on la renifle de près." },
+      '🌙': { name: 'Croissant d\'Argent', desc: "Un bout de lune qui s'est cassé quand un astéroïde a éternué dessus. Il brille dans le noir et c'est super pratique pour retrouver ses chaussettes le matin. Attention : il est un peu collant." },
+      '🪨': { name: 'Roche d\'Astéroïde', desc: "C'est juste... un caillou de l'espace. Mais un caillou COOL. Si tu le lances en l'air, il retombe toujours du côté bizarre. Les scientifiques pensent qu'il est un peu têtu." },
+      '🍂': { name: 'Feuille Cosmique', desc: "Une feuille d'un arbre qui poussait dans l'espace (oui oui, sans terre ni eau, il se débrouillait). Elle change de couleur quand tu es content et devient toute grise quand tu fais tes devoirs." },
+      '🌿': { name: 'Brin de Nébuleuse', desc: "Cette petite plante pousse dans le vaisseau et elle est TRÈS dramatique. Si tu ne lui parles pas tous les jours, elle fait semblant de mourir. Mais dès que tu la complimentes, elle repousse en deux secondes." },
+      '🐚': { name: 'Coquillage de Titan', desc: "Ramassé sur une plage d'une lune bizarre. Si tu le colles à ton oreille, tu n'entends pas la mer — tu entends quelqu'un qui chuchote « range ta chambre ». Personne ne sait pourquoi." },
       // --- Inhabituel ---
-      '🌟': { name: 'Étoile Scintillante', desc: "Plus brillante que sa cousine commune, cette étoile pulse en rythme, comme un stroboscope naturel. Sa lumière verte suit un tempo syncopé qui fait danser les particules autour d'elle — un véritable light-show cosmique avec son propre BPM." },
-      '🍀': { name: 'Trèfle de Ganymède', desc: "Plante rare qui ne pousse que sur la face cachée de Ganymède, une fois tous les 47 ans. Ses quatre feuilles vibrent en accord parfait — un accord de septième majeure — produisant un son si pur que les botanistes spatiaux le surnomment « le diapason vert »." },
-      '🦋': { name: 'Papillon Stellaire', desc: "Créature bioluminescente dont les ailes battent en mesure, chaque battement produisant une note cristalline. Quand un essaim migre entre les systèmes solaires, leur vol compose une symphonie improvisée — du jazz stellaire en temps réel." },
-      '🐬': { name: 'Dauphin des Anneaux', desc: "Être joueur qui nage dans les anneaux de Saturne. Il communique par des chants mélodiques qui ressemblent étrangement à des vocalises françaises — do-ré-mi-fa-sol, mais avec des conjugaisons. Un vrai virtuose du scat linguistique." },
-      '🎵': { name: 'Note d\'Harmonie', desc: "Fréquence sonore piégée dans un cristal lors du Grand Concert de la Voie Lactée. Quand on la libère, elle joue la mélodie préférée de celui qui l'écoute, en boucle infinie — un sample parfait, un riff éternel gravé dans le cristal." },
-      '🌊': { name: 'Vague d\'Europe', desc: "Échantillon d'eau gelée de l'océan sous la croûte d'Europe. En fondant, elle libère des résonances profondes — des nappes de basses sub-aquatiques, un ambient océanique qui pulse au rythme lent des marées d'une lune lointaine." },
+      '🌟': { name: 'Étoile Scintillante', desc: "Comme une étoile normale, mais elle clignote comme si elle te faisait des clins d'œil en permanence. C'est un peu gênant parfois. Surtout quand tu essaies de dormir." },
+      '🍀': { name: 'Trèfle de Ganymède', desc: "Ce trèfle à quatre feuilles ne pousse qu'une fois tous les 47 ans sur une lune super loin. Il porte bonheur, mais seulement les mardis. Les autres jours il porte... chance moyenne." },
+      '🦋': { name: 'Papillon Stellaire', desc: "Ce papillon brille dans le noir et ne se pose que sur les gens qui sentent bon. Si tu manges trop de fromage, il s'enfuit. C'est un papillon très exigeant niveau odeurs." },
+      '🐬': { name: 'Dauphin des Anneaux', desc: "Il nage dans les anneaux de Saturne comme si c'était une piscine à vagues. Il fait des blagues en dauphin (« couic couic ! ») mais personne ne les comprend. Il rit quand même tout seul." },
+      '🎵': { name: 'Note d\'Harmonie', desc: "Une note de musique coincée dans un cristal. Le problème, c'est que c'est toujours la même note. TOUJOURS. Les astronautes qui la gardent trop longtemps deviennent un peu zinzins." },
+      '🌊': { name: 'Vague d\'Europe', desc: "Un mini-océan dans une bouteille qui vient d'une lune glacée. Quand tu la secoues, tu peux voir des mini-poissons qui font coucou. Ils sont très polis pour des poissons extraterrestres." },
       // --- Rare ---
-      '💫': { name: 'Étoile Filante Piégée', desc: "Capturée en plein vol par le filet quantique du Capitaine Orion. Elle continue de filer dans sa capsule de verre, traçant des portées musicales lumineuses — chaque courbe est un glissando, chaque tournant un crescendo éblouissant." },
-      '🌠': { name: 'Pluie de Météores', desc: "Concentré d'une pluie de Perséides enfermé dans une fiole. En l'ouvrant, des dizaines de petites étoiles jaillissent en staccato rapide, chacune émettant un tintement cristallin — un arpège descendant qui compose des poèmes dans le ciel." },
-      '🦊': { name: 'Renard Astral', desc: "Esprit animal de la constellation de Vulpecula. Malin et rusé, il danse entre les étoiles avec un sens du rythme impeccable. On dit qu'il ne montre le chemin qu'à ceux qui savent garder le tempo — et bien orthographier son nom." },
-      '🎸': { name: 'Guitare Supersonique', desc: "Instrument légendaire forgé dans le noyau d'une étoile à neutrons. Chaque riff produit une onde de choc qui fait vibrer les mots, révélant leur orthographe secrète. Son distortion cosmique est si puissante qu'elle accorde l'univers entier." },
-      '🔭': { name: 'Longue-Vue d\'Orion', desc: "Télescope du fondateur d'Astermots. Mais son secret : en le pointant vers une étoile, on n'entend pas le silence — on capte sa fréquence, sa note fondamentale. Chaque étoile est un instrument, et l'univers est un orchestre infini." },
-      '🛰️': { name: 'Satellite Éclaireur', desc: "Petit drone orbital qui cartographie le dictionnaire. Il émet un ping musical distinct pour chaque mot découvert — les mots rares produisent des accords mineurs mélancoliques, les mots courants un joyeux beat majeur." },
+      '💫': { name: 'Étoile Filante Piégée', desc: "Le Capitaine Orion l'a attrapée avec un filet à papillons géant. Elle est furieuse d'être enfermée et elle essaie de s'échapper en permanence. Du coup elle secoue sa boîte, ça fait un bruit de maracas." },
+      '🌠': { name: 'Pluie de Météores', desc: "C'est toute une pluie d'étoiles dans un bocal. Quand tu l'ouvres, des mini-étoiles sautent partout comme du pop-corn. C'est très joli mais TRÈS dur à nettoyer après." },
+      '🦊': { name: 'Renard Astral', desc: "Ce renard de l'espace est malin comme pas possible. Il a déjà volé trois sandwichs au Capitaine Orion et a appris à ouvrir les frigos tout seul. Ne le laisse JAMAIS seul avec ton goûter." },
+      '🎸': { name: 'Guitare Supersonique', desc: "Fabriquée dans une étoile explosée, cette guitare ne fait qu'UN SEUL accord. Mais cet accord est tellement cool que tout le monde fait « waouh » à chaque fois. Même les robots." },
+      '🔭': { name: 'Longue-Vue d\'Orion', desc: "Ce télescope est tellement puissant qu'il peut voir ce que tu as mangé au petit-déjeuner depuis l'autre bout de la galaxie. (C'était des céréales, on a vérifié.)" },
+      '🛰️': { name: 'Satellite Éclaireur', desc: "Ce petit drone tourne autour de ta tête et dit « BIIIP » à chaque fois que tu fais une faute d'orthographe. C'est utile. C'est aussi très agaçant. Surtout en dictée." },
       // --- Épique ---
-      '☄️': { name: 'Comète de Halley Jr.', desc: "Fragment de la célèbre comète dont la traînée de feu vibre comme une corde de contrebasse cosmique. Son passage produit un fortissimo qui résonne dans tout le système solaire — un drop si puissant qu'il fait trembler les planètes." },
-      '🪐': { name: 'Mini-Planète Personnelle', desc: "Un monde entier dans la paume de la main. Elle possède ses propres océans et une minuscule salle de concert où un orchestre de microbes joue en boucle la symphonie des mots — chaque rotation complète est un nouveau mouvement." },
-      '🌌': { name: 'Fragment de Voie Lactée', desc: "Morceau de galaxie scintillant de milliards de micro-étoiles. Chacune émet sa propre fréquence, et ensemble elles forment un chœur harmonique si vaste que quiconque l'écoute trop longtemps commence à comprendre toutes les langues — et toutes les musiques." },
-      '🛸': { name: 'Soucoupe d\'Exploration', desc: "Vaisseau miniature de visiteurs galactiques. Son moteur ronronne en la mineur et son tableau de bord affiche des mots qui dansent au rythme d'un groove alien — les lettres bougent en cadence, comme des danseurs sur un dancefloor interstellaire." },
-      '🎻': { name: 'Violon des Sphères', desc: "Instrument enchanté qui joue tout seul la musique des planètes en rotation. Chaque note correspond à une syllabe, chaque vibrato à une liaison phonétique. Son archet invisible compose les plus beaux mots de la langue française en legato parfait." },
-      '🌈': { name: 'Arc Prismatique', desc: "Arc-en-ciel capturé dans la couronne d'une géante gazeuse. Chacune de ses sept couleurs correspond à une note de la gamme, et quand la lumière le traverse, il joue un accord de septième qui encode les règles secrètes de l'orthographe." },
+      '☄️': { name: 'Comète de Halley Jr.', desc: "La fille de la vraie comète de Halley. Elle est en pleine crise d'ado : elle traîne une queue de feu, refuse de suivre son orbite et claque les portes de l'atmosphère en passant." },
+      '🪐': { name: 'Mini-Planète Personnelle', desc: "Ta propre planète ! Bon, elle fait la taille d'une balle de tennis, mais elle a des montagnes, un océan minuscule et un volcan qui crache des confettis. Le loyer est très abordable." },
+      '🌌': { name: 'Fragment de Voie Lactée', desc: "Un morceau de galaxie qui tient dans ta poche. Y a des milliards de micro-étoiles dedans. Ça fait un peu comme des paillettes, sauf que les paillettes sont des soleils. Classe, non ?" },
+      '🛸': { name: 'Soucoupe d\'Exploration', desc: "Un mini-vaisseau extraterrestre. Les anciens propriétaires l'ont laissé avec un mot : « On revient dans 5 minutes ». C'était il y a 3000 ans. Ils sont sûrement coincés dans les bouchons galactiques." },
+      '🎻': { name: 'Violon des Sphères', desc: "Ce violon joue tout seul la nuit. Le problème ? Il joue toujours faux. Les planètes se plaignent régulièrement. Jupiter a déjà envoyé trois lettres de réclamation." },
+      '🌈': { name: 'Arc Prismatique', desc: "Un arc-en-ciel portable ! Tu peux le déplier n'importe où. Par contre, il attire les licornes et après c'est toi qui dois les nourrir. Elles mangent que des pâtes au beurre." },
       // --- Légendaire ---
-      '💎': { name: 'Diamant du Noyau Terrestre', desc: "Cristallisé pendant 4 milliards d'années, ce diamant résonne à 432 Hz — la fréquence parfaite. Ses facettes reflètent chaque mot jamais prononcé, et quand on le fait tourner, il produit un carillon de cristal dont chaque tintement est une syllabe pure." },
-      '👑': { name: 'Couronne du Roi des Mots', desc: "Portée par le souverain de Lexiconia, un royaume où les mots construisaient des châteaux. Chaque joyau est un diapason miniature accordé sur une voyelle différente. Celui qui la porte entend la mélodie cachée de chaque phrase et maîtrise le participe passé." },
-      '🐉': { name: 'Dragon Linguiste', desc: "Dernier de son espèce, ce dragon crache non pas du feu mais des lettres enflammées qui forment des phrases en canon — une voix grave, puis l'écho en aigu, comme un round musical. Son rugissement est un accord de puissance qui fait vibrer les murs." },
-      '🦄': { name: 'Licorne Phonétique', desc: "Créature mythique dont la corne vibre en résonance avec la prononciation parfaite. Au galop, ses sabots frappent le sol en rythme ternaire — une valse phonétique — et chaque foulée corrige une faute d'un simple effleurement mélodique." },
-      '🔮': { name: 'Orbe de Prédiction', desc: "Sphère de cristal qui chante l'orthographe correcte avant même qu'on prononce le mot. Sa voix est un chœur de mille murmures en harmonie parfaite — un pianissimo hypnotique qui se transmet de génération en génération de diseurs de mots." },
-      '🎪': { name: 'Chapiteau des Merveilles', desc: "Cirque miniature où des acrobates-lettres exécutent des numéros sur une musique de fanfare. Les cuivres sonnent à chaque mot formé en plein vol, les percussions marquent les syllabes, et le final est toujours un tutti triomphal réservé aux champions." },
+      '💎': { name: 'Diamant du Noyau Terrestre', desc: "Ce diamant a mis 4 milliards d'années à se former. QUATRE MILLIARDS. C'est plus vieux que ta grand-mère, et pourtant elle est déjà super vieille (pardon mamie). Il brille tellement qu'il faut des lunettes de soleil pour le regarder." },
+      '👑': { name: 'Couronne du Roi des Mots', desc: "Le roi qui la portait pouvait construire des châteaux juste en parlant. Un jour il a dit « placard » et BOUM, un placard est apparu. C'est devenu n'importe quoi, alors on lui a confisqué." },
+      '🐉': { name: 'Dragon Linguiste', desc: "Ce dragon ne crache pas du feu, il crache des LETTRES. Mais attention, que des lettres bien écrites. Si tu fais une faute, il te regarde avec des yeux déçus et ça fait encore plus mal que le feu." },
+      '🦄': { name: 'Licorne Phonétique', desc: "Cette licorne corrige tes fautes d'orthographe en te donnant un petit coup de corne. C'est mignon mais ça pique un peu. Elle mange des dictionnaires au petit-déj et des Bescherelle au goûter." },
+      '🔮': { name: 'Orbe de Prédiction', desc: "Cette boule de cristal te montre l'orthographe de n'importe quel mot AVANT que tu le dises. Le problème : elle spoile aussi la fin des films. Ne lui demande RIEN sur Harry Potter." },
+      '🎪': { name: 'Chapiteau des Merveilles', desc: "Un cirque miniature où des lettres font des acrobaties ! Le A fait du trapèze, le O roule comme une roue et le Z fait la sieste (comme d'habitude). Spectacle à 20h, goûter inclus." },
       // --- Ancestral ---
-      '🏛️': { name: 'Temple des Premiers Mots', desc: "Temple légendaire du premier dictionnaire. Ses colonnes sont des tuyaux d'orgue géants qui résonnent quand on prononce un mot correct — un accord majestueux remplit le dôme, et l'écho de chaque définition compose un requiem de sagesse ancienne." },
-      '⚜️': { name: 'Fleur de Lys Éternelle', desc: "Symbole de l'Académie Française avant même qu'elle n'existe. Ses pétales dorés vibrent comme des cymbales fines, produisant un shimmer délicat — une réverbération dorée qui ne s'éteint jamais, comme la dernière note d'un concert légendaire." },
-      '🗡️': { name: 'Lame du Grammairien', desc: "Épée forgée dans l'encre des premiers manuscrits. Quand elle tranche une faute, on entend un coup de caisse claire net et précis. On dit que Charlemagne battait la mesure avec elle — chaque décret signé était aussi un downbeat royal." },
-      '🦅': { name: 'Aigle Messager', desc: "Rapace dressé pour porter les messages entre les étoiles. Son cri est un la parfait (440 Hz) qui sert de diapason aux musiciens de toute la galaxie. Il ne transmet que les mots justes — les faux, il les laisse tomber en decrescendo." },
-      '📜': { name: 'Parchemin d\'Alexandrie', desc: "Dernier fragment de la Grande Bibliothèque, sauvé par un voyageur temporel. Entre ses lignes, on distingue des portées musicales : chaque mot y est noté comme une partition, avec sa propre mélodie, son tempo et ses nuances dynamiques." },
-      '🏺': { name: 'Amphore de Savoir', desc: "Vase ancien rempli de l'encre originelle. Quand on verse une goutte sur le papier, les mots s'écrivent seuls en suivant un rythme — allegro pour les mots courts, adagio pour les mots longs — une dictée musicale sans une seule fausse note." },
+      '🏛️': { name: 'Temple des Premiers Mots', desc: "Le temple où quelqu'un a inventé le premier mot (c'était « banane », apparemment). Les murs racontent des histoires en 872 langues. La sortie est un peu dure à trouver parce que le GPS n'existait pas à l'époque." },
+      '⚜️': { name: 'Fleur de Lys Éternelle', desc: "Cette fleur dorée est tellement vieille qu'elle a vu les dinosaures, les pyramides ET l'invention de la pizza. Elle refuse de faner par pur orgueil. Les autres fleurs la trouvent un peu prétentieuse." },
+      '🗡️': { name: 'Lame du Grammairien', desc: "Cette épée coupe les fautes d'orthographe en deux ! SLASH ! Plus de faute. Par contre elle ne coupe pas le pain. Donc pour les tartines, il te faut quand même un couteau normal." },
+      '🦅': { name: 'Aigle Messager', desc: "Cet aigle livre les messages entre les étoiles. Mais il est un peu bougon : si le message est mal écrit, il le mange et te regarde méchamment. Du coup tout le monde fait très attention à son orthographe." },
+      '📜': { name: 'Parchemin d\'Alexandrie', desc: "Le dernier bout de la plus grande bibliothèque du monde ! Un voyageur du temps l'a sauvé juste avant l'incendie. Il y a écrit dessus la recette du meilleur gâteau au chocolat de l'Antiquité. (Spoiler : ils mettaient du miel partout.)" },
+      '🏺': { name: 'Amphore de Savoir', desc: "Ce vase antique est rempli d'une encre magique : une seule goutte et tu peux écrire un livre entier sans faute. Le problème, c'est que le bouchon est coincé depuis 2000 ans. Personne n'arrive à l'ouvrir." },
       // --- Céleste ---
-      '✨': { name: 'Poussière de Supernova', desc: "Résidu d'une étoile qui a explosé sur son dernier accord — un fortissimo final si puissant qu'il résonne encore. Cette poussière dorée fait briller et chanter tout ce qu'on écrit, chaque lettre émettant un tintement harmonique surnaturel." },
-      '🌀': { name: 'Spirale du Temps', desc: "Fragment de trou de ver où le temps tourne en boucle comme un vinyle cosmique. On y entend les remix de toutes les époques du français — du vieux françois en mode lydien au français du futur en tempo drum'n'bass." },
-      '💠': { name: 'Cristal de Syntaxe', desc: "Gemme taillée au cœur d'un quasar. Elle organise les mots en phrases impeccables tout en émettant un drone harmonique continu — un bourdon parfait en do majeur qui accorde la grammaire comme on accorde un orchestre avant le concert." },
-      '🔱': { name: 'Trident de Neptune Verbal', desc: "Arme du dieu des océans de mots. Ses trois pointes — orthographe, grammaire, vocabulaire — vibrent chacune sur une fréquence différente, formant un accord de quinte parfaite. Ensemble, elles commandent les marées du langage en trois-quatre." },
-      '⚡': { name: 'Éclair de Génie', desc: "Décharge d'inspiration capturée lors d'un orage sur Jupiter. Son impact produit un clap de tonnerre musical — un rimshot cosmique si net qu'il réveille l'esprit et rend les mots les plus complexes soudain limpides, comme un break qui relance le mix." },
-      '🌕': { name: 'Pleine Lune de Sagesse', desc: "Réplique de la lune à sa plénitude maximale. Elle émet un bourdonnement grave et apaisant — un pad ambient lunaire qui éclaire les recoins sombres de l'orthographe et dissipe le doute comme un fade-out dissipe le silence." },
+      '✨': { name: 'Poussière de Supernova', desc: "De la poussière d'étoile qui s'est explosée. Ça brille, ça colle aux doigts, et c'est impossible à enlever du tapis. Les parents détestent. Les enfants adorent. C'est comme des paillettes, mais en version cosmique." },
+      '🌀': { name: 'Spirale du Temps', desc: "Un mini trou dans le temps ! Tu peux voir le passé et le futur dedans. Par contre, le futur a l'air bizarre : tout le monde porte des chapeaux en forme de triangle. On ne sait pas pourquoi." },
+      '💠': { name: 'Cristal de Syntaxe', desc: "Ce cristal magique range les mots dans le bon ordre tout seul. C'est le rêve. Par contre il range aussi ta chambre si tu le laisses traîner — et il a un sens de l'organisation TRÈS discutable." },
+      '🔱': { name: 'Trident de Neptune Verbal', desc: "L'arme du dieu de la mer des mots. Ses trois pics représentent l'orthographe, la grammaire et le vocabulaire. Il l'utilise surtout comme fourchette géante. Neptune adore les spaghettis." },
+      '⚡': { name: 'Éclair de Génie', desc: "Un vrai éclair capturé dans une bouteille ! Quand tu l'ouvres, tu deviens super intelligent pendant 5 secondes. C'est court, mais c'est pile assez pour trouver où tu as mis tes clés." },
+      '🌕': { name: 'Pleine Lune de Sagesse', desc: "Une lune miniature qui sait TOUT. Tu peux lui poser n'importe quelle question. Mais elle répond toujours « peut-être ». C'est sage, oui. Mais c'est aussi un peu énervant." },
       // --- Cosmique ---
-      '🌑': { name: 'Nouvelle Lune Secrète', desc: "Face cachée que personne n'a vue — jusqu'à maintenant. Sa surface est couverte de partitions écrites en encre invisible, des mélodies silencieuses qui ne se révèlent qu'aux plus méritants, jouées en tacet éternel, attendant d'être enfin interprétées." },
-      '🕳️': { name: 'Micro Trou Noir', desc: "Singularité apprivoisée qui absorbe les fausses notes et les fautes d'orthographe. Ne laisse passer que les mots parfaits et les mélodies justes — un filtre passe-bas ultime qui ne garde que les fréquences pures de la langue." },
-      '💥': { name: 'Écho du Big Bang', desc: "Le tout premier beat de l'univers — le kick originel. Cette vibration a donné naissance à toutes les syllabes, tous les rythmes, toutes les musiques. Un BPM primordial de 10⁴³ battements par seconde, le tempo de la création elle-même." },
-      '🧬': { name: 'ADN du Langage', desc: "Double hélice encodant le code génétique du français. Chaque base est un phonème, chaque paire un intervalle musical. Déroulé, il forme une partition infinie — la mélodie-mère de la langue, jouée en boucle depuis l'aube de l'humanité." },
-      '♾️': { name: 'Boucle Infinie', desc: "Symbole de l'éternel recommencement, comme un loop parfait qui tourne sans jamais perdre son groove. Chaque mot appris est un nouveau layer ajouté au mix, dans une spirale ascendante de savoir — un build-up qui ne drop jamais." },
-      '🫧': { name: 'Bulle de Dimension', desc: "Sphère de savon interdimensionnelle contenant un univers où le français est langue universelle. En y prêtant l'oreille, on entend les villes faites de mots bourdonner d'une ambient chorale — des millions de voix en harmonie perpétuelle." },
+      '🌑': { name: 'Nouvelle Lune Secrète', desc: "La face cachée de la lune que PERSONNE n'a vue. Pourquoi ? Parce qu'elle est timide. Elle rougit dès qu'on la regarde (enfin, elle devient encore plus noire, mais c'est sa façon de rougir)." },
+      '🕳️': { name: 'Micro Trou Noir', desc: "Un tout petit trou noir apprivoisé. Il mange les fautes d'orthographe ! Pratique, non ? Par contre, il mange aussi les stylos, les gommes et parfois les sandwichs. Faut le surveiller." },
+      '💥': { name: 'Écho du Big Bang', desc: "Le tout premier BOUM de l'univers, conservé dans une boîte. Quand tu l'ouvres : BOUM. Quand tu la refermes : silence. C'est le jouet le plus simple et le plus bruyant de la galaxie." },
+      '🧬': { name: 'ADN du Langage', desc: "La recette secrète du français ! Comme l'ADN mais pour les mots. Si tu le lis à l'envers, ça fait du français du futur. (Spoiler : dans le futur, « oiseau » s'écrit enfin comme ça se prononce.)" },
+      '♾️': { name: 'Boucle Infinie', desc: "Ce truc n'a ni début ni fin. Comme quand tu demandes « pourquoi ? » et qu'on te répond « parce que » et tu re-demandes « pourquoi ? » et ça ne s'arrête JAMAIS. Voilà, c'est ça en objet." },
+      '🫧': { name: 'Bulle de Dimension', desc: "Une bulle de savon magique avec un univers entier dedans ! Y a des villes, des gens, des pizzerias... Mais ne la fais pas éclater sinon un univers entier va être très très fâché contre toi." },
       // --- Mythique ---
-      '👁️‍🗨️': { name: 'Œil de l\'Omniscient', desc: "Relique suprême des Gardiens du Langage. Cet œil entend la musique secrète de chaque mot — passé, présent et futur. Son possesseur perçoit l'orthographe comme une symphonie complète, chaque lettre un instrument, chaque phrase un mouvement orchestral." },
-      '🐲': { name: 'Dragon Ancestral', desc: "Créature primordiale née avant les mots et avant la musique. C'est lui qui a soufflé la première note dans le vent, créant ainsi toutes les langues et toutes les mélodies. Son rugissement est le sample originel — le son dont tous les autres descendent." },
-      '⚔️': { name: 'Lames Jumelles du Savoir', desc: "Épées forgées dans la connaissance pure. L'une tranche l'ignorance en staccato, l'autre tisse la compréhension en legato. Croisées, elles produisent un accord de puissance — un power chord mythique qui fait de leur porteur un virtuose invincible des mots." },
-      '🏆': { name: 'Trophée d\'Orion', desc: "Le prix ultime d'Astermots, forgé dans l'or des étoiles. Quand on le soulève, un orchestre invisible joue une fanfare en fa majeur — cuivres, timbales et chœur à l'unisson. Le final est un tutti fortissimo qui fait vibrer l'univers entier." },
-      '🪬': { name: 'Amulette des Anciens', desc: "Talisman des ruines d'une civilisation qui communiquait en musique pure. Son pouvoir protège contre toute fausse note et guide la plume au rythme d'un groove ancestral — une boucle percussive vieille de mille ans qui pulse encore dans le silence." },
-      '🜂': { name: 'Symbole Alchimique', desc: "Glyphe mystérieux des alchimistes du langage. Il transmute les mots ordinaires en poésie pure et les bruits en musique. Sa vibration secrète est un accord dont personne ne connaît la tonalité exacte — le sample le plus rare de l'univers, jamais identifié." },
+      '👁️‍🗨️': { name: 'Œil de l\'Omniscient', desc: "Cet œil voit TOUS les mots de TOUTES les langues. Passé, présent, futur. Il sait même le mot que tu vas inventer mardi prochain à 15h42. C'est flippant mais très impressionnant. Il ne cligne jamais." },
+      '🐲': { name: 'Dragon Ancestral', desc: "Le plus vieux dragon de l'univers. Il existait AVANT les mots. C'est lui qui a inventé les lettres en éternuant du feu (le A, c'est un éternuement pointu). Il est à la retraite maintenant et fait des mots croisés." },
+      '⚔️': { name: 'Lames Jumelles du Savoir', desc: "Deux épées : une qui coupe l'ignorance et une qui recolle le savoir. Ensemble, elles sont invincibles. Séparément, ce sont juste des coupe-papier très dramatiques." },
+      '🏆': { name: 'Trophée d\'Orion', desc: "LE trophée ultime. Le seul. L'unique. Fabriqué en or d'étoile par le Capitaine Orion lui-même (avec un tuto YouTube intergalactique). Quand tu le soulèves, des feux d'artifice apparaissent. Même dans ta chambre. Même si maman dit non." },
+      '🪬': { name: 'Amulette des Anciens', desc: "Ce talisman ultra-ancien protège contre TOUTES les fautes. Un jour, quelqu'un l'a porté pendant un contrôle de français et a eu 20/20. La maîtresse n'a jamais compris. (On ne dit pas que c'est de la triche, on dit que c'est de la magie.)" },
+      '🜂': { name: 'Symbole Alchimique', desc: "Personne ne sait ce que ce symbole veut dire. PERSONNE. Même les gens qui l'ont fabriqué ont oublié. Mais il a l'air mystérieux et ça impressionne tout le monde à la récré. Et ça, ça n'a pas de prix." },
     };
 
     function getTierForCards(cardCount) {
@@ -1921,6 +2090,8 @@
         c.classList.add('game-blurred');
         c.classList.remove('game-revealed', 'card-shake');
       });
+      // On mobile, switch to main view for the game
+      if (window.innerWidth <= 768) switchMobileTab('main');
       startBgMusic();
       showGameQuestion();
     }
@@ -2166,6 +2337,32 @@
       });
     }
 
+    // --- Mobile tab switching ---
+    function switchMobileTab(tab) {
+      const pairs = document.querySelector('.pairs-panel');
+      const main = document.querySelector('.main-content');
+      const rewards = document.querySelector('.rewards-panel');
+      const tabs = document.querySelectorAll('.mobile-tab');
+      pairs.classList.remove('mobile-active');
+      main.classList.remove('mobile-active');
+      rewards.classList.remove('mobile-active');
+      tabs.forEach(t => { t.classList.remove('active', 'active-rewards'); });
+      if (tab === 'pairs') {
+        pairs.classList.add('mobile-active');
+        tabs[0].classList.add('active');
+      } else if (tab === 'rewards') {
+        rewards.classList.add('mobile-active');
+        tabs[2].classList.add('active-rewards');
+      } else {
+        main.classList.add('mobile-active');
+        tabs[1].classList.add('active');
+      }
+    }
+    // Set default mobile tab
+    if (window.innerWidth <= 768) {
+      document.querySelector('.main-content').classList.add('mobile-active');
+    }
+
     wireSearchEvents();
     loadRewards();
 
@@ -2207,5 +2404,6 @@
     _dictScript.src = 'src/data/dictionary.js';
     document.head.appendChild(_dictScript);
   </script>
+  <div id="app-version" style="position:fixed; bottom:0.3rem; right:0.5rem; font-family:'Orbitron',sans-serif; font-size:0.55rem; color:rgba(126,202,255,0.2); pointer-events:none; z-index:1;">v0</div>
 </body>
 </html>
