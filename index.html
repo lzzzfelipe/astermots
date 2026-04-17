@@ -1605,14 +1605,14 @@
         card.innerHTML = `
           <span class="pair-trophy">🏆</span>
           <div class="pair-word pair-word-exact">${input}</div>
-          <button class="pair-remove" onclick="event.stopPropagation(); this.parentElement.remove(); updatePairCount();" title="Retirer">✕</button>
+          <button class="pair-remove" onclick="event.stopPropagation(); removePairCard(this.parentElement);" title="Retirer">✕</button>
         `;
       } else {
         card.innerHTML = `
           <div class="pair-input">${input}</div>
           <div class="pair-arrow">↓</div>
           <div class="pair-word">${wordHtml}</div>
-          <button class="pair-remove" onclick="event.stopPropagation(); this.parentElement.remove(); updatePairCount();" title="Retirer">✕</button>
+          <button class="pair-remove" onclick="event.stopPropagation(); removePairCard(this.parentElement);" title="Retirer">✕</button>
         `;
       }
       card.addEventListener('click', () => showPairDetail(card.dataset.word, card.dataset.input));
@@ -1644,6 +1644,13 @@
         acceptedPairs = [];
       }
       fitToScreen();
+    }
+
+    function removePairCard(card) {
+      const word = card.dataset.word;
+      acceptedPairs = acceptedPairs.filter(p => p.word !== word);
+      card.remove();
+      updatePairCount();
     }
 
     // --- Tiered Rewards system ---
@@ -1782,6 +1789,60 @@
       updateRewardCount();
     }
 
+    function saveRewards() {
+      try {
+        const cards = document.querySelectorAll('#rewards-panel .reward-card');
+        const data = [];
+        cards.forEach(c => {
+          data.push({
+            emoji: c.dataset.emoji,
+            count: parseInt(c.dataset.count || '1'),
+            tier: c.dataset.tier,
+            tierColor: c.dataset.tierColor,
+            label: (c.querySelector('.reward-label') || {}).textContent || ''
+          });
+        });
+        localStorage.setItem('astermots-rewards', JSON.stringify(data));
+      } catch(e) {}
+    }
+
+    function loadRewards() {
+      try {
+        const saved = localStorage.getItem('astermots-rewards');
+        if (!saved) return;
+        const data = JSON.parse(saved);
+        if (!Array.isArray(data) || !data.length) return;
+        const panel = document.getElementById('rewards-panel');
+        const empty = panel.querySelector('.panel-empty');
+        if (empty) empty.remove();
+        data.forEach(r => {
+          const card = document.createElement('div');
+          card.className = 'reward-card';
+          card.dataset.emoji = r.emoji;
+          card.dataset.count = String(r.count);
+          card.dataset.tier = r.tier;
+          card.dataset.tierColor = r.tierColor;
+          card.style.borderColor = r.tierColor + '40';
+          card.style.cursor = 'pointer';
+          const lore = rewardLore[r.emoji] || { name: 'Objet Inconnu' };
+          card.innerHTML = `
+            <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+              <div class="reward-emoji">${r.emoji}</div>
+              <span class="reward-mult" style="${r.count > 1 ? '' : 'display:none;'} font-family:'Orbitron',sans-serif; font-size:clamp(0.5rem,0.9vw,0.65rem); color:${r.tierColor}; font-weight:700;">x${r.count}</span>
+              <div class="reward-name" style="color:${r.tierColor}">${lore.name}</div>
+              <div class="reward-bottom">
+                <div class="reward-tier" style="color:${r.tierColor}">${r.tier}</div>
+                <div class="reward-label">${r.label}</div>
+              </div>
+            </div>
+          `;
+          card.addEventListener('click', () => showRewardInspect(r.emoji, r.tier, r.tierColor, parseInt(card.dataset.count)));
+          panel.appendChild(card);
+        });
+        updateRewardCount();
+      } catch(e) {}
+    }
+
     function showRewardInspect(emoji, tierName, tierColor, count) {
       const lore = rewardLore[emoji] || { name: 'Objet Inconnu', desc: 'Origine mystérieuse. Aucune donnée dans les archives de la station Astermots.' };
       const overlay = document.createElement('div');
@@ -1819,6 +1880,7 @@
       cards.forEach(c => total += parseInt(c.dataset.count || '1'));
       const status = document.getElementById('rewards-status');
       if (status) status.textContent = total + ' récompense' + (total > 1 ? 's' : '');
+      saveRewards();
     }
 
     function showRewardGuide() {
@@ -2105,6 +2167,7 @@
     }
 
     wireSearchEvents();
+    loadRewards();
 
     // --- Load dictionary ---
     function loadDictionary(data) {
