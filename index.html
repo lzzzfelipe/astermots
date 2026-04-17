@@ -408,6 +408,15 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
+    #app-version {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.55rem;
+      color: rgba(126,202,255,0.25);
+      text-align: center;
+      margin-top: auto;
+      padding: 0.5rem 0;
+      letter-spacing: 0.1em;
+    }
 
     .pair-card {
       position: relative;
@@ -518,7 +527,7 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem 1.5rem 1rem;
-      overflow: hidden;
+      overflow-y: auto;
       min-width: 0;
     }
 
@@ -964,8 +973,7 @@
         display: none;
         width: 100%;
         height: calc(100dvh - 52px);
-        padding: 1rem 1rem 0.5rem;
-        padding-bottom: 52px;
+        padding: 1rem 1rem 60px;
         overflow-y: auto;
       }
       .main-content.mobile-active {
@@ -1055,7 +1063,9 @@
         max-height: 85vh !important;
       }
       #app-version {
-        bottom: 3.5rem;
+        position: static;
+        margin-top: auto;
+        padding-bottom: 0.5rem;
       }
     }
   </style>
@@ -1099,6 +1109,7 @@
   <div class="bottom-row" id="others"></div>
 
   <p class="hint">Essaie : <code>gato</code> → gâteau · <code>xien</code> → chien · <code>garson</code> → garçon · <code>foto</code> → photo</p>
+  <div id="app-version">v0</div>
   </div>
   <div class="rewards-panel">
     <div class="panel-header">Mes Récompenses</div>
@@ -2439,6 +2450,5 @@
     _dictScript.src = 'src/data/dictionary.js';
     document.head.appendChild(_dictScript);
   </script>
-  <div id="app-version" style="position:fixed; bottom:0.3rem; right:0.5rem; font-family:'Orbitron',sans-serif; font-size:0.55rem; color:rgba(126,202,255,0.2); pointer-events:none; z-index:1;">v0</div>
 </body>
 </html>
