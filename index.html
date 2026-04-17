@@ -944,7 +944,7 @@
     @media (max-width: 768px) {
       body {
         flex-direction: column;
-        height: 100vh;
+        height: 100dvh;
         overflow: hidden;
       }
       .mobile-tabs { display: block; }
@@ -952,8 +952,9 @@
       .rewards-panel {
         display: none;
         width: 100%;
-        height: calc(100vh - 52px);
+        height: calc(100dvh - 52px);
         border: none;
+        padding-bottom: 52px;
       }
       .pairs-panel.mobile-active,
       .rewards-panel.mobile-active {
@@ -962,8 +963,9 @@
       .main-content {
         display: none;
         width: 100%;
-        height: calc(100vh - 52px);
+        height: calc(100dvh - 52px);
         padding: 1rem 1rem 0.5rem;
+        padding-bottom: 52px;
         overflow-y: auto;
       }
       .main-content.mobile-active {
