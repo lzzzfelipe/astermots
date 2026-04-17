@@ -1398,27 +1398,42 @@
 
     // --- Sound effects (Web Audio API, no files needed) ---
     let audioCtx = null;
+    let audioUnlocked = false;
     function getAudioCtx() {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === 'suspended') audioCtx.resume();
       return audioCtx;
     }
-    // Unlock audio on first user interaction (required for mobile browsers)
+    // Unlock audio on every user interaction until it works (required for iOS Safari)
     function unlockAudio() {
-      getAudioCtx();
-      // Play a silent buffer to fully unlock on iOS
-      const buf = audioCtx.createBuffer(1, 1, 22050);
-      const src = audioCtx.createBufferSource();
-      src.buffer = buf;
-      src.connect(audioCtx.destination);
-      src.start(0);
-      document.removeEventListener('touchstart', unlockAudio, true);
-      document.removeEventListener('touchend', unlockAudio, true);
-      document.removeEventListener('click', unlockAudio, true);
+      if (audioUnlocked) return;
+      const ctx = getAudioCtx();
+      ctx.resume().then(function() {
+        // Play a silent buffer to fully unlock on iOS
+        var buf = ctx.createBuffer(1, 1, 22050);
+        var src = ctx.createBufferSource();
+        src.buffer = buf;
+        src.connect(ctx.destination);
+        src.start(0);
+        if (ctx.state === 'running') {
+          audioUnlocked = true;
+          document.removeEventListener('touchstart', unlockAudio, true);
+          document.removeEventListener('touchend', unlockAudio, true);
+          document.removeEventListener('click', unlockAudio, true);
+          document.removeEventListener('keydown', unlockAudio, true);
+        }
+      });
     }
     document.addEventListener('touchstart', unlockAudio, true);
     document.addEventListener('touchend', unlockAudio, true);
     document.addEventListener('click', unlockAudio, true);
+    document.addEventListener('keydown', unlockAudio, true);
+    // Re-unlock on tab focus (Safari suspends context in background)
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible' && audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    });
 
     function playAcceptSound() {
       const now = getAudioCtx().currentTime;
@@ -2274,9 +2289,11 @@
       const reward = hasReward ? getRandomRewardEmoji(tier) : null;
       if (hasReward) addReward(reward, tier.name, tier.color, gs.score + ' bonnes réponses');
 
+      const lore = hasReward ? (rewardLore[reward] || { name: 'Objet Inconnu' }) : null;
       const rewardHtml = hasReward ? `
           <div style="font-size:clamp(2rem,5vw,3.5rem); margin:0.3rem 0; animation: rewardPop 0.6s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;">${reward}</div>
-          <div style="font-family:'Orbitron',sans-serif; font-size:clamp(0.6rem,1.2vw,0.85rem); color:${tier.color}; letter-spacing:0.1em; text-transform:uppercase; margin:0.2rem 0;">${tier.name}</div>
+          <div style="font-family:'Orbitron',sans-serif; font-size:clamp(0.9rem,2vw,1.4rem); color:${tier.color}; font-weight:700; margin:0.2rem 0; text-shadow: 0 0 12px ${tier.color}40;">${lore.name}</div>
+          <div style="font-family:'Orbitron',sans-serif; font-size:clamp(0.5rem,1vw,0.7rem); color:${tier.color}80; letter-spacing:0.15em; text-transform:uppercase;">${tier.name}</div>
       ` : '';
       const rewardPhrase = hasReward
         ? `${gs.score} bonne${gs.score > 1 ? 's' : ''} réponse${gs.score > 1 ? 's' : ''} → récompense <span style="color:${tier.color}; font-weight:600;">${tier.name}</span> !`
